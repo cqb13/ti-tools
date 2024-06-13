@@ -25,6 +25,13 @@ fn main() {
                     .with_short('o')
                     .with_value_name("OUTPUT")
                     .with_help("The output file path"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("log")
+                    .with_long("log")
+                    .with_short('l')
+                    .with_help("Shows log messages"),
             ),
     ]);
 
@@ -36,8 +43,9 @@ fn main() {
         "convert" => {
             let input_path_string = command.get_value_of("input").throw_if_none();
             let output_path_string = command.get_value_of("output").throw_if_none();
+            let log_messages = command.has("log");
 
-            convert_command(input_path_string, output_path_string)
+            convert_command(input_path_string, output_path_string, log_messages);
         }
         _ => cli.help(),
     }
