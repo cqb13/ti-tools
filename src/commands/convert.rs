@@ -1,6 +1,8 @@
 use std::io::Write;
 use std::path::{Path, PathBuf};
 
+use crate::tokens::single_byte_tokens::SingleByteToken;
+
 pub enum FileType {
     XP,
     TXT,
@@ -33,7 +35,12 @@ impl FileType {
     }
 }
 
-pub fn convert_command(input_path_string: String, output_path_string: String, log_messages: bool) {
+pub fn convert_command(
+    input_path_string: String,
+    output_path_string: String,
+    bytes: bool,
+    log_messages: bool,
+) {
     let (input_path, output_path) =
         match confirm_paths(input_path_string, output_path_string, log_messages) {
             Ok((input_path, output_path)) => (input_path, output_path),
@@ -43,8 +50,56 @@ pub fn convert_command(input_path_string: String, output_path_string: String, lo
             }
         };
 
-    println!("input: {}", input_path.to_str().unwrap());
-    println!("output: {}", output_path.to_str().unwrap());
+    let file_type = match get_conversion_file_type(input_path.as_path()) {
+        Ok(file_type) => file_type,
+        Err(err) => {
+            println!("{}", err);
+            std::process::exit(0)
+        }
+    };
+
+    match file_type {
+        FileType::XP => convert_8xp_to_txt(input_path, bytes),
+        FileType::TXT => convert_txt_to_8xp(input_path, bytes),
+    }
+}
+
+fn convert_8xp_to_txt(input_path: PathBuf, bytes: bool) {
+    let file = match std::fs::read(&input_path) {
+        Ok(file) => file,
+        Err(err) => {
+            println!("Failed to read file: {}", err);
+            std::process::exit(0);
+        }
+    };
+
+    if bytes {
+        print_bytes(&file);
+    }
+
+    let single_byte_tokens = SingleByteToken::new();
+
+    for byte in file {
+        let token = single_byte_tokens.get_token(byte);
+        print!("{:?}", token.unwrap());
+    }
+
+    println!();
+}
+
+fn convert_txt_to_8xp(input_path: PathBuf, bytes: bool) {}
+
+fn print_bytes(file: &Vec<u8>) {
+    let mut i = 0;
+    for byte in file {
+        print!("{:02X}", byte);
+        i += 1;
+        if i % 16 == 0 {
+            println!();
+        } else {
+            print!(", ");
+        }
+    }
 }
 
 fn confirm_paths(

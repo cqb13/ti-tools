@@ -28,6 +28,13 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
+                    .with_name("bytes")
+                    .with_long("bytes")
+                    .with_short('b')
+                    .with_help("Shows byte values of the input file"),
+            )
+            .with_arg(
+                Arg::new()
                     .with_name("log")
                     .with_long("log")
                     .with_short('l')
@@ -43,9 +50,10 @@ fn main() {
         "convert" => {
             let input_path_string = command.get_value_of("input").throw_if_none();
             let output_path_string = command.get_value_of("output").throw_if_none();
+            let bytes = command.has("bytes");
             let log_messages = command.has("log");
 
-            convert_command(input_path_string, output_path_string, log_messages);
+            convert_command(input_path_string, output_path_string, bytes, log_messages);
         }
         _ => cli.help(),
     }
