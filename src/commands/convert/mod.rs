@@ -1,7 +1,8 @@
+pub mod xp_to_txt;
+
 use std::io::Write;
 use std::path::{Path, PathBuf};
-
-use crate::tokens::single_byte_tokens::SingleByteToken;
+use xp_to_txt::convert_8xp_to_txt;
 
 pub enum FileType {
     XP,
@@ -64,32 +65,9 @@ pub fn convert_command(
     }
 }
 
-fn convert_8xp_to_txt(input_path: PathBuf, bytes: bool) {
-    let file = match std::fs::read(&input_path) {
-        Ok(file) => file,
-        Err(err) => {
-            println!("Failed to read file: {}", err);
-            std::process::exit(0);
-        }
-    };
-
-    if bytes {
-        print_bytes(&file);
-    }
-
-    let single_byte_tokens = SingleByteToken::new();
-
-    for byte in file {
-        let token = single_byte_tokens.get_token(byte);
-        print!("{:?}", token.unwrap());
-    }
-
-    println!();
-}
-
 fn convert_txt_to_8xp(input_path: PathBuf, bytes: bool) {}
 
-fn print_bytes(file: &Vec<u8>) {
+pub fn print_bytes(file: &Vec<u8>) {
     let mut i = 0;
     for byte in file {
         print!("{:02X}", byte);
