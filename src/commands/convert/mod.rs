@@ -40,6 +40,7 @@ pub fn convert_command(
     input_path_string: String,
     output_path_string: String,
     bytes: bool,
+    display: bool,
     log_messages: bool,
 ) {
     let (input_path, output_path) =
@@ -59,13 +60,31 @@ pub fn convert_command(
         }
     };
 
-    match file_type {
-        FileType::XP => convert_8xp_to_txt(input_path, bytes),
+    let output_file = match file_type {
+        FileType::XP => convert_8xp_to_txt(input_path, bytes, display, log_messages),
         FileType::TXT => convert_txt_to_8xp(input_path, bytes),
+    };
+
+    if log_messages {
+        println!("Writing to file");
+    }
+
+    match std::fs::write(output_path, output_file.join("")) {
+        Ok(_) => {
+            if log_messages {
+                println!("Wrote to file");
+            }
+        }
+        Err(err) => {
+            println!("Failed to write to file: {}", err);
+            std::process::exit(0);
+        }
     }
 }
 
-fn convert_txt_to_8xp(input_path: PathBuf, bytes: bool) {}
+fn convert_txt_to_8xp(input_path: PathBuf, bytes: bool) -> Vec<String> {
+    Vec::new()
+}
 
 pub fn print_bytes(file: &Vec<u8>) {
     let mut i = 0;

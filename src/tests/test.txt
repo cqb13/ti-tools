@@ -1,0 +1,49 @@
+""TI83F"min(rrCAnsDegree[error: unknown 2-byte code]HorizDegreeRadianrandM([error: unknown 2-byte code]SeqrandM(TIrandM(C≠≦≦Degree[error: unknown 2-byte code]HorizrandM(CErandM(5CubicReg3CubicReg0CubicReg384[error: unused code point][error: unused code point][error: unused code point][error: unused code point][error: unused code point][error: unused code point][error: unused code point][error: unused code point]Ans►Dec²[error: unused code point][error: unknown 2-byte code]►DecBoxplotRADICAL[error: unused code point][error: unused code point][error: unused code point][error: unknown 2-byte code]►Decprgm►DecClrHome
+Output(2,6,"-----------------")
+Output(3,6,"*               *")
+Output(4,6,"*   SIMPLIFIES  *")    
+Output(5,6,"*    RADICALS   *")
+Output(6,6,"*               *")
+Output(7,6,"-----------------")
+Output(8,6,"WWW.ANDYBORNE.COM")
+Output(10,8,"PRESS [ENTER]")
+Pause
+LblA
+ClrHome
+0→M
+Output(1,21,")"
+Input ("ENTER NUMBER √(",X
+IfX<0
+Then
+1→M
+-X→X
+End
+"----------------------
+X→B:1→A:2→I
+WhileI²≤B
+Whilenot(fPart(B/I²)
+B/I²→B:A*I→A
+End
+I+1+(I>2)→I
+End
+"----------------------
+Disp "--------------------------"
+Disp "SIMPLIFIES TO"
+Disp " "
+Disp " "
+Disp "[ENTER] FOR ANOTHER"
+Disp "[CLEAR] TO END
+0→S:0→T
+IfA≦10:1→S
+IfB≦10:1→T
+IfA≦100:2→S
+IfB≦100:2→T
+
+If(A≠1):Output(4,1,A)
+If(M=1):Output(4,2+S,"i")
+If(B≠1)
+Then
+Output(4,2+M+S,"√(")
+Output(4,4+M+S,B)
+Output(4,5+S+M+T,")")
+EndStorePicln(

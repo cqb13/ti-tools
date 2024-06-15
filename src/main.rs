@@ -35,6 +35,13 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
+                    .with_name("display")
+                    .with_long("display")
+                    .with_short('d')
+                    .with_help("Displays the output in the terminal"),
+            )
+            .with_arg(
+                Arg::new()
                     .with_name("log")
                     .with_long("log")
                     .with_short('l')
@@ -51,9 +58,10 @@ fn main() {
             let input_path_string = command.get_value_of("input").throw_if_none();
             let output_path_string = command.get_value_of("output").throw_if_none();
             let bytes = command.has("bytes");
+            let display = command.has("display");
             let log_messages = command.has("log");
 
-            convert_command(input_path_string, output_path_string, bytes, log_messages);
+            convert_command(input_path_string, output_path_string, bytes, display, log_messages);
         }
         _ => cli.help(),
     }
