@@ -1,8 +1,8 @@
-""TI83F"min(rrCAnsDegree[error: unknown 2-byte code]HorizDegreeRadianrandM([error: unknown 2-byte code]SeqrandM(TIrandM(C≠≦≦Degree[error: unknown 2-byte code]HorizrandM(CErandM(5CubicReg3CubicReg0CubicReg384[error: unused code point][error: unused code point][error: unused code point][error: unused code point][error: unused code point][error: unused code point][error: unused code point][error: unused code point]Ans►Dec²[error: unused code point][error: unknown 2-byte code]►DecBoxplotRADICAL[error: unused code point][error: unused code point][error: unused code point][error: unknown 2-byte code]►Decprgm►DecClrHome
+""TI83F"min(rrCAnsDegreeHorizDegreeRadianrandM(SeqrandM(TIrandM(C≠≦≦DegreeHorizrandM(CErandM(5CubicReg3CubicReg0CubicReg384Ans►Dec²►DecBoxplotRADICAL►Decprgm►DecClrHome
 Output(2,6,"-----------------")
 Output(3,6,"*               *")
-Output(4,6,"*   SIMPLIFIES  *")    
-Output(5,6,"*    RADICALS   *")
+Output(4,6,"*   SIMPLIFIES  *"    
+Output(5,6,"*    RADICALS   *"
 Output(6,6,"*               *")
 Output(7,6,"-----------------")
 Output(8,6,"WWW.ANDYBORNE.COM")

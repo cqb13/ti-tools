@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+#[derive(Debug, Clone)]
 pub enum SingleByteToken {
     UnusedCodePoint,
     R,
@@ -500,6 +501,12 @@ impl SingleByteToken {
     }
 }
 
+impl PartialEq for SingleByteToken {
+    fn eq(&self, other: &Self) -> bool {
+        self.to_string() == other.to_string()
+    }
+}
+
 pub struct SingleByteTokens {
     tokens: HashMap<u8, SingleByteToken>,
 }
@@ -770,7 +777,17 @@ impl SingleByteTokens {
         }
     }
 
-    pub fn get_token(&self, byte: u8) -> Result<String, String> {
+    pub fn get_token(&self, byte: u8) -> Result<SingleByteToken, String> {
+        let token_map = &self.tokens;
+        let key_value = token_map.get_key_value(&byte);
+
+        match key_value {
+            Some((_, value)) => Ok(value.clone()),
+            None => Err(format!("No token is associated with {}", byte)),
+        }
+    }
+
+    pub fn get_string_token(&self, byte: u8) -> Result<String, String> {
         let token_map = &self.tokens;
         let key_value = token_map.get_key_value(&byte);
 
