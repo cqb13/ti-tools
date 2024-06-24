@@ -29,7 +29,12 @@ pub fn convert_8xp_to_txt(
         println!();
     }
     let mut output_file = Vec::new();
+    let mut skip_next = false;
     for (i, byte) in file.iter().enumerate() {
+        if skip_next {
+            skip_next = false;
+            continue;
+        }
         let token = single_byte_tokens.get_token(*byte);
 
         match token {
@@ -47,6 +52,7 @@ pub fn convert_8xp_to_txt(
                             file[i + 1]
                         );
                     }
+                    skip_next = true;
                 }
                 _ => {
                     if display {

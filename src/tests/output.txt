@@ -1,4 +1,4 @@
-""TI83F"min(rrCAnsDegreeHorizDegreeRadianrandM(SeqrandM(TIrandM(C≠≦≦DegreeHorizrandM(CErandM(5CubicReg3CubicReg0CubicReg384Ans►Dec²►DecBoxplotRADICAL►Decprgm►DecClrHome
+""TI83F"min(rrCAnsDegreeDegreeRadianrandM(randM(TIrandM(C≠≦≦DegreerandM(CErandM(5CubicReg3CubicReg0CubicReg384Ans►Dec²BoxplotRADICALprgm►DecClrHome
 Output(2,6,"-----------------")
 Output(3,6,"*               *")
 Output(4,6,"*   SIMPLIFIES  *"    
