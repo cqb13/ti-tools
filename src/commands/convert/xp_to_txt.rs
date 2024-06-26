@@ -1,5 +1,5 @@
 use crate::commands::convert::print_bytes;
-use crate::tokens::single_byte_tokens::{SingleByteToken, SingleByteTokens};
+use crate::tokens::AllTokens;
 use std::path::PathBuf;
 
 pub fn convert_8xp_to_txt(
@@ -22,7 +22,7 @@ pub fn convert_8xp_to_txt(
         println!();
     }
 
-    let single_byte_tokens = SingleByteTokens::new();
+    let tokens = AllTokens::new();
 
     if display {
         println!("Tokens:");
@@ -35,16 +35,16 @@ pub fn convert_8xp_to_txt(
             skip_next = false;
             continue;
         }
-        let token = single_byte_tokens.get_token(*byte);
+        let token = tokens.single_byte_tokens.get(byte);
 
         match token {
-            Ok(token) => match token {
-                SingleByteToken::UnusedCodePoint => {
+            Some(token) => match token.as_str() {
+                "[error: unused code point]" => {
                     if log_messages {
                         println!("Unused code point");
                     }
                 }
-                SingleByteToken::Unknown2ByteCode => {
+                "[error: unknown 2-byte code]" => {
                     if log_messages {
                         println!(
                             "Unknown 2-byte code point: {:02X?}|{:02X?}",
@@ -66,9 +66,10 @@ pub fn convert_8xp_to_txt(
                     output_file.push(token.to_string());
                 }
             },
-            Err(err) => {
-                println!("Error: {}", err);
-                std::process::exit(0);
+            None => {
+                if log_messages {
+                    println!("Unknown code point: {:02X?}", byte);
+                }
             }
         }
     }

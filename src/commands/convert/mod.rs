@@ -38,13 +38,13 @@ impl FileType {
 
 pub fn convert_command(
     input_path_string: String,
-    output_path_string: String,
+    output_path_string: Option<String>,
     bytes: bool,
     display: bool,
     log_messages: bool,
 ) {
     let (input_path, output_path) =
-        match confirm_paths(input_path_string, output_path_string, log_messages) {
+        match confirm_paths(input_path_string, &output_path_string, log_messages) {
             Ok((input_path, output_path)) => (input_path, output_path),
             Err(err) => {
                 println!("{}", err);
@@ -64,6 +64,14 @@ pub fn convert_command(
         FileType::XP => convert_8xp_to_txt(input_path, bytes, display, log_messages),
         FileType::TXT => convert_txt_to_8xp(input_path, bytes),
     };
+
+    if output_path_string.is_none() {
+        return;
+    }
+
+    if display || bytes {
+        println!();
+    }
 
     if log_messages {
         println!("Writing to file");
@@ -101,7 +109,7 @@ pub fn print_bytes(file: &Vec<u8>) {
 
 fn confirm_paths(
     input_path_string: String,
-    output_path_string: String,
+    output_path_string: &Option<String>,
     log_messages: bool,
 ) -> Result<(PathBuf, PathBuf), String> {
     let input_path = Path::new(&input_path_string);
@@ -118,13 +126,18 @@ fn confirm_paths(
         Err(err) => return Err(err),
     };
 
-    let output_path = match validate_and_fix_output_path(
-        output_path_string,
-        file_type.opposite(),
-        log_messages,
-    ) {
-        Ok(path_buf) => path_buf,
-        Err(err) => return Err(err),
+    let output_path = match output_path_string {
+        Some(output_path_string) => {
+            match validate_and_fix_output_path(
+                output_path_string.to_string(),
+                file_type.opposite(),
+                log_messages,
+            ) {
+                Ok(path_buf) => path_buf,
+                Err(err) => return Err(err),
+            }
+        }
+        None => PathBuf::new(),
     };
 
     Ok((input_path.to_path_buf(), output_path))

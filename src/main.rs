@@ -56,12 +56,22 @@ fn main() {
         "version" => cli.version(),
         "convert" => {
             let input_path_string = command.get_value_of("input").throw_if_none();
-            let output_path_string = command.get_value_of("output").throw_if_none();
+            let output_path_string = command.get_value_of("output").to_option();
             let bytes = command.has("bytes");
             let display = command.has("display");
             let log_messages = command.has("log");
 
-            convert_command(input_path_string, output_path_string, bytes, display, log_messages);
+            if output_path_string.is_none() && !display {
+                println!("You must specify at least one output method");
+            }
+
+            convert_command(
+                input_path_string,
+                output_path_string,
+                bytes,
+                display,
+                log_messages,
+            );
         }
         _ => cli.help(),
     }
