@@ -39,9 +39,6 @@ impl FileType {
 pub fn convert_command(
     input_path_string: String,
     output_path_string: Option<String>,
-    header: bool,
-    metadata: bool,
-    checksum: bool,
     bytes: bool,
     display: bool,
     log_messages: bool,
@@ -66,9 +63,6 @@ pub fn convert_command(
     let output_file = match file_type {
         FileType::XP => convert_8xp_to_txt(
             input_path,
-            header,
-            metadata,
-            checksum,
             bytes,
             display,
             log_messages,

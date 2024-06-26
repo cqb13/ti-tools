@@ -92,24 +92,19 @@ impl Program {
         }
     }
 
-    pub fn display(&self, header: bool, metadata: bool, checksum: bool) {
+    pub fn display(&self) {
         println!("Program:");
         println!("----------------------------");
-        if header {
-            println!("Header:");
-            self.header.display();
-            println!();
-        }
-        if metadata {
-            println!("Meta Data:");
-            self.meta_data.display();
-            println!();
-        }
-        if checksum {
-            println!("Checksum:");
-            println!("{}", u16::from_le_bytes(self.checksum));
-            println!();
-        }
+        println!("Header:");
+        self.header.display();
+        println!();
+        println!("Meta Data:");
+        self.meta_data.display();
+        println!();
+        println!("Checksum:");
+        println!("{}", u16::from_le_bytes(self.checksum));
+        println!();
+
         for token in &self.body {
             if token.to_string() == "\n".to_string() {
                 println!()
@@ -119,40 +114,32 @@ impl Program {
         }
     }
 
-    pub fn to_output(&self, header: bool, metadata: bool, checksum: bool) -> Vec<String> {
+    pub fn to_output(&self) -> Vec<String> {
         let mut output_array: Vec<String> = Vec::new();
 
-        if header || metadata || checksum {
-            output_array.push("Program:".to_string());
-            output_array.extend(vec!["\n".to_string()]);
-            output_array.extend(vec!["----------------------------".to_string()]);
-            output_array.extend(vec!["\n".to_string()]);
-        }
+        output_array.push("Program:".to_string());
+        output_array.extend(vec!["\n".to_string()]);
+        output_array.extend(vec!["----------------------------".to_string()]);
+        output_array.extend(vec!["\n".to_string()]);
 
-        if header {
-            output_array.push("Header:".to_string());
-            output_array.extend(vec!["\n".to_string()]);
-            for line in self.header.to_array() {
-                output_array.push(line);
-                output_array.extend(vec!["\n".to_string()]);
-            }
+        output_array.push("Header:".to_string());
+        output_array.extend(vec!["\n".to_string()]);
+        for line in self.header.to_array() {
+            output_array.push(line);
             output_array.extend(vec!["\n".to_string()]);
         }
+        output_array.extend(vec!["\n".to_string()]);
 
-        if metadata {
-            output_array.push("Meta Data:".to_string());
-            output_array.extend(vec!["\n".to_string()]);
-            for line in self.meta_data.to_array() {
-                output_array.push(line);
-                output_array.extend(vec!["\n".to_string()]);
-            }
+        output_array.push("Meta Data:".to_string());
+        output_array.extend(vec!["\n".to_string()]);
+        for line in self.meta_data.to_array() {
+            output_array.push(line);
             output_array.extend(vec!["\n".to_string()]);
         }
+        output_array.extend(vec!["\n".to_string()]);
 
-        if checksum {
-            output_array.push(format!("Checksum: {}", u16::from_le_bytes(self.checksum)));
-            output_array.extend(vec!["\n".to_string()]);
-        }
+        output_array.push(format!("Checksum: {}", u16::from_le_bytes(self.checksum)));
+        output_array.extend(vec!["\n".to_string()]);
 
         output_array.push("Program Start:".to_string());
         output_array.extend(vec!["\n".to_string()]);
@@ -166,10 +153,10 @@ impl Program {
 }
 
 pub struct Header {
-    pub signature: String, // signature, always "**TI83F*" in ASCII (8 bytes)
-    pub signature_part_2: [u8; 2], // signature part 2, two bytes, always with these values: 0x1A, 0x0A
-    pub mystery_byte: u8,          // Either 0x00 or 0x0A?
-    pub comment: String, // 42 bytes, typical compile app version then padding of 0x00 [ex: "Created by TI Connect CE 5.3.0.384"]
+    pub signature: String,             // signature, always "**TI83F*" in ASCII (8 bytes)
+    pub signature_part_2: [u8; 2],     // signature part 2, two bytes, always with these values: 0x1A, 0x0A
+    pub mystery_byte: u8,              // Either 0x00 or 0x0A?
+    pub comment: String,               // 42 bytes, typical compile app version then padding of 0x00 [ex: "Created by TI Connect CE 5.3.0.384"]
     pub meta_and_body_length: [u8; 2], //Number of bytes from here on, excluding the checksum (little endian)
 }
 
@@ -228,13 +215,13 @@ impl Header {
 pub struct MetaData {
     pub flag: u8,                                    // either 0x0B or 0x0D (11 or 13)
     pub unknown: u8,                                 // in most cases 0x00
-    pub body_and_checksum_length: [u8; 2], // Length of the body/code section and the 2 byte checksum, in bytes
-    pub file_type: FileType,               // Type of file
-    pub name: String, // Maximum 8 chars. Unused characters are filled with 0x00 ASCII
-    pub version: u8,  // Version of the file
-    pub archived: Archived, // Archived or not
+    pub body_and_checksum_length: [u8; 2],           // Length of the body/code section and the 2 byte checksum, in bytes
+    pub file_type: FileType,                         // Type of file
+    pub name: String,                                // Maximum 8 chars. Unused characters are filled with 0x00 ASCII
+    pub version: u8,                                 // Version of the file
+    pub archived: Archived,                          // Archived or not
     pub body_and_checksum_length_duplicate: [u8; 2], // Same thing as before not sure why???
-    pub body_length: [u8; 2], // Length of the body/code section, in bytes not including the checksum (little endian)
+    pub body_length: [u8; 2],                        // Length of the body/code section, in bytes not including the checksum (little endian)
 }
 
 impl MetaData {
@@ -353,9 +340,6 @@ impl Archived {
 
 pub fn convert_8xp_to_txt(
     input_path: PathBuf,
-    header: bool,
-    metadata: bool,
-    checksum: bool,
     bytes: bool,
     display: bool,
     log_messages: bool,
@@ -377,9 +361,9 @@ pub fn convert_8xp_to_txt(
     let program = Program::new(file, log_messages);
 
     if display {
-        program.display(header, metadata, checksum);
+        program.display();
         println!();
     }
 
-    program.to_output(header, metadata, checksum)
+    program.to_output()
 }
