@@ -45,21 +45,47 @@ pub fn convert_8xp_to_txt(
                     }
                 }
                 "[error: unknown 2-byte code]" => {
-                    if log_messages {
-                        println!(
-                            "Unknown 2-byte code point: {:02X?}|{:02X?}",
-                            byte,
-                            file[i + 1]
-                        );
-                    }
+                    let next_byte = file[i + 1];
                     skip_next = true;
+                    let token = match byte {
+                        0x5C => tokens.matrix_tokens.get(&next_byte),
+                        0x5D => tokens.list_tokens.get(&next_byte),
+                        0x5E => tokens.equation_tokens.get(&next_byte),
+                        0x60 => tokens.picture_tokens.get(&next_byte),
+                        0x61 => tokens.gdb_tokens.get(&next_byte),
+                        0xAA => tokens.string_tokens.get(&next_byte),
+                        0x62 => tokens.statistic_variable_tokens.get(&next_byte),
+                        0x63 => tokens.window_and_finance_tokens.get(&next_byte),
+                        0x7E => tokens.graph_format_tokens.get(&next_byte),
+                        0xBB => tokens.misc_tokens.get(&next_byte),
+                        0xEF => tokens.ti_84_tokens.get(&next_byte),
+                        _ => continue,
+                    };
+
+                    match token {
+                        Some(token) => {
+                            if display {
+                                print!("{}", token)
+                            }
+
+                            output_file.push(token.to_string())
+                        }
+                        None => {
+                            if log_messages {
+                                println!(
+                                    "Failed to translate 2-byte code: {:02X?} {:02X?}",
+                                    byte, next_byte
+                                )
+                            }
+                        }
+                    }
                 }
                 _ => {
                     if display {
                         if token.to_string() == "\n" {
                             println!();
                         } else {
-                            print!("{}", token.to_string());
+                            print!("{}", token);
                         }
                     }
 
