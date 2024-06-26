@@ -15,6 +15,11 @@ impl Program {
 
         let mut skip_next = false;
 
+        if file.len() < 76 {
+            println!("8xp file is missing header and metadata");
+            std::process::exit(0)
+        }
+
         // 55 byte header
         let (header_bytes, file) = file.split_at(55);
         let header = Header::new(header_bytes);

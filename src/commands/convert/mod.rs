@@ -61,12 +61,7 @@ pub fn convert_command(
     };
 
     let output_file = match file_type {
-        FileType::XP => convert_8xp_to_txt(
-            input_path,
-            bytes,
-            display,
-            log_messages,
-        ),
+        FileType::XP => convert_8xp_to_txt(input_path, bytes, display, log_messages),
         FileType::TXT => convert_txt_to_8xp(input_path, bytes),
     };
 
@@ -120,10 +115,8 @@ fn confirm_paths(
     let input_path = Path::new(&input_path_string);
 
     if !input_path.exists() {
-        panic!(
-            "No file is located at \"{}\", please provide a valid path",
-            input_path_string
-        );
+        println!("No file is located at \"{}\"", input_path_string);
+        std::process::exit(0);
     }
 
     let file_type = match get_conversion_file_type(input_path) {
