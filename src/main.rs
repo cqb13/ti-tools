@@ -28,6 +28,27 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
+                    .with_name("header")
+                    .with_long("header")
+                    .with_short('h')
+                    .with_help("Include header information"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("metadata")
+                    .with_long("metadata")
+                    .with_short('m')
+                    .with_help("Include metadata information"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("checksum")
+                    .with_long("checksum")
+                    .with_short('c')
+                    .with_help("Include checksum information"),
+            )
+            .with_arg(
+                Arg::new()
                     .with_name("bytes")
                     .with_long("bytes")
                     .with_short('b')
@@ -57,6 +78,9 @@ fn main() {
         "convert" => {
             let input_path_string = command.get_value_of("input").throw_if_none();
             let output_path_string = command.get_value_of("output").to_option();
+            let header = command.has("header");
+            let metadata = command.has("metadata");
+            let checksum = command.has("checksum");
             let bytes = command.has("bytes");
             let display = command.has("display");
             let log_messages = command.has("log");
@@ -68,6 +92,9 @@ fn main() {
             convert_command(
                 input_path_string,
                 output_path_string,
+                header,
+                metadata,
+                checksum,
                 bytes,
                 display,
                 log_messages,

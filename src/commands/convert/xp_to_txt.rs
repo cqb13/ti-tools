@@ -2,6 +2,169 @@ use crate::commands::convert::print_bytes;
 use crate::tokens::Tokens;
 use std::path::PathBuf;
 
+pub struct Program {
+    pub header: Header,
+    pub meta_data: MetaData,
+    pub body: Vec<String>,
+    pub checksum: [u8; 2],
+}
+
+impl Program {
+    pub fn new(file: Vec<u8>, log_messages: bool) -> Program {
+        let tokens = Tokens::new();
+
+        let mut skip_next = false;
+
+        // 55 byte header
+        let (header_bytes, file) = file.split_at(55);
+        let header = Header::new(header_bytes);
+
+        // 19 byte meta data
+        let (meta_data_bytes, file) = file.split_at(19);
+        let meta_data = MetaData::new(meta_data_bytes);
+
+        // 2 byte checksum at end
+        let (file, checksum) = file.split_at(file.len() - 2);
+
+        let mut body = Vec::new();
+
+        for (i, byte) in file.iter().enumerate() {
+            if skip_next {
+                skip_next = false;
+                continue;
+            }
+            let token = tokens.single_byte_tokens.get(byte);
+
+            match token {
+                Some(token) => match token.as_str() {
+                    "[error: unused code point]" => {
+                        if log_messages {
+                            println!("Unused code point");
+                        }
+                    }
+                    "[error: unknown 2-byte code]" => {
+                        let next_byte = file[i + 1];
+                        skip_next = true;
+                        let token = match byte {
+                            0x5C => tokens.matrix_tokens.get(&next_byte),
+                            0x5D => tokens.list_tokens.get(&next_byte),
+                            0x5E => tokens.equation_tokens.get(&next_byte),
+                            0x60 => tokens.picture_tokens.get(&next_byte),
+                            0x61 => tokens.gdb_tokens.get(&next_byte),
+                            0xAA => tokens.string_tokens.get(&next_byte),
+                            0x62 => tokens.statistic_variable_tokens.get(&next_byte),
+                            0x63 => tokens.window_and_finance_tokens.get(&next_byte),
+                            0x7E => tokens.graph_format_tokens.get(&next_byte),
+                            0xBB => tokens.misc_tokens.get(&next_byte),
+                            0xEF => tokens.ti_84_tokens.get(&next_byte),
+                            _ => continue,
+                        };
+
+                        match token {
+                            Some(token) => body.push(token.to_string()),
+                            None => {
+                                if log_messages {
+                                    println!(
+                                        "Failed to translate 2-byte code: {:02X?} {:02X?}",
+                                        byte, next_byte
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    _ => {
+                        body.push(token.to_string());
+                    }
+                },
+                None => {
+                    if log_messages {
+                        println!("Unknown code point: {:02X?}", byte);
+                    }
+                }
+            }
+        }
+
+        Program {
+            header,
+            meta_data,
+            body,
+            checksum: [checksum[0], checksum[1]],
+        }
+    }
+
+    pub fn display(&self, header: bool, metadata: bool, checksum: bool) {
+        println!("Program:");
+        println!("----------------------------");
+        if header {
+            println!("Header:");
+            self.header.display();
+            println!();
+        }
+        if metadata {
+            println!("Meta Data:");
+            self.meta_data.display();
+            println!();
+        }
+        if checksum {
+            println!("Checksum:");
+            println!("{}", u16::from_le_bytes(self.checksum));
+            println!();
+        }
+        for token in &self.body {
+            if token.to_string() == "\n".to_string() {
+                println!()
+            } else {
+                print!("{}", token)
+            }
+        }
+    }
+
+    pub fn to_output(&self, header: bool, metadata: bool, checksum: bool) -> Vec<String> {
+        let mut output_array: Vec<String> = Vec::new();
+
+        if header || metadata || checksum {
+            output_array.push("Program:".to_string());
+            output_array.extend(vec!["\n".to_string()]);
+            output_array.extend(vec!["----------------------------".to_string()]);
+            output_array.extend(vec!["\n".to_string()]);
+        }
+
+        if header {
+            output_array.push("Header:".to_string());
+            output_array.extend(vec!["\n".to_string()]);
+            for line in self.header.to_array() {
+                output_array.push(line);
+                output_array.extend(vec!["\n".to_string()]);
+            }
+            output_array.extend(vec!["\n".to_string()]);
+        }
+
+        if metadata {
+            output_array.push("Meta Data:".to_string());
+            output_array.extend(vec!["\n".to_string()]);
+            for line in self.meta_data.to_array() {
+                output_array.push(line);
+                output_array.extend(vec!["\n".to_string()]);
+            }
+            output_array.extend(vec!["\n".to_string()]);
+        }
+
+        if checksum {
+            output_array.push(format!("Checksum: {}", u16::from_le_bytes(self.checksum)));
+            output_array.extend(vec!["\n".to_string()]);
+        }
+
+        output_array.push("Program Start:".to_string());
+        output_array.extend(vec!["\n".to_string()]);
+        output_array.extend(vec!["----------------------------".to_string()]);
+        output_array.extend(vec!["\n".to_string()]);
+
+        output_array.extend(self.body.clone());
+
+        output_array
+    }
+}
+
 pub struct Header {
     pub signature: String, // signature, always "**TI83F*" in ASCII (8 bytes)
     pub signature_part_2: [u8; 2], // signature part 2, two bytes, always with these values: 0x1A, 0x0A
@@ -190,6 +353,9 @@ impl Archived {
 
 pub fn convert_8xp_to_txt(
     input_path: PathBuf,
+    header: bool,
+    metadata: bool,
+    checksum: bool,
     bytes: bool,
     display: bool,
     log_messages: bool,
@@ -205,109 +371,15 @@ pub fn convert_8xp_to_txt(
     if bytes {
         println!("Bytes:");
         print_bytes(&file);
-        println!();
+        println!("\n");
     }
 
-    let tokens = Tokens::new();
+    let program = Program::new(file, log_messages);
 
     if display {
-        println!("Tokens:");
-        println!();
-    }
-    let mut output_file = Vec::new();
-    let mut skip_next = false;
-
-    // 55 byte header
-    let (header_bytes, file) = file.split_at(55);
-    let header = Header::new(header_bytes);
-    if display {
-        header.display();
-        println!();
-    }
-    output_file.extend(header.to_array());
-    let (meta_data_bytes, file) = file.split_at(19);
-    let meta_data = MetaData::new(meta_data_bytes);
-    if display {
-        meta_data.display();
-        println!();
-    }
-    output_file.extend(meta_data.to_array());
-
-    // 2 byte checksum at end
-    let (file, checksum) = file.split_at(file.len() - 2);
-
-    for (i, byte) in file.iter().enumerate() {
-        if skip_next {
-            skip_next = false;
-            continue;
-        }
-        let token = tokens.single_byte_tokens.get(byte);
-
-        match token {
-            Some(token) => match token.as_str() {
-                "[error: unused code point]" => {
-                    if log_messages {
-                        println!("Unused code point");
-                    }
-                }
-                "[error: unknown 2-byte code]" => {
-                    let next_byte = file[i + 1];
-                    skip_next = true;
-                    let token = match byte {
-                        0x5C => tokens.matrix_tokens.get(&next_byte),
-                        0x5D => tokens.list_tokens.get(&next_byte),
-                        0x5E => tokens.equation_tokens.get(&next_byte),
-                        0x60 => tokens.picture_tokens.get(&next_byte),
-                        0x61 => tokens.gdb_tokens.get(&next_byte),
-                        0xAA => tokens.string_tokens.get(&next_byte),
-                        0x62 => tokens.statistic_variable_tokens.get(&next_byte),
-                        0x63 => tokens.window_and_finance_tokens.get(&next_byte),
-                        0x7E => tokens.graph_format_tokens.get(&next_byte),
-                        0xBB => tokens.misc_tokens.get(&next_byte),
-                        0xEF => tokens.ti_84_tokens.get(&next_byte),
-                        _ => continue,
-                    };
-
-                    match token {
-                        Some(token) => {
-                            if display {
-                                print!("{}", token)
-                            }
-
-                            output_file.push(token.to_string())
-                        }
-                        None => {
-                            if log_messages {
-                                println!(
-                                    "Failed to translate 2-byte code: {:02X?} {:02X?}",
-                                    byte, next_byte
-                                )
-                            }
-                        }
-                    }
-                }
-                _ => {
-                    if display {
-                        if token.to_string() == "\n" {
-                            println!();
-                        } else {
-                            print!("{}", token);
-                        }
-                    }
-
-                    output_file.push(token.to_string());
-                }
-            },
-            None => {
-                if log_messages {
-                    println!("Unknown code point: {:02X?}", byte);
-                }
-            }
-        }
-    }
-    if display {
+        program.display(header, metadata, checksum);
         println!();
     }
 
-    output_file
+    program.to_output(header, metadata, checksum)
 }
