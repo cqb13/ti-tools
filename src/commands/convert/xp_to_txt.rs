@@ -30,6 +30,18 @@ pub fn convert_8xp_to_txt(
     }
     let mut output_file = Vec::new();
     let mut skip_next = false;
+
+    // 55 byte header
+    let (header, file) = file.split_at(55);
+    println!("header: {}", header.len());
+    // 19 byte meta data
+    let (met_data, file) = file.split_at(19);
+    println!("meta: {}", met_data.len());
+
+    // 2 byte checksum at end
+    let (file, end_bytes) = file.split_at(file.len() - 2);
+    println!("end bytes: {}", end_bytes.len());
+
     for (i, byte) in file.iter().enumerate() {
         if skip_next {
             skip_next = false;
