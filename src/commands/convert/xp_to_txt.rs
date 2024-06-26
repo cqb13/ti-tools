@@ -1,5 +1,5 @@
 use crate::commands::convert::print_bytes;
-use crate::tokens::AllTokens;
+use crate::tokens::Tokens;
 use std::path::PathBuf;
 
 pub fn convert_8xp_to_txt(
@@ -22,7 +22,7 @@ pub fn convert_8xp_to_txt(
         println!();
     }
 
-    let tokens = AllTokens::new();
+    let tokens = Tokens::new();
 
     if display {
         println!("Tokens:");
