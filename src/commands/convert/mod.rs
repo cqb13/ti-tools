@@ -92,19 +92,6 @@ pub fn convert_command(
     }
 }
 
-pub fn print_bytes(file: &Vec<u8>) {
-    let mut i = 0;
-    for byte in file {
-        print!("{:02X}", byte);
-        i += 1;
-        if i % 16 == 0 {
-            println!();
-        } else {
-            print!(", ");
-        }
-    }
-}
-
 fn confirm_paths(
     input_path_string: String,
     output_path_string: &Option<String>,

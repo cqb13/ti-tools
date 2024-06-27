@@ -89,7 +89,7 @@ fn main() {
         "convert" => {
             let input_path_string = command.get_value_of("input").throw_if_none();
             let output_path_string = command.get_value_of("output").to_option();
-            let bytes = command.has("bytes");
+            let raw = command.has("raw");
             let display = command.has("display");
             let log_messages = command.has("log");
 
@@ -100,7 +100,7 @@ fn main() {
             convert_command(
                 input_path_string,
                 output_path_string,
-                bytes,
+                raw,
                 display,
                 log_messages,
             );

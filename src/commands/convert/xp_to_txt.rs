@@ -1,16 +1,15 @@
-use crate::commands::convert::print_bytes;
 use crate::tokens::Tokens;
 use std::path::PathBuf;
 
-pub struct Program {
-    pub header: Header,
-    pub meta_data: MetaData,
-    pub body: Vec<String>,
-    pub checksum: [u8; 2],
+struct Program {
+    header: Header,
+    meta_data: MetaData,
+    body: Vec<String>,
+    checksum: [u8; 2],
 }
 
 impl Program {
-    pub fn new(file: Vec<u8>, log_messages: bool) -> Program {
+    fn new(file: Vec<u8>, log_messages: bool) -> Program {
         let tokens = Tokens::new();
 
         let mut skip_next = false;
@@ -97,7 +96,7 @@ impl Program {
         }
     }
 
-    pub fn display(&self) {
+    fn display(&self) {
         println!("Program:");
         println!("----------------------------");
         println!("Header:");
@@ -157,16 +156,16 @@ impl Program {
     }
 }
 
-pub struct Header {
-    pub signature: String,             // signature, always "**TI83F*" in ASCII (8 bytes)
-    pub signature_part_2: [u8; 2],     // signature part 2, two bytes, always with these values: 0x1A, 0x0A
-    pub mystery_byte: u8,              // Either 0x00 or 0x0A?
-    pub comment: String,               // 42 bytes, typical compile app version then padding of 0x00 [ex: "Created by TI Connect CE 5.3.0.384"]
-    pub meta_and_body_length: [u8; 2], //Number of bytes from here on, excluding the checksum (little endian)
+struct Header {
+    signature: String,             // signature, always "**TI83F*" in ASCII (8 bytes)
+    signature_part_2: [u8; 2],     // signature part 2, two bytes, always with these values: 0x1A, 0x0A
+    mystery_byte: u8,              // Either 0x00 or 0x0A?
+    comment: String,               // 42 bytes, typical compile app version then padding of 0x00 [ex: "Created by TI Connect CE 5.3.0.384"]
+    meta_and_body_length: [u8; 2], //Number of bytes from here on, excluding the checksum (little endian)
 }
 
 impl Header {
-    pub fn new(header_bytes: &[u8]) -> Header {
+    fn new(header_bytes: &[u8]) -> Header {
         let signature = header_bytes[0..8]
             .iter()
             .map(|byte| *byte as char)
@@ -192,7 +191,7 @@ impl Header {
         }
     }
 
-    pub fn to_array(&self) -> Vec<String> {
+    fn to_array(&self) -> Vec<String> {
         vec![
             format!("Signature: {}", self.signature),
             format!(
@@ -210,27 +209,27 @@ impl Header {
         ]
     }
 
-    pub fn display(&self) {
+    fn display(&self) {
         for line in self.to_array() {
             println!("{}", line);
         }
     }
 }
 
-pub struct MetaData {
-    pub flag: u8,                                    // either 0x0B or 0x0D (11 or 13)
-    pub unknown: u8,                                 // in most cases 0x00
-    pub body_and_checksum_length: [u8; 2],           // Length of the body/code section and the 2 byte checksum, in bytes
-    pub file_type: FileType,                         // Type of file
-    pub name: String,                                // Maximum 8 chars. Unused characters are filled with 0x00 ASCII
-    pub version: u8,                                 // Version of the file
-    pub archived: Archived,                          // Archived or not
-    pub body_and_checksum_length_duplicate: [u8; 2], // Same thing as before not sure why???
-    pub body_length: [u8; 2],                        // Length of the body/code section, in bytes not including the checksum (little endian)
+struct MetaData {
+    flag: u8,                                     // either 0x0B or 0x0D (11 or 13)
+    unknown: u8,                                  // in most cases 0x00
+    body_and_checksum_length: [u8; 2],            // Length of the body/code section and the 2 byte checksum, in bytes
+    file_type: FileType,                          // Type of file
+    name: String,                                 // Maximum 8 chars. Unused characters are filled with 0x00 ASCII
+    version: u8,                                  // Version of the file
+    archived: Archived,                           // Archived or not
+    body_and_checksum_length_duplicate: [u8; 2],  // Same thing as before not sure why???
+    body_length: [u8; 2],                         // Length of the body/code section, in bytes not including the checksum (little endian)
 }
 
 impl MetaData {
-    pub fn new(meta_data_bytes: &[u8]) -> MetaData {
+    fn new(meta_data_bytes: &[u8]) -> MetaData {
         let flag = meta_data_bytes[0];
         let unknown = meta_data_bytes[1];
         let body_and_checksum_length = [meta_data_bytes[2], meta_data_bytes[3]];
@@ -257,7 +256,7 @@ impl MetaData {
         }
     }
 
-    pub fn to_array(&self) -> Vec<String> {
+    fn to_array(&self) -> Vec<String> {
         vec![
             format!("Flag: {:02X?}", self.flag),
             format!("Unknown: {:02X?}", self.unknown),
@@ -286,14 +285,14 @@ impl MetaData {
         ]
     }
 
-    pub fn display(&self) {
+    fn display(&self) {
         for line in self.to_array() {
             println!("{}", line);
         }
     }
 }
 
-pub enum FileType {
+enum FileType {
     Program,
     EditLockedProgram,
     Group,
@@ -301,7 +300,7 @@ pub enum FileType {
 }
 
 impl FileType {
-    pub fn from_byte(byte: u8) -> FileType {
+    fn from_byte(byte: u8) -> FileType {
         match byte {
             0x05 => FileType::Program,
             0x06 => FileType::EditLockedProgram,
@@ -311,7 +310,7 @@ impl FileType {
         }
     }
 
-    pub fn to_string(&self) -> String {
+    fn to_string(&self) -> String {
         match self {
             FileType::Program => "Program".to_string(),
             FileType::EditLockedProgram => "Edit Locked Program".to_string(),
@@ -321,13 +320,13 @@ impl FileType {
     }
 }
 
-pub enum Archived {
+enum Archived {
     Unarchived,
     Archived,
 }
 
 impl Archived {
-    pub fn from_byte(byte: u8) -> Archived {
+    fn from_byte(byte: u8) -> Archived {
         match byte {
             0x00 => Archived::Unarchived,
             0x80 => Archived::Archived,
@@ -335,7 +334,7 @@ impl Archived {
         }
     }
 
-    pub fn to_string(&self) -> String {
+    fn to_string(&self) -> String {
         match self {
             Archived::Unarchived => "Unarchived".to_string(),
             Archived::Archived => "Archived".to_string(),
@@ -371,4 +370,17 @@ pub fn convert_8xp_to_txt(
     }
 
     program.to_output()
+}
+
+fn print_bytes(file: &Vec<u8>) {
+    let mut i = 0;
+    for byte in file {
+        print!("{:02X}", byte);
+        i += 1;
+        if i % 16 == 0 {
+            println!();
+        } else {
+            print!(", ");
+        }
+    }
 }
