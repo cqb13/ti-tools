@@ -29,17 +29,17 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
-                    .with_name("bytes")
-                    .with_long("bytes")
-                    .with_short('b')
-                    .with_help("Shows byte values of the input file"),
+                    .with_name("raw")
+                    .with_long("raw")
+                    .with_short('r')
+                    .with_help("Display the raw content of the input file before conversion"),
             )
             .with_arg(
                 Arg::new()
                     .with_name("display")
                     .with_long("display")
                     .with_short('d')
-                    .with_help("Displays the output in the terminal"),
+                    .with_help("Displays the output"),
             )
             .with_arg(
                 Arg::new()

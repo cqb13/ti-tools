@@ -345,7 +345,7 @@ impl Archived {
 
 pub fn convert_8xp_to_txt(
     input_path: PathBuf,
-    bytes: bool,
+    raw: bool,
     display: bool,
     log_messages: bool,
 ) -> Vec<String> {
@@ -357,7 +357,7 @@ pub fn convert_8xp_to_txt(
         }
     };
 
-    if bytes {
+    if raw {
         println!("Bytes:");
         print_bytes(&file);
         println!("\n");

@@ -1,8 +1,10 @@
 pub mod xp_to_txt;
+pub mod txt_to_8xp;
 
 use std::io::Write;
 use std::path::{Path, PathBuf};
 use xp_to_txt::convert_8xp_to_txt;
+use txt_to_8xp::convert_txt_to_8xp;
 
 pub enum FileType {
     XP,
@@ -39,7 +41,7 @@ impl FileType {
 pub fn convert_command(
     input_path_string: String,
     output_path_string: Option<String>,
-    bytes: bool,
+    raw: bool,
     display: bool,
     log_messages: bool,
 ) {
@@ -61,15 +63,15 @@ pub fn convert_command(
     };
 
     let output_file = match file_type {
-        FileType::XP => convert_8xp_to_txt(input_path, bytes, display, log_messages),
-        FileType::TXT => convert_txt_to_8xp(input_path, bytes),
+        FileType::XP => convert_8xp_to_txt(input_path, raw, display, log_messages),
+        FileType::TXT => convert_txt_to_8xp(input_path, raw, display, log_messages),
     };
 
     if output_path_string.is_none() {
         return;
     }
 
-    if display || bytes {
+    if display || raw {
         println!();
     }
 
@@ -88,10 +90,6 @@ pub fn convert_command(
             std::process::exit(0);
         }
     }
-}
-
-fn convert_txt_to_8xp(input_path: PathBuf, bytes: bool) -> Vec<String> {
-    Vec::new()
 }
 
 pub fn print_bytes(file: &Vec<u8>) {
