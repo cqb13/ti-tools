@@ -147,8 +147,6 @@ impl Program {
 
         output_array.push("Program Start:".to_string());
         output_array.extend(vec!["\n".to_string()]);
-        output_array.extend(vec!["----------------------------".to_string()]);
-        output_array.extend(vec!["\n".to_string()]);
 
         output_array.extend(self.body.clone());
 

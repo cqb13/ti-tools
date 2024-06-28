@@ -30,9 +30,9 @@ pub fn get_equation_tokens() -> HashMap<u8, String> {
         (0x43, "R4".to_string()),
         (0x44, "R5".to_string()),
         (0x45, "R6".to_string()),
-        (0x80, "U".to_string()),
-        (0x81, "V".to_string()),
-        (0x82, "W".to_string()),
+        (0x80, "&u".to_string()),
+        (0x81, "&v".to_string()),
+        (0x82, "&w".to_string()),
     ]
     .iter()
     .cloned()
