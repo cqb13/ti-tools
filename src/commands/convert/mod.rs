@@ -1,10 +1,10 @@
-pub mod xp_to_txt;
 pub mod txt_to_8xp;
+pub mod xp_to_txt;
 
 use std::io::Write;
 use std::path::{Path, PathBuf};
-use xp_to_txt::convert_8xp_to_txt;
 use txt_to_8xp::convert_txt_to_8xp;
+use xp_to_txt::convert_8xp_to_txt;
 
 pub enum FileType {
     XP,
@@ -63,8 +63,8 @@ pub fn convert_command(
     };
 
     let output_file = match file_type {
-        FileType::XP => convert_8xp_to_txt(input_path, raw, display, log_messages),
-        FileType::TXT => convert_txt_to_8xp(input_path, raw, display, log_messages),
+        FileType::XP => convert_8xp_to_txt(input_path, raw, display),
+        FileType::TXT => convert_txt_to_8xp(input_path, raw, display),
     };
 
     if output_path_string.is_none() {
@@ -75,16 +75,11 @@ pub fn convert_command(
         println!();
     }
 
-    if log_messages {
-        println!("Writing to file");
-    }
-
     match std::fs::write(output_path, output_file.join("")) {
-        Ok(_) => {
-            if log_messages {
-                println!("Wrote to file");
-            }
-        }
+        Ok(_) => match file_type {
+            FileType::XP => println!("Successfully converted 8xp to txt"),
+            FileType::TXT => println!("Successfully converted txt to 8xp"),
+        },
         Err(err) => {
             println!("Failed to write to file: {}", err);
             std::process::exit(0);

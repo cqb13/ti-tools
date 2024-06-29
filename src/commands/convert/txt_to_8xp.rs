@@ -1,12 +1,7 @@
 use crate::tokens::TokensReversed;
 use std::path::PathBuf;
 
-pub fn convert_txt_to_8xp(
-    input_path: PathBuf,
-    raw: bool,
-    display: bool,
-    log_messages: bool,
-) -> Vec<String> {
+pub fn convert_txt_to_8xp(input_path: PathBuf, raw: bool, display: bool) -> Vec<String> {
     let file = match std::fs::read_to_string(&input_path) {
         Ok(file) => file,
         Err(err) => {

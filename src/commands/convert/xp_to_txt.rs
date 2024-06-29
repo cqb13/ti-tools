@@ -9,7 +9,7 @@ struct Program {
 }
 
 impl Program {
-    fn new(file: Vec<u8>, log_messages: bool) -> Program {
+    fn new(file: Vec<u8>) -> Program {
         let tokens = Tokens::new();
 
         let mut skip_next = false;
@@ -41,11 +41,6 @@ impl Program {
 
             match token {
                 Some(token) => match token.as_str() {
-                    "[error: unused code point]" => {
-                        if log_messages {
-                            println!("Unused code point");
-                        }
-                    }
                     "[error: unknown 2-byte code]" => {
                         let next_byte = file[i + 1];
                         skip_next = true;
@@ -67,12 +62,10 @@ impl Program {
                         match token {
                             Some(token) => body.push(token.to_string()),
                             None => {
-                                if log_messages {
-                                    println!(
-                                        "Failed to translate 2-byte code: {:02X?} {:02X?}",
-                                        byte, next_byte
-                                    )
-                                }
+                                println!(
+                                    "Failed to translate 2-byte code: {:02X?} {:02X?}",
+                                    byte, next_byte
+                                );
                             }
                         }
                     }
@@ -81,9 +74,7 @@ impl Program {
                     }
                 },
                 None => {
-                    if log_messages {
-                        println!("Unknown code point: {:02X?}", byte);
-                    }
+                    println!("Unknown code point: {:02X?}", byte);
                 }
             }
         }
@@ -215,15 +206,15 @@ impl Header {
 }
 
 struct MetaData {
-    flag: u8,                                     // either 0x0B or 0x0D (11 or 13)
-    unknown: u8,                                  // in most cases 0x00
-    body_and_checksum_length: [u8; 2],            // Length of the body/code section and the 2 byte checksum, in bytes
-    file_type: FileType,                          // Type of file
-    name: String,                                 // Maximum 8 chars. Unused characters are filled with 0x00 ASCII
-    version: u8,                                  // Version of the file
-    archived: Archived,                           // Archived or not
-    body_and_checksum_length_duplicate: [u8; 2],  // Same thing as before not sure why???
-    body_length: [u8; 2],                         // Length of the body/code section, in bytes not including the checksum (little endian)
+    flag: u8,                                    // either 0x0B or 0x0D (11 or 13)
+    unknown: u8,                                 // in most cases 0x00
+    body_and_checksum_length: [u8; 2],           // Length of the body/code section and the 2 byte checksum, in bytes
+    file_type: FileType,                         // Type of file
+    name: String,                                // Maximum 8 chars. Unused characters are filled with 0x00 ASCII
+    version: u8,                                 // Version of the file
+    archived: Archived,                          // Archived or not
+    body_and_checksum_length_duplicate: [u8; 2], // Same thing as before not sure why???
+    body_length: [u8; 2],                        // Length of the body/code section, in bytes not including the checksum (little endian)
 }
 
 impl MetaData {
@@ -340,12 +331,7 @@ impl Archived {
     }
 }
 
-pub fn convert_8xp_to_txt(
-    input_path: PathBuf,
-    raw: bool,
-    display: bool,
-    log_messages: bool,
-) -> Vec<String> {
+pub fn convert_8xp_to_txt(input_path: PathBuf, raw: bool, display: bool) -> Vec<String> {
     let file = match std::fs::read(&input_path) {
         Ok(file) => file,
         Err(err) => {
@@ -360,7 +346,7 @@ pub fn convert_8xp_to_txt(
         println!("\n");
     }
 
-    let program = Program::new(file, log_messages);
+    let program = Program::new(file);
 
     if display {
         program.display();

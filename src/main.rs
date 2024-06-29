@@ -91,19 +91,12 @@ fn main() {
             let output_path_string = command.get_value_of("output").to_option();
             let raw = command.has("raw");
             let display = command.has("display");
-            let log_messages = command.has("log");
 
             if output_path_string.is_none() && !display {
                 println!("You must specify at least one output method");
             }
 
-            convert_command(
-                input_path_string,
-                output_path_string,
-                raw,
-                display,
-                log_messages,
-            );
+            convert_command(input_path_string, output_path_string, raw, display);
         }
         "rename" => {
             let input_path_string = command.get_value_of("input").throw_if_none();
