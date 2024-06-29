@@ -167,6 +167,7 @@ impl Header {
 
         let comment = header_bytes[11..53]
             .iter()
+            .filter(|byte| **byte != 0x00)
             .map(|byte| *byte as char)
             .collect::<String>();
 
@@ -226,6 +227,7 @@ impl MetaData {
         let file_type = FileType::from_byte(meta_data_bytes[4]);
         let name = meta_data_bytes[5..13]
             .iter()
+            .filter(|byte| **byte != 0x00)
             .map(|byte| *byte as char)
             .collect::<String>();
         let version = meta_data_bytes[13];
