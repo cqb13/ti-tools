@@ -1,5 +1,6 @@
 use crate::tokens::Tokens;
 use std::path::PathBuf;
+use super::print_bytes;
 
 struct Program {
     header: Header,
@@ -354,17 +355,4 @@ pub fn convert_8xp_to_txt(input_path: PathBuf, raw: bool, display: bool) -> Vec<
     }
 
     program.to_output()
-}
-
-fn print_bytes(file: &Vec<u8>) {
-    let mut i = 0;
-    for byte in file {
-        print!("{:02X}", byte);
-        i += 1;
-        if i % 16 == 0 {
-            println!();
-        } else {
-            print!(", ");
-        }
-    }
 }

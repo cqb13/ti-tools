@@ -6,7 +6,7 @@ use std::path::{Path, PathBuf};
 use txt_to_8xp::convert_txt_to_8xp;
 use xp_to_txt::convert_8xp_to_txt;
 
-pub enum FileType {
+enum FileType {
     XP,
     TXT,
 }
@@ -43,16 +43,14 @@ pub fn convert_command(
     output_path_string: Option<String>,
     raw: bool,
     display: bool,
-    log_messages: bool,
 ) {
-    let (input_path, output_path) =
-        match confirm_paths(input_path_string, &output_path_string, log_messages) {
-            Ok((input_path, output_path)) => (input_path, output_path),
-            Err(err) => {
-                println!("{}", err);
-                std::process::exit(0);
-            }
-        };
+    let (input_path, output_path) = match confirm_paths(input_path_string, &output_path_string) {
+        Ok((input_path, output_path)) => (input_path, output_path),
+        Err(err) => {
+            println!("{}", err);
+            std::process::exit(0);
+        }
+    };
 
     let file_type = match get_conversion_file_type(input_path.as_path()) {
         Ok(file_type) => file_type,
@@ -62,27 +60,44 @@ pub fn convert_command(
         }
     };
 
-    let output_file = match file_type {
-        FileType::XP => convert_8xp_to_txt(input_path, raw, display),
-        FileType::TXT => convert_txt_to_8xp(input_path, raw, display),
+    match file_type {
+        FileType::XP => {
+            let output: Vec<String> = convert_8xp_to_txt(input_path, raw, display);
+            if output_path_string.is_none() {
+                return;
+            }
+
+            if display || raw {
+                println!();
+            }
+
+            write_to_file(&output_path, output.join(""), "8xp");
+        }
+        FileType::TXT => {
+            let output: Vec<u8> = convert_txt_to_8xp(input_path, raw, display);
+            if output_path_string.is_none() {
+                return;
+            }
+
+            if display || raw {
+                println!();
+            }
+
+            write_to_file(&output_path, output, "txt");
+        }
     };
+}
 
-    if output_path_string.is_none() {
-        return;
-    }
-
-    if display || raw {
-        println!();
-    }
-
-    match std::fs::write(output_path, output_file.join("")) {
-        Ok(_) => match file_type {
-            FileType::XP => println!("Successfully converted 8xp to txt"),
-            FileType::TXT => println!("Successfully converted txt to 8xp"),
-        },
+fn write_to_file<T: AsRef<[u8]>>(path: &Path, content: T, file_type: &str) {
+    match std::fs::write(path, content) {
+        Ok(_) => println!(
+            "Successfully converted {} to {}",
+            file_type,
+            if file_type == "8xp" { "txt" } else { "8xp" }
+        ),
         Err(err) => {
-            println!("Failed to write to file: {}", err);
-            std::process::exit(0);
+            eprintln!("Failed to write {}: {}", file_type, err);
+            std::process::exit(1);
         }
     }
 }
@@ -90,7 +105,6 @@ pub fn convert_command(
 fn confirm_paths(
     input_path_string: String,
     output_path_string: &Option<String>,
-    log_messages: bool,
 ) -> Result<(PathBuf, PathBuf), String> {
     let input_path = Path::new(&input_path_string);
 
@@ -106,11 +120,8 @@ fn confirm_paths(
 
     let output_path = match output_path_string {
         Some(output_path_string) => {
-            match validate_and_fix_output_path(
-                output_path_string.to_string(),
-                file_type.opposite(),
-                log_messages,
-            ) {
+            match validate_and_fix_output_path(output_path_string.to_string(), file_type.opposite())
+            {
                 Ok(path_buf) => path_buf,
                 Err(err) => return Err(err),
             }
@@ -135,7 +146,6 @@ fn get_conversion_file_type(path: &Path) -> Result<FileType, String> {
 fn validate_and_fix_output_path(
     output_path_string: String,
     output_file_type: FileType,
-    log_messages: bool,
 ) -> Result<PathBuf, String> {
     // We don't really care what the user put here, we already know the output type based on input
     // So if they messed up we can fix the extension for them
@@ -165,14 +175,11 @@ fn validate_and_fix_output_path(
         std::io::stdin().read_line(&mut input).unwrap();
         let input = input.trim();
         if input == "y" || input == "Y" {
-            if log_messages {
-                println!("Deleting existing file");
-            }
+            println!("Deleting existing file");
+
             match std::fs::remove_file(output_path) {
                 Ok(_) => {
-                    if log_messages {
-                        println!("Deleted existing file");
-                    }
+                    println!("Deleted existing file");
                 }
                 Err(err) => {
                     return Err(format!("Failed to delete file: {}", err));
@@ -185,4 +192,17 @@ fn validate_and_fix_output_path(
     };
 
     Ok(output_path.to_owned())
+}
+
+fn print_bytes(file: &Vec<u8>) {
+    let mut i = 0;
+    for byte in file {
+        print!("{:02X}", byte);
+        i += 1;
+        if i % 16 == 0 {
+            println!();
+        } else {
+            print!(", ");
+        }
+    }
 }
