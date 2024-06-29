@@ -2,7 +2,7 @@ use super::print_bytes;
 use crate::tokens::TokensReversed;
 use std::path::PathBuf;
 
-pub fn convert_txt_to_8xp(input_path: PathBuf, raw: bool, display: bool) -> Vec<u8> {
+pub fn convert_txt_to_8xp(input_path: PathBuf, name: String, raw: bool, display: bool) -> Vec<u8> {
     let file = match std::fs::read_to_string(&input_path) {
         Ok(file) => file,
         Err(err) => {
@@ -20,9 +20,9 @@ pub fn convert_txt_to_8xp(input_path: PathBuf, raw: bool, display: bool) -> Vec<
     }
 
     let body = translate_body(file);
-    let checksum = number_to_two_bytes(body.len() as i32);
-    let metadata = create_metadata("TESTING".to_string(), body.len() as i32);
-    let header = create_header(metadata.len() as i32, body.len() as i32);
+    let checksum = (body.len() as u16).to_le_bytes().to_vec();
+    let metadata = create_metadata(name, body.len() as u16, 2);
+    let header = create_header(metadata.len() as u16, body.len() as u16);
 
     if header.len() != 55 {
         println!("Something went wrong while generating header");
@@ -48,7 +48,7 @@ pub fn convert_txt_to_8xp(input_path: PathBuf, raw: bool, display: bool) -> Vec<
 }
 
 // 55 bytes
-fn create_header(metadata_length: i32, body_length: i32) -> Vec<u8> {
+fn create_header(metadata_length: u16, body_length: u16) -> Vec<u8> {
     let mut header: Vec<u8> = Vec::new();
     let signature = "**TI83F*";
     header.extend(signature.as_bytes());
@@ -60,7 +60,7 @@ fn create_header(metadata_length: i32, body_length: i32) -> Vec<u8> {
     }
     header.extend(comment);
 
-    let metadata_and_body_length = number_to_two_bytes(metadata_length + body_length);
+    let metadata_and_body_length = (metadata_length + body_length).to_le_bytes().to_vec();
     header.extend(metadata_and_body_length);
     header
 }
@@ -71,15 +71,15 @@ fn create_comment() -> String {
 }
 
 // 19 byte header
-fn create_metadata(name: String, body_length: i32) -> Vec<u8> {
+fn create_metadata(name: String, body_length: u16, checksum_length: u16) -> Vec<u8> {
     let mut metadata: Vec<u8> = Vec::new();
     metadata.push(0x0D); // flag
     metadata.push(0x00); // unknown byte
-    let body_and_checksum_length = number_to_two_bytes(body_length + 2);
-    metadata.extend(body_and_checksum_length);
+    let body_and_checksum_length = (body_length + checksum_length).to_le_bytes().to_vec();
+    metadata.extend(&body_and_checksum_length);
     metadata.push(0x05); // file type (0x05: normal, 0x06: edit-locked, 0x17: groups)
 
-    let mut name_as_bytes = name.as_bytes().to_owned();
+    let mut name_as_bytes = name.to_ascii_uppercase().as_bytes().to_owned();
 
     while name_as_bytes.len() != 8 {
         name_as_bytes.push(0x00)
@@ -89,7 +89,7 @@ fn create_metadata(name: String, body_length: i32) -> Vec<u8> {
     metadata.push(0x00); // version
     metadata.push(0x00); // archived (0x00: normal, 0x80: archived)
     metadata.extend(body_and_checksum_length); // again for some reason
-    let body_length_as_two_byte = number_to_two_bytes(body_length);
+    let body_length_as_two_byte = body_length.to_le_bytes().to_vec();
     metadata.extend(body_length_as_two_byte);
     metadata
 }
@@ -158,15 +158,4 @@ fn translate_body(file: String) -> Vec<u8> {
     body_bytes.pop(); // Remove the last 0x3F
 
     body_bytes
-}
-
-// two bytes, unsigned integer, little endian
-fn number_to_two_bytes(number: i32) -> [u8; 2] {
-    let mut value = 0;
-    let mut number = number;
-    while number > 0 {
-        value += number & 0xFF;
-        number >>= 8;
-    }
-    [(value & 0xFF) as u8, (value >> 8) as u8]
 }

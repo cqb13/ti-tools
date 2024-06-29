@@ -29,6 +29,14 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
+                    .with_name("name")
+                    .with_long("name")
+                    .with_short('n')
+                    .with_value_name("NAME")
+                    .with_help("Name of the program, only used when converting to 8xp"),
+            )
+            .with_arg(
+                Arg::new()
                     .with_name("raw")
                     .with_long("raw")
                     .with_short('r')
@@ -89,6 +97,7 @@ fn main() {
         "convert" => {
             let input_path_string = command.get_value_of("input").throw_if_none();
             let output_path_string = command.get_value_of("output").to_option();
+            let name = command.get_value_of("name").to_option();
             let raw = command.has("raw");
             let display = command.has("display");
 
@@ -96,7 +105,7 @@ fn main() {
                 println!("You must specify at least one output method");
             }
 
-            convert_command(input_path_string, output_path_string, raw, display);
+            convert_command(input_path_string, output_path_string, name, raw, display);
         }
         "rename" => {
             let input_path_string = command.get_value_of("input").throw_if_none();

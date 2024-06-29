@@ -41,6 +41,7 @@ impl FileType {
 pub fn convert_command(
     input_path_string: String,
     output_path_string: Option<String>,
+    name: Option<String>,
     raw: bool,
     display: bool,
 ) {
@@ -74,7 +75,28 @@ pub fn convert_command(
             write_to_file(&output_path, output.join(""), "8xp");
         }
         FileType::TXT => {
-            let output: Vec<u8> = convert_txt_to_8xp(input_path, raw, display);
+            if name.is_none() {
+                println!("You must specify a name for the program");
+                std::process::exit(0);
+            }
+
+            if name.as_ref().unwrap().len() > 8 {
+                println!("Name must be 8 or less characters");
+                std::process::exit(0);
+            }
+
+            if !name
+                .as_ref()
+                .unwrap()
+                .chars()
+                .all(|c| c.is_ascii_alphabetic())
+            {
+                println!("Name must be alphabetical characters only");
+                std::process::exit(0);
+            }
+
+            let output: Vec<u8> =
+                convert_txt_to_8xp(input_path, name.unwrap().to_string(), raw, display);
             if output_path_string.is_none() {
                 return;
             }
