@@ -61,28 +61,28 @@ jobs:
         run: |
           choco install zip
           cd target/${{ matrix.target }}/release
-          zip ti-tools-0.1.1-${{ matrix.target }}.zip ti-tools.exe
+          zip ti-tools-0.1.2-${{ matrix.target }}.zip ti-tools.exe
           cd ../../..
 
       - name: Create tar.gz file on macOS
         if: ${{ matrix.os == 'macos-latest' }}
         run: |
           chmod +x target/${{ matrix.target }}/release/ti-tools
-          tar -zcf target/${{ matrix.target }}/release/ti-tools-0.1.1-${{ matrix.target }}.tar.gz -C target/${{ matrix.target }}/release ti-tools
+          tar -zcf target/${{ matrix.target }}/release/ti-tools-0.1.2-${{ matrix.target }}.tar.gz -C target/${{ matrix.target }}/release ti-tools
           chmod +x target/${{ matrix.target2 }}/release/ti-tools
-          tar -zcf target/${{ matrix.target2 }}/release/ti-tools-0.1.1-${{ matrix.target2 }}.tar.gz -C target/${{ matrix.target2 }}/release ti-tools
+          tar -zcf target/${{ matrix.target2 }}/release/ti-tools-0.1.2-${{ matrix.target2 }}.tar.gz -C target/${{ matrix.target2 }}/release ti-tools
 
       - name: Create tar.gz file on Linux
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: |
           chmod +x target/${{ matrix.target }}/release/ti-tools
-          tar -zcf target/${{ matrix.target }}/release/ti-tools-0.1.1-${{ matrix.target }}.tar.gz -C target/${{ matrix.target }}/release ti-tools
+          tar -zcf target/${{ matrix.target }}/release/ti-tools-0.1.2-${{ matrix.target }}.tar.gz -C target/${{ matrix.target }}/release ti-tools
 
       - name: Upload release and assets to GitHub
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "release-0.1.1-${{ github.run_number }}"
-          release_name: ti-tools 0.1.1
+          tag: "release-0.1.2-${{ github.run_number }}"
+          release_name: ti-tools 0.1.2
           file_glob: true
-          file: target/*/release/ti-tools-0.1.1-*.{zip,tar.gz}
+          file: target/*/release/ti-tools-0.1.2-*.{zip,tar.gz}
