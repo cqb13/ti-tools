@@ -5,6 +5,7 @@ pub mod tokens;
 use cli::{Arg, Cli, Command};
 use commands::convert::convert_command;
 use commands::rename::rename_command;
+use tokens::load;
 
 fn main() {
     let cli = Cli::new().with_default_command("help").with_commands(vec![
@@ -87,6 +88,7 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
+        Command::new("tokens", "Prints the tokens"),
     ]);
 
     let command = cli.match_commands();
@@ -118,6 +120,9 @@ fn main() {
             }
 
             rename_command(input_path_string, name, new_file, delete_old);
+        }
+        "tokens" => {
+            load();
         }
         _ => cli.help(),
     }
