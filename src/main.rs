@@ -122,7 +122,14 @@ fn main() {
             rename_command(input_path_string, name, new_file, delete_old);
         }
         "tokens" => {
-            load();
+            let data = load();
+            let mut bytes = std::fs::read("./src/tests/ALLTOKS.8xp").unwrap();
+            bytes = bytes.split_off(74);
+            bytes.pop();
+            bytes.pop();
+
+            let (output, _) = tokens::decode(&bytes, &data, "en", "display").unwrap();
+            println!("{}", output);
         }
         _ => cli.help(),
     }

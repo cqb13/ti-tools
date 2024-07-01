@@ -1,9 +1,9 @@
 use serde::{Deserialize, Serialize};
 use std::cmp::Ordering;
-use std::collections::{BTreeMap, HashMap};
+use std::collections::HashMap;
 
-#[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
-struct OsVersion {
+#[derive(Debug, PartialEq, Eq, Serialize, Deserialize, Clone)]
+pub struct OsVersion {
     model: String,
     #[serde(rename = "os-version")]
     version: String,
@@ -71,6 +71,7 @@ struct Translation {
 #[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
 struct Token {
     since: OsVersion,
+    until: Option<OsVersion>,
     langs: HashMap<String, Translation>,
 }
 
@@ -78,7 +79,7 @@ struct Token {
 #[serde(untagged)]
 enum TokenData {
     Single(Vec<Token>),
-    Nested(BTreeMap<String, Vec<Token>>),
+    Nested(std::collections::BTreeMap<String, Vec<Token>>),
 }
 
 #[derive(Debug)]
@@ -97,7 +98,7 @@ impl TrieNode {
 }
 
 #[derive(Debug)]
-struct Trie {
+pub struct Trie {
     root: TrieNode,
 }
 
@@ -129,44 +130,95 @@ impl Trie {
     }
 }
 
-pub fn load() {
+pub fn load() -> Trie {
     let json_data = include_str!("./standard_tokens/8X.json");
 
+    let tokens: std::collections::BTreeMap<String, TokenData> =
+        serde_json::from_str(json_data).unwrap();
+    let mut trie = Trie::new();
+
     let target = OsVersion {
-        model: "TI-84+CE".to_string(),
+        model: "TI-84+CSE".to_string(),
         version: "1.0".to_string(),
     };
-
-    let tokens: BTreeMap<String, TokenData> = serde_json::from_str(json_data).unwrap();
-    let mut trie = Trie::new();
 
     for (key, token_data) in tokens {
         match token_data {
             TokenData::Single(tokens) => {
-                let mut new_tokens = Vec::new();
-                for token in tokens {
-                    if token.since <= target {
-                        new_tokens.push(token);
-                    }
-                }
+                let new_tokens: Vec<Token> = tokens
+                    .into_iter()
+                    .filter(|token| token.since <= target)
+                    .filter(|token| {
+                        token.until.is_none() || token.until.as_ref().unwrap() >= &target
+                    })
+                    .collect();
+
                 trie.insert(&key, new_tokens);
             }
             TokenData::Nested(nested_tokens) => {
                 for (sub_key, tokens) in nested_tokens {
                     let full_key = format!("{}{}", key, sub_key);
-                    let mut new_tokens = Vec::new();
-                    for token in tokens {
-                        if token.since <= target {
-                            new_tokens.push(token);
-                        }
-                    }
+                    let new_tokens: Vec<Token> = tokens
+                        .into_iter()
+                        .filter(|token| token.since <= target)
+                        .filter(|token| {
+                            token.until.is_none() || token.until.as_ref().unwrap() >= &target
+                        })
+                        .collect();
                     trie.insert(&full_key, new_tokens);
                 }
             }
         }
     }
 
-    let result = trie.search("$7E$06");
-    println!("{:#?}", result);
-    
+    trie
+}
+
+//TODO: fix the since until thing...
+pub fn decode(
+    bytestream: &[u8],
+    trie: &Trie,
+    lang: &str,
+    mode: &str,
+) -> Result<(String, OsVersion), String> {
+    let mut out = String::new();
+    let mut since = OsVersion {
+        model: "TI-84+CSE".to_string(),
+        version: "4.0".to_string(),
+    };
+
+    let mut index = 0;
+    let mut curr_bytes = Vec::new();
+
+    while index < bytestream.len() {
+        curr_bytes.push(bytestream[index]);
+
+        let key = curr_bytes
+            .iter()
+            .map(|b| format!("${:02X}", b))
+            .collect::<String>();
+
+        if let Some(tokens) = trie.search(&key) {
+            if let Some(token) = tokens.get(0) {
+                let translation = token.langs.get(lang).ok_or("Language not found")?;
+                let representation = match mode {
+                    "display" => &translation.display,
+                    "accessible" => &translation.accessible,
+                    "ti_ascii" => &translation.ti_ascii,
+                    _ => return Err("Invalid mode".to_string()),
+                };
+                out.push_str(representation);
+                since = std::cmp::max(since, token.since.clone());
+                curr_bytes.clear();
+            }
+        }
+
+        index += 1;
+    }
+
+    if curr_bytes.is_empty() {
+        Ok((out, since))
+    } else {
+        Err(format!("Token not found: {:02X?}", curr_bytes))
+    }
 }
