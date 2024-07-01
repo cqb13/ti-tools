@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::cmp::Ordering;
 use std::collections::HashMap;
 
-#[derive(Debug, PartialEq, Eq, Serialize, Deserialize, Clone)]
+#[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct OsVersion {
     pub model: String,
     #[serde(rename = "os-version")]
@@ -61,18 +61,18 @@ fn model_order(model: &str) -> u32 {
 }
 
 #[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
-struct Translation {
+pub struct Translation {
     #[serde(rename = "ti-ascii")]
-    ti_ascii: String,
-    display: String,
-    accessible: String,
+    pub ti_ascii: String,
+    pub display: String,
+    pub accessible: String,
 }
 
 #[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
-struct Token {
-    since: OsVersion,
-    until: Option<OsVersion>,
-    langs: HashMap<String, Translation>,
+pub struct Token {
+    pub since: OsVersion,
+    pub until: Option<OsVersion>,
+    pub langs: HashMap<String, Translation>,
 }
 
 #[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
@@ -117,7 +117,7 @@ impl Trie {
         node.tokens = Some(tokens);
     }
 
-    fn search(&self, key: &str) -> Option<&Vec<Token>> {
+    pub fn search(&self, key: &str) -> Option<&Vec<Token>> {
         let mut node = &self.root;
         for ch in key.chars() {
             if let Some(next_node) = node.children.get(&ch) {
@@ -130,7 +130,7 @@ impl Trie {
     }
 }
 
-pub fn load(target: &OsVersion) -> Trie {
+pub fn load_tokens(target: &OsVersion) -> Trie {
     let json_data = include_str!("./standard_tokens/8X.json");
 
     let tokens: std::collections::BTreeMap<String, TokenData> =
@@ -167,42 +167,4 @@ pub fn load(target: &OsVersion) -> Trie {
     }
 
     trie
-}
-
-pub fn decode(bytestream: &[u8], trie: &Trie, lang: &str, mode: &str) -> Result<String, String> {
-    let mut out = String::new();
-
-    let mut index = 0;
-    let mut current_bytes = Vec::new();
-
-    while index < bytestream.len() {
-        current_bytes.push(bytestream[index]);
-
-        let key = current_bytes
-            .iter()
-            .map(|b| format!("${:02X}", b))
-            .collect::<String>();
-
-        if let Some(tokens) = trie.search(&key) {
-            if let Some(token) = tokens.get(0) {
-                let translation = token.langs.get(lang).ok_or("Language not found")?;
-                let representation = match mode {
-                    "display" => &translation.display,
-                    "accessible" => &translation.accessible,
-                    "ti_ascii" => &translation.ti_ascii,
-                    _ => return Err("Invalid mode".to_string()),
-                };
-                out.push_str(representation);
-                current_bytes.clear();
-            }
-        }
-
-        index += 1;
-    }
-
-    if current_bytes.is_empty() {
-        Ok(out)
-    } else {
-        Err(format!("Token not found: {:02X?}", current_bytes))
-    }
 }
