@@ -5,7 +5,7 @@ pub mod tokens;
 use cli::{Arg, Cli, Command};
 use commands::convert::convert_command;
 use commands::rename::rename_command;
-use tokens::load;
+use tokens::{load, OsVersion};
 
 fn main() {
     let cli = Cli::new().with_default_command("help").with_commands(vec![
@@ -122,13 +122,18 @@ fn main() {
             rename_command(input_path_string, name, new_file, delete_old);
         }
         "tokens" => {
-            let data = load();
+            let since = OsVersion {
+                model: "TI-84+CE".to_string(),
+                version: "4.0".to_string(),
+            };
+
+            let data = load(&since);
             let mut bytes = std::fs::read("./src/tests/ALLTOKS.8xp").unwrap();
             bytes = bytes.split_off(74);
             bytes.pop();
             bytes.pop();
 
-            let (output, _) = tokens::decode(&bytes, &data, "en", "display").unwrap();
+            let output = tokens::decode(&bytes, &data, "en", "display").unwrap();
             println!("{}", output);
         }
         _ => cli.help(),

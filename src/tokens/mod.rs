@@ -4,9 +4,9 @@ use std::collections::HashMap;
 
 #[derive(Debug, PartialEq, Eq, Serialize, Deserialize, Clone)]
 pub struct OsVersion {
-    model: String,
+    pub model: String,
     #[serde(rename = "os-version")]
-    version: String,
+    pub version: String,
 }
 
 impl Ord for OsVersion {
@@ -130,24 +130,19 @@ impl Trie {
     }
 }
 
-pub fn load() -> Trie {
+pub fn load(target: &OsVersion) -> Trie {
     let json_data = include_str!("./standard_tokens/8X.json");
 
     let tokens: std::collections::BTreeMap<String, TokenData> =
         serde_json::from_str(json_data).unwrap();
     let mut trie = Trie::new();
 
-    let target = OsVersion {
-        model: "TI-84+CSE".to_string(),
-        version: "1.0".to_string(),
-    };
-
     for (key, token_data) in tokens {
         match token_data {
             TokenData::Single(tokens) => {
                 let new_tokens: Vec<Token> = tokens
                     .into_iter()
-                    .filter(|token| token.since <= target)
+                    .filter(|token| token.since <= *target)
                     .filter(|token| {
                         token.until.is_none() || token.until.as_ref().unwrap() >= &target
                     })
@@ -160,7 +155,7 @@ pub fn load() -> Trie {
                     let full_key = format!("{}{}", key, sub_key);
                     let new_tokens: Vec<Token> = tokens
                         .into_iter()
-                        .filter(|token| token.since <= target)
+                        .filter(|token| token.since <= *target)
                         .filter(|token| {
                             token.until.is_none() || token.until.as_ref().unwrap() >= &target
                         })
@@ -174,26 +169,16 @@ pub fn load() -> Trie {
     trie
 }
 
-//TODO: fix the since until thing...
-pub fn decode(
-    bytestream: &[u8],
-    trie: &Trie,
-    lang: &str,
-    mode: &str,
-) -> Result<(String, OsVersion), String> {
+pub fn decode(bytestream: &[u8], trie: &Trie, lang: &str, mode: &str) -> Result<String, String> {
     let mut out = String::new();
-    let mut since = OsVersion {
-        model: "TI-84+CSE".to_string(),
-        version: "4.0".to_string(),
-    };
 
     let mut index = 0;
-    let mut curr_bytes = Vec::new();
+    let mut current_bytes = Vec::new();
 
     while index < bytestream.len() {
-        curr_bytes.push(bytestream[index]);
+        current_bytes.push(bytestream[index]);
 
-        let key = curr_bytes
+        let key = current_bytes
             .iter()
             .map(|b| format!("${:02X}", b))
             .collect::<String>();
@@ -208,17 +193,16 @@ pub fn decode(
                     _ => return Err("Invalid mode".to_string()),
                 };
                 out.push_str(representation);
-                since = std::cmp::max(since, token.since.clone());
-                curr_bytes.clear();
+                current_bytes.clear();
             }
         }
 
         index += 1;
     }
 
-    if curr_bytes.is_empty() {
-        Ok((out, since))
+    if current_bytes.is_empty() {
+        Ok(out)
     } else {
-        Err(format!("Token not found: {:02X?}", curr_bytes))
+        Err(format!("Token not found: {:02X?}", current_bytes))
     }
 }
