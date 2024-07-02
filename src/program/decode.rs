@@ -7,7 +7,7 @@ pub fn decode(
     lang: &str,
     mode: DisplayMode,
 ) -> Result<String, String> {
-    let mut out = String::new();
+    let mut decoded_program = String::new();
 
     let mut index = 0;
     let mut current_bytes = Vec::new();
@@ -28,7 +28,7 @@ pub fn decode(
                     DisplayMode::Accessible => &translation.accessible,
                     DisplayMode::TiAscii => &translation.ti_ascii,
                 };
-                out.push_str(representation);
+                decoded_program.push_str(representation);
                 current_bytes.clear();
             }
         }
@@ -37,7 +37,7 @@ pub fn decode(
     }
 
     if current_bytes.is_empty() {
-        Ok(out)
+        Ok(decoded_program)
     } else {
         Err(format!("Token not found: {:02X?}", current_bytes))
     }
