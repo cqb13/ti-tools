@@ -2,8 +2,6 @@ pub mod cli;
 pub mod commands;
 pub mod program;
 pub mod tokens;
-
-use program::Body;
 use std::path::Path;
 
 use cli::{Arg, Cli, Command};
@@ -132,17 +130,20 @@ fn main() {
                 version: "4.0".to_string(),
             };
 
-            let result = Program::load(Path::new("./src/tests/ALLTOKS.8xp").to_path_buf(), version);
+            let program = Program::load(Path::new("./src/tests/ALLTOKS.8xp").to_path_buf(), version);
 
-            let result = match result {
-                Ok(result) => result,
+            let program = match program {
+                Ok(program) => program,
                 Err(err) => {
                     println!("{}", err);
                     std::process::exit(0);
                 }
             };
 
-            println!("{}", result.display());
+            println!("{}", program.display());
+
+            program.save_to("./ALL.txt").expect("failed to save");
+            
         }
         _ => cli.help(),
     }

@@ -1,9 +1,10 @@
-use std::path::PathBuf;
-
+mod create;
 mod decode;
 
-use crate::tokens::{load_tokens, OsVersion};
-use decode::decode;
+use crate::tokens::OsVersion;
+use create::create_from_8xp;
+use std::io::Write;
+use std::path::{Path, PathBuf};
 
 pub enum DisplayMode {
     Pretty,
@@ -20,13 +21,20 @@ pub struct Program {
 
 impl Program {
     pub fn load(path: PathBuf, version: OsVersion) -> Result<Program, String> {
+        if !path.exists() {
+            return Err(format!(
+                "Failed to find file at: {:?}",
+                path.to_str().unwrap()
+            ));
+        }
+
         let file_type = match get_file_type(&path) {
             Ok(file_type) => file_type,
             Err(err) => return Err(err),
         };
 
         let (header, metadata, body, checksum) = match file_type {
-            ProgramFileType::XP => load_from_8xp(&version, path),
+            ProgramFileType::XP => create_from_8xp(&version, path),
             ProgramFileType::TXT => unimplemented!(),
         }
         .map_err(|err| err.to_string())?;
@@ -41,6 +49,58 @@ impl Program {
         Ok(program)
     }
 
+    pub fn save_to(&self, path: &str) -> Result<(), String> {
+        let path = Path::new(path).to_path_buf();
+
+        if path.exists() {
+            println!("A file already exists at the output path, would you like to delete its content and proceed? [y/N]");
+            let mut input = String::new();
+            print!("> ");
+            input.clear();
+            std::io::stdout().flush().unwrap();
+            std::io::stdin().read_line(&mut input).unwrap();
+            let input = input.trim();
+            if input == "y" || input == "Y" {
+                println!("Deleting existing file");
+
+                match std::fs::remove_file(&path) {
+                    Ok(_) => {
+                        println!("Deleted existing file");
+                    }
+                    Err(err) => {
+                        return Err(format!("Failed to delete file: {}", err));
+                    }
+                }
+            } else {
+                println!("Exiting due to existing output file");
+                std::process::exit(0);
+            }
+        }
+
+        let file_type = match get_file_type(&path) {
+            Ok(file_type) => file_type,
+            Err(err) => return Err(err),
+        };
+
+        match file_type {
+            ProgramFileType::XP => {
+                let mut output_bytes = Vec::new();
+
+                output_bytes.extend(self.header.bytes.to_vec());
+                output_bytes.extend(self.metadata.bytes.to_vec());
+                output_bytes.extend(self.body.bytes.to_vec());
+                output_bytes.extend(self.checksum.bytes.to_vec());
+
+                write_to_file(&path, output_bytes, "8xp");
+            }
+            ProgramFileType::TXT => {
+                write_to_file(&path, &self.body.translation, "txt");
+            }
+        }
+
+        Ok(())
+    }
+
     pub fn display(&self) -> String {
         let header = self.header.display();
         let metadata = self.metadata.display();
@@ -52,12 +112,12 @@ impl Program {
 }
 
 pub struct Header {
-    bytes: Vec<u8>,
-    signature: String,
-    signature_extra: Vec<u8>,
-    product_id: u8,
-    comment: String,
-    metadata_and_body_length: u16,
+    pub bytes: Vec<u8>,
+    pub signature: String,
+    pub signature_extra: Vec<u8>,
+    pub product_id: u8,
+    pub comment: String,
+    pub metadata_and_body_length: u16,
 }
 
 impl Header {
@@ -97,16 +157,16 @@ impl Header {
 }
 
 pub struct Metadata {
-    bytes: Vec<u8>,
-    flag: u8,
-    unknown_byte: u8,
-    body_and_checksum_length: u16,
-    file_type: FileType,
-    name: String,
-    version: u8,
-    archived: Archived,
-    body_and_checksum_length_copy: u16,
-    body_length: u16,
+    pub bytes: Vec<u8>,
+    pub flag: u8,
+    pub unknown_byte: u8,
+    pub body_and_checksum_length: u16,
+    pub file_type: FileType,
+    pub name: String,
+    pub version: u8,
+    pub archived: Archived,
+    pub body_and_checksum_length_copy: u16,
+    pub body_length: u16,
 }
 
 impl Metadata {
@@ -173,8 +233,8 @@ impl Metadata {
 }
 
 pub struct Body {
-    bytes: Vec<u8>,
-    translation: String,
+    pub bytes: Vec<u8>,
+    pub translation: String,
 }
 
 impl Body {
@@ -192,8 +252,8 @@ impl Body {
 }
 
 pub struct Checksum {
-    bytes: Vec<u8>,
-    value: u16,
+    pub bytes: Vec<u8>,
+    pub value: u16,
 }
 
 impl Checksum {
@@ -210,87 +270,7 @@ impl Checksum {
     }
 }
 
-fn load_from_8xp(
-    version: &OsVersion,
-    path: PathBuf,
-) -> Result<(Header, Metadata, Body, Checksum), String> {
-    let tokens = load_tokens(version);
-
-    let bytes = std::fs::read(&path).map_err(|err| err.to_string())?;
-
-    let (header_bytes, bytes) = bytes.split_at(55);
-    let (metadata_bytes, bytes) = bytes.split_at(19);
-    let (body_bytes, checksum) = bytes.split_at(bytes.len() - 2);
-
-    // header translation
-    let signature = header_bytes[0..8]
-        .iter()
-        .map(|byte| *byte as char)
-        .collect::<String>();
-
-    let signature_extra = [header_bytes[8], header_bytes[9]];
-
-    let product_id = header_bytes[10];
-
-    let comment = header_bytes[11..53]
-        .iter()
-        .filter(|byte| **byte != 0x00)
-        .map(|byte| *byte as char)
-        .collect::<String>();
-
-    let metadata_and_body_length = [header_bytes[53], header_bytes[54]];
-
-    let header = Header::new(
-        header_bytes.to_vec(),
-        signature,
-        signature_extra.to_vec(),
-        product_id,
-        comment,
-        u16::from_le_bytes(metadata_and_body_length),
-    );
-
-    // metadata translation
-    let flag = metadata_bytes[0];
-    let unknown = metadata_bytes[1];
-    let body_and_checksum_length = [metadata_bytes[2], metadata_bytes[3]];
-    let file_type = FileType::from_byte(metadata_bytes[4]);
-    let name = metadata_bytes[5..13]
-        .iter()
-        .filter(|byte| **byte != 0x00)
-        .map(|byte| *byte as char)
-        .collect::<String>();
-    let version = metadata_bytes[13];
-    let archived = Archived::from_byte(metadata_bytes[14]);
-    let body_and_checksum_length_duplicate = [metadata_bytes[15], metadata_bytes[16]];
-    let body_length = [metadata_bytes[17], metadata_bytes[18]];
-
-    let metadata = Metadata::new(
-        metadata_bytes.to_vec(),
-        flag,
-        unknown,
-        u16::from_le_bytes(body_and_checksum_length),
-        file_type,
-        name,
-        version,
-        archived,
-        u16::from_le_bytes(body_and_checksum_length_duplicate),
-        u16::from_le_bytes(body_length),
-    );
-
-    // body translation
-    let translation = decode(body_bytes, &tokens, "en", DisplayMode::Accessible)?;
-
-    let body = Body::new(body_bytes.to_vec(), translation);
-
-    // checksum translation
-    let value = u16::from_le_bytes([checksum[0], checksum[1]]);
-
-    let checksum = Checksum::new(checksum.to_vec(), value);
-
-    Ok((header, metadata, body, checksum))
-}
-
-enum ProgramFileType {
+pub enum ProgramFileType {
     XP,
     TXT,
 }
@@ -306,7 +286,7 @@ fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, String> {
     }
 }
 
-enum FileType {
+pub enum FileType {
     Program,
     EditLockedProgram,
     Group,
@@ -334,15 +314,15 @@ impl FileType {
     }
 }
 
-enum Archived {
-    Unarchived,
+pub enum Archived {
+    UnArchived,
     Archived,
 }
 
 impl Archived {
     fn from_byte(byte: u8) -> Archived {
         match byte {
-            0x00 => Archived::Unarchived,
+            0x00 => Archived::UnArchived,
             0x80 => Archived::Archived,
             _ => panic!("Unknown archived byte: {:02X?}", byte),
         }
@@ -350,8 +330,18 @@ impl Archived {
 
     fn to_string(&self) -> String {
         match self {
-            Archived::Unarchived => "Unarchived".to_string(),
+            Archived::UnArchived => "Unarchived".to_string(),
             Archived::Archived => "Archived".to_string(),
+        }
+    }
+}
+
+fn write_to_file<T: AsRef<[u8]>>(path: &PathBuf, content: T, file_type: &str) {
+    match std::fs::write(path, content) {
+        Ok(_) => println!("Successfully converted to {}", file_type),
+        Err(err) => {
+            println!("Failed to write {}: {}", file_type, err);
+            std::process::exit(1);
         }
     }
 }
