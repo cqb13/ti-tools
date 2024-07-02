@@ -130,7 +130,8 @@ fn main() {
                 version: "4.0".to_string(),
             };
 
-            let program = Program::load(Path::new("./src/tests/ALLTOKS.8xp").to_path_buf(), version);
+            let program =
+                Program::load(Path::new("./src/tests/ALLTOKS.8xp").to_path_buf(), version);
 
             let program = match program {
                 Ok(program) => program,
@@ -141,9 +142,9 @@ fn main() {
             };
 
             println!("{}", program.display());
+            println!();
 
             program.save_to("./ALL.txt").expect("failed to save");
-            
         }
         _ => cli.help(),
     }

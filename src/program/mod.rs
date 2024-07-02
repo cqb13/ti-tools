@@ -94,7 +94,13 @@ impl Program {
                 write_to_file(&path, output_bytes, "8xp");
             }
             ProgramFileType::TXT => {
-                write_to_file(&path, &self.body.translation, "txt");
+                let output_string = format!(
+                    "{}\n{}\n{}",
+                    self.metadata.name,
+                    self.metadata.archived.to_string(),
+                    &self.body.translation
+                );
+                write_to_file(&path, output_string, "txt");
             }
         }
 
@@ -315,14 +321,14 @@ impl FileType {
 }
 
 pub enum Archived {
-    UnArchived,
+    NotArchived,
     Archived,
 }
 
 impl Archived {
     fn from_byte(byte: u8) -> Archived {
         match byte {
-            0x00 => Archived::UnArchived,
+            0x00 => Archived::NotArchived,
             0x80 => Archived::Archived,
             _ => panic!("Unknown archived byte: {:02X?}", byte),
         }
@@ -330,7 +336,7 @@ impl Archived {
 
     fn to_string(&self) -> String {
         match self {
-            Archived::UnArchived => "Unarchived".to_string(),
+            Archived::NotArchived => "Not Archived".to_string(),
             Archived::Archived => "Archived".to_string(),
         }
     }
