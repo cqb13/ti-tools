@@ -95,8 +95,9 @@ impl Program {
             }
             ProgramFileType::TXT => {
                 let output_string = format!(
-                    "{}\n{}\n{}",
+                    "{}\n{}\n{}\n{}",
                     self.metadata.name,
+                    self.metadata.file_type.to_string(),
                     self.metadata.archived.to_string(),
                     &self.body.translation
                 );
@@ -294,7 +295,7 @@ fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, String> {
 
 pub enum FileType {
     Program,
-    EditLockedProgram,
+    LockedProgram,
     Group,
     FlashApplication,
 }
@@ -303,7 +304,7 @@ impl FileType {
     fn from_byte(byte: u8) -> FileType {
         match byte {
             0x05 => FileType::Program,
-            0x06 => FileType::EditLockedProgram,
+            0x06 => FileType::LockedProgram,
             0x17 => FileType::Group,
             0x24 => FileType::FlashApplication,
             _ => panic!("Unknown file type: {:02X?}", byte),
@@ -313,7 +314,7 @@ impl FileType {
     fn to_string(&self) -> String {
         match self {
             FileType::Program => "Program".to_string(),
-            FileType::EditLockedProgram => "Edit Locked Program".to_string(),
+            FileType::LockedProgram => "Locked Program".to_string(),
             FileType::Group => "Group".to_string(),
             FileType::FlashApplication => "Flash Application".to_string(),
         }

@@ -6,6 +6,7 @@ use std::path::Path;
 
 use cli::{Arg, Cli, Command};
 use commands::convert::convert_command;
+use commands::models::models_command;
 use commands::rename::rename_command;
 use program::Program;
 use tokens::OsVersion;
@@ -92,6 +93,7 @@ fn main() {
                     .with_help("Delete the old file"),
             ),
         Command::new("tokens", "Prints the tokens"),
+        Command::new("models", "Prints the supported TI calculator models"),
     ]);
 
     let command = cli.match_commands();
@@ -124,6 +126,7 @@ fn main() {
 
             rename_command(input_path_string, name, new_file, delete_old);
         }
+        "models" => models_command(),
         "tokens" => {
             let version = OsVersion {
                 model: "TI-84+CE".to_string(),
@@ -144,7 +147,9 @@ fn main() {
             println!("{}", program.display());
             println!();
 
-            program.save_to("./ALL.txt").expect("failed to save");
+            program
+                .save_to("./src/tests/tokens.txt")
+                .expect("failed to save");
         }
         _ => cli.help(),
     }
