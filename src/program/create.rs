@@ -4,8 +4,9 @@ use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
 
 pub fn create_from_8xp(
-    version: &OsVersion,
     path: PathBuf,
+    version: &OsVersion,
+    display_mode: DisplayMode,
 ) -> Result<(Header, Metadata, Body, Checksum), String> {
     let tokens = load_tokens(version);
 
@@ -71,7 +72,7 @@ pub fn create_from_8xp(
     );
 
     // body translation
-    let translation = decode(body_bytes, &tokens, "en", DisplayMode::Accessible)?;
+    let translation = decode(body_bytes, &tokens, "en", display_mode)?;
 
     let body = Body::new(body_bytes.to_vec(), translation);
 

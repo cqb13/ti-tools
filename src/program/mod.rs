@@ -5,12 +5,23 @@ pub mod encode;
 use crate::tokens::OsVersion;
 use create::create_from_8xp;
 use std::io::Write;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 pub enum DisplayMode {
     Pretty,
     Accessible,
     TiAscii,
+}
+
+impl DisplayMode {
+    pub fn from_string(display_mode: &str) -> Result<DisplayMode, String> {
+        match display_mode {
+            "pretty" => return Ok(DisplayMode::Pretty),
+            "accessible" => return Ok(DisplayMode::Accessible),
+            "ti" => return Ok(DisplayMode::TiAscii),
+            _ => return Err("Invalid display mode".to_string()),
+        }
+    }
 }
 
 pub struct Program {
@@ -21,7 +32,11 @@ pub struct Program {
 }
 
 impl Program {
-    pub fn load(path: PathBuf, version: OsVersion) -> Result<Program, String> {
+    pub fn load(
+        path: PathBuf,
+        version: OsVersion,
+        display_mode: DisplayMode,
+    ) -> Result<Program, String> {
         if !path.exists() {
             return Err(format!(
                 "Failed to find file at: {:?}",
@@ -35,7 +50,7 @@ impl Program {
         };
 
         let (header, metadata, body, checksum) = match file_type {
-            ProgramFileType::XP => create_from_8xp(&version, path),
+            ProgramFileType::XP => create_from_8xp(path, &version, display_mode),
             ProgramFileType::TXT => unimplemented!(),
         }
         .map_err(|err| err.to_string())?;
@@ -50,9 +65,7 @@ impl Program {
         Ok(program)
     }
 
-    pub fn save_to(&self, path: &str) -> Result<(), String> {
-        let path = Path::new(path).to_path_buf();
-
+    pub fn save_to(&self, path: PathBuf) -> Result<(), String> {
         if path.exists() {
             println!("A file already exists at the output path, would you like to delete its content and proceed? [y/N]");
             let mut input = String::new();
@@ -346,7 +359,7 @@ impl Archived {
 
 fn write_to_file<T: AsRef<[u8]>>(path: &PathBuf, content: T, file_type: &str) {
     match std::fs::write(path, content) {
-        Ok(_) => println!("Successfully converted to {}", file_type),
+        Ok(_) => println!("Successfully saved to {}", path.display()),
         Err(err) => {
             println!("Failed to write {}: {}", file_type, err);
             std::process::exit(1);

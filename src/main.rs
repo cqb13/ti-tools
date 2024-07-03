@@ -2,13 +2,11 @@ pub mod cli;
 pub mod commands;
 pub mod program;
 pub mod tokens;
-use std::path::Path;
 
 use cli::{Arg, Cli, Command};
-use commands::convert::convert_command;
+use commands::decode::decode_command;
 use commands::models::models_command;
 use commands::rename::rename_command;
-use program::Program;
 use tokens::OsVersion;
 
 use program::encode::encode;
@@ -18,14 +16,14 @@ fn main() {
     let cli = Cli::new().with_default_command("help").with_commands(vec![
         Command::new("help", "Prints help information"),
         Command::new("version", "Prints version information"),
-        Command::new("convert", "Converts between 8xp and text")
+        Command::new("decode", "Converts 8xp to txt")
             .with_arg(
                 Arg::new()
                     .with_name("input")
                     .with_long("input")
                     .with_short('i')
                     .with_value_name("INPUT")
-                    .with_help("The input file path, either 8xp or txt"),
+                    .with_help("The input path to an 8xp file"),
             )
             .with_arg(
                 Arg::new()
@@ -33,36 +31,37 @@ fn main() {
                     .with_long("output")
                     .with_short('o')
                     .with_value_name("OUTPUT")
-                    .with_help("The output file path"),
+                    .with_help("The output path to a text file"),
             )
             .with_arg(
                 Arg::new()
-                    .with_name("name")
-                    .with_long("name")
-                    .with_short('n')
-                    .with_value_name("NAME")
-                    .with_help("Name of the program, only used when converting to 8xp"),
-            )
-            .with_arg(
-                Arg::new()
-                    .with_name("raw")
-                    .with_long("raw")
-                    .with_short('r')
-                    .with_help("Display the raw content of the input file before conversion"),
-            )
-            .with_arg(
-                Arg::new()
-                    .with_name("display")
-                    .with_long("display")
+                    .with_name("display-mode")
+                    .with_long("display-mode")
                     .with_short('d')
-                    .with_help("Displays the output"),
+                    .with_value_name("DISPLAY_MODE")
+                    .with_help("The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible"),
             )
             .with_arg(
                 Arg::new()
-                    .with_name("log")
-                    .with_long("log")
-                    .with_short('l')
-                    .with_help("Shows log messages"),
+                    .with_name("model")
+                    .with_long("model")
+                    .with_short('m')
+                    .with_value_name("MODEL")
+                    .with_help("The model of calculator (use models command to see the supported models) | Default: latest"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("bytes")
+                    .with_long("bytes")
+                    .with_short('b')
+                    .with_help("Display the bytes of the input file"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("preview")
+                    .with_long("preview")
+                    .with_short('p')
+                    .with_help("Preview the output file in the terminal"),
             ),
         Command::new("rename", "Renames the program name in a 8xp file")
             .with_arg(
@@ -95,7 +94,6 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("tokens", "Prints the tokens"),
         Command::new("test", "Prints the tokens"),
         Command::new("models", "Prints the supported TI calculator models"),
     ]);
@@ -105,18 +103,32 @@ fn main() {
     match command.name {
         "help" => cli.help(),
         "version" => cli.version(),
-        "convert" => {
+        "decode" => {
             let input_path_string = command.get_value_of("input").throw_if_none();
             let output_path_string = command.get_value_of("output").to_option();
-            let name = command.get_value_of("name").to_option();
-            let raw = command.has("raw");
-            let display = command.has("display");
+            let display_mode = command
+                .get_value_of("display-mode")
+                .to_option()
+                .unwrap_or("accessible".to_string());
+            let model = command
+                .get_value_of("model")
+                .to_option()
+                .unwrap_or("latest".to_string());
+            let bytes = command.has("bytes");
+            let preview = command.has("preview");
 
-            if output_path_string.is_none() && !display {
-                println!("You must specify at least one output method");
+            if output_path_string.is_none() && !preview {
+                println!("No output path or preview option provided");
             }
 
-            convert_command(input_path_string, output_path_string, name, raw, display);
+            decode_command(
+                input_path_string,
+                output_path_string,
+                display_mode,
+                model,
+                bytes,
+                preview,
+            );
         }
         "rename" => {
             let input_path_string = command.get_value_of("input").throw_if_none();
@@ -131,39 +143,13 @@ fn main() {
             rename_command(input_path_string, name, new_file, delete_old);
         }
         "models" => models_command(),
-        "tokens" => {
-            let version = OsVersion {
-                model: "TI-84+CE".to_string(),
-                version: "4.0".to_string(),
-            };
-
-            let program =
-                Program::load(Path::new("./src/tests/ALLTOKS.8xp").to_path_buf(), version);
-
-            let program = match program {
-                Ok(program) => program,
-                Err(err) => {
-                    println!("{}", err);
-                    std::process::exit(0);
-                }
-            };
-
-            print_bytes(&program.body.bytes);
-
-            //println!("{}", program.display());
-            //println!();
-//
-            //program
-            //    .save_to("./src/tests/tokens.txt")
-            //    .expect("failed to save");
-        }
         "test" => {
             let file =
                 std::fs::read_to_string("./src/tests/tokens.txt").expect("failed to read file");
 
             let version = OsVersion {
-                model: "TI-84+CE".to_string(),
-                version: "4.0".to_string(),
+                model: "latest".to_string(),
+                version: "latest".to_string(),
             };
 
             let tokens = load_tokens(&version);
