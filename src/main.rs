@@ -11,6 +11,9 @@ use commands::rename::rename_command;
 use program::Program;
 use tokens::OsVersion;
 
+use program::encode::encode;
+use tokens::load_tokens;
+
 fn main() {
     let cli = Cli::new().with_default_command("help").with_commands(vec![
         Command::new("help", "Prints help information"),
@@ -93,6 +96,7 @@ fn main() {
                     .with_help("Delete the old file"),
             ),
         Command::new("tokens", "Prints the tokens"),
+        Command::new("test", "Prints the tokens"),
         Command::new("models", "Prints the supported TI calculator models"),
     ]);
 
@@ -144,13 +148,43 @@ fn main() {
                 }
             };
 
-            println!("{}", program.display());
-            println!();
+            print_bytes(&program.body.bytes);
 
-            program
-                .save_to("./src/tests/tokens.txt")
-                .expect("failed to save");
+            //println!("{}", program.display());
+            //println!();
+//
+            //program
+            //    .save_to("./src/tests/tokens.txt")
+            //    .expect("failed to save");
+        }
+        "test" => {
+            let file =
+                std::fs::read_to_string("./src/tests/tokens.txt").expect("failed to read file");
+
+            let version = OsVersion {
+                model: "TI-84+CE".to_string(),
+                version: "4.0".to_string(),
+            };
+
+            let tokens = load_tokens(&version);
+
+            let result = encode(file, &tokens, false, program::DisplayMode::Accessible);
+
+            print_bytes(&result);
         }
         _ => cli.help(),
+    }
+}
+
+fn print_bytes(file: &Vec<u8>) {
+    let mut i = 0;
+    for byte in file {
+        print!("{:02X}", byte);
+        i += 1;
+        if i % 16 == 0 {
+            println!();
+        } else {
+            print!(", ");
+        }
     }
 }

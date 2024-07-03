@@ -1,6 +1,6 @@
 mod create;
 mod decode;
-mod encode;
+pub mod encode;
 
 use crate::tokens::OsVersion;
 use create::create_from_8xp;

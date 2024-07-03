@@ -1,6 +1,3 @@
-ALLTOKS
-Program
-Archived
 >DMS>Dec>Frac->Boxplot[]{}^^r^^o^^-1^^2^^T^^3
 ()round(pxl-Test(augment(rowSwap(row+(*row(*row+(max(min(R>Pr(R>Ptheta(P>Rx(P>Ry(median(
 randM(mean(solve(seq(fnInt(nDeriv(fMin(fMax( ",[i]!CubicReg QuartReg 

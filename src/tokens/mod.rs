@@ -2,6 +2,8 @@ use serde::{Deserialize, Serialize};
 use std::cmp::Ordering;
 use std::collections::HashMap;
 
+use crate::program::DisplayMode;
+
 #[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct OsVersion {
     pub model: String,
@@ -82,60 +84,105 @@ enum TokenData {
     Nested(std::collections::BTreeMap<String, Vec<Token>>),
 }
 
-#[derive(Debug)]
-struct TrieNode {
-    children: HashMap<char, TrieNode>,
-    tokens: Option<Vec<Token>>,
+pub struct Map {
+    pub map: HashMap<String, Translation>,
 }
 
-impl TrieNode {
-    fn new() -> Self {
-        TrieNode {
-            children: HashMap::new(),
-            tokens: None,
-        }
-    }
-}
-
-#[derive(Debug)]
-pub struct Trie {
-    root: TrieNode,
-}
-
-impl Trie {
-    fn new() -> Self {
-        Trie {
-            root: TrieNode::new(),
+impl Map {
+    pub fn new() -> Self {
+        Map {
+            map: HashMap::new(),
         }
     }
 
-    fn insert(&mut self, key: &str, tokens: Vec<Token>) {
-        let mut node = &mut self.root;
-        for ch in key.chars() {
-            node = node.children.entry(ch).or_insert_with(TrieNode::new);
-        }
-        node.tokens = Some(tokens);
+    pub fn insert(&mut self, key: String, value: Translation) {
+        self.map.insert(key, value);
     }
 
-    pub fn search(&self, key: &str) -> Option<&Vec<Token>> {
-        let mut node = &self.root;
-        for ch in key.chars() {
-            if let Some(next_node) = node.children.get(&ch) {
-                node = next_node;
-            } else {
-                return None;
+    pub fn get_value(&self, key: &str) -> Option<&Translation> {
+        self.map.get(key)
+    }
+
+    pub fn get_token(&self, value: String, display_mode: &DisplayMode) -> Option<String> {
+        let mut longest_key: &str = "";
+
+        for (key, translation) in &self.map {
+            let translation = match display_mode {
+                DisplayMode::Pretty => &translation.display,
+                DisplayMode::Accessible => &translation.accessible,
+                DisplayMode::TiAscii => &translation.ti_ascii,
+            };
+            if translation == &value {
+                longest_key = key;
             }
         }
-        node.tokens.as_ref()
+
+        if longest_key.is_empty() {
+            None
+        } else {
+            Some(longest_key.to_string())
+        }
+    }
+
+    pub fn get_longest_matching_token(
+        &self,
+        value: &String,
+        display_mode: &DisplayMode,
+    ) -> Option<(String, String)> {
+        let mut longest_key: &str = "";
+        let mut longest_value = String::new();
+        let mut longest_length = 0;
+
+        for (token, translation) in &self.map {
+            let translation = match display_mode {
+                DisplayMode::Pretty => &translation.display,
+                DisplayMode::Accessible => &translation.accessible,
+                DisplayMode::TiAscii => &translation.ti_ascii,
+            };
+
+            if value.starts_with(translation) {
+                if translation.len() > longest_length {
+                    longest_key = token;
+                    longest_value = translation.to_string();
+                    longest_length = translation.len();
+                }
+            }
+        }
+
+        if longest_key.is_empty() {
+            None
+        } else {
+            Some((longest_key.to_string(), longest_value))
+        }
+    }
+
+    pub fn get_shortest_matching_token(&self, value: String, display_mode: &DisplayMode) -> String {
+        let mut shortest_key: &str = "";
+        let mut shortest_length = usize::MAX;
+
+        for (key, translation) in &self.map {
+            let translation = match display_mode {
+                DisplayMode::Pretty => &translation.display,
+                DisplayMode::Accessible => &translation.accessible,
+                DisplayMode::TiAscii => &translation.ti_ascii,
+            };
+
+            if value.starts_with(translation) && translation.len() < shortest_length {
+                shortest_key = key;
+                shortest_length = translation.len();
+            }
+        }
+
+        shortest_key.to_string()
     }
 }
 
-pub fn load_tokens(target: &OsVersion) -> Trie {
+pub fn load_tokens(target: &OsVersion) -> Map {
     let json_data = include_str!("./standard_tokens/8X.json");
 
     let tokens: std::collections::BTreeMap<String, TokenData> =
         serde_json::from_str(json_data).unwrap();
-    let mut trie = Trie::new();
+    let mut map = Map::new();
 
     for (key, token_data) in tokens {
         match token_data {
@@ -148,7 +195,11 @@ pub fn load_tokens(target: &OsVersion) -> Trie {
                     })
                     .collect();
 
-                trie.insert(&key, new_tokens);
+                for token in new_tokens {
+                    for (lang, translation) in token.langs {
+                        map.insert(format!("{} {}", key, lang), translation);
+                    }
+                }
             }
             TokenData::Nested(nested_tokens) => {
                 for (sub_key, tokens) in nested_tokens {
@@ -160,11 +211,15 @@ pub fn load_tokens(target: &OsVersion) -> Trie {
                             token.until.is_none() || token.until.as_ref().unwrap() >= &target
                         })
                         .collect();
-                    trie.insert(&full_key, new_tokens);
+                    for token in new_tokens {
+                        for (lang, translation) in token.langs {
+                            map.insert(format!("{} {}", full_key, lang), translation);
+                        }
+                    }
                 }
             }
         }
     }
 
-    trie
+    map
 }
