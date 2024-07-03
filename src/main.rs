@@ -5,12 +5,10 @@ pub mod tokens;
 
 use cli::{Arg, Cli, Command};
 use commands::decode::decode_command;
+use commands::encode::encode_command;
 use commands::models::models_command;
 use commands::rename::rename_command;
 use tokens::OsVersion;
-
-use program::encode::encode;
-use tokens::load_tokens;
 
 fn main() {
     let cli = Cli::new().with_default_command("help").with_commands(vec![
@@ -31,7 +29,7 @@ fn main() {
                     .with_long("output")
                     .with_short('o')
                     .with_value_name("OUTPUT")
-                    .with_help("The output path to a text file"),
+                    .with_help("The output path to a txt file"),
             )
             .with_arg(
                 Arg::new()
@@ -55,6 +53,45 @@ fn main() {
                     .with_long("bytes")
                     .with_short('b')
                     .with_help("Display the bytes of the input file"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("preview")
+                    .with_long("preview")
+                    .with_short('p')
+                    .with_help("Preview the output file in the terminal"),
+            ),
+        Command::new("encode", "Converts txt to 8xp")
+            .with_arg(
+                Arg::new()
+                    .with_name("input")
+                    .with_long("input")
+                    .with_short('i')
+                    .with_value_name("INPUT")
+                    .with_help("The input path to an txt file"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("output")
+                    .with_long("output")
+                    .with_short('o')
+                    .with_value_name("OUTPUT")
+                    .with_help("The output path to a 8xp file"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("model")
+                    .with_long("model")
+                    .with_short('m')
+                    .with_value_name("MODEL")
+                    .with_help("The model of calculator (use models command to see the supported models) | Default: latest"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("content")
+                    .with_long("content")
+                    .with_short('c')
+                    .with_help("Display the content of the input file"),
             )
             .with_arg(
                 Arg::new()
@@ -94,7 +131,6 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("test", "Prints the tokens"),
         Command::new("models", "Prints the supported TI calculator models"),
     ]);
 
@@ -119,6 +155,7 @@ fn main() {
 
             if output_path_string.is_none() && !preview {
                 println!("No output path or preview option provided");
+                std::process::exit(0);
             }
 
             decode_command(
@@ -127,6 +164,29 @@ fn main() {
                 display_mode,
                 model,
                 bytes,
+                preview,
+            );
+        }
+        "encode" => {
+            let input_path_string = command.get_value_of("input").throw_if_none();
+            let output_path_string = command.get_value_of("output").to_option();
+            let model = command
+                .get_value_of("model")
+                .to_option()
+                .unwrap_or("latest".to_string());
+            let content = command.has("content");
+            let preview = command.has("preview");
+
+            if output_path_string.is_none() && !preview {
+                println!("No output path or preview option provided");
+                std::process::exit(0);
+            }
+
+            encode_command(
+                input_path_string,
+                output_path_string,
+                model,
+                content,
                 preview,
             );
         }
@@ -143,34 +203,6 @@ fn main() {
             rename_command(input_path_string, name, new_file, delete_old);
         }
         "models" => models_command(),
-        "test" => {
-            let file =
-                std::fs::read_to_string("./src/tests/tokens.txt").expect("failed to read file");
-
-            let version = OsVersion {
-                model: "latest".to_string(),
-                version: "latest".to_string(),
-            };
-
-            let tokens = load_tokens(&version);
-
-            let result = encode(file, &tokens, false, program::DisplayMode::Accessible);
-
-            print_bytes(&result);
-        }
         _ => cli.help(),
-    }
-}
-
-fn print_bytes(file: &Vec<u8>) {
-    let mut i = 0;
-    for byte in file {
-        print!("{:02X}", byte);
-        i += 1;
-        if i % 16 == 0 {
-            println!();
-        } else {
-            print!(", ");
-        }
     }
 }

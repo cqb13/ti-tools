@@ -5,7 +5,7 @@ pub fn decode(
     bytestream: &[u8],
     map: &Map,
     lang: &str,
-    mode: DisplayMode,
+    mode: &DisplayMode,
 ) -> Result<String, String> {
     let mut decoded_program = String::new();
     let mut index = 0;

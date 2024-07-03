@@ -2,7 +2,7 @@ use super::DisplayMode;
 use crate::tokens::Map;
 
 pub fn encode(
-    decoded_program: String,
+    decoded_program: &String,
     tokens: &Map,
     perform_normalize: bool,
     display_mode: DisplayMode,
@@ -12,7 +12,7 @@ pub fn encode(
     let decoded_program = if perform_normalize {
         normalize(&decoded_program)
     } else {
-        decoded_program
+        decoded_program.to_string()
     };
 
     //TODO use better encoding method

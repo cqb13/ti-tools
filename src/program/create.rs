@@ -1,12 +1,114 @@
 use super::decode::decode;
+use super::encode::encode;
 use super::{Archived, Body, Checksum, DisplayMode, FileType, Header, Metadata};
 use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
 
+//TODO: make sure this is right
+pub fn create_from_txt(
+    path: PathBuf,
+    version: &OsVersion,
+) -> Result<(Header, Metadata, Body, Checksum), String> {
+    let tokens = load_tokens(version);
+
+    let file_string = std::fs::read_to_string(&path).map_err(|err| err.to_string())?;
+
+    let name = file_string
+        .lines()
+        .next()
+        .expect("missing file name")
+        .to_string();
+    let file_type = FileType::from_string(file_string.lines().nth(1).expect("missing file type"));
+    let archived = Archived::from_string(file_string.lines().nth(2).expect("missing archived"));
+    let display_mode =
+        DisplayMode::from_string(file_string.lines().nth(3).expect("missing display mode"));
+
+    if name.len() > 8 {
+        return Err("name must be 8 or less characters".to_string());
+    }
+
+    if !name.chars().all(|c| c.is_ascii_alphabetic()) {
+        return Err("name must be alphabetic".to_string());
+    }
+
+    let body_string = file_string.lines().skip(4).collect::<String>();
+
+    let body_bytes = encode(&body_string, &tokens, true, display_mode);
+
+    let mut header_bytes = Vec::new();
+    let signature = "**TI83F*";
+    header_bytes.extend(signature.as_bytes());
+    header_bytes.extend([0x1A, 0x0A]); // signature part 2
+    header_bytes.push(0x00); // mystery b
+    let mut comment = create_comment().as_bytes().to_owned();
+    while comment.len() != 42 {
+        comment.push(0x00)
+    }
+    header_bytes.extend(comment);
+    let meta_and_body_length = (body_bytes.len() + 19) as u16;
+    header_bytes.extend(meta_and_body_length.to_le_bytes());
+
+    let header = Header::new(
+        header_bytes,
+        signature.to_string(),
+        vec![0x1A, 0x0A],
+        0x00,
+        create_comment(),
+        meta_and_body_length,
+    );
+
+    let mut metadata_bytes = Vec::new();
+    metadata_bytes.push(0x0D); // flag
+    metadata_bytes.push(0x00); // unknown byte
+    let body_and_checksum_length = (body_bytes.len() + 2) as u16;
+    metadata_bytes.extend(body_and_checksum_length.to_le_bytes());
+    metadata_bytes.push(file_type.to_byte());
+    let mut name_bytes = name.as_bytes().to_vec();
+    while name_bytes.len() != 8 {
+        name_bytes.push(0x00)
+    }
+    metadata_bytes.extend(name_bytes);
+    metadata_bytes.push(0x00); // version
+    metadata_bytes.push(archived.to_byte());
+    metadata_bytes.extend(body_and_checksum_length.to_le_bytes());
+    let body_length = body_bytes.len() as u16;
+    metadata_bytes.extend(body_length.to_le_bytes());
+
+    let metadata = Metadata::new(
+        metadata_bytes,
+        0x0D,
+        0x00,
+        body_and_checksum_length,
+        file_type,
+        name,
+        0x00,
+        archived,
+        body_and_checksum_length,
+        body_length,
+    );
+
+    let checksum_bytes = (body_bytes.len() as u16).to_le_bytes().to_vec();
+
+    if checksum_bytes.len() != 2 {
+        return Err("checksum length is not 2".to_string());
+    }
+
+    let checksum = Checksum::new(checksum_bytes, body_bytes.len() as u16);
+
+    let body = Body::new(body_bytes, body_string);
+
+    Ok((header, metadata, body, checksum))
+}
+
+fn create_comment() -> String {
+    let version = env!("CARGO_PKG_VERSION");
+    format!("Created by TI-Tools {}", version)
+}
+
 pub fn create_from_8xp(
     path: PathBuf,
     version: &OsVersion,
-    display_mode: DisplayMode,
+    display_mode: &DisplayMode,
 ) -> Result<(Header, Metadata, Body, Checksum), String> {
     let tokens = load_tokens(version);
 
@@ -72,7 +174,7 @@ pub fn create_from_8xp(
     );
 
     // body translation
-    let translation = decode(body_bytes, &tokens, "en", display_mode)?;
+    let translation = decode(body_bytes, &tokens, "en", &display_mode)?;
 
     let body = Body::new(body_bytes.to_vec(), translation);
 

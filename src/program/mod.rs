@@ -3,7 +3,7 @@ mod decode;
 pub mod encode;
 
 use crate::tokens::OsVersion;
-use create::create_from_8xp;
+use create::{create_from_8xp, create_from_txt};
 use std::io::Write;
 use std::path::PathBuf;
 
@@ -14,13 +14,22 @@ pub enum DisplayMode {
 }
 
 impl DisplayMode {
-    pub fn from_string(display_mode: &str) -> Result<DisplayMode, String> {
+    pub fn from_string(display_mode: &str) -> DisplayMode {
         match display_mode {
-            "pretty" => return Ok(DisplayMode::Pretty),
-            "accessible" => return Ok(DisplayMode::Accessible),
-            "ti" => return Ok(DisplayMode::TiAscii),
-            _ => return Err("Invalid display mode".to_string()),
+            "pretty" => DisplayMode::Pretty,
+            "accessible" => DisplayMode::Accessible,
+            "ti" => DisplayMode::TiAscii,
+            _ => panic!("Unknown display mode: {}", display_mode),
         }
+    }
+
+    pub fn to_string(&self) -> String {
+        match self {
+            DisplayMode::Pretty => "pretty",
+            DisplayMode::Accessible => "accessible",
+            DisplayMode::TiAscii => "ti",
+        }
+        .to_string()
     }
 }
 
@@ -29,6 +38,7 @@ pub struct Program {
     pub metadata: Metadata,
     pub body: Body,
     pub checksum: Checksum,
+    pub display_mode: DisplayMode,
 }
 
 impl Program {
@@ -50,8 +60,8 @@ impl Program {
         };
 
         let (header, metadata, body, checksum) = match file_type {
-            ProgramFileType::XP => create_from_8xp(path, &version, display_mode),
-            ProgramFileType::TXT => unimplemented!(),
+            ProgramFileType::XP => create_from_8xp(path, &version, &display_mode),
+            ProgramFileType::TXT => create_from_txt(path, &version),
         }
         .map_err(|err| err.to_string())?;
 
@@ -60,6 +70,7 @@ impl Program {
             metadata,
             body,
             checksum,
+            display_mode,
         };
 
         Ok(program)
@@ -109,10 +120,11 @@ impl Program {
             }
             ProgramFileType::TXT => {
                 let output_string = format!(
-                    "{}\n{}\n{}\n{}",
+                    "{}\n{}\n{}\n{}\n{}",
                     self.metadata.name,
                     self.metadata.file_type.to_string(),
                     self.metadata.archived.to_string(),
+                    self.display_mode.to_string(),
                     &self.body.translation
                 );
                 write_to_file(&path, output_string, "txt");
@@ -325,6 +337,25 @@ impl FileType {
         }
     }
 
+    fn to_byte(&self) -> u8 {
+        match self {
+            FileType::Program => 0x05,
+            FileType::LockedProgram => 0x06,
+            FileType::Group => 0x17,
+            FileType::FlashApplication => 0x24,
+        }
+    }
+
+    fn from_string(file_type: &str) -> FileType {
+        match file_type {
+            "Program" => FileType::Program,
+            "Locked Program" => FileType::LockedProgram,
+            "Group" => FileType::Group,
+            "Flash Application" => FileType::FlashApplication,
+            _ => panic!("Unknown file type: {}", file_type),
+        }
+    }
+
     fn to_string(&self) -> String {
         match self {
             FileType::Program => "Program".to_string(),
@@ -346,6 +377,21 @@ impl Archived {
             0x00 => Archived::NotArchived,
             0x80 => Archived::Archived,
             _ => panic!("Unknown archived byte: {:02X?}", byte),
+        }
+    }
+
+    fn to_byte(&self) -> u8 {
+        match self {
+            Archived::NotArchived => 0x00,
+            Archived::Archived => 0x80,
+        }
+    }
+
+    fn from_string(archived: &str) -> Archived {
+        match archived {
+            "Not Archived" => Archived::NotArchived,
+            "Archived" => Archived::Archived,
+            _ => panic!("Unknown archived string: {}", archived),
         }
     }
 

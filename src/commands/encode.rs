@@ -2,13 +2,11 @@ use crate::program::{DisplayMode, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
-//TODO: fix new line
-pub fn decode_command(
+pub fn encode_command(
     input_path_string: String,
     output_path_string: Option<String>,
-    display_mode: String,
     model: String,
-    bytes: bool,
+    content: bool,
     preview: bool,
 ) {
     let target_version = OsVersion {
@@ -18,9 +16,11 @@ pub fn decode_command(
 
     let input_path = Path::new(&input_path_string);
 
-    let display_mode = DisplayMode::from_string(&display_mode);
-
-    let program = Program::load(input_path.to_path_buf(), target_version, display_mode);
+    let program = Program::load(
+        input_path.to_path_buf(),
+        target_version,
+        DisplayMode::Accessible,
+    );
 
     let program = match program {
         Ok(program) => program,
@@ -30,19 +30,19 @@ pub fn decode_command(
         }
     };
 
-    if bytes {
-        let mut bytes: Vec<&u8> = Vec::new();
+    if content {
+        println!("{}", program.display());
+        println!();
+    }
+
+    if preview {
+        let mut bytes: Vec<u8> = Vec::new();
         bytes.extend(&program.header.bytes);
         bytes.extend(&program.metadata.bytes);
         bytes.extend(&program.body.bytes);
         bytes.extend(&program.checksum.bytes);
 
-        print_bytes(bytes);
-        println!();
-    }
-
-    if preview {
-        println!("{}", program.display());
+        print_bytes(&bytes);
         println!();
     }
 
@@ -62,12 +62,12 @@ pub fn decode_command(
         None => {}
     }
 
-    println!("Successfully converted to txt")
+    println!("Successfully converted to 8x")
 }
 
-fn print_bytes(bytes: Vec<&u8>) {
+fn print_bytes(file: &Vec<u8>) {
     let mut i = 0;
-    for byte in bytes {
+    for byte in file {
         print!("{:02X}", byte);
         i += 1;
         if i % 16 == 0 {

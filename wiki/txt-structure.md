@@ -7,6 +7,7 @@ Each text output file contains:
 - Program Name
 - File Type
 - Archive Status
+- Display Mode
 - Program
 
 ## Program Name
@@ -25,6 +26,13 @@ Each text output file contains:
 ## Archive Status
 
 - Content: Archived or Not Archived
+
+## Display Mode
+
+- Content:
+  - pretty
+  - accessible
+  - ti
 
 ## Program
 
