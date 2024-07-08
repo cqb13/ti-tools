@@ -90,13 +90,13 @@ pub fn create_from_txt(
         body_length,
     );
 
-    let checksum_bytes = (body_bytes.len() as u16).to_le_bytes().to_vec();
+    let checksum_bytes = (body_bytes.len() as u16).to_le_bytes();
 
     if checksum_bytes.len() != 2 {
         return Err("checksum length is not 2".to_string());
     }
 
-    let checksum = Checksum::new(checksum_bytes, body_bytes.len() as u16);
+    let checksum = Checksum::new(checksum_bytes.to_vec(), body_bytes.len() as u16);
 
     let body = Body::new(body_bytes, body_string);
 
@@ -119,7 +119,7 @@ pub fn create_from_8xp(
 
     let (header_bytes, bytes) = bytes.split_at(55);
     let (metadata_bytes, bytes) = bytes.split_at(19);
-    let (body_bytes, checksum) = bytes.split_at(bytes.len() - 2);
+    let (body_bytes, _) = bytes.split_at(bytes.len() - 2);
 
     // header translation
     let signature = header_bytes[0..8]
@@ -182,9 +182,9 @@ pub fn create_from_8xp(
     let body = Body::new(body_bytes.to_vec(), translation);
 
     // checksum translation
-    let value = u16::from_le_bytes([checksum[0], checksum[1]]);
+    let value = u16::from_le_bytes(body_length);
 
-    let checksum = Checksum::new(checksum.to_vec(), value);
+    let checksum = Checksum::new(body_length.to_vec(), value);
 
     Ok((header, metadata, body, checksum))
 }

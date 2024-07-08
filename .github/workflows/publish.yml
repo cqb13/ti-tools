@@ -42,6 +42,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Run tests
+        run: cargo test --verbose
+
       - name: Add rustup default target
         run: rustup target add ${{ matrix.target }}
 

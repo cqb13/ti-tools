@@ -17,6 +17,10 @@ fn test_programs() {
         "./src/tests/programs/FACTOR.txt",
     );
     test_program(
+        "./src/tests/programs/MATHTOOl.8xp",
+        "./src/tests/programs/MATHTOOl.txt",
+    );
+    test_program(
         "./src/tests/programs/POLCONIC.8xp",
         "./src/tests/programs/POLCONIC.txt",
     );
@@ -185,15 +189,15 @@ fn test_program(path_to_8xp: &str, path_to_txt: &str) {
         path_to_8xp, path_to_txt
     );
 
-    //assert_eq!(
-    //    loaded_8xp.checksum.bytes, loaded_txt.checksum.bytes,
-    //    "The checksum bytes of the programs do not match between {:?} and {:?}",
-    //    path_to_8xp, path_to_txt
-    //);
-    //
-    //assert_eq!(
-    //    loaded_8xp.checksum.value, loaded_txt.checksum.value,
-    //    "The checksum value of the programs do not match between {:?} and {:?}",
-    //    path_to_8xp, path_to_txt
-    //);
+    assert_eq!(
+        loaded_8xp.checksum.bytes, loaded_txt.checksum.bytes,
+        "The checksum bytes of the programs do not match between {:?} and {:?}",
+        path_to_8xp, path_to_txt
+    );
+
+    assert_eq!(
+        loaded_8xp.checksum.value, loaded_txt.checksum.value,
+        "The checksum value of the programs do not match between {:?} and {:?}",
+        path_to_8xp, path_to_txt
+    );
 }
