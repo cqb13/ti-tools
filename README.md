@@ -72,6 +72,20 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
         Prints the supported TI calculator models
 ```
 
+## Examples
+
+### Decode
+
+```sh
+ti-tools decode ./src/tests/programs/TOCCATA.8xp -p -c -o ./TOCCATA.txt
+```
+
+### Encode
+
+```sh
+ti-tools encode ./TOCCATA.txt -p -c -o ./TOCCATA.8xp
+```
+
 ## Contributing
 
 Contributions are welcome! Feel free to fork this repository and submit pull requests.
