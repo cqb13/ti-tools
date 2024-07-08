@@ -14,7 +14,6 @@ pub struct Arg {
 #[derive(Debug)]
 pub struct Command<'a> {
     pub name: &'a str,
-    pub short: Option<char>,
     pub description: &'a str,
     pub args: Option<Vec<Arg>>,
 }
@@ -83,15 +82,9 @@ impl<'a> Command<'a> {
     pub fn new(name: &'a str, description: &'a str) -> Command<'a> {
         Command {
             name,
-            short: None,
             description,
             args: None,
         }
-    }
-
-    pub fn with_short(mut self, short: char) -> Command<'a> {
-        self.short = Some(short);
-        self
     }
 
     /**
@@ -286,26 +279,14 @@ impl<'a> Cli<'a> {
                         std::process::exit(0);
                     })
             } else {
-                self.help();
+                self.help(None);
                 std::process::exit(0);
             }
         } else {
             let command_name = &args[1];
             self.commands
                 .iter()
-                .find(|&command| {
-                    command.name == command_name
-                        || (command.short
-                            == Some(
-                                command_name
-                                    .replace("-", "")
-                                    .to_lowercase()
-                                    .chars()
-                                    .next()
-                                    .unwrap(),
-                            )
-                            && command_name.len() == 1)
-                })
+                .find(|&command| command.name == command_name)
                 .unwrap_or_else(|| {
                     println!("Command not found: {}", command_name);
                     std::process::exit(0);
@@ -317,7 +298,7 @@ impl<'a> Cli<'a> {
         println!("{} {}", self.name, self.version);
     }
 
-    pub fn help(&self) {
+    pub fn help(&self, command_name: Option<String>) {
         println!("{} {}", self.name, self.version);
         println!("{}", self.description);
         println!("Author: {}", self.author);
@@ -327,34 +308,51 @@ impl<'a> Cli<'a> {
         println!("    {} [COMMAND] [OPTIONS]", self.bin);
         println!();
         println!("COMMANDS:");
-        for command in &self.commands {
-            println!("    {:<12} -{}", command.name, command.short.unwrap_or(' '));
-            println!("        {}", command.description);
+        if command_name.is_some() {
+            let command = self
+                .commands
+                .iter()
+                .find(|&command| command.name == command_name.as_ref().unwrap())
+                .unwrap_or_else(|| {
+                    println!("Command not found: {}", command_name.unwrap());
+                    std::process::exit(0);
+                });
 
-            if let Some(args) = &command.args {
-                for arg in args {
-                    let short = arg
-                        .short
-                        .map(|s| format!("-{}", s))
-                        .unwrap_or("".to_string());
-                    let long = arg
-                        .long
-                        .map(|s| format!("--{}", s))
-                        .unwrap_or("".to_string());
-                    let value = format!("<{}>", arg.value_name);
-                    let default = arg.default.as_ref().map(|s| format!(" (default: {})", s));
-                    println!(
-                        "        {:<12} {:<12} {:<12} {:<12}{}",
-                        short,
-                        long,
-                        value,
-                        arg.help,
-                        default.unwrap_or("".to_string())
-                    );
-                }
+            self.command_help(command)
+        } else {
+            for command in &self.commands {
+                self.command_help(&command)
             }
         }
         println!();
+    }
+
+    fn command_help(&self, command: &Command<'a>) {
+        println!("    {:<12}", command.name);
+        println!("        {}", command.description);
+
+        if let Some(args) = &command.args {
+            for arg in args {
+                let short = arg
+                    .short
+                    .map(|s| format!("-{}", s))
+                    .unwrap_or("".to_string());
+                let long = arg
+                    .long
+                    .map(|s| format!("--{}", s))
+                    .unwrap_or("".to_string());
+                let value = format!("<{}>", arg.value_name);
+                let default = arg.default.as_ref().map(|s| format!(" (default: {})", s));
+                println!(
+                    "        {:<12} {:<12} {:<12} {:<12}{}",
+                    short,
+                    long,
+                    value,
+                    arg.help,
+                    default.unwrap_or("".to_string())
+                );
+            }
+        }
     }
 }
 

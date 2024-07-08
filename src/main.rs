@@ -8,20 +8,23 @@ use commands::decode::decode_command;
 use commands::encode::encode_command;
 use commands::models::models_command;
 use commands::rename::rename_command;
-use tokens::OsVersion;
 
 fn main() {
     let cli = Cli::new().with_default_command("help").with_commands(vec![
-        Command::new("help", "Prints help information"),
+        Command::new("help", "Prints help information")
+            .with_arg(
+                Arg::new()
+                .with_name("command")
+                .with_value_name("COMMAND")
+                .with_help("A command to help with"),
+            ),
         Command::new("version", "Prints version information"),
         Command::new("decode", "Converts 8xp to txt")
             .with_arg(
                 Arg::new()
-                    .with_name("input")
-                    .with_long("input")
-                    .with_short('i')
-                    .with_value_name("INPUT")
-                    .with_help("The input path to an 8xp file"),
+                .with_name("input")
+                .with_value_name("INPUT")
+                .with_help("The input path to an 8xp file")
             )
             .with_arg(
                 Arg::new()
@@ -49,10 +52,10 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
-                    .with_name("bytes")
-                    .with_long("bytes")
-                    .with_short('b')
-                    .with_help("Display the bytes of the input file"),
+                    .with_name("content")
+                    .with_long("content")
+                    .with_short('c')
+                    .with_help("Display the content of the input file"),
             )
             .with_arg(
                 Arg::new()
@@ -64,11 +67,9 @@ fn main() {
         Command::new("encode", "Converts txt to 8xp")
             .with_arg(
                 Arg::new()
-                    .with_name("input")
-                    .with_long("input")
-                    .with_short('i')
-                    .with_value_name("INPUT")
-                    .with_help("The input path to an txt file"),
+                .with_name("input")
+                .with_value_name("INPUT")
+                .with_help("The input path to an 8xp file")
             )
             .with_arg(
                 Arg::new()
@@ -103,11 +104,9 @@ fn main() {
         Command::new("rename", "Renames the program name in a 8xp file")
             .with_arg(
                 Arg::new()
-                    .with_name("input")
-                    .with_long("input")
-                    .with_short('i')
-                    .with_value_name("INPUT")
-                    .with_help("File path to the 8xp file"),
+                .with_name("input")
+                .with_value_name("INPUT")
+                .with_help("The input path to an 8xp file")
             )
             .with_arg(
                 Arg::new()
@@ -137,10 +136,14 @@ fn main() {
     let command = cli.match_commands();
 
     match command.name {
-        "help" => cli.help(),
+        "help" => {
+            command.get_value().to_option();
+            let command = command.get_value().to_option();
+            cli.help(command)
+        }
         "version" => cli.version(),
         "decode" => {
-            let input_path_string = command.get_value_of("input").throw_if_none();
+            let input_path_string = command.get_value().throw_if_none();
             let output_path_string = command.get_value_of("output").to_option();
             let display_mode = command
                 .get_value_of("display-mode")
@@ -150,7 +153,7 @@ fn main() {
                 .get_value_of("model")
                 .to_option()
                 .unwrap_or("latest".to_string());
-            let bytes = command.has("bytes");
+            let content = command.has("content");
             let preview = command.has("preview");
 
             if output_path_string.is_none() && !preview {
@@ -163,12 +166,12 @@ fn main() {
                 output_path_string,
                 display_mode,
                 model,
-                bytes,
+                content,
                 preview,
             );
         }
         "encode" => {
-            let input_path_string = command.get_value_of("input").throw_if_none();
+            let input_path_string = command.get_value().throw_if_none();
             let output_path_string = command.get_value_of("output").to_option();
             let model = command
                 .get_value_of("model")
@@ -203,6 +206,6 @@ fn main() {
             rename_command(input_path_string, name, new_file, delete_old);
         }
         "models" => models_command(),
-        _ => cli.help(),
+        _ => cli.help(None),
     }
 }

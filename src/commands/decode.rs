@@ -7,7 +7,7 @@ pub fn decode_command(
     output_path_string: Option<String>,
     display_mode: String,
     model: String,
-    bytes: bool,
+    content: bool,
     preview: bool,
 ) {
     let target_version = OsVersion {
@@ -29,7 +29,7 @@ pub fn decode_command(
         }
     };
 
-    if bytes {
+    if content {
         let mut bytes: Vec<&u8> = Vec::new();
         bytes.extend(&program.header.bytes);
         bytes.extend(&program.metadata.bytes);

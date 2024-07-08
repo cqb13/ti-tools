@@ -5,7 +5,6 @@ use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
 
 //TODO: fix length bytes
-
 //TODO: make sure this is right
 pub fn create_from_txt(
     path: PathBuf,
