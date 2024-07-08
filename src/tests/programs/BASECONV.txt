@@ -1,0 +1,18 @@
+BASECONV
+Program
+Not Archived
+accessible
+Disp "BASES:"
+Disp " IN I=",I
+Disp " OUT O=",O
+Ans->L1
+0->A
+For(J,1,dim(L1))
+IA+L1(J)->A
+End
+~int(~log(A)/log(O))->dim(L2)
+For(J,dim(L2),1,~1)
+OfPart(A/O)->L2(J)
+int(A/O)->A
+End
+L2
