@@ -1,6 +1,8 @@
 pub mod cli;
 pub mod commands;
 pub mod program;
+#[cfg(test)]
+pub mod tests;
 pub mod tokens;
 
 use cli::{Arg, Cli, Command};
@@ -137,7 +139,6 @@ fn main() {
 
     match command.name {
         "help" => {
-            command.get_value().to_option();
             let command = command.get_value().to_option();
             cli.help(command)
         }

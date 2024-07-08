@@ -156,24 +156,36 @@ impl Map {
         }
     }
 
-    pub fn get_shortest_matching_token(&self, value: String, display_mode: &DisplayMode) -> String {
+    pub fn get_shortest_matching_token(
+        &self,
+        value: &String,
+        display_mode: &DisplayMode,
+    ) -> Option<(String, String)> {
         let mut shortest_key: &str = "";
-        let mut shortest_length = usize::MAX;
+        let mut shortest_value = String::new();
+        let mut shortest_length = 9999;
 
-        for (key, translation) in &self.map {
+        for (token, translation) in &self.map {
             let translation = match display_mode {
                 DisplayMode::Pretty => &translation.display,
                 DisplayMode::Accessible => &translation.accessible,
                 DisplayMode::TiAscii => &translation.ti_ascii,
             };
 
-            if value.starts_with(translation) && translation.len() < shortest_length {
-                shortest_key = key;
-                shortest_length = translation.len();
+            if value.starts_with(translation) {
+                if translation.len() < shortest_length {
+                    shortest_key = token;
+                    shortest_value = translation.to_string();
+                    shortest_length = translation.len();
+                }
             }
         }
 
-        shortest_key.to_string()
+        if shortest_key.is_empty() {
+            None
+        } else {
+            Some((shortest_key.to_string(), shortest_value))
+        }
     }
 }
 

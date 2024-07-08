@@ -41,7 +41,7 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
 
 ## Commands
 
-```sh
+```
     help
         Prints help information
                                   <COMMAND>    A command to help with

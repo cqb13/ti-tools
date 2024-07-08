@@ -17,7 +17,7 @@ pub fn decode(
         let key = match current_bytes.len() {
             1 => format!("${:02X}", current_bytes[0]),
             2 => format!("${:02X}${:02X}", current_bytes[0], current_bytes[1]),
-            _ => return Err("Invalid byte length".to_string()),
+            _ => return Err(format!("Invalid byte length: {:02X?}", current_bytes)),
         };
 
         let token = map.get_value(format!("{} {}", key, lang).as_str());

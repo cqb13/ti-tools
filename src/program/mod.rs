@@ -179,7 +179,7 @@ impl Header {
             Signature Extra: {:02X?}\n\
             Product ID: {:02X?}\n\
             Comment: {}\n\
-            Metadata and Body Length: {:04X?}",
+            Metadata and Body Length: {}",
             self.signature,
             self.signature_extra,
             self.product_id,
@@ -245,13 +245,13 @@ impl Metadata {
             "Metadata\n\
             Flag: {:02X?}\n\
             Unknown Byte: {:02X?}\n\
-            Body and Checksum Length: {:04X?}\n\
+            Body and Checksum Length: {}\n\
             File Type: {}\n\
             Name: {}\n\
             Version: {:02X?}\n\
             Archived: {}\n\
-            Body and Checksum Length Copy: {:04X?}\n\
-            Body Length: {:04X?}",
+            Body and Checksum Length Copy: {}\n\
+            Body Length: {}",
             self.flag,
             self.unknown_byte,
             self.body_and_checksum_length,
@@ -297,7 +297,7 @@ impl Checksum {
     pub fn display(&self) -> String {
         format!(
             "Checksum\n\
-            Value: {:04X?}",
+            Value: {}",
             self.value
         )
     }
