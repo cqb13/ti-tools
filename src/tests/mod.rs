@@ -25,6 +25,10 @@ fn test_programs() {
         "./src/tests/programs/QUEUESIM.txt",
     );
     test_program(
+        "./src/tests/programs/RADICAL.8xp",
+        "./src/tests/programs/RADICAL.txt",
+    );
+    test_program(
         "./src/tests/programs/SPLINE.8xp",
         "./src/tests/programs/SPLINE.txt",
     );

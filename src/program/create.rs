@@ -1,5 +1,5 @@
 use super::decode::decode;
-use super::encode::encode;
+use super::encode::{encode, EncodeMode};
 use super::{Archived, Body, Checksum, DisplayMode, FileType, Header, Metadata};
 use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
@@ -36,7 +36,7 @@ pub fn create_from_txt(
         .collect::<Vec<&str>>()
         .join("\n");
 
-    let body_bytes = encode(&body_string, &tokens, true, display_mode);
+    let body_bytes = encode(&body_string, &tokens, true, display_mode, EncodeMode::Smart);
 
     let mut header_bytes = Vec::new();
     let signature = "**TI83F*";

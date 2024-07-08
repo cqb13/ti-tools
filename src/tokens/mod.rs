@@ -103,30 +103,9 @@ impl Map {
         self.map.get(key)
     }
 
-    pub fn get_token(&self, value: String, display_mode: &DisplayMode) -> Option<String> {
-        let mut longest_key: &str = "";
-
-        for (key, translation) in &self.map {
-            let translation = match display_mode {
-                DisplayMode::Pretty => &translation.display,
-                DisplayMode::Accessible => &translation.accessible,
-                DisplayMode::TiAscii => &translation.ti_ascii,
-            };
-            if translation == &value {
-                longest_key = key;
-            }
-        }
-
-        if longest_key.is_empty() {
-            None
-        } else {
-            Some(longest_key.to_string())
-        }
-    }
-
     pub fn get_longest_matching_token(
         &self,
-        value: &String,
+        value: &str,
         display_mode: &DisplayMode,
     ) -> Option<(String, String)> {
         let mut longest_key: &str = "";
@@ -158,7 +137,7 @@ impl Map {
 
     pub fn get_shortest_matching_token(
         &self,
-        value: &String,
+        value: &str,
         display_mode: &DisplayMode,
     ) -> Option<(String, String)> {
         let mut shortest_key: &str = "";

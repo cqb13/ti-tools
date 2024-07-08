@@ -1,11 +1,18 @@
 use super::DisplayMode;
 use crate::tokens::Map;
 
+pub enum EncodeMode {
+    Min,
+    Max,
+    Smart,
+}
+
 pub fn encode(
     decoded_program: &String,
     tokens: &Map,
     perform_normalize: bool,
     display_mode: DisplayMode,
+    encode_mode: EncodeMode,
 ) -> Vec<u8> {
     let mut encoded_program = Vec::new();
 
@@ -16,60 +23,42 @@ pub fn encode(
     };
 
     for line in decoded_program.lines() {
-        let mut string_indices = Vec::new();
-
-        for (index, character) in line.chars().enumerate() {
-            if character == '"' {
-                string_indices.push(index);
-            }
-        }
-
-        let mut line_segments = Vec::new();
         let mut in_string = false;
-        let mut string = Vec::new();
-        for (index, character) in line.chars().enumerate() {
-            if string_indices.contains(&index) {
-                line_segments.push((string.join(""), in_string));
-                in_string = !in_string;
-                string.clear();
-            }
+        let mut temp_line = line.to_string();
 
-            string.push(character.to_string());
-
-            if index + 1 == line.len() {
-                line_segments.push((string.join(""), false))
-            }
-        }
-
-        for (segment_string, in_string) in line_segments {
-            let mut temp_segment_string = segment_string.to_string();
-
-            while !temp_segment_string.is_empty() {
-                let token = if !in_string {
-                    tokens.get_longest_matching_token(&temp_segment_string, &display_mode)
-                } else {
-                    tokens.get_shortest_matching_token(&temp_segment_string, &display_mode)
-                };
-
-                match token {
-                    Some((key, value)) => {
-                        encoded_program.extend(convert_key_to_bytes(&key));
-                        temp_segment_string = temp_segment_string[value.len()..].to_string();
+        while !temp_line.is_empty() {
+            let token = match encode_mode {
+                EncodeMode::Max => tokens.get_longest_matching_token(&temp_line, &display_mode),
+                EncodeMode::Min => tokens.get_shortest_matching_token(&temp_line, &display_mode),
+                EncodeMode::Smart => {
+                    if in_string {
+                        tokens.get_shortest_matching_token(&temp_line, &display_mode)
+                    } else {
+                        tokens.get_longest_matching_token(&temp_line, &display_mode)
                     }
-                    None => {
-                        println!(
-                            "Error: Could not find token for line: {}",
-                            temp_segment_string
-                        );
-                        std::process::exit(1);
+                }
+            };
+
+            match token {
+                Some((key, value)) => {
+                    if value == "\"" {
+                        in_string = !in_string
                     }
+
+                    encoded_program.extend(convert_key_to_bytes(&key));
+                    temp_line = temp_line[value.len()..].to_string();
+                }
+                None => {
+                    println!("Error: Could not find token for line: {}", temp_line);
+                    std::process::exit(1);
                 }
             }
         }
-        encoded_program.push(0x3F);
+
+        encoded_program.push(0x3F); // New line
     }
 
-    encoded_program.pop();
+    encoded_program.pop(); // Remove last new line
 
     encoded_program
 }
