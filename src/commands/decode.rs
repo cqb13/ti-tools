@@ -2,7 +2,6 @@ use crate::program::{DisplayMode, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
-//TODO: fix new line
 pub fn decode_command(
     input_path_string: String,
     output_path_string: Option<String>,

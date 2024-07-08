@@ -4,6 +4,8 @@ use super::{Archived, Body, Checksum, DisplayMode, FileType, Header, Metadata};
 use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
 
+//TODO: fix length bytes
+
 //TODO: make sure this is right
 pub fn create_from_txt(
     path: PathBuf,
@@ -31,7 +33,11 @@ pub fn create_from_txt(
         return Err("name must be alphabetic".to_string());
     }
 
-    let body_string = file_string.lines().skip(4).collect::<String>();
+    let body_string = file_string
+        .lines()
+        .skip(4)
+        .collect::<Vec<&str>>()
+        .join("\n");
 
     let body_bytes = encode(&body_string, &tokens, true, display_mode);
 

@@ -62,7 +62,7 @@ pub fn encode_command(
         None => {}
     }
 
-    println!("Successfully converted to 8x")
+    println!("Successfully converted to 8xp")
 }
 
 fn print_bytes(file: &Vec<u8>) {
