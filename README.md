@@ -42,32 +42,33 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
 ## Commands
 
 ```sh
-    help         -
+    help
         Prints help information
-    version      -
+                                  <COMMAND>    A command to help with
+    version
         Prints version information
-    decode       -
+    decode
         Converts 8xp to txt
-        -i           --input      <INPUT>      The input path to an 8xp file
+                                  <INPUT>      The input path to an 8xp file
         -o           --output     <OUTPUT>     The output path to a txt file
         -d           --display-mode <DISPLAY_MODE> The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible
         -m           --model      <MODEL>      The model of calculator (use models command to see the supported models) | Default: latest
-        -b           --bytes      <>           Display the bytes of the input file
+        -c           --content    <>           Display the content of the input file
         -p           --preview    <>           Preview the output file in the terminal
-    encode       -
+    encode
         Converts txt to 8xp
-        -i           --input      <INPUT>      The input path to an txt file
+                                  <INPUT>      The input path to an 8xp file
         -o           --output     <OUTPUT>     The output path to a 8xp file
         -m           --model      <MODEL>      The model of calculator (use models command to see the supported models) | Default: latest
         -c           --content    <>           Display the content of the input file
         -p           --preview    <>           Preview the output file in the terminal
-    rename       -
+    rename
         Renames the program name in a 8xp file
-        -i           --input      <INPUT>      File path to the 8xp file
+                                  <INPUT>      The input path to an 8xp file
         -n           --name       <NAME>       New program number (8 or less uppercase alphabetic characters)
         -f           --new-file   <>           Create a new file with the same name as the program
         -d           --delete-old <>           Delete the old file
-    models       -
+    models
         Prints the supported TI calculator models
 ```
 
