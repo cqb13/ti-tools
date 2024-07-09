@@ -1,5 +1,3 @@
-# 8xp File Structure
-
 ## Overview
 
 Each 8xp file contains:

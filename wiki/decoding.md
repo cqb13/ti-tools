@@ -1,5 +1,3 @@
-# Decoding a Bytestream
-
 How to decode bytes from an 8xp file into a human-readable program.
 
 ## Parameters

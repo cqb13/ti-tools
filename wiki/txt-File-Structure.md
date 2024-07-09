@@ -1,5 +1,3 @@
-# TxT File Structure
-
 ## Overview
 
 Each text output file contains:

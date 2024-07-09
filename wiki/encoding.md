@@ -1,6 +1,3 @@
-````markdown
-# Encoding a Decoded Program
-
 How to convert the body of a decoded program into a bytes.
 
 ## Parameters
