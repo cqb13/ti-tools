@@ -41,6 +41,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Initialize and update submodules
+        run: git submodule update --init --recursive
 
       - name: Run tests
         run: cargo test --verbose
