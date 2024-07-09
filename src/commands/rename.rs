@@ -1,100 +1,98 @@
+use crate::program::{get_file_type, DisplayMode, Program};
+use crate::tokens::OsVersion;
 use std::path::Path;
 
-pub fn rename_command(input_path_string: String, name: String, new_file: bool, delete_old: bool) {
-    if name.len() > 8 {
-        println!("Name must be 8 characters or less");
-        std::process::exit(0);
-    }
+pub fn rename_command(
+    input_path_string: String,
+    name: String,
+    new_file_path: Option<String>,
+    delete_old: bool,
+) {
+    let target_version = OsVersion {
+        model: "latest".to_string(),
+        version: "latest".to_string(),
+    };
 
-    if !name.chars().all(|c| c.is_ascii_alphabetic()) {
-        println!("Name must be alphabetical characters only");
-        std::process::exit(0);
-    }
-
-    let name = name.to_uppercase();
-
-    let input_path = Path::new(&input_path_string);
+    let input_path = Path::new(&input_path_string).to_path_buf();
 
     if !input_path.exists() {
-        println!("No file is located at \"{}\"", input_path_string);
+        println!("File does not exist.");
         std::process::exit(0);
     }
 
-    match input_path.extension() {
-        Some(ext) => match ext.to_str() {
-            Some("8xp") => (),
-            _ => {
-                println!("Invalid file extension, must be 8xp");
-                std::process::exit(0)
-            }
-        },
-        None => {
-            println!("No file extension");
-            std::process::exit(0)
-        }
-    }
+    let file_type = get_file_type(&input_path);
 
-    let mut file = match std::fs::read(&input_path) {
-        Ok(file) => file,
+    match file_type {
+        Ok(file_type) => {
+            if !file_type.is_8xp() {
+                println!("File path must be to a .8xp file.");
+                std::process::exit(0);
+            }
+        }
         Err(err) => {
-            println!("Failed to read file: {}", err);
+            println!("{}", err);
             std::process::exit(0);
         }
     };
 
-    if file.len() < 76 {
-        println!("8xp file is missing header and metadata");
-        std::process::exit(0)
+    let program = Program::load(
+        input_path.to_path_buf(),
+        target_version,
+        DisplayMode::Accessible,
+    );
+
+    let mut program = match program {
+        Ok(program) => program,
+        Err(err) => {
+            println!("{}", err);
+            std::process::exit(0);
+        }
+    };
+
+    let result = program.metadata.rename(name);
+
+    match result {
+        Ok(_) => {}
+        Err(err) => {
+            println!("{}", err);
+            std::process::exit(0);
+        }
     }
 
-    let (header_bytes, file) = file.split_at_mut(55);
-    let (meta_data_bytes, file) = file.split_at_mut(19);
+    if new_file_path.is_none() {
+        let result = program.save_to(input_path.to_path_buf());
 
-    let mut name_as_bytes = name.as_bytes().to_owned();
-
-    while name_as_bytes.len() != 8 {
-        name_as_bytes.push(0)
-    }
-
-    meta_data_bytes[5..13].copy_from_slice(&name_as_bytes);
-
-    let mut file_with_renamed_program = Vec::new();
-    file_with_renamed_program.extend_from_slice(header_bytes);
-    file_with_renamed_program.extend_from_slice(meta_data_bytes);
-    file_with_renamed_program.extend_from_slice(file);
-
-    if new_file {
-        let output_path = input_path.with_file_name(name).with_extension("8xp");
-
-        match std::fs::write(&output_path, &file_with_renamed_program) {
-            Ok(_) => {
-                println!("Renamed program");
-            }
+        match result {
+            Ok(_) => {}
             Err(err) => {
-                println!("Failed to write to file: {}", err);
+                println!("{}", err);
+                std::process::exit(0);
+            }
+        }
+    } else {
+        let new_file_path = new_file_path.unwrap();
+        let new_file_path = Path::new(&new_file_path).to_path_buf();
+        let result = program.save_to(new_file_path);
+
+        match result {
+            Ok(_) => {}
+            Err(err) => {
+                println!("{}", err);
                 std::process::exit(0);
             }
         }
 
         if delete_old {
-            match std::fs::remove_file(input_path) {
+            let result = std::fs::remove_file(input_path);
+
+            match result {
                 Ok(_) => {
-                    println!("Deleted old file");
+                    println!("Deleted old file.");
                 }
                 Err(err) => {
-                    println!("Failed to delete old file: {}", err);
+                    println!("{}", err);
                     std::process::exit(0);
                 }
-            }
-        }
-    } else {
-        match std::fs::write(input_path, &file_with_renamed_program) {
-            Ok(_) => {
-                println!("Renamed program")
-            }
-            Err(err) => {
-                println!("Failed to write to file: {}", err);
-                std::process::exit(0);
             }
         }
     }

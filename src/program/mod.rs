@@ -263,6 +263,29 @@ impl Metadata {
             self.body_length
         )
     }
+
+    pub fn rename(&mut self, name: String) -> Result<(), String> {
+        if name.len() > 8 {
+            return Err("Name must be 8 characters or less".to_string());
+        }
+
+        if !name.chars().all(|c| c.is_ascii_alphabetic()) {
+            return Err("Name must be alphabetical characters only".to_string());
+        }
+
+        let name = name.to_uppercase();
+
+        let mut name_bytes = name.as_bytes().to_vec();
+        while name_bytes.len() != 8 {
+            name_bytes.push(0x00)
+        }
+
+        // name is in bytes 5-13
+        self.bytes.splice(5..13, name_bytes.iter().cloned());
+        self.name = name;
+
+        Ok(())
+    }
 }
 
 pub struct Body {
@@ -308,7 +331,23 @@ pub enum ProgramFileType {
     TXT,
 }
 
-fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, String> {
+impl ProgramFileType {
+    pub fn is_8xp(&self) -> bool {
+        match self {
+            ProgramFileType::XP => true,
+            ProgramFileType::TXT => false,
+        }
+    }
+
+    pub fn is_txt(&self) -> bool {
+        match self {
+            ProgramFileType::XP => false,
+            ProgramFileType::TXT => true,
+        }
+    }
+}
+
+pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, String> {
     match path.extension() {
         Some(ext) => match ext.to_str() {
             Some("8xp") => Ok(ProgramFileType::XP),

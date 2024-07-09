@@ -123,7 +123,8 @@ fn main() {
                     .with_name("new-file")
                     .with_long("new-file")
                     .with_short('f')
-                    .with_help("Create a new file with the same name as the program"),
+                    .with_value_name("NEW_FILE")
+                    .with_help("Save the renamed program to a new file"),
             )
             .with_arg(
                 Arg::new()
@@ -195,16 +196,12 @@ fn main() {
             );
         }
         "rename" => {
-            let input_path_string = command.get_value_of("input").throw_if_none();
+            let input_path_string = command.get_value().throw_if_none();
             let name = command.get_value_of("name").throw_if_none();
-            let new_file = command.has("new-file");
+            let new_file_path = command.get_value_of("new-file").to_option();
             let delete_old = command.has("delete-old");
 
-            if delete_old && !new_file {
-                println!("Wont delete the old file if a new one is not created")
-            }
-
-            rename_command(input_path_string, name, new_file, delete_old);
+            rename_command(input_path_string, name, new_file_path, delete_old);
         }
         "models" => models_command(),
         _ => cli.help(None),
