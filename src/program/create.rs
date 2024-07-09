@@ -183,9 +183,10 @@ pub fn create_from_8xp(
     let body = Body::new(body_bytes.to_vec(), translation);
 
     // checksum translation
-    let value = u16::from_le_bytes(body_length);
+    let checksum_bytes = (body_bytes.len() as u16).to_le_bytes();
+    let checksum_value = u16::from_le_bytes(checksum_bytes);
 
-    let checksum = Checksum::new(body_length.to_vec(), value);
+    let checksum = Checksum::new(checksum_bytes.to_vec(), checksum_value);
 
     Ok((header, metadata, body, checksum))
 }
