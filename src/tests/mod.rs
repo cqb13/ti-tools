@@ -17,8 +17,8 @@ fn test_programs() {
         "./src/tests/programs/FACTOR.txt",
     );
     test_program(
-        "./src/tests/programs/MATHTOOl.8xp",
-        "./src/tests/programs/MATHTOOl.txt",
+        "./src/tests/programs/MATHTOOL.8xp",
+        "./src/tests/programs/MATHTOOL.txt",
     );
     test_program(
         "./src/tests/programs/POLCONIC.8xp",
