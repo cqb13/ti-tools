@@ -1,3 +1,4 @@
 [submodule "src/tokens/standard_tokens"]
-	path = src/tokens/standard_tokens
-	url = https://github.com/TI-Toolkit/tokens/tree/built
+    path = src/tokens/standard_tokens
+    url = https://github.com/TI-Toolkit/tokens
+    branch = built
