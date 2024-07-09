@@ -1,4 +1,4 @@
-use crate::program::{DisplayMode, EncodeMode, Program};
+use crate::program::{DisplayMode, EncodeMode, Model, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
@@ -49,7 +49,7 @@ fn test_program(path_to_8xp: &str, path_to_txt: &str) {
     let loaded_8xp = Program::load_from_8xp(
         path_to_8xp.to_path_buf(),
         OsVersion {
-            model: "latest".to_string(),
+            model: Model::Latest,
             version: "latest".to_string(),
         },
         DisplayMode::Accessible,
@@ -64,7 +64,7 @@ fn test_program(path_to_8xp: &str, path_to_txt: &str) {
     let loaded_txt = Program::load_from_txt(
         path_to_txt.to_path_buf(),
         OsVersion {
-            model: "latest".to_string(),
+            model: Model::Latest,
             version: "latest".to_string(),
         },
         EncodeMode::Smart,
@@ -207,7 +207,7 @@ fn test_rename() {
     let input_path = Path::new("./src/tests/programs/RADICAL.8xp");
 
     let target_version = OsVersion {
-        model: "latest".to_string(),
+        model: Model::Latest,
         version: "latest".to_string(),
     };
 
@@ -267,7 +267,7 @@ fn test_rename_fail_on_length() {
     let input_path = Path::new("./src/tests/programs/RADICAL.8xp");
 
     let target_version = OsVersion {
-        model: "latest".to_string(),
+        model: Model::Latest,
         version: "latest".to_string(),
     };
 
@@ -301,7 +301,7 @@ fn test_rename_fail_on_characters() {
     let input_path = Path::new("./src/tests/programs/RADICAL.8xp");
 
     let target_version = OsVersion {
-        model: "latest".to_string(),
+        model: Model::Latest,
         version: "latest".to_string(),
     };
 

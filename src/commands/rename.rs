@@ -1,4 +1,4 @@
-use crate::program::{DisplayMode, Program};
+use crate::program::{DisplayMode, Model, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
@@ -9,7 +9,7 @@ pub fn rename_command(
     delete_old: bool,
 ) {
     let target_version = OsVersion {
-        model: "latest".to_string(),
+        model: Model::Latest,
         version: "latest".to_string(),
     };
 

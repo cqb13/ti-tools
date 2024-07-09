@@ -7,9 +7,9 @@ TI Tools is a CLI tool designed for converting 8xp files (used by TI-83 and TI-8
 - [x] make rename command use Program
   - [x] add tests for rename command
 - [x] add option to encode command to specify munch mode
-- [] add model validation
+- [x] add model validation
 - [] actually use the checksum when decoding (currently using length from metadata)
-- [] organize testsc
+- [] organize tests
 - [] finish implementing encode command
 - [] add better error handling
 

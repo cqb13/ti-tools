@@ -1,4 +1,4 @@
-use crate::program::{EncodeMode, Program};
+use crate::program::{EncodeMode, Model, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
@@ -10,6 +10,14 @@ pub fn encode_command(
     content: bool,
     preview: bool,
 ) {
+    let model = match Model::from_string(&model) {
+        Ok(model) => model,
+        Err(err) => {
+            println!("{}", err);
+            std::process::exit(0);
+        }
+    };
+
     let target_version = OsVersion {
         model,
         version: "latest".to_string(),
