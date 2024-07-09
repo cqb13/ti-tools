@@ -1,11 +1,28 @@
 mod create;
 mod decode;
-pub mod encode;
+mod encode;
 
 use crate::tokens::OsVersion;
 use create::{create_from_8xp, create_from_txt};
 use std::io::Write;
 use std::path::PathBuf;
+
+pub enum EncodeMode {
+    Min,
+    Max,
+    Smart,
+}
+
+impl EncodeMode {
+    pub fn from_string(encode_mode: &str) -> Result<EncodeMode, String> {
+        match encode_mode {
+            "min" => Ok(EncodeMode::Min),
+            "max" => Ok(EncodeMode::Max),
+            "smart" => Ok(EncodeMode::Smart),
+            _ => Err(format!("Unknown encode mode: {}", encode_mode)),
+        }
+    }
+}
 
 pub enum DisplayMode {
     Pretty,
@@ -42,7 +59,7 @@ pub struct Program {
 }
 
 impl Program {
-    pub fn load(
+    pub fn load_from_8xp(
         path: PathBuf,
         version: OsVersion,
         display_mode: DisplayMode,
@@ -54,16 +71,20 @@ impl Program {
             ));
         }
 
-        let file_type = match get_file_type(&path) {
-            Ok(file_type) => file_type,
+        match get_file_type(&path) {
+            Ok(file_type) => {
+                if !file_type.is_8xp() {
+                    return Err("File path must be to a .8xp file".to_string());
+                }
+            }
             Err(err) => return Err(err),
         };
 
-        let (header, metadata, body, checksum) = match file_type {
-            ProgramFileType::XP => create_from_8xp(path, &version, &display_mode),
-            ProgramFileType::TXT => create_from_txt(path, &version),
-        }
-        .map_err(|err| err.to_string())?;
+        let (header, metadata, body, checksum) =
+            match create_from_8xp(path, &version, &display_mode) {
+                Ok((header, metadata, body, checksum)) => (header, metadata, body, checksum),
+                Err(err) => return Err(err),
+            };
 
         let program = Program {
             header,
@@ -71,6 +92,44 @@ impl Program {
             body,
             checksum,
             display_mode,
+        };
+
+        Ok(program)
+    }
+
+    pub fn load_from_txt(
+        path: PathBuf,
+        version: OsVersion,
+        encode_mode: EncodeMode,
+    ) -> Result<Program, String> {
+        if !path.exists() {
+            return Err(format!(
+                "Failed to find file at: {:?}",
+                path.to_str().unwrap()
+            ));
+        }
+
+        match get_file_type(&path) {
+            Ok(file_type) => {
+                if !file_type.is_txt() {
+                    return Err("File path must be to a .8xp file".to_string());
+                }
+            }
+            Err(err) => return Err(err),
+        };
+
+        let (header, metadata, body, checksum) = match create_from_txt(path, &version, encode_mode)
+        {
+            Ok((header, metadata, body, checksum)) => (header, metadata, body, checksum),
+            Err(err) => return Err(err),
+        };
+
+        let program = Program {
+            header,
+            metadata,
+            body,
+            checksum,
+            display_mode: DisplayMode::Accessible,
         };
 
         Ok(program)

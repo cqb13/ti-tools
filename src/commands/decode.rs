@@ -19,7 +19,7 @@ pub fn decode_command(
 
     let display_mode = DisplayMode::from_string(&display_mode);
 
-    let program = Program::load(input_path.to_path_buf(), target_version, display_mode);
+    let program = Program::load_from_8xp(input_path.to_path_buf(), target_version, display_mode);
 
     let program = match program {
         Ok(program) => program,

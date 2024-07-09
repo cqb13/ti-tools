@@ -91,6 +91,14 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
+                    .with_name("encode-mode")
+                    .with_long("encode-mode")
+                    .with_short('e')
+                    .with_value_name("ENCODE_MODE")
+                    .with_help("The mode used to parse tokens [min, max, smart] | Default: smart"),
+            )
+            .with_arg(
+                Arg::new()
                     .with_name("content")
                     .with_long("content")
                     .with_short('c')
@@ -179,6 +187,10 @@ fn main() {
                 .get_value_of("model")
                 .to_option()
                 .unwrap_or("latest".to_string());
+            let encode_mode = command
+                .get_value_of("encode-mode")
+                .to_option()
+                .unwrap_or("smart".to_string());
             let content = command.has("content");
             let preview = command.has("preview");
 
@@ -191,6 +203,7 @@ fn main() {
                 input_path_string,
                 output_path_string,
                 model,
+                encode_mode,
                 content,
                 preview,
             );

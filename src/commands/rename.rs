@@ -1,4 +1,4 @@
-use crate::program::{get_file_type, DisplayMode, Program};
+use crate::program::{DisplayMode, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
@@ -20,22 +20,7 @@ pub fn rename_command(
         std::process::exit(0);
     }
 
-    let file_type = get_file_type(&input_path);
-
-    match file_type {
-        Ok(file_type) => {
-            if !file_type.is_8xp() {
-                println!("File path must be to a .8xp file.");
-                std::process::exit(0);
-            }
-        }
-        Err(err) => {
-            println!("{}", err);
-            std::process::exit(0);
-        }
-    };
-
-    let program = Program::load(
+    let program = Program::load_from_8xp(
         input_path.to_path_buf(),
         target_version,
         DisplayMode::Accessible,

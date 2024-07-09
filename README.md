@@ -6,12 +6,12 @@ TI Tools is a CLI tool designed for converting 8xp files (used by TI-83 and TI-8
 
 - [x] make rename command use Program
   - [x] add tests for rename command
-- [] add option to encode command to specify much mode
-- [] finish implementing encode command
+- [x] add option to encode command to specify munch mode
+- [] add model validation
 - [] actually use the checksum when decoding (currently using length from metadata)
+- [] organize testsc
+- [] finish implementing encode command
 - [] add better error handling
-- [] improve speed
-- [] organize tests
 
 ## Acknowledgments
 
@@ -71,13 +71,14 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
                                   <INPUT>      The input path to an 8xp file
         -o           --output     <OUTPUT>     The output path to a 8xp file
         -m           --model      <MODEL>      The model of calculator (use models command to see the supported models) | Default: latest
+        -e           --encode-mode <ENCODE_MODE> The mode used to parse tokens [min, max, smart] | Default: smart
         -c           --content    <>           Display the content of the input file
         -p           --preview    <>           Preview the output file in the terminal
     rename
         Renames the program name in a 8xp file
                                   <INPUT>      The input path to an 8xp file
         -n           --name       <NAME>       New program number (8 or less uppercase alphabetic characters)
-        -f           --new-file   <>           Create a new file with the same name as the program
+        -f           --new-file   <NEW_FILE>   Save the renamed program to a new file
         -d           --delete-old <>           Delete the old file
     models
         Prints the supported TI calculator models

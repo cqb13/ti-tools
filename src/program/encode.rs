@@ -1,11 +1,5 @@
-use super::DisplayMode;
+use super::{DisplayMode, EncodeMode};
 use crate::tokens::Map;
-
-pub enum EncodeMode {
-    Min,
-    Max,
-    Smart,
-}
 
 pub fn encode(
     decoded_program: &String,

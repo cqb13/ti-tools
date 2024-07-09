@@ -1,4 +1,4 @@
-use crate::program::{DisplayMode, Program};
+use crate::program::{DisplayMode, EncodeMode, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
@@ -46,7 +46,7 @@ fn test_program(path_to_8xp: &str, path_to_txt: &str) {
     let path_to_8xp = Path::new(&path_to_8xp);
     let path_to_txt = Path::new(&path_to_txt);
 
-    let loaded_8xp = Program::load(
+    let loaded_8xp = Program::load_from_8xp(
         path_to_8xp.to_path_buf(),
         OsVersion {
             model: "latest".to_string(),
@@ -61,13 +61,13 @@ fn test_program(path_to_8xp: &str, path_to_txt: &str) {
         path_to_8xp
     );
 
-    let loaded_txt = Program::load(
+    let loaded_txt = Program::load_from_txt(
         path_to_txt.to_path_buf(),
         OsVersion {
             model: "latest".to_string(),
             version: "latest".to_string(),
         },
-        DisplayMode::Accessible,
+        EncodeMode::Smart,
     );
 
     assert!(
@@ -211,7 +211,7 @@ fn test_rename() {
         version: "latest".to_string(),
     };
 
-    let program = Program::load(
+    let program = Program::load_from_8xp(
         input_path.to_path_buf(),
         target_version,
         DisplayMode::Accessible,
@@ -271,7 +271,7 @@ fn test_rename_fail_on_length() {
         version: "latest".to_string(),
     };
 
-    let program = Program::load(
+    let program = Program::load_from_8xp(
         input_path.to_path_buf(),
         target_version,
         DisplayMode::Accessible,
@@ -305,7 +305,7 @@ fn test_rename_fail_on_characters() {
         version: "latest".to_string(),
     };
 
-    let program = Program::load(
+    let program = Program::load_from_8xp(
         input_path.to_path_buf(),
         target_version,
         DisplayMode::Accessible,
