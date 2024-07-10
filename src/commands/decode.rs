@@ -6,7 +6,7 @@ use std::path::Path;
 pub fn decode_command(
     input_path_string: String,
     output_path_string: Option<String>,
-    display_mode: String,
+    display_mode_string: String,
     model: String,
     content: bool,
     preview: bool,
@@ -23,7 +23,7 @@ pub fn decode_command(
 
     let input_path = Path::new(&input_path_string);
 
-    let display_mode = match DisplayMode::from_string(&display_mode) {
+    let display_mode = match DisplayMode::from_string(&display_mode_string) {
         Ok(display_mode) => display_mode,
         Err(err) => exit_with_error(&err),
     };
@@ -55,6 +55,10 @@ pub fn decode_command(
         Some(output_path_string) => {
             let output_path = Path::new(&output_path_string);
             let result = program.save_to(output_path.to_path_buf());
+
+            if display_mode_string == "pretty" {
+                println!("Warning: Pretty tokens can't be accurately encoded")
+            }
 
             match result {
                 Ok(_) => {}
