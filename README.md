@@ -2,17 +2,6 @@
 
 TI Tools is a CLI tool designed for converting 8xp files (used by TI-83 and TI-84 calculators) to text files and vice versa. It also supports various other features for working with 8xp files.
 
-## TODO
-
-- [x] make rename command use Program
-  - [x] add tests for rename command
-- [x] add option to encode command to specify munch mode
-- [x] add model validation
-- [x] actually use the checksum when decoding (currently using length from metadata)
-- [x] finish implementing encode command
-- [x] add better error handling
-- [] organize tests
-
 ## Acknowledgments
 
 This project would not be possible without the help of the following:
