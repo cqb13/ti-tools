@@ -58,13 +58,14 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
                                   <INPUT>      The input path to an 8xp file
         -o           --output     <OUTPUT>     The output path to a 8xp file
         -m           --model      <MODEL>      The model of calculator (use models command to see the supported models) | Default: latest
+        -e           --encode-mode <ENCODE_MODE> The mode used to parse tokens [min, max, smart] | Default: smart
         -c           --content    <>           Display the content of the input file
         -p           --preview    <>           Preview the output file in the terminal
     rename
         Renames the program name in a 8xp file
                                   <INPUT>      The input path to an 8xp file
         -n           --name       <NAME>       New program number (8 or less uppercase alphabetic characters)
-        -f           --new-file   <>           Create a new file with the same name as the program
+        -f           --new-file   <NEW_FILE>   Save the renamed program to a new file
         -d           --delete-old <>           Delete the old file
     models
         Prints the supported TI calculator models
