@@ -166,7 +166,7 @@ fn main() {
             let content = command.has("content");
             let preview = command.has("preview");
 
-            if output_path_string.is_none() && !preview {
+            if output_path_string.is_none() && !preview && !content {
                 println!("No output path or preview option provided");
                 std::process::exit(0);
             }
@@ -194,7 +194,7 @@ fn main() {
             let content = command.has("content");
             let preview = command.has("preview");
 
-            if output_path_string.is_none() && !preview {
+            if output_path_string.is_none() && !preview && !content {
                 println!("No output path or preview option provided");
                 std::process::exit(0);
             }

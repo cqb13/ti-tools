@@ -26,15 +26,19 @@ The function returns a `Vec<u8>` containing the encoded bytestream.
 3. **Line Processing**:
 
    - The function iterates through each line of the normalized (or original) `decoded_program`.
-   - A boolean flag (`in_string`) is used to keep track of whether the current position is within a string.
+   - `A EncodeState` struct is used to track the current state during the encoding process.
 
 4. **Token Matching**:
 
-   - For each line, the function processes the text to match tokens based on the specified `encode_mode`:
+   - Tokens are found based on `encode_mode`:
      - `EncodeMode::Max`: Finds the longest matching token.
      - `EncodeMode::Min`: Finds the shortest matching token.
-     - `EncodeMode::Smart`: Finds the shortest matching token if `in_string` is `true`, otherwise finds the longest matching token.
-   - If a token is found:
+     - `EncodeMode::Smart`:
+       - Finds the longest matching token.
+       - If Prgm or ʟ is found, it switches to `EncodeMode::Min` until the line ends, a string is found, or a non alphabetic character is found.
+       - If '"' is found, it switches to `EncodeMode::Min` until the next '"' is found.
+         - If the token before it is Send(, it switches to `EncodeMode::Min`
+       - If -> / → if found, resets the mode to `EncodeMode::Smart` after the token is found.
      - The token's byte sequence is added to `encoded_program`.
      - The token's value is removed from the line being processed.
      - If the token is a double-quote (`"`), the `in_string` flag is toggled.
@@ -57,7 +61,6 @@ fn normalize(string: &str) -> String {
     string
 }
 ```
-````
 
 ## Key Conversion
 
