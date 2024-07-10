@@ -1,4 +1,5 @@
-use crate::program::{DisplayMode, Program, Model};
+use super::exit_with_error;
+use crate::program::{DisplayMode, Model, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
@@ -12,10 +13,7 @@ pub fn decode_command(
 ) {
     let model = match Model::from_string(&model) {
         Ok(model) => model,
-        Err(err) => {
-            println!("{}", err);
-            std::process::exit(0);
-        }
+        Err(err) => exit_with_error(&err),
     };
 
     let target_version = OsVersion {
@@ -25,16 +23,16 @@ pub fn decode_command(
 
     let input_path = Path::new(&input_path_string);
 
-    let display_mode = DisplayMode::from_string(&display_mode);
+    let display_mode = match DisplayMode::from_string(&display_mode) {
+        Ok(display_mode) => display_mode,
+        Err(err) => exit_with_error(&err),
+    };
 
     let program = Program::load_from_8xp(input_path.to_path_buf(), target_version, display_mode);
 
     let program = match program {
         Ok(program) => program,
-        Err(err) => {
-            println!("{}", err);
-            std::process::exit(0);
-        }
+        Err(err) => exit_with_error(&err),
     };
 
     if content {
@@ -60,10 +58,7 @@ pub fn decode_command(
 
             match result {
                 Ok(_) => {}
-                Err(err) => {
-                    println!("{}", err);
-                    std::process::exit(0);
-                }
+                Err(err) => exit_with_error(&err),
             }
         }
         None => {}

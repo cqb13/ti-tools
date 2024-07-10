@@ -1,3 +1,4 @@
+use super::exit_with_error;
 use crate::program::{EncodeMode, Model, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
@@ -12,10 +13,7 @@ pub fn encode_command(
 ) {
     let model = match Model::from_string(&model) {
         Ok(model) => model,
-        Err(err) => {
-            println!("{}", err);
-            std::process::exit(0);
-        }
+        Err(err) => exit_with_error(&err),
     };
 
     let target_version = OsVersion {
@@ -25,10 +23,7 @@ pub fn encode_command(
 
     let encode_mode = match EncodeMode::from_string(&encode_mode) {
         Ok(encode_mode) => encode_mode,
-        Err(err) => {
-            println!("{}", err);
-            std::process::exit(0);
-        }
+        Err(err) => exit_with_error(&err),
     };
 
     let input_path = Path::new(&input_path_string);
@@ -37,10 +32,7 @@ pub fn encode_command(
 
     let program = match program {
         Ok(program) => program,
-        Err(err) => {
-            println!("{}", err);
-            std::process::exit(0);
-        }
+        Err(err) => exit_with_error(&err),
     };
 
     if content {
@@ -66,10 +58,7 @@ pub fn encode_command(
 
             match result {
                 Ok(_) => {}
-                Err(err) => {
-                    println!("{}", err);
-                    std::process::exit(0);
-                }
+                Err(err) => exit_with_error(&err),
             }
         }
         None => {}

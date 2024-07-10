@@ -162,11 +162,11 @@ impl Map {
     }
 }
 
-pub fn load_tokens(target: &OsVersion) -> Map {
+pub fn load_tokens(target: &OsVersion) -> Result<Map, String> {
     let json_data = include_str!("./standard_tokens/8X.json");
 
     let tokens: std::collections::BTreeMap<String, TokenData> =
-        serde_json::from_str(json_data).unwrap();
+        serde_json::from_str(json_data).map_err(|err| err.to_string())?;
     let mut map = Map::new();
 
     for (key, token_data) in tokens {
@@ -206,5 +206,5 @@ pub fn load_tokens(target: &OsVersion) -> Map {
         }
     }
 
-    map
+    Ok(map)
 }

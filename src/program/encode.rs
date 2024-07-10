@@ -47,7 +47,7 @@ pub fn encode(
     perform_normalize: bool,
     display_mode: DisplayMode,
     encode_mode: EncodeMode,
-) -> Vec<u8> {
+) -> Result<Vec<u8>, String> {
     let mut encoded_program = Vec::new();
 
     let decoded_program = if perform_normalize {
@@ -96,8 +96,7 @@ pub fn encode(
                     temp_line = temp_line[value.len()..].to_string();
                 }
                 None => {
-                    println!("Error: Could not find token for line: {}", temp_line);
-                    std::process::exit(1);
+                    return Err(format!("Could not find token for line: {}", temp_line));
                 }
             }
         }
@@ -107,7 +106,7 @@ pub fn encode(
 
     encoded_program.pop(); // Remove last new line
 
-    encoded_program
+    Ok(encoded_program)
 }
 
 fn normalize(string: &str) -> String {

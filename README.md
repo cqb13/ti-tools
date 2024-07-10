@@ -10,7 +10,7 @@ TI Tools is a CLI tool designed for converting 8xp files (used by TI-83 and TI-8
 - [x] add model validation
 - [x] actually use the checksum when decoding (currently using length from metadata)
 - [x] finish implementing encode command
-- [] add better error handling
+- [x] add better error handling
 - [] organize tests
 
 ## Acknowledgments

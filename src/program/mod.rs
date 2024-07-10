@@ -32,12 +32,12 @@ pub enum DisplayMode {
 }
 
 impl DisplayMode {
-    pub fn from_string(display_mode: &str) -> DisplayMode {
+    pub fn from_string(display_mode: &str) -> Result<DisplayMode, String> {
         match display_mode {
-            "pretty" => DisplayMode::Pretty,
-            "accessible" => DisplayMode::Accessible,
-            "ti" => DisplayMode::TiAscii,
-            _ => panic!("Unknown display mode: {}", display_mode),
+            "pretty" => Ok(DisplayMode::Pretty),
+            "accessible" => Ok(DisplayMode::Accessible),
+            "ti" => Ok(DisplayMode::TiAscii),
+            _ => Err(format!("Unknown display mode: {}", display_mode)),
         }
     }
 
@@ -157,8 +157,7 @@ impl Program {
                     }
                 }
             } else {
-                println!("Exiting due to existing output file");
-                std::process::exit(0);
+                return Err("Exiting due to existing output file".to_string());
             }
         }
 
@@ -176,7 +175,7 @@ impl Program {
                 output_bytes.extend(self.body.bytes.to_vec());
                 output_bytes.extend(self.checksum.bytes.to_vec());
 
-                write_to_file(&path, output_bytes, "8xp");
+                write_to_file(&path, output_bytes, "8xp")?
             }
             ProgramFileType::TXT => {
                 let output_string = format!(
@@ -187,7 +186,7 @@ impl Program {
                     self.display_mode.to_string(),
                     &self.body.translation
                 );
-                write_to_file(&path, output_string, "txt");
+                write_to_file(&path, output_string, "txt")?
             }
         }
 
@@ -275,17 +274,6 @@ impl Metadata {
         body_and_checksum_length_copy: u16,
         body_length: u16,
     ) -> Metadata {
-        if body_and_checksum_length != body_and_checksum_length_copy {
-            panic!(
-                "body_and_checksum_length ({}) did not match body_and_checksum_length_copy ({})",
-                body_and_checksum_length, body_and_checksum_length_copy
-            )
-        }
-
-        if body_and_checksum_length - 2 != body_length {
-            panic!("body_length ({}) does not match body_and_checksum_length ({}) after removing checksum", body_length, body_and_checksum_length)
-        }
-
         Metadata {
             bytes,
             flag,
@@ -426,13 +414,13 @@ pub enum FileType {
 }
 
 impl FileType {
-    fn from_byte(byte: u8) -> FileType {
+    fn from_byte(byte: u8) -> Result<FileType, String> {
         match byte {
-            0x05 => FileType::Program,
-            0x06 => FileType::LockedProgram,
-            0x17 => FileType::Group,
-            0x24 => FileType::FlashApplication,
-            _ => panic!("Unknown file type: {:02X?}", byte),
+            0x05 => Ok(FileType::Program),
+            0x06 => Ok(FileType::LockedProgram),
+            0x17 => Ok(FileType::Group),
+            0x24 => Ok(FileType::FlashApplication),
+            _ => Err(format!("Unknown file type byte: {:02X?}", byte)),
         }
     }
 
@@ -445,13 +433,13 @@ impl FileType {
         }
     }
 
-    fn from_string(file_type: &str) -> FileType {
+    fn from_string(file_type: &str) -> Result<FileType, String> {
         match file_type {
-            "Program" => FileType::Program,
-            "Locked Program" => FileType::LockedProgram,
-            "Group" => FileType::Group,
-            "Flash Application" => FileType::FlashApplication,
-            _ => panic!("Unknown file type: {}", file_type),
+            "Program" => Ok(FileType::Program),
+            "Locked Program" => Ok(FileType::LockedProgram),
+            "Group" => Ok(FileType::Group),
+            "Flash Application" => Ok(FileType::FlashApplication),
+            _ => Err(format!("Unknown file type string: {}", file_type)),
         }
     }
 
@@ -471,11 +459,11 @@ pub enum Archived {
 }
 
 impl Archived {
-    fn from_byte(byte: u8) -> Archived {
+    fn from_byte(byte: u8) -> Result<Archived, String> {
         match byte {
-            0x00 => Archived::NotArchived,
-            0x80 => Archived::Archived,
-            _ => panic!("Unknown archived byte: {:02X?}", byte),
+            0x00 => Ok(Archived::NotArchived),
+            0x80 => Ok(Archived::Archived),
+            _ => Err(format!("Unknown archived byte: {:02X?}", byte)),
         }
     }
 
@@ -486,11 +474,11 @@ impl Archived {
         }
     }
 
-    fn from_string(archived: &str) -> Archived {
+    fn from_string(archived: &str) -> Result<Archived, String> {
         match archived {
-            "Not Archived" => Archived::NotArchived,
-            "Archived" => Archived::Archived,
-            _ => panic!("Unknown archived string: {}", archived),
+            "Not Archived" => Ok(Archived::NotArchived),
+            "Archived" => Ok(Archived::Archived),
+            _ => Err(format!("Unknown archived string: {}", archived)),
         }
     }
 
@@ -502,14 +490,17 @@ impl Archived {
     }
 }
 
-fn write_to_file<T: AsRef<[u8]>>(path: &PathBuf, content: T, file_type: &str) {
+fn write_to_file<T: AsRef<[u8]>>(
+    path: &PathBuf,
+    content: T,
+    file_type: &str,
+) -> Result<(), String> {
     match std::fs::write(path, content) {
         Ok(_) => println!("Successfully saved to {}", path.display()),
-        Err(err) => {
-            println!("Failed to write {}: {}", file_type, err);
-            std::process::exit(1);
-        }
+        Err(err) => return Err(format!("Failed to write {} file: {}", file_type, err)),
     }
+
+    Ok(())
 }
 
 #[derive(Debug, Eq)]

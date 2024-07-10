@@ -1,3 +1,4 @@
+use super::exit_with_error;
 use crate::program::{DisplayMode, Model, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
@@ -15,11 +16,6 @@ pub fn rename_command(
 
     let input_path = Path::new(&input_path_string).to_path_buf();
 
-    if !input_path.exists() {
-        println!("File does not exist.");
-        std::process::exit(0);
-    }
-
     let program = Program::load_from_8xp(
         input_path.to_path_buf(),
         target_version,
@@ -28,20 +24,14 @@ pub fn rename_command(
 
     let mut program = match program {
         Ok(program) => program,
-        Err(err) => {
-            println!("{}", err);
-            std::process::exit(0);
-        }
+        Err(err) => exit_with_error(&err),
     };
 
     let result = program.metadata.rename(name);
 
     match result {
         Ok(_) => {}
-        Err(err) => {
-            println!("{}", err);
-            std::process::exit(0);
-        }
+        Err(err) => exit_with_error(&err),
     }
 
     if new_file_path.is_none() {
@@ -49,10 +39,7 @@ pub fn rename_command(
 
         match result {
             Ok(_) => {}
-            Err(err) => {
-                println!("{}", err);
-                std::process::exit(0);
-            }
+            Err(err) => exit_with_error(&err),
         }
     } else {
         let new_file_path = new_file_path.unwrap();
@@ -61,10 +48,7 @@ pub fn rename_command(
 
         match result {
             Ok(_) => {}
-            Err(err) => {
-                println!("{}", err);
-                std::process::exit(0);
-            }
+            Err(err) => exit_with_error(&err),
         }
 
         if delete_old {
@@ -74,10 +58,7 @@ pub fn rename_command(
                 Ok(_) => {
                     println!("Deleted old file.");
                 }
-                Err(err) => {
-                    println!("{}", err);
-                    std::process::exit(0);
-                }
+                Err(err) => exit_with_error(&err.to_string()),
             }
         }
     }

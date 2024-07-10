@@ -9,19 +9,29 @@ pub fn create_from_txt(
     version: &OsVersion,
     encode_mode: EncodeMode,
 ) -> Result<(Header, Metadata, Body, Checksum), String> {
-    let tokens = load_tokens(version);
+    let tokens = load_tokens(version)?;
 
     let file_string = std::fs::read_to_string(&path).map_err(|err| err.to_string())?;
 
     let name = file_string
         .lines()
         .next()
-        .expect("missing file name")
-        .to_string();
-    let file_type = FileType::from_string(file_string.lines().nth(1).expect("missing file type"));
-    let archived = Archived::from_string(file_string.lines().nth(2).expect("missing archived"));
-    let display_mode =
-        DisplayMode::from_string(file_string.lines().nth(3).expect("missing display mode"));
+        .ok_or_else(|| "missing name".to_string())?;
+    let line = file_string
+        .lines()
+        .nth(1)
+        .ok_or_else(|| "missing file type".to_string())?;
+    let file_type = FileType::from_string(line)?;
+    let line = file_string
+        .lines()
+        .nth(2)
+        .ok_or_else(|| "missing archived".to_string())?;
+    let archived = Archived::from_string(line)?;
+    let line = file_string
+        .lines()
+        .nth(3)
+        .ok_or_else(|| "missing display mode".to_string())?;
+    let display_mode = DisplayMode::from_string(line)?;
 
     if name.len() > 8 {
         return Err("name must be 8 or less characters".to_string());
@@ -37,7 +47,7 @@ pub fn create_from_txt(
         .collect::<Vec<&str>>()
         .join("\n");
 
-    let body_bytes = encode(&body_string, &tokens, true, display_mode, encode_mode);
+    let body_bytes = encode(&body_string, &tokens, true, display_mode, encode_mode)?;
 
     let mut header_bytes = Vec::new();
     let signature = "**TI83F*";
@@ -84,7 +94,7 @@ pub fn create_from_txt(
         0x00,
         body_and_checksum_length,
         file_type,
-        name,
+        name.to_string(),
         0x00,
         archived,
         body_and_checksum_length,
@@ -114,7 +124,7 @@ pub fn create_from_8xp(
     version: &OsVersion,
     display_mode: &DisplayMode,
 ) -> Result<(Header, Metadata, Body, Checksum), String> {
-    let tokens = load_tokens(version);
+    let tokens = load_tokens(version)?;
 
     let bytes = std::fs::read(&path).map_err(|err| err.to_string())?;
 
@@ -153,14 +163,14 @@ pub fn create_from_8xp(
     let flag = metadata_bytes[0];
     let unknown = metadata_bytes[1];
     let body_and_checksum_length = [metadata_bytes[2], metadata_bytes[3]];
-    let file_type = FileType::from_byte(metadata_bytes[4]);
+    let file_type = FileType::from_byte(metadata_bytes[4])?;
     let name = metadata_bytes[5..13]
         .iter()
         .filter(|byte| **byte != 0x00)
         .map(|byte| *byte as char)
         .collect::<String>();
     let version = metadata_bytes[13];
-    let archived = Archived::from_byte(metadata_bytes[14]);
+    let archived = Archived::from_byte(metadata_bytes[14])?;
     let body_and_checksum_length_duplicate = [metadata_bytes[15], metadata_bytes[16]];
     let body_length = [metadata_bytes[17], metadata_bytes[18]];
 
