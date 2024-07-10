@@ -3,9 +3,9 @@ use crate::program::{DisplayMode, Model, Program};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
-pub fn rename_command(
+pub fn comment_command(
     input_path_string: String,
-    name: String,
+    comment: String,
     model: String,
     new_file_path: Option<String>,
     delete_old: bool,
@@ -33,7 +33,7 @@ pub fn rename_command(
         Err(err) => exit_with_error(&err),
     };
 
-    let result = program.metadata.rename(name);
+    let result = program.header.comment(comment);
 
     match result {
         Ok(_) => {}

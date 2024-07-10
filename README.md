@@ -67,7 +67,15 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
         Renames the program name in a 8xp file
                                   <INPUT>      The input path to an 8xp file
         -n           --name       <NAME>       New program number (8 or less uppercase alphabetic characters)
+        -m           --model      <MODEL>      The model of calculator (use models command to see the supported models) | Default: latest
         -f           --new-file   <NEW_FILE>   Save the renamed program to a new file
+        -d           --delete-old <>           Delete the old file
+    comment
+        Write a custom comment to an 8xp file
+                                  <INPUT>      The input path to an 8xp file
+        -c           --comment    <COMMENT>    New program comment (42 or less characters)
+        -m           --model      <MODEL>      The model of calculator (use models command to see the supported models) | Default: latest
+        -f           --new-file   <NEW_FILE>   Save the program with a new comment to a new file
         -d           --delete-old <>           Delete the old file
     details
         Displays information about an 8xp file

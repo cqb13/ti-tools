@@ -6,6 +6,7 @@ pub mod tests;
 pub mod tokens;
 
 use cli::{Arg, Cli, Command};
+use commands::comment::comment_command;
 use commands::decode::decode_command;
 use commands::details::details_command;
 use commands::encode::encode_command;
@@ -129,11 +130,57 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
+                    .with_name("model")
+                    .with_long("model")
+                    .with_short('m')
+                    .with_value_name("MODEL")
+                    .with_help("The model of calculator (use models command to see the supported models) | Default: latest"),
+            )
+            .with_arg(
+                Arg::new()
                     .with_name("new-file")
                     .with_long("new-file")
                     .with_short('f')
                     .with_value_name("NEW_FILE")
                     .with_help("Save the renamed program to a new file"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("delete-old")
+                    .with_long("delete-old")
+                    .with_short('d')
+                    .with_help("Delete the old file"),
+            ),
+        Command::new("comment", "Write a custom comment to an 8xp file")
+            .with_arg(
+                Arg::new()
+                .with_name("input")
+                .with_value_name("INPUT")
+                .with_help("The input path to an 8xp file")
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("comment")
+                    .with_long("comment")
+                    .with_short('c')
+                    .with_value_name("COMMENT")
+                    .with_help("New program comment (42 or less characters)"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("model")
+                    .with_long("model")
+                    .with_short('m')
+                    .with_value_name("MODEL")
+                    .with_help("The model of calculator (use models command to see the supported models) | Default: latest"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("new-file")
+                    .with_long("new-file")
+                    .with_short('f')
+                    .with_value_name("NEW_FILE")
+                    .with_help("Save the program with a new comment to a new file"),
             )
             .with_arg(
                 Arg::new()
@@ -227,10 +274,26 @@ fn main() {
         "rename" => {
             let input_path_string = command.get_value().throw_if_none();
             let name = command.get_value_of("name").throw_if_none();
+            let model = command
+                .get_value_of("model")
+                .to_option()
+                .unwrap_or("latest".to_string());
             let new_file_path = command.get_value_of("new-file").to_option();
             let delete_old = command.has("delete-old");
 
-            rename_command(input_path_string, name, new_file_path, delete_old);
+            rename_command(input_path_string, name, model, new_file_path, delete_old);
+        }
+        "comment" => {
+            let input_path_string = command.get_value().throw_if_none();
+            let comment = command.get_value_of("comment").throw_if_none();
+            let model = command
+                .get_value_of("model")
+                .to_option()
+                .unwrap_or("latest".to_string());
+            let new_file_path = command.get_value_of("new-file").to_option();
+            let delete_old = command.has("delete-old");
+
+            comment_command(input_path_string, comment, model, new_file_path, delete_old)
         }
         "details" => {
             let input_path_string = command.get_value().throw_if_none();

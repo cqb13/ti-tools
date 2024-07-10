@@ -1,3 +1,4 @@
+pub mod comment;
 pub mod decode;
 pub mod details;
 pub mod encode;

@@ -246,6 +246,23 @@ impl Header {
             self.metadata_and_body_length
         )
     }
+
+    pub fn comment(&mut self, comment: String) -> Result<(), String> {
+        if comment.len() > 42 {
+            return Err("Comment must be 42 characters or less".to_string());
+        }
+
+        let mut comment_bytes = comment.as_bytes().to_vec();
+        while comment_bytes.len() != 42 {
+            comment_bytes.push(0x00)
+        }
+
+        // name is in bytes 11-53
+        self.bytes.splice(11..53, comment_bytes.iter().cloned());
+        self.comment = comment;
+
+        Ok(())
+    }
 }
 
 pub struct Metadata {
