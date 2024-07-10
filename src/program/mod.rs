@@ -433,7 +433,7 @@ impl FileType {
         }
     }
 
-    fn from_string(file_type: &str) -> Result<FileType, String> {
+    pub fn from_string(file_type: &str) -> Result<FileType, String> {
         match file_type {
             "Program" => Ok(FileType::Program),
             "Locked Program" => Ok(FileType::LockedProgram),
@@ -443,7 +443,7 @@ impl FileType {
         }
     }
 
-    fn to_string(&self) -> String {
+    pub fn to_string(&self) -> String {
         match self {
             FileType::Program => "Program".to_string(),
             FileType::LockedProgram => "Locked Program".to_string(),
@@ -474,7 +474,7 @@ impl Archived {
         }
     }
 
-    fn from_string(archived: &str) -> Result<Archived, String> {
+    pub fn from_string(archived: &str) -> Result<Archived, String> {
         match archived {
             "Not Archived" => Ok(Archived::NotArchived),
             "Archived" => Ok(Archived::Archived),
@@ -482,7 +482,7 @@ impl Archived {
         }
     }
 
-    fn to_string(&self) -> String {
+    pub fn to_string(&self) -> String {
         match self {
             Archived::NotArchived => "Not Archived".to_string(),
             Archived::Archived => "Archived".to_string(),

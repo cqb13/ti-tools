@@ -1,4 +1,5 @@
 pub mod decode;
+pub mod details;
 pub mod encode;
 pub mod models;
 pub mod rename;
