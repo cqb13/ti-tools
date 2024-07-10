@@ -37,7 +37,7 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
     ti-tools [COMMAND] [OPTIONS]
 ```
 
-## Command
+## Commands
 
 ```
     help
