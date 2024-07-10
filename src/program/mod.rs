@@ -366,7 +366,7 @@ impl Body {
     pub fn display(&self) -> String {
         format!(
             "Body\n\
-            Translation:\n {}",
+            Translation:\n{}",
             self.translation
         )
     }
