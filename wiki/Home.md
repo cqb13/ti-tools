@@ -37,7 +37,7 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
     ti-tools [COMMAND] [OPTIONS]
 ```
 
-## Commands
+## Command
 
 ```
     help
@@ -84,6 +84,39 @@ ti-tools decode ./src/tests/programs/TOCCATA.8xp -p -c -o ./TOCCATA.txt
 ```sh
 ti-tools encode ./TOCCATA.txt -p -c -o ./TOCCATA.8xp
 ```
+
+## Troubleshooting
+
+### Mismatch between decoded and encoded programs
+
+- If you decoded the program into pretty tokens, encoding may not work correctly as there are duplicate pretty tokens.
+
+  - To fix this, decode the program into accessible tokens and then encode it.
+
+- If you decoded a program from a different source, and the encoded version does not match the original, try using a different encoding mode.
+  - The `smart` encoding mode is used by default by this program but not all programs do.
+  - List of other programs and their encoding modes:
+    - SourceCoder: `max`
+    - TokenIDE: `max`
+    - TI Connect CE: `smart`
+    - TI Planet Project Builder: `smart`
+    - ti_vars_lib_cpp: `smart`
+    - ti_vars_lib_py: `smart`
+  - If you are still having issues, please open an issue with the decoded and encoded programs.
+
+### Error loading program
+
+- If there is any error loading the program, ensure that you are using a valid file type (`.8xp` or `.txt`).
+- If there is an error encoding the program, ensure that the file matches the formatting detailed in [txt File Structure](txt-file-structure).
+- If there is an error decoding the program, ensure that you properly specified the model of the calculator.
+
+- If you are still having issues, please open an issue with the program that is causing the error.
+
+### Syntax error when running on calculator
+
+- If you are getting a syntax error when running the program on the calculator, ensure that you used the correct model when encoding the program.
+
+- If you are still having issues, please open an issue with the program that is causing the error.
 
 ## Contributing
 
