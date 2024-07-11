@@ -27,7 +27,7 @@ fn test_archive_and_unarchive() {
     assert!(result.is_ok(), "Failed to lock the program: {:?}", result);
 
     assert!(
-        program.metadata.bytes[15] == Archived::Archived.to_byte(),
+        program.metadata.bytes[14] == Archived::Archived.to_byte(),
         "The archived byte in the metadata is not correct: {:02X?}",
         program.metadata.bytes
     );
@@ -47,7 +47,7 @@ fn test_archive_and_unarchive() {
     );
 
     assert!(
-        program.metadata.bytes[15] == Archived::NotArchived.to_byte(),
+        program.metadata.bytes[14] == Archived::NotArchived.to_byte(),
         "The un-archived byte in the metadata is not correct: {:02X?}",
         program.metadata.bytes
     );

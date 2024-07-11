@@ -307,14 +307,14 @@ impl Metadata {
 
     // byte 5 is the file type byte
     pub fn lock(&mut self) -> Result<(), String> {
-        self.bytes[5] = FileType::LockedProgram.to_byte();
+        self.bytes[4] = FileType::LockedProgram.to_byte();
         self.file_type = FileType::LockedProgram;
 
         Ok(())
     }
 
     pub fn unlock(&mut self) -> Result<(), String> {
-        self.bytes[5] = FileType::Program.to_byte();
+        self.bytes[4] = FileType::Program.to_byte();
         self.file_type = FileType::Program;
 
         Ok(())
@@ -322,14 +322,14 @@ impl Metadata {
 
     // byte 15 is the archived byte
     pub fn archive(&mut self) -> Result<(), String> {
-        self.bytes[15] = Archived::Archived.to_byte();
+        self.bytes[14] = Archived::Archived.to_byte();
         self.archived = Archived::Archived;
 
         Ok(())
     }
 
     pub fn unarchive(&mut self) -> Result<(), String> {
-        self.bytes[15] = Archived::NotArchived.to_byte();
+        self.bytes[14] = Archived::NotArchived.to_byte();
         self.archived = Archived::NotArchived;
 
         Ok(())

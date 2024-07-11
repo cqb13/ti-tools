@@ -1,16 +1,21 @@
-use super::exit_with_error;
+pub mod archive;
+pub mod comment;
+pub mod lock;
+pub mod rename;
+pub mod unarchive;
+pub mod unlock;
+
 use crate::calculator::program::Program;
 use crate::calculator::{DisplayMode, Model};
+use crate::commands::exit_with_error;
 use crate::tokens::OsVersion;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
-pub fn archive_command(input_path_string: String, new_file_path: Option<String>, delete_old: bool) {
+fn load_program(input_path: &PathBuf) -> Program {
     let target_version = OsVersion {
         model: Model::Latest,
         version: "latest".to_string(),
     };
-
-    let input_path = Path::new(&input_path_string).to_path_buf();
 
     let program = Program::load_from_8xp(
         input_path.to_path_buf(),
@@ -18,18 +23,20 @@ pub fn archive_command(input_path_string: String, new_file_path: Option<String>,
         DisplayMode::Accessible,
     );
 
-    let mut program = match program {
+    let program = match program {
         Ok(program) => program,
         Err(err) => exit_with_error(&err),
     };
 
-    let result = program.metadata.archive();
+    program
+}
 
-    match result {
-        Ok(_) => {}
-        Err(err) => exit_with_error(&err),
-    }
-
+fn save_edits(
+    program: Program,
+    input_path: &PathBuf,
+    new_file_path: Option<String>,
+    delete_old: bool,
+) {
     if new_file_path.is_none() {
         let result = program.save_to(input_path.to_path_buf());
 

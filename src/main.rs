@@ -6,16 +6,16 @@ pub mod tests;
 pub mod tokens;
 
 use cli::{Arg, Cli, Command};
-use commands::archive::archive_command;
-use commands::comment::comment_command;
 use commands::decode::decode_command;
 use commands::details::details_command;
+use commands::edit::archive::archive_command;
+use commands::edit::comment::comment_command;
+use commands::edit::lock::lock_command;
+use commands::edit::rename::rename_command;
+use commands::edit::unarchive::unarchive_command;
+use commands::edit::unlock::unlock_command;
 use commands::encode::encode_command;
-use commands::lock::lock_command;
 use commands::models::models_command;
-use commands::rename::rename_command;
-use commands::unarchive::unarchive_command;
-use commands::unlock::unlock_command;
 
 fn main() {
     let cli = Cli::new().with_default_command("help").with_commands(vec![
@@ -271,14 +271,6 @@ fn main() {
                 .with_name("input")
                 .with_value_name("INPUT")
                 .with_help("The input path to an 8xp file")
-            )
-            .with_arg(
-                Arg::new()
-                    .with_name("model")
-                    .with_long("model")
-                    .with_short('m')
-                    .with_value_name("MODEL")
-                    .with_help("The model of calculator (use models command to see the supported models) | Default: latest"),
             ),
         Command::new("models", "Prints the supported TI calculator models"),
     ]);
@@ -393,12 +385,8 @@ fn main() {
         }
         "details" => {
             let input_path_string = command.get_value().throw_if_none();
-            let model = command
-                .get_value_of("model")
-                .to_option()
-                .unwrap_or("latest".to_string());
 
-            details_command(input_path_string, model)
+            details_command(input_path_string)
         }
         "models" => models_command(),
         _ => cli.help(None),

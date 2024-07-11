@@ -27,7 +27,7 @@ fn test_lock_and_unlock() {
     assert!(result.is_ok(), "Failed to lock the program: {:?}", result);
 
     assert!(
-        program.metadata.bytes[5] == FileType::LockedProgram.to_byte(),
+        program.metadata.bytes[4] == FileType::LockedProgram.to_byte(),
         "The locked byte in the metadata is not correct: {:?}",
         program.metadata.bytes
     );
@@ -43,7 +43,7 @@ fn test_lock_and_unlock() {
     assert!(result.is_ok(), "Failed to unlock the program: {:?}", result);
 
     assert!(
-        program.metadata.bytes[5] == FileType::Program.to_byte(),
+        program.metadata.bytes[4] == FileType::Program.to_byte(),
         "The unlocked byte in the metadata is not correct: {:?}",
         program.metadata.bytes
     );

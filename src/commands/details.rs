@@ -4,14 +4,9 @@ use crate::calculator::{DisplayMode, Model};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
-pub fn details_command(input_path_string: String, model: String) {
-    let model = match Model::from_string(&model) {
-        Ok(model) => model,
-        Err(err) => exit_with_error(&err),
-    };
-
+pub fn details_command(input_path_string: String) {
     let target_version = OsVersion {
-        model,
+        model: Model::Latest,
         version: "latest".to_string(),
     };
 
