@@ -98,7 +98,6 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
     details
         Displays information about an 8xp file
                                   <INPUT>      The input path to an 8xp file
-        -m           --model      <MODEL>      The model of calculator (use models command to see the supported models) | Default: latest
     models
         Prints the supported TI calculator models
 ```

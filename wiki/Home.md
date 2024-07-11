@@ -67,6 +67,35 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
         -n           --name       <NAME>       New program number (8 or less uppercase alphabetic characters)
         -f           --new-file   <NEW_FILE>   Save the renamed program to a new file
         -d           --delete-old <>           Delete the old file
+    comment
+        Write a custom comment to an 8xp file
+                                  <INPUT>      The input path to an 8xp file
+        -c           --comment    <COMMENT>    New program comment (42 or less characters)
+        -f           --new-file   <NEW_FILE>   Save the program with a new comment to a new file
+        -d           --delete-old <>           Delete the old file
+    lock
+        Lock an 8xp file
+                                  <INPUT>      The input path to an 8xp file
+        -f           --new-file   <NEW_FILE>   Save the locked program to a new file
+        -d           --delete-old <>           Delete the old file
+    unlock
+        unlock an 8xp file
+                                  <INPUT>      The input path to an 8xp file
+        -f           --new-file   <NEW_FILE>   Save the unlocked program to a new file
+        -d           --delete-old <>           Delete the old file
+    archive
+        Archive an 8xp file
+                                  <INPUT>      The input path to an 8xp file
+        -f           --new-file   <NEW_FILE>   Save the archived program to a new file
+        -d           --delete-old <>           Delete the old file
+    unarchive
+        Unarchive an 8xp file
+                                  <INPUT>      The input path to an 8xp file
+        -f           --new-file   <NEW_FILE>   Save the un-archived program to a new file
+        -d           --delete-old <>           Delete the old file
+    details
+        Displays information about an 8xp file
+                                  <INPUT>      The input path to an 8xp file
     models
         Prints the supported TI calculator models
 ```
