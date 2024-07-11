@@ -1,6 +1,6 @@
 [package]
 name = "ti-tools"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 authors = ["cqb13 <cqb13.dev@gmail.com>"]
 license = "MIT"
