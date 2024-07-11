@@ -1,6 +1,6 @@
 pub mod cli;
 pub mod commands;
-pub mod program;
+pub mod calculator;
 #[cfg(test)]
 pub mod tests;
 pub mod tokens;

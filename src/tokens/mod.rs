@@ -2,7 +2,7 @@ use serde::Deserialize;
 use std::cmp::Ordering;
 use std::collections::HashMap;
 
-use crate::program::{DisplayMode, Model};
+use crate::calculator::{DisplayMode, Model};
 
 #[derive(Debug, PartialEq, Eq, Deserialize)]
 pub struct OsVersion {

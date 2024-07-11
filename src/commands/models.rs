@@ -1,4 +1,4 @@
-use crate::program::Model;
+use crate::calculator::Model;
 
 pub fn models_command() {
     println!("Supported TI calculator models:");

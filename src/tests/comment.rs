@@ -1,4 +1,5 @@
-use crate::program::{DisplayMode, Model, Program};
+use crate::calculator::{DisplayMode, Model};
+use crate::calculator::program::Program;
 use crate::tokens::OsVersion;
 use std::path::Path;
 

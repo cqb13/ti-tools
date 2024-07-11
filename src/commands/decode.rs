@@ -1,5 +1,6 @@
 use super::exit_with_error;
-use crate::program::{DisplayMode, Model, Program};
+use crate::calculator::program::Program;
+use crate::calculator::{DisplayMode, Model};
 use crate::tokens::OsVersion;
 use std::path::Path;
 

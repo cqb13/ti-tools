@@ -1,6 +1,7 @@
 use super::decode::decode;
 use super::encode::encode;
-use super::{Archived, Body, Checksum, DisplayMode, EncodeMode, FileType, Header, Metadata};
+use super::{DisplayMode, EncodeMode};
+use crate::calculator::program::{Archived, Body, Checksum, FileType, Header, Metadata};
 use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
 
