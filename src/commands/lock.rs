@@ -4,12 +4,7 @@ use crate::calculator::{DisplayMode, Model};
 use crate::tokens::OsVersion;
 use std::path::Path;
 
-pub fn comment_command(
-    input_path_string: String,
-    comment: String,
-    new_file_path: Option<String>,
-    delete_old: bool,
-) {
+pub fn lock_command(input_path_string: String, new_file_path: Option<String>, delete_old: bool) {
     let target_version = OsVersion {
         model: Model::Latest,
         version: "latest".to_string(),
@@ -28,7 +23,7 @@ pub fn comment_command(
         Err(err) => exit_with_error(&err),
     };
 
-    let result = program.header.comment(comment);
+    let result = program.metadata.lock();
 
     match result {
         Ok(_) => {}

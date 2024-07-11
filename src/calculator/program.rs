@@ -1,5 +1,5 @@
-use crate::calculator::{DisplayMode, EncodeMode};
 use crate::calculator::create::{create_from_8xp, create_from_txt};
+use crate::calculator::{DisplayMode, EncodeMode};
 use crate::tokens::OsVersion;
 use std::io::Write;
 use std::path::PathBuf;
@@ -301,6 +301,36 @@ impl Metadata {
         // name is in bytes 5-13
         self.bytes.splice(5..13, name_bytes.iter().cloned());
         self.name = name;
+
+        Ok(())
+    }
+
+    // byte 5 is the file type byte
+    pub fn lock(&mut self) -> Result<(), String> {
+        self.bytes[5] = FileType::LockedProgram.to_byte();
+        self.file_type = FileType::LockedProgram;
+
+        Ok(())
+    }
+
+    pub fn unlock(&mut self) -> Result<(), String> {
+        self.bytes[5] = FileType::Program.to_byte();
+        self.file_type = FileType::Program;
+
+        Ok(())
+    }
+
+    // byte 15 is the archived byte
+    pub fn archive(&mut self) -> Result<(), String> {
+        self.bytes[15] = Archived::Archived.to_byte();
+        self.archived = Archived::Archived;
+
+        Ok(())
+    }
+
+    pub fn unarchive(&mut self) -> Result<(), String> {
+        self.bytes[15] = Archived::NotArchived.to_byte();
+        self.archived = Archived::NotArchived;
 
         Ok(())
     }

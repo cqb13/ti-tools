@@ -1,17 +1,21 @@
+pub mod calculator;
 pub mod cli;
 pub mod commands;
-pub mod calculator;
 #[cfg(test)]
 pub mod tests;
 pub mod tokens;
 
 use cli::{Arg, Cli, Command};
+use commands::archive::archive_command;
 use commands::comment::comment_command;
 use commands::decode::decode_command;
 use commands::details::details_command;
 use commands::encode::encode_command;
+use commands::lock::lock_command;
 use commands::models::models_command;
 use commands::rename::rename_command;
+use commands::unarchive::unarchive_command;
+use commands::unlock::unlock_command;
 
 fn main() {
     let cli = Cli::new().with_default_command("help").with_commands(vec![
@@ -130,14 +134,6 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
-                    .with_name("model")
-                    .with_long("model")
-                    .with_short('m')
-                    .with_value_name("MODEL")
-                    .with_help("The model of calculator (use models command to see the supported models) | Default: latest"),
-            )
-            .with_arg(
-                Arg::new()
                     .with_name("new-file")
                     .with_long("new-file")
                     .with_short('f')
@@ -168,11 +164,25 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
-                    .with_name("model")
-                    .with_long("model")
-                    .with_short('m')
-                    .with_value_name("MODEL")
-                    .with_help("The model of calculator (use models command to see the supported models) | Default: latest"),
+                    .with_name("new-file")
+                    .with_long("new-file")
+                    .with_short('f')
+                    .with_value_name("NEW_FILE")
+                    .with_help("Save the program with a new comment to a new file"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("delete-old")
+                    .with_long("delete-old")
+                    .with_short('d')
+                    .with_help("Delete the old file"),
+            ),
+        Command::new("lock", "Lock an 8xp file")
+            .with_arg(
+                Arg::new()
+                .with_name("input")
+                .with_value_name("INPUT")
+                .with_help("The input path to an 8xp file")
             )
             .with_arg(
                 Arg::new()
@@ -180,7 +190,73 @@ fn main() {
                     .with_long("new-file")
                     .with_short('f')
                     .with_value_name("NEW_FILE")
-                    .with_help("Save the program with a new comment to a new file"),
+                    .with_help("Save the locked program to a new file"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("delete-old")
+                    .with_long("delete-old")
+                    .with_short('d')
+                    .with_help("Delete the old file"),
+            ),
+        Command::new("unlock", "unlock an 8xp file")
+            .with_arg(
+                Arg::new()
+                .with_name("input")
+                .with_value_name("INPUT")
+                .with_help("The input path to an 8xp file")
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("new-file")
+                    .with_long("new-file")
+                    .with_short('f')
+                    .with_value_name("NEW_FILE")
+                    .with_help("Save the unlocked program to a new file"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("delete-old")
+                    .with_long("delete-old")
+                    .with_short('d')
+                    .with_help("Delete the old file"),
+            ),
+        Command::new("archive", "Archive an 8xp file")
+            .with_arg(
+                Arg::new()
+                .with_name("input")
+                .with_value_name("INPUT")
+                .with_help("The input path to an 8xp file")
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("new-file")
+                    .with_long("new-file")
+                    .with_short('f')
+                    .with_value_name("NEW_FILE")
+                    .with_help("Save the archived program to a new file"),
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("delete-old")
+                    .with_long("delete-old")
+                    .with_short('d')
+                    .with_help("Delete the old file"),
+            ),
+        Command::new("unarchive", "Unarchive an 8xp file")
+            .with_arg(
+                Arg::new()
+                .with_name("input")
+                .with_value_name("INPUT")
+                .with_help("The input path to an 8xp file")
+            )
+            .with_arg(
+                Arg::new()
+                    .with_name("new-file")
+                    .with_long("new-file")
+                    .with_short('f')
+                    .with_value_name("NEW_FILE")
+                    .with_help("Save the un-archived program to a new file"),
             )
             .with_arg(
                 Arg::new()
@@ -274,26 +350,46 @@ fn main() {
         "rename" => {
             let input_path_string = command.get_value().throw_if_none();
             let name = command.get_value_of("name").throw_if_none();
-            let model = command
-                .get_value_of("model")
-                .to_option()
-                .unwrap_or("latest".to_string());
             let new_file_path = command.get_value_of("new-file").to_option();
             let delete_old = command.has("delete-old");
 
-            rename_command(input_path_string, name, model, new_file_path, delete_old);
+            rename_command(input_path_string, name, new_file_path, delete_old);
         }
         "comment" => {
             let input_path_string = command.get_value().throw_if_none();
             let comment = command.get_value_of("comment").throw_if_none();
-            let model = command
-                .get_value_of("model")
-                .to_option()
-                .unwrap_or("latest".to_string());
             let new_file_path = command.get_value_of("new-file").to_option();
             let delete_old = command.has("delete-old");
 
-            comment_command(input_path_string, comment, model, new_file_path, delete_old)
+            comment_command(input_path_string, comment, new_file_path, delete_old);
+        }
+        "lock" => {
+            let input_path_string = command.get_value().throw_if_none();
+            let new_file_path = command.get_value_of("new-file").to_option();
+            let delete_old = command.has("delete-old");
+
+            lock_command(input_path_string, new_file_path, delete_old);
+        }
+        "unlock" => {
+            let input_path_string = command.get_value().throw_if_none();
+            let new_file_path = command.get_value_of("new-file").to_option();
+            let delete_old = command.has("delete-old");
+
+            unlock_command(input_path_string, new_file_path, delete_old);
+        }
+        "archive" => {
+            let input_path_string = command.get_value().throw_if_none();
+            let new_file_path = command.get_value_of("new-file").to_option();
+            let delete_old = command.has("delete-old");
+
+            archive_command(input_path_string, new_file_path, delete_old);
+        }
+        "unarchive" => {
+            let input_path_string = command.get_value().throw_if_none();
+            let new_file_path = command.get_value_of("new-file").to_option();
+            let delete_old = command.has("delete-old");
+
+            unarchive_command(input_path_string, new_file_path, delete_old);
         }
         "details" => {
             let input_path_string = command.get_value().throw_if_none();

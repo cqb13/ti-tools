@@ -7,17 +7,11 @@ use std::path::Path;
 pub fn rename_command(
     input_path_string: String,
     name: String,
-    model: String,
     new_file_path: Option<String>,
     delete_old: bool,
 ) {
-    let model = match Model::from_string(&model) {
-        Ok(model) => model,
-        Err(err) => exit_with_error(&err),
-    };
-
     let target_version = OsVersion {
-        model,
+        model: Model::Latest,
         version: "latest".to_string(),
     };
 
