@@ -1,8 +1,7 @@
-use super::decode::decode;
-use super::encode::encode;
-use super::models::{Model, ModelDetails};
-use super::{DisplayMode, EncodeMode};
+use crate::calculator::encode::encode;
+use crate::calculator::models::{Model, ModelDetails};
 use crate::calculator::program::{Archived, Body, Checksum, FileType, Header, Metadata};
+use crate::calculator::{DisplayMode, EncodeMode};
 use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
 
@@ -130,109 +129,4 @@ pub fn create_from_txt(
 fn create_comment() -> String {
     let version = env!("CARGO_PKG_VERSION");
     format!("Created by TI-Tools {}", version)
-}
-
-pub fn create_from_8xp(
-    path: PathBuf,
-    display_mode: &DisplayMode,
-) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), String> {
-    let bytes = std::fs::read(&path).map_err(|err| err.to_string())?;
-
-    let (header_bytes, bytes) = bytes.split_at(55);
-    let (metadata_bytes, bytes) = bytes.split_at(19);
-    let (body_bytes, _) = bytes.split_at(bytes.len() - 2);
-
-    // header translation
-    let signature = header_bytes[0..8]
-        .iter()
-        .map(|byte| *byte as char)
-        .collect::<String>();
-
-    let signature_extra = [header_bytes[8], header_bytes[9]];
-
-    let product_id = header_bytes[10];
-
-    let model_details = ModelDetails::from_byte(product_id, &signature)?;
-
-    let version = OsVersion {
-        model: model_details.model.clone(),
-        version: "latest".to_string(),
-    };
-
-    let tokens = load_tokens(&version)?;
-
-    let comment = header_bytes[11..53]
-        .iter()
-        .filter(|byte| **byte != 0x00)
-        .map(|byte| *byte as char)
-        .collect::<String>();
-
-    let metadata_and_body_length = [header_bytes[53], header_bytes[54]];
-
-    let header = Header::new(
-        header_bytes.to_vec(),
-        signature,
-        signature_extra.to_vec(),
-        product_id,
-        comment,
-        u16::from_le_bytes(metadata_and_body_length),
-    );
-
-    // metadata translation
-    let flag = metadata_bytes[0];
-    let unknown = metadata_bytes[1];
-    let body_and_checksum_length = [metadata_bytes[2], metadata_bytes[3]];
-    let file_type = FileType::from_byte(metadata_bytes[4])?;
-    let name = metadata_bytes[5..13]
-        .iter()
-        .filter(|byte| **byte != 0x00)
-        .map(|byte| *byte as char)
-        .collect::<String>();
-    let version = metadata_bytes[13];
-    let archived = Archived::from_byte(metadata_bytes[14])?;
-    let body_and_checksum_length_duplicate = [metadata_bytes[15], metadata_bytes[16]];
-    let body_length = [metadata_bytes[17], metadata_bytes[18]];
-
-    let h_and_m_bytes = [header_bytes, metadata_bytes].concat();
-    print_bytes(h_and_m_bytes);
-    println!();
-
-    let metadata = Metadata::new(
-        metadata_bytes.to_vec(),
-        flag,
-        unknown,
-        u16::from_le_bytes(body_and_checksum_length),
-        file_type,
-        name,
-        version,
-        archived,
-        u16::from_le_bytes(body_and_checksum_length_duplicate),
-        u16::from_le_bytes(body_length),
-    );
-
-    // body translation
-    let translation = decode(body_bytes, &tokens, "en", &display_mode)?;
-
-    let body = Body::new(body_bytes.to_vec(), translation);
-
-    // checksum translation
-    let checksum_bytes = (body_bytes.len() as u16).to_le_bytes();
-    let checksum_value = u16::from_le_bytes(checksum_bytes);
-
-    let checksum = Checksum::new(checksum_bytes.to_vec(), checksum_value);
-
-    Ok((header, metadata, body, checksum, model_details))
-}
-
-fn print_bytes(bytes: Vec<u8>) {
-    let mut i = 0;
-    for byte in bytes {
-        print!("{:02X}", byte);
-        i += 1;
-        if i % 16 == 0 {
-            println!();
-        } else {
-            print!(", ");
-        }
-    }
 }

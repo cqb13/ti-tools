@@ -27,12 +27,12 @@ fn main() {
                 .with_help("A command to help with"),
             ),
         Command::new("version", "Prints version information"),
-        Command::new("decode", "Converts 8xp to txt")
+        Command::new("decode", "Converts 8xp/82p/83p to txt")
             .with_arg(
                 Arg::new()
                 .with_name("input")
                 .with_value_name("INPUT")
-                .with_help("The input path to an 8xp file")
+                .with_help("The input path to an 8xp/82p/83p file")
             )
             .with_arg(
                 Arg::new()
@@ -64,12 +64,12 @@ fn main() {
                     .with_short('p')
                     .with_help("Preview the output file in the terminal"),
             ),
-        Command::new("encode", "Converts txt to 8xp")
+        Command::new("encode", "Converts txt to ")
             .with_arg(
                 Arg::new()
                 .with_name("input")
                 .with_value_name("INPUT")
-                .with_help("The input path to an 8xp file")
+                .with_help("The input path to an 8xp/82p/83p file")
             )
             .with_arg(
                 Arg::new()
@@ -77,7 +77,7 @@ fn main() {
                     .with_long("output")
                     .with_short('o')
                     .with_value_name("OUTPUT")
-                    .with_help("The output path to a 8xp file"),
+                    .with_help("The output path to a 8xp/82p/83p file"),
             )
             .with_arg(
                 Arg::new()
@@ -101,12 +101,12 @@ fn main() {
                     .with_short('p')
                     .with_help("Preview the output file in the terminal"),
             ),
-        Command::new("rename", "Renames the program name in a 8xp file")
+        Command::new("rename", "Renames the program name in a 8xp/82p/83p file")
             .with_arg(
                 Arg::new()
                 .with_name("input")
                 .with_value_name("INPUT")
-                .with_help("The input path to an 8xp file")
+                .with_help("The input path to an 8xp/82p/83p file")
             )
             .with_arg(
                 Arg::new()
@@ -131,12 +131,12 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("comment", "Write a custom comment to an 8xp file")
+        Command::new("comment", "Write a custom comment to an 8xp/82p/83p file")
             .with_arg(
                 Arg::new()
                 .with_name("input")
                 .with_value_name("INPUT")
-                .with_help("The input path to an 8xp file")
+                .with_help("The input path to an 8xp/82p/83p file")
             )
             .with_arg(
                 Arg::new()
@@ -161,12 +161,12 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("lock", "Lock an 8xp file")
+        Command::new("lock", "Lock an 8xp/82p/83p file")
             .with_arg(
                 Arg::new()
                 .with_name("input")
                 .with_value_name("INPUT")
-                .with_help("The input path to an 8xp file")
+                .with_help("The input path to an 8xp/82p/83p file")
             )
             .with_arg(
                 Arg::new()
@@ -183,12 +183,12 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("unlock", "unlock an 8xp file")
+        Command::new("unlock", "unlock an 8xp/82p/83p file")
             .with_arg(
                 Arg::new()
                 .with_name("input")
                 .with_value_name("INPUT")
-                .with_help("The input path to an 8xp file")
+                .with_help("The input path to an 8xp/82p/83p file")
             )
             .with_arg(
                 Arg::new()
@@ -205,12 +205,12 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("archive", "Archive an 8xp file")
+        Command::new("archive", "Archive an 8xp/82p/83p file")
             .with_arg(
                 Arg::new()
                 .with_name("input")
                 .with_value_name("INPUT")
-                .with_help("The input path to an 8xp file")
+                .with_help("The input path to an 8xp/82p/83p file")
             )
             .with_arg(
                 Arg::new()
@@ -227,12 +227,12 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("unarchive", "Unarchive an 8xp file")
+        Command::new("unarchive", "Unarchive an 8xp/82p/83p file")
             .with_arg(
                 Arg::new()
                 .with_name("input")
                 .with_value_name("INPUT")
-                .with_help("The input path to an 8xp file")
+                .with_help("The input path to an 8xp/82p/83p file")
             )
             .with_arg(
                 Arg::new()
@@ -249,12 +249,12 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("details", "Displays information about an 8xp file")
+        Command::new("details", "Displays information about an 8xp/82p/83p file")
             .with_arg(
                 Arg::new()
                 .with_name("input")
                 .with_value_name("INPUT")
-                .with_help("The input path to an 8xp file")
+                .with_help("The input path to an 8xp/82p/83p file")
             ),
         Command::new("models", "Prints the supported TI calculator models"),
     ]);

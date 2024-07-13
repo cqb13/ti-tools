@@ -1,5 +1,6 @@
 use super::models::ModelDetails;
-use crate::calculator::create::{create_from_8xp, create_from_txt};
+use crate::calculator::create::from_8xp::create_from_8xp;
+use crate::calculator::create::from_txt::create_from_txt;
 use crate::calculator::{DisplayMode, EncodeMode};
 use std::io::Write;
 use std::path::PathBuf;
@@ -22,21 +23,23 @@ impl Program {
             ));
         }
 
-        match get_file_type(&path) {
+        let file_type = match get_file_type(&path) {
             Ok(file_type) => {
                 if !file_type.is_8xp() {
-                    return Err("File path must be to a .8xp file".to_string());
+                    return Err("File path must be to 8xp/82p/83p file".to_string());
                 }
+                file_type
             }
             Err(err) => return Err(err),
         };
 
-        let (header, metadata, body, checksum, model) = match create_from_8xp(path, &display_mode) {
-            Ok((header, metadata, body, checksum, model)) => {
-                (header, metadata, body, checksum, model)
-            }
-            Err(err) => return Err(err),
-        };
+        let (header, metadata, body, checksum, model) =
+            match create_from_8xp(path, file_type, &display_mode) {
+                Ok((header, metadata, body, checksum, model)) => {
+                    (header, metadata, body, checksum, model)
+                }
+                Err(err) => return Err(err),
+            };
 
         let program = Program {
             header,
@@ -117,7 +120,7 @@ impl Program {
         };
 
         match file_type {
-            ProgramFileType::XP => {
+            ProgramFileType::XP | ProgramFileType::XPThree | ProgramFileType::XPTwo => {
                 let mut output_bytes = Vec::new();
 
                 output_bytes.extend(self.header.bytes.to_vec());
@@ -376,20 +379,22 @@ impl Checksum {
 pub enum ProgramFileType {
     XP,
     TXT,
+    XPTwo,
+    XPThree,
 }
 
 impl ProgramFileType {
     pub fn is_8xp(&self) -> bool {
         match self {
-            ProgramFileType::XP => true,
             ProgramFileType::TXT => false,
+            _ => true,
         }
     }
 
     pub fn is_txt(&self) -> bool {
         match self {
-            ProgramFileType::XP => false,
             ProgramFileType::TXT => true,
+            _ => false,
         }
     }
 }
@@ -398,6 +403,8 @@ pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, String> {
     match path.extension() {
         Some(ext) => match ext.to_str() {
             Some("8xp") => Ok(ProgramFileType::XP),
+            Some("83p") => Ok(ProgramFileType::XPThree),
+            Some("82p") => Ok(ProgramFileType::XPTwo),
             Some("txt") => Ok(ProgramFileType::TXT),
             _ => Err("Invalid file extension".to_string()),
         },
@@ -460,7 +467,7 @@ pub enum Archived {
 impl Archived {
     pub fn from_byte(byte: u8) -> Result<Archived, String> {
         match byte {
-            0x00 | 0x04 => Ok(Archived::NotArchived),
+            0x00 => Ok(Archived::NotArchived),
             0x80 => Ok(Archived::Archived),
             _ => Err(format!("Unknown archived byte: {:02X?}", byte)),
         }
