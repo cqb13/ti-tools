@@ -1,7 +1,9 @@
 RADICAL
+Created by TI-Tools 0.1.5
 Program
 Not Archived
 accessible
+latest
 ClrHome
 Output(2,6,"-----------------")
 Output(3,6,"*               *")

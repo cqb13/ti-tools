@@ -52,14 +52,6 @@ fn main() {
             )
             .with_arg(
                 Arg::new()
-                    .with_name("model")
-                    .with_long("model")
-                    .with_short('m')
-                    .with_value_name("MODEL")
-                    .with_help("The model of calculator (use models command to see the supported models) | Default: latest"),
-            )
-            .with_arg(
-                Arg::new()
                     .with_name("content")
                     .with_long("content")
                     .with_short('c')
@@ -86,14 +78,6 @@ fn main() {
                     .with_short('o')
                     .with_value_name("OUTPUT")
                     .with_help("The output path to a 8xp file"),
-            )
-            .with_arg(
-                Arg::new()
-                    .with_name("model")
-                    .with_long("model")
-                    .with_short('m')
-                    .with_value_name("MODEL")
-                    .with_help("The model of calculator (use models command to see the supported models) | Default: latest"),
             )
             .with_arg(
                 Arg::new()
@@ -290,10 +274,6 @@ fn main() {
                 .get_value_of("display-mode")
                 .to_option()
                 .unwrap_or("accessible".to_string());
-            let model = command
-                .get_value_of("model")
-                .to_option()
-                .unwrap_or("latest".to_string());
             let content = command.has("content");
             let preview = command.has("preview");
 
@@ -306,7 +286,6 @@ fn main() {
                 input_path_string,
                 output_path_string,
                 display_mode,
-                model,
                 content,
                 preview,
             );
@@ -314,10 +293,6 @@ fn main() {
         "encode" => {
             let input_path_string = command.get_value().throw_if_none();
             let output_path_string = command.get_value_of("output").to_option();
-            let model = command
-                .get_value_of("model")
-                .to_option()
-                .unwrap_or("latest".to_string());
             let encode_mode = command
                 .get_value_of("encode-mode")
                 .to_option()
@@ -333,7 +308,6 @@ fn main() {
             encode_command(
                 input_path_string,
                 output_path_string,
-                model,
                 encode_mode,
                 content,
                 preview,

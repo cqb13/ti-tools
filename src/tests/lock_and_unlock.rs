@@ -1,23 +1,12 @@
-use crate::calculator::models::Model;
 use crate::calculator::program::{FileType, Program};
 use crate::calculator::DisplayMode;
-use crate::tokens::OsVersion;
 use std::path::Path;
 
 #[test]
 fn test_lock_and_unlock() {
     let input_path = Path::new("./src/tests/programs/RADICAL.8xp");
 
-    let target_version = OsVersion {
-        model: Model::Latest,
-        version: "latest".to_string(),
-    };
-
-    let program = Program::load_from_8xp(
-        input_path.to_path_buf(),
-        target_version,
-        DisplayMode::Accessible,
-    );
+    let program = Program::load_from_8xp(input_path.to_path_buf(), DisplayMode::Accessible);
 
     assert!(program.is_ok(), "Failed to load program: {:?}", input_path);
 

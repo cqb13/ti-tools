@@ -1,6 +1,6 @@
+use super::models::ModelDetails;
 use crate::calculator::create::{create_from_8xp, create_from_txt};
 use crate::calculator::{DisplayMode, EncodeMode};
-use crate::tokens::OsVersion;
 use std::io::Write;
 use std::path::PathBuf;
 
@@ -10,14 +10,11 @@ pub struct Program {
     pub body: Body,
     pub checksum: Checksum,
     pub display_mode: DisplayMode,
+    pub model: ModelDetails,
 }
 
 impl Program {
-    pub fn load_from_8xp(
-        path: PathBuf,
-        version: OsVersion,
-        display_mode: DisplayMode,
-    ) -> Result<Program, String> {
+    pub fn load_from_8xp(path: PathBuf, display_mode: DisplayMode) -> Result<Program, String> {
         if !path.exists() {
             return Err(format!(
                 "Failed to find file at: {:?}",
@@ -34,11 +31,12 @@ impl Program {
             Err(err) => return Err(err),
         };
 
-        let (header, metadata, body, checksum) =
-            match create_from_8xp(path, &version, &display_mode) {
-                Ok((header, metadata, body, checksum)) => (header, metadata, body, checksum),
-                Err(err) => return Err(err),
-            };
+        let (header, metadata, body, checksum, model) = match create_from_8xp(path, &display_mode) {
+            Ok((header, metadata, body, checksum, model)) => {
+                (header, metadata, body, checksum, model)
+            }
+            Err(err) => return Err(err),
+        };
 
         let program = Program {
             header,
@@ -46,16 +44,13 @@ impl Program {
             body,
             checksum,
             display_mode,
+            model,
         };
 
         Ok(program)
     }
 
-    pub fn load_from_txt(
-        path: PathBuf,
-        version: OsVersion,
-        encode_mode: EncodeMode,
-    ) -> Result<Program, String> {
+    pub fn load_from_txt(path: PathBuf, encode_mode: EncodeMode) -> Result<Program, String> {
         if !path.exists() {
             return Err(format!(
                 "Failed to find file at: {:?}",
@@ -66,15 +61,16 @@ impl Program {
         match get_file_type(&path) {
             Ok(file_type) => {
                 if !file_type.is_txt() {
-                    return Err("File path must be to a .8xp file".to_string());
+                    return Err("File path must be to a .txt file".to_string());
                 }
             }
             Err(err) => return Err(err),
         };
 
-        let (header, metadata, body, checksum) = match create_from_txt(path, &version, encode_mode)
-        {
-            Ok((header, metadata, body, checksum)) => (header, metadata, body, checksum),
+        let (header, metadata, body, checksum, model) = match create_from_txt(path, encode_mode) {
+            Ok((header, metadata, body, checksum, model)) => {
+                (header, metadata, body, checksum, model)
+            }
             Err(err) => return Err(err),
         };
 
@@ -84,6 +80,7 @@ impl Program {
             body,
             checksum,
             display_mode: DisplayMode::Accessible,
+            model,
         };
 
         Ok(program)
@@ -132,11 +129,13 @@ impl Program {
             }
             ProgramFileType::TXT => {
                 let output_string = format!(
-                    "{}\n{}\n{}\n{}\n{}",
+                    "{}\n{}\n{}\n{}\n{}\n{}\n{}",
                     self.metadata.name,
+                    self.header.comment,
                     self.metadata.file_type.to_string(),
                     self.metadata.archived.to_string(),
                     self.display_mode.to_string(),
+                    self.model.model.to_string(),
                     &self.body.translation
                 );
                 write_to_file(&path, output_string, "txt")?
@@ -461,7 +460,7 @@ pub enum Archived {
 impl Archived {
     pub fn from_byte(byte: u8) -> Result<Archived, String> {
         match byte {
-            0x00 => Ok(Archived::NotArchived),
+            0x00 | 0x04 => Ok(Archived::NotArchived),
             0x80 => Ok(Archived::Archived),
             _ => Err(format!("Unknown archived byte: {:02X?}", byte)),
         }

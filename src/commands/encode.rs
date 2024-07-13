@@ -1,28 +1,15 @@
 use super::exit_with_error;
-use crate::calculator::models::Model;
 use crate::calculator::program::Program;
 use crate::calculator::EncodeMode;
-use crate::tokens::OsVersion;
 use std::path::Path;
 
 pub fn encode_command(
     input_path_string: String,
     output_path_string: Option<String>,
-    model: String,
     encode_mode: String,
     content: bool,
     preview: bool,
 ) {
-    let model = match Model::from_string(&model) {
-        Ok(model) => model,
-        Err(err) => exit_with_error(&err),
-    };
-
-    let target_version = OsVersion {
-        model,
-        version: "latest".to_string(),
-    };
-
     let encode_mode = match EncodeMode::from_string(&encode_mode) {
         Ok(encode_mode) => encode_mode,
         Err(err) => exit_with_error(&err),
@@ -30,7 +17,7 @@ pub fn encode_command(
 
     let input_path = Path::new(&input_path_string);
 
-    let program = Program::load_from_txt(input_path.to_path_buf(), target_version, encode_mode);
+    let program = Program::load_from_txt(input_path.to_path_buf(), encode_mode);
 
     let program = match program {
         Ok(program) => program,

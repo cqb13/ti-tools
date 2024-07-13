@@ -1,7 +1,9 @@
 SPLINE
+Created by TI-Tools 0.1.3
 Program
 Not Archived
 accessible
+latest
 Repeat 3<=N and N<=99
 Input "VERTICES=?",N
 End

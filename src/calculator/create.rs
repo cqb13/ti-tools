@@ -1,5 +1,6 @@
 use super::decode::decode;
 use super::encode::encode;
+use super::models::{Model, ModelDetails};
 use super::{DisplayMode, EncodeMode};
 use crate::calculator::program::{Archived, Body, Checksum, FileType, Header, Metadata};
 use crate::tokens::{load_tokens, OsVersion};
@@ -7,11 +8,8 @@ use std::path::PathBuf;
 
 pub fn create_from_txt(
     path: PathBuf,
-    version: &OsVersion,
     encode_mode: EncodeMode,
-) -> Result<(Header, Metadata, Body, Checksum), String> {
-    let tokens = load_tokens(version)?;
-
+) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), String> {
     let file_string = std::fs::read_to_string(&path).map_err(|err| err.to_string())?;
 
     let name = file_string
@@ -20,19 +18,33 @@ pub fn create_from_txt(
         .ok_or_else(|| "missing name".to_string())?;
     let line = file_string
         .lines()
-        .nth(1)
+        .nth(2)
         .ok_or_else(|| "missing file type".to_string())?;
     let file_type = FileType::from_string(line)?;
     let line = file_string
         .lines()
-        .nth(2)
+        .nth(3)
         .ok_or_else(|| "missing archived".to_string())?;
     let archived = Archived::from_string(line)?;
     let line = file_string
         .lines()
-        .nth(3)
+        .nth(4)
         .ok_or_else(|| "missing display mode".to_string())?;
     let display_mode = DisplayMode::from_string(line)?;
+    let line = file_string
+        .lines()
+        .nth(5)
+        .ok_or_else(|| "missing model".to_string())?;
+
+    let model = Model::from_string(line);
+    let model_details = ModelDetails::from_model(&model);
+
+    let version = OsVersion {
+        model,
+        version: "latest".to_string(),
+    };
+
+    let tokens = load_tokens(&version)?;
 
     if name.len() > 8 {
         return Err("name must be 8 or less characters".to_string());
@@ -44,17 +56,17 @@ pub fn create_from_txt(
 
     let body_string = file_string
         .lines()
-        .skip(4)
+        .skip(6)
         .collect::<Vec<&str>>()
         .join("\n");
 
     let body_bytes = encode(&body_string, &tokens, true, display_mode, encode_mode)?;
 
     let mut header_bytes = Vec::new();
-    let signature = "**TI83F*";
+    let signature = &model_details.signature.to_string();
     header_bytes.extend(signature.as_bytes());
     header_bytes.extend([0x1A, 0x0A]); // signature part 2
-    header_bytes.push(0x00); // mystery b
+    header_bytes.push(model_details.product_id);
     let mut comment = create_comment().as_bytes().to_owned();
     while comment.len() != 42 {
         comment.push(0x00)
@@ -67,7 +79,7 @@ pub fn create_from_txt(
         header_bytes,
         signature.to_string(),
         vec![0x1A, 0x0A],
-        0x00,
+        model_details.product_id,
         create_comment(),
         meta_and_body_length,
     );
@@ -112,7 +124,7 @@ pub fn create_from_txt(
 
     let body = Body::new(body_bytes, body_string);
 
-    Ok((header, metadata, body, checksum))
+    Ok((header, metadata, body, checksum, model_details))
 }
 
 fn create_comment() -> String {
@@ -122,11 +134,8 @@ fn create_comment() -> String {
 
 pub fn create_from_8xp(
     path: PathBuf,
-    version: &OsVersion,
     display_mode: &DisplayMode,
-) -> Result<(Header, Metadata, Body, Checksum), String> {
-    let tokens = load_tokens(version)?;
-
+) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), String> {
     let bytes = std::fs::read(&path).map_err(|err| err.to_string())?;
 
     let (header_bytes, bytes) = bytes.split_at(55);
@@ -142,6 +151,15 @@ pub fn create_from_8xp(
     let signature_extra = [header_bytes[8], header_bytes[9]];
 
     let product_id = header_bytes[10];
+
+    let model_details = ModelDetails::from_byte(product_id, &signature)?;
+
+    let version = OsVersion {
+        model: model_details.model.clone(),
+        version: "latest".to_string(),
+    };
+
+    let tokens = load_tokens(&version)?;
 
     let comment = header_bytes[11..53]
         .iter()
@@ -175,6 +193,10 @@ pub fn create_from_8xp(
     let body_and_checksum_length_duplicate = [metadata_bytes[15], metadata_bytes[16]];
     let body_length = [metadata_bytes[17], metadata_bytes[18]];
 
+    let h_and_m_bytes = [header_bytes, metadata_bytes].concat();
+    print_bytes(h_and_m_bytes);
+    println!();
+
     let metadata = Metadata::new(
         metadata_bytes.to_vec(),
         flag,
@@ -199,5 +221,18 @@ pub fn create_from_8xp(
 
     let checksum = Checksum::new(checksum_bytes.to_vec(), checksum_value);
 
-    Ok((header, metadata, body, checksum))
+    Ok((header, metadata, body, checksum, model_details))
+}
+
+fn print_bytes(bytes: Vec<u8>) {
+    let mut i = 0;
+    for byte in bytes {
+        print!("{:02X}", byte);
+        i += 1;
+        if i % 16 == 0 {
+            println!();
+        } else {
+            print!(", ");
+        }
+    }
 }

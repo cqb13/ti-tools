@@ -17,7 +17,7 @@ impl<'de> Deserialize<'de> for Model {
         D: serde::Deserializer<'de>,
     {
         let s: String = Deserialize::deserialize(deserializer)?;
-        Model::from_string(&s).map_err(serde::de::Error::custom)
+        Ok(Model::from_string(&s))
     }
 }
 

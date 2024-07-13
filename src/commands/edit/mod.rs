@@ -5,24 +5,13 @@ pub mod rename;
 pub mod unarchive;
 pub mod unlock;
 
-use crate::calculator::models::Model;
 use crate::calculator::program::Program;
 use crate::calculator::DisplayMode;
 use crate::commands::exit_with_error;
-use crate::tokens::OsVersion;
 use std::path::{Path, PathBuf};
 
 fn load_program(input_path: &PathBuf) -> Program {
-    let target_version = OsVersion {
-        model: Model::Latest,
-        version: "latest".to_string(),
-    };
-
-    let program = Program::load_from_8xp(
-        input_path.to_path_buf(),
-        target_version,
-        DisplayMode::Accessible,
-    );
+    let program = Program::load_from_8xp(input_path.to_path_buf(), DisplayMode::Accessible);
 
     let program = match program {
         Ok(program) => program,
