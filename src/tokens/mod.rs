@@ -1,8 +1,8 @@
+use crate::calculator::models::Model;
+use crate::calculator::DisplayMode;
 use serde::Deserialize;
 use std::cmp::Ordering;
 use std::collections::HashMap;
-
-use crate::calculator::{DisplayMode, Model};
 
 #[derive(Debug, PartialEq, Eq, Deserialize)]
 pub struct OsVersion {

@@ -1,5 +1,6 @@
+use crate::calculator::models::Model;
 use crate::calculator::program::{Archived, Program};
-use crate::calculator::{DisplayMode, Model};
+use crate::calculator::DisplayMode;
 use crate::tokens::OsVersion;
 use std::path::Path;
 

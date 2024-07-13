@@ -1,6 +1,7 @@
 use super::exit_with_error;
+use crate::calculator::models::Model;
 use crate::calculator::program::Program;
-use crate::calculator::{EncodeMode, Model};
+use crate::calculator::EncodeMode;
 use crate::tokens::OsVersion;
 use std::path::Path;
 
