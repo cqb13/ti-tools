@@ -50,14 +50,12 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
                                   <INPUT>      The input path to an 8xp file
         -o           --output     <OUTPUT>     The output path to a txt file
         -d           --display-mode <DISPLAY_MODE> The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible
-        -m           --model      <MODEL>      The model of calculator (use models command to see the supported models) | Default: latest
         -c           --content    <>           Display the content of the input file
         -p           --preview    <>           Preview the output file in the terminal
     encode
         Converts txt to 8xp
                                   <INPUT>      The input path to an 8xp file
         -o           --output     <OUTPUT>     The output path to a 8xp file
-        -m           --model      <MODEL>      The model of calculator (use models command to see the supported models) | Default: latest
         -e           --encode-mode <ENCODE_MODE> The mode used to parse tokens [min, max, smart] | Default: smart
         -c           --content    <>           Display the content of the input file
         -p           --preview    <>           Preview the output file in the terminal

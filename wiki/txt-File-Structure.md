@@ -3,14 +3,21 @@
 Each text output file contains:
 
 - Program Name
+- Program Description
 - File Type
 - Archive Status
 - Display Mode
+- Version
 - Program
 
 ## Program Name
 
 - Content: 8 alphabetic characters
+- Encoding: ASCII
+
+## Program Description
+
+- Content: 42 characters
 - Encoding: ASCII
 
 ## File Type
@@ -31,6 +38,7 @@ Each text output file contains:
   - pretty
   - accessible
   - ti
+  
 
 ## Program
 
