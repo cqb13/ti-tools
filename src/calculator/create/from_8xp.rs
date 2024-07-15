@@ -20,7 +20,7 @@ pub fn create_from_8xp(
         ProgramFileType::XPThree | ProgramFileType::XPTwo => bytes.split_at(17),
         ProgramFileType::TXT => return Err("TXT files cant be loaded as 8xp files".to_string()),
     };
-    let (body_bytes, _) = bytes.split_at(bytes.len() - 2);
+    let (body_bytes, checksum_bytes) = bytes.split_at(bytes.len() - 2);
 
     // header translation
     let signature = header_bytes[0..8]
@@ -131,8 +131,7 @@ pub fn create_from_8xp(
     let body = Body::new(body_bytes.to_vec(), translation);
 
     // checksum translation
-    let checksum_bytes = (body_bytes.len() as u16).to_le_bytes();
-    let checksum_value = u16::from_le_bytes(checksum_bytes);
+    let checksum_value = u16::from_le_bytes([checksum_bytes[0], checksum_bytes[1]]);
 
     let checksum = Checksum::new(checksum_bytes.to_vec(), checksum_value);
 

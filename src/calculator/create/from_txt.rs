@@ -100,6 +100,11 @@ pub fn create_from_txt(
     let body_length = body_bytes.len() as u16;
     metadata_bytes.extend(body_length.to_le_bytes());
 
+    let checksum: u32 = metadata_bytes.iter().map(|&byte| byte as u32).sum::<u32>()
+        + body_bytes.iter().map(|&byte| byte as u32).sum::<u32>();
+    let checksum = checksum.to_le_bytes()[0..2].to_vec();
+    let checksum = [checksum[0], checksum[1]];
+
     let metadata = Metadata::new(
         metadata_bytes,
         0x0D,
@@ -113,13 +118,7 @@ pub fn create_from_txt(
         body_length,
     );
 
-    let checksum_bytes = (body_bytes.len() as u16).to_le_bytes();
-
-    if checksum_bytes.len() != 2 {
-        return Err("checksum length is not 2".to_string());
-    }
-
-    let checksum = Checksum::new(checksum_bytes.to_vec(), body_bytes.len() as u16);
+    let checksum = Checksum::new(checksum.to_vec(), u16::from_le_bytes(checksum));
 
     let body = Body::new(body_bytes, body_string);
 
