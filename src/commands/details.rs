@@ -17,15 +17,12 @@ pub fn details_command(input_path_string: String) {
     println!("{}", program.header.comment);
     println!(
         "Total Size: {} bytes",
-        program.header.bytes.len()
-            + program.metadata.bytes.len()
-            + program.body.bytes.len()
-            + program.checksum.bytes.len()
-    );
+        program.header.bytes.len() + program.metadata.bytes.len() + program.body.bytes.len() + 2
+    ); // 2 for checksum
     println!("Body Size: {} bytes", program.body.bytes.len());
     println!("----- Status -----");
     println!("model: {}", program.model.model.to_string());
     println!("language: {}", program.model.language);
-    println!("{}", program.metadata.archived.to_string());
-    println!("{}", program.metadata.file_type.to_string())
+    println!("Destination: {}", program.metadata.destination.to_string());
+    println!("File Type: {}", program.metadata.file_type.to_string())
 }

@@ -15,5 +15,5 @@ pub fn archive_command(input_path_string: String, new_file_path: Option<String>,
 
     save_edits(program, &input_path, new_file_path, delete_old);
 
-    println!("Archived program.");
+    println!("Set the program destination to archive.");
 }

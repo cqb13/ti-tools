@@ -19,5 +19,5 @@ pub fn unarchive_command(
 
     save_edits(program, &input_path, new_file_path, delete_old);
 
-    println!("Un-archived program.");
+    println!("Set program destination to RAM.");
 }

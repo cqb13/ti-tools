@@ -1,6 +1,6 @@
 use crate::calculator::encode::encode;
 use crate::calculator::models::{Model, ModelDetails};
-use crate::calculator::program::{Archived, Body, Checksum, FileType, Header, Metadata};
+use crate::calculator::program::{Body, Checksum, Destination, FileType, Header, Metadata};
 use crate::calculator::{DisplayMode, EncodeMode};
 use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
@@ -24,7 +24,7 @@ pub fn create_from_txt(
         .lines()
         .nth(3)
         .ok_or_else(|| "missing archived".to_string())?;
-    let archived = Archived::from_string(line)?;
+    let destination = Destination::from_string(line)?;
     let line = file_string
         .lines()
         .nth(4)
@@ -95,7 +95,7 @@ pub fn create_from_txt(
     }
     metadata_bytes.extend(name_bytes);
     metadata_bytes.push(0x00); // version
-    metadata_bytes.push(archived.to_byte());
+    metadata_bytes.push(destination.to_byte());
     metadata_bytes.extend(body_and_checksum_length.to_le_bytes());
     let body_length = body_bytes.len() as u16;
     metadata_bytes.extend(body_length.to_le_bytes());
@@ -113,7 +113,7 @@ pub fn create_from_txt(
         file_type,
         name.to_string(),
         0x00,
-        archived,
+        destination,
         body_and_checksum_length,
         body_length,
     );

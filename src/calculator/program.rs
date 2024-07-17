@@ -136,7 +136,7 @@ impl Program {
                     self.metadata.name,
                     self.header.comment,
                     self.metadata.file_type.to_string(),
-                    self.metadata.archived.to_string(),
+                    self.metadata.destination.to_string(),
                     self.display_mode.to_string(),
                     self.model.model.to_string(),
                     &self.body.translation
@@ -228,7 +228,7 @@ pub struct Metadata {
     pub file_type: FileType,
     pub name: String,
     pub version: u8,
-    pub archived: Archived,
+    pub destination: Destination,
     pub body_and_checksum_length_copy: u16,
     pub body_length: u16,
 }
@@ -242,7 +242,7 @@ impl Metadata {
         file_type: FileType,
         name: String,
         version: u8,
-        archived: Archived,
+        destination: Destination,
         body_and_checksum_length_copy: u16,
         body_length: u16,
     ) -> Metadata {
@@ -254,7 +254,7 @@ impl Metadata {
             file_type,
             name,
             version,
-            archived,
+            destination,
             body_and_checksum_length_copy,
             body_length,
         }
@@ -269,7 +269,7 @@ impl Metadata {
             File Type: {}\n\
             Name: {}\n\
             Version: {:02X?}\n\
-            Archived: {}\n\
+            Destination: {}\n\
             Body and Checksum Length Copy: {}\n\
             Body Length: {}",
             self.flag,
@@ -278,7 +278,7 @@ impl Metadata {
             self.file_type.to_string(),
             self.name,
             self.version,
-            self.archived.to_string(),
+            self.destination.to_string(),
             self.body_and_checksum_length_copy,
             self.body_length
         )
@@ -324,15 +324,15 @@ impl Metadata {
 
     // byte 15 is the archived byte
     pub fn archive(&mut self) -> Result<(), String> {
-        self.bytes[14] = Archived::Archived.to_byte();
-        self.archived = Archived::Archived;
+        self.bytes[14] = Destination::Archive.to_byte();
+        self.destination = Destination::Archive;
 
         Ok(())
     }
 
     pub fn unarchive(&mut self) -> Result<(), String> {
-        self.bytes[14] = Archived::NotArchived.to_byte();
-        self.archived = Archived::NotArchived;
+        self.bytes[14] = Destination::RAM.to_byte();
+        self.destination = Destination::RAM;
 
         Ok(())
     }
@@ -459,39 +459,39 @@ impl FileType {
     }
 }
 
-pub enum Archived {
-    NotArchived,
-    Archived,
+pub enum Destination {
+    RAM,
+    Archive,
 }
 
-impl Archived {
-    pub fn from_byte(byte: u8) -> Result<Archived, String> {
+impl Destination {
+    pub fn from_byte(byte: u8) -> Result<Destination, String> {
         match byte {
-            0x00 => Ok(Archived::NotArchived),
-            0x80 => Ok(Archived::Archived),
-            _ => Err(format!("Unknown archived byte: {:02X?}", byte)),
+            0x00 => Ok(Destination::RAM),
+            0x80 => Ok(Destination::Archive),
+            _ => Err(format!("Unknown destination byte: {:02X?}", byte)),
         }
     }
 
     pub fn to_byte(&self) -> u8 {
         match self {
-            Archived::NotArchived => 0x00,
-            Archived::Archived => 0x80,
+            Destination::RAM => 0x00,
+            Destination::Archive => 0x80,
         }
     }
 
-    pub fn from_string(archived: &str) -> Result<Archived, String> {
+    pub fn from_string(archived: &str) -> Result<Destination, String> {
         match archived {
-            "Not Archived" => Ok(Archived::NotArchived),
-            "Archived" => Ok(Archived::Archived),
-            _ => Err(format!("Unknown archived string: {}", archived)),
+            "RAM" => Ok(Destination::RAM),
+            "Archive" => Ok(Destination::Archive),
+            _ => Err(format!("Unknown destination string: {}", archived)),
         }
     }
 
     pub fn to_string(&self) -> String {
         match self {
-            Archived::NotArchived => "Not Archived".to_string(),
-            Archived::Archived => "Archived".to_string(),
+            Destination::RAM => "RAM".to_string(),
+            Destination::Archive => "Archive".to_string(),
         }
     }
 }

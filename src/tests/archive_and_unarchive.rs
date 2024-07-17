@@ -1,4 +1,4 @@
-use crate::calculator::program::{Archived, Program};
+use crate::calculator::program::{Destination, Program};
 use crate::calculator::DisplayMode;
 use std::path::Path;
 
@@ -17,15 +17,15 @@ fn test_archive_and_unarchive() {
     assert!(result.is_ok(), "Failed to lock the program: {:?}", result);
 
     assert!(
-        program.metadata.bytes[14] == Archived::Archived.to_byte(),
-        "The archived byte in the metadata is not correct: {:02X?}",
+        program.metadata.bytes[14] == Destination::Archive.to_byte(),
+        "The destination byte in the metadata is not correct: {:02X?}",
         program.metadata.bytes
     );
 
     assert!(
-        program.metadata.archived.to_byte() == Archived::Archived.to_byte(),
-        "The archived status in the metadata is not correct: {:02X?}",
-        program.metadata.archived.to_string()
+        program.metadata.destination.to_byte() == Destination::Archive.to_byte(),
+        "The destination status in the metadata is not correct: {:02X?}",
+        program.metadata.destination.to_string()
     );
 
     let result = program.metadata.unarchive();
@@ -37,15 +37,15 @@ fn test_archive_and_unarchive() {
     );
 
     assert!(
-        program.metadata.bytes[14] == Archived::NotArchived.to_byte(),
-        "The un-archived byte in the metadata is not correct: {:02X?}",
+        program.metadata.bytes[14] == Destination::RAM.to_byte(),
+        "The destination byte in the metadata is not correct: {:02X?}",
         program.metadata.bytes
     );
 
     assert!(
-        program.metadata.archived.to_byte() == Archived::NotArchived.to_byte(),
-        "The un-archived status in the metadata is not correct: {:02X?}",
-        program.metadata.archived.to_string()
+        program.metadata.destination.to_byte() == Destination::RAM.to_byte(),
+        "The destination status in the metadata is not correct: {:02X?}",
+        program.metadata.destination.to_string()
     );
 
     assert!(

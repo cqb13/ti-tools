@@ -1,7 +1,7 @@
 use crate::calculator::decode::decode;
 use crate::calculator::models::ModelDetails;
 use crate::calculator::program::{
-    Archived, Body, Checksum, FileType, Header, Metadata, ProgramFileType,
+    Body, Checksum, Destination, FileType, Header, Metadata, ProgramFileType,
 };
 use crate::calculator::DisplayMode;
 use crate::tokens::{load_tokens, OsVersion};
@@ -71,7 +71,7 @@ pub fn create_from_8xp(
                 .map(|byte| *byte as char)
                 .collect::<String>();
             let version = metadata_bytes[13];
-            let archived = Archived::from_byte(metadata_bytes[14])?;
+            let destination = Destination::from_byte(metadata_bytes[14])?;
             let body_and_checksum_length_duplicate = [metadata_bytes[15], metadata_bytes[16]];
             let body_length = [metadata_bytes[17], metadata_bytes[18]];
 
@@ -83,7 +83,7 @@ pub fn create_from_8xp(
                 file_type,
                 name,
                 version,
-                archived,
+                destination,
                 u16::from_le_bytes(body_and_checksum_length_duplicate),
                 u16::from_le_bytes(body_length),
             )
@@ -115,7 +115,7 @@ pub fn create_from_8xp(
                 FileType::Program,
                 name,
                 0x00,
-                Archived::NotArchived,
+                Destination::RAM,
                 body_and_checksum_length,
                 body_length,
             )

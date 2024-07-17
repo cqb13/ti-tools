@@ -1,5 +1,6 @@
 pub mod calculator;
 pub mod cli;
+pub mod colors;
 pub mod commands;
 #[cfg(test)]
 pub mod tests;
@@ -205,7 +206,7 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("archive", "Archive an 8xp/82p/83p file")
+        Command::new("archive", "Set the program to be sent to Archive")
             .with_arg(
                 Arg::new()
                 .with_name("input")
@@ -227,7 +228,7 @@ fn main() {
                     .with_short('d')
                     .with_help("Delete the old file"),
             ),
-        Command::new("unarchive", "Unarchive an 8xp/82p/83p file")
+        Command::new("unarchive", "Set the program to be sent to RAM")
             .with_arg(
                 Arg::new()
                 .with_name("input")

@@ -1,7 +1,7 @@
 SPLINE
-Created by TI-Tools 0.1.3
+Created by TI-Tools 0.1.6
 Program
-Not Archived
+RAM
 accessible
 latest
 Repeat 3<=N and N<=99
