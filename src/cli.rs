@@ -2,87 +2,93 @@ use std::env;
 
 #[derive(Debug, Clone)]
 pub struct Arg {
-    pub name: &'static str,
+    pub name: String,
     pub short: Option<char>,
-    pub long: Option<&'static str>,
-    pub value_name: &'static str,
+    pub long: Option<String>,
+    pub value_name: String,
     pub default: Option<String>,
-    pub help: &'static str,
-    pub requires: Vec<&'static str>,
+    pub help: String,
+    pub requires: Vec<String>,
 }
 
 #[derive(Debug)]
-pub struct Command<'a> {
-    pub name: &'a str,
-    pub description: &'a str,
+pub struct Command {
+    pub name: String,
+    pub description: String,
     pub args: Option<Vec<Arg>>,
 }
 
-pub struct Cli<'a> {
+pub struct Cli {
     pub name: String,
     pub bin: String,
     pub description: String,
     pub author: String,
     pub github: String,
     pub version: String,
-    pub commands: Vec<Command<'a>>,
+    pub commands: Vec<Command>,
     pub default_command: Option<String>,
 }
 
 impl Arg {
     pub fn new() -> Arg {
         Arg {
-            name: "",
+            name: String::new(),
             short: None,
             long: None,
-            value_name: "",
+            value_name: String::new(),
             default: None,
-            help: "",
+            help: String::new(),
             requires: Vec::new(),
         }
     }
 
-    pub fn with_name(mut self, name: &'static str) -> Arg {
-        self.name = name;
+    pub fn with_name(mut self, name: &str) -> Arg {
+        self.name = name.to_string();
         self
     }
 
     pub fn with_short(mut self, short: char) -> Arg {
+        if short == 'h' {
+            panic!("'h' short is reserved for the help command");
+        }
         self.short = Some(short);
         self
     }
 
-    pub fn with_long(mut self, long: &'static str) -> Arg {
-        self.long = Some(long);
+    pub fn with_long(mut self, long: &str) -> Arg {
+        if long == "help" {
+            panic!("'help' long is reserved for the help command");
+        }
+        self.long = Some(long.to_string());
         self
     }
 
-    pub fn with_value_name(mut self, value_name: &'static str) -> Arg {
-        self.value_name = value_name;
+    pub fn with_value_name(mut self, value_name: &str) -> Arg {
+        self.value_name = value_name.to_string();
         self
     }
 
-    pub fn default(mut self, default: &'static str) -> Arg {
+    pub fn default(mut self, default: &str) -> Arg {
         self.default = Some(default.to_string());
         self
     }
 
-    pub fn with_help(mut self, help: &'static str) -> Arg {
-        self.help = help;
+    pub fn with_help(mut self, help: &str) -> Arg {
+        self.help = help.to_string();
         self
     }
 
-    pub fn requires(mut self, requires: &'static str) -> Arg {
-        self.requires.push(requires);
+    pub fn requires(mut self, requires: &str) -> Arg {
+        self.requires.push(requires.to_string());
         self
     }
 }
 
-impl<'a> Command<'a> {
-    pub fn new(name: &'a str, description: &'a str) -> Command<'a> {
+impl Command {
+    pub fn new(name: &str, description: &str) -> Command {
         Command {
-            name,
-            description,
+            name: name.to_string(),
+            description: description.to_string(),
             args: None,
         }
     }
@@ -90,7 +96,7 @@ impl<'a> Command<'a> {
     /**
      * Adds an argument to the command
      */
-    pub fn with_arg(mut self, arg: Arg) -> Command<'a> {
+    pub fn with_arg(mut self, arg: Arg) -> Command {
         if self.args.is_none() {
             self.args = Some(vec![]);
         }
@@ -101,7 +107,7 @@ impl<'a> Command<'a> {
     /**
      * Adds arguments to the command
      */
-    pub fn with_args(mut self, args: &Vec<Arg>) -> Command<'a> {
+    pub fn with_args(mut self, args: &Vec<Arg>) -> Command {
         if self.args.is_none() {
             self.args = Some(vec![]);
         }
@@ -120,7 +126,7 @@ impl<'a> Command<'a> {
                 .any(|s| *s == format!("-{}", required_arg.short.unwrap()))
                 && !env_args
                     .iter()
-                    .any(|s| *s == format!("--{}", required_arg.long.unwrap()))
+                    .any(|s| *s == format!("--{}", required_arg.long.as_ref().unwrap()))
             {
                 println!(
                     "The argument \"{}\" requires the argument \"{}\"",
@@ -131,7 +137,7 @@ impl<'a> Command<'a> {
         }
     }
 
-    fn find_arg(&self, arg_name: &'static str) -> Option<&Arg> {
+    fn find_arg(&self, arg_name: &str) -> Option<&Arg> {
         self.args
             .as_ref()
             .and_then(|args| args.iter().find(|&arg| arg.name == arg_name))
@@ -159,7 +165,7 @@ impl<'a> Command<'a> {
     /**
      * Check if a flag is present
      */
-    pub fn has(&self, arg_name: &'static str) -> bool {
+    pub fn has(&self, arg_name: &str) -> bool {
         self.args
             .as_ref()
             .and_then(|args| args.iter().find(|&arg| arg.name == arg_name))
@@ -167,7 +173,7 @@ impl<'a> Command<'a> {
                 let args: Vec<String> = env::args().collect();
                 let found = args.iter().any(|s| {
                     *s == format!("-{}", arg.short.unwrap())
-                        || *s == format!("--{}", arg.long.unwrap())
+                        || *s == format!("--{}", arg.long.as_ref().unwrap())
                 });
 
                 if found {
@@ -182,7 +188,7 @@ impl<'a> Command<'a> {
     /**
      * Get the value of a flag
      */
-    pub fn get_value_of(&self, arg_name: &'static str) -> ArgValue {
+    pub fn get_value_of(&self, arg_name: &str) -> ArgValue {
         self.args
             .as_ref()
             .and_then(|args| args.iter().find(|&arg| arg.name == arg_name))
@@ -190,7 +196,7 @@ impl<'a> Command<'a> {
                 let args: Vec<String> = env::args().collect();
                 let arg_index = args.iter().position(|s| {
                     *s == format!("-{}", arg.short.unwrap())
-                        || *s == format!("--{}", arg.long.unwrap())
+                        || *s == format!("--{}", arg.long.as_ref().unwrap())
                 });
 
                 let value = arg_index.and_then(|index| args.get(index + 1));
@@ -203,8 +209,8 @@ impl<'a> Command<'a> {
     }
 }
 
-impl<'a> Cli<'a> {
-    pub fn new() -> Cli<'a> {
+impl Cli {
+    pub fn new() -> Cli {
         Cli {
             name: env!("CARGO_PKG_NAME").to_string(),
             bin: env!("CARGO_PKG_NAME").to_string(),
@@ -217,37 +223,37 @@ impl<'a> Cli<'a> {
         }
     }
 
-    pub fn with_name(mut self, name: &'a str) -> Cli<'a> {
+    pub fn with_name(mut self, name: &str) -> Cli {
         self.name = name.to_string();
         self
     }
 
-    pub fn with_bin(mut self, bin: &'a str) -> Cli<'a> {
+    pub fn with_bin(mut self, bin: &str) -> Cli {
         self.bin = bin.to_string();
         self
     }
 
-    pub fn with_description(mut self, description: &'a str) -> Cli<'a> {
+    pub fn with_description(mut self, description: &str) -> Cli {
         self.description = description.to_string();
         self
     }
 
-    pub fn with_author(mut self, author: &'a str) -> Cli<'a> {
+    pub fn with_author(mut self, author: &str) -> Cli {
         self.author = author.to_string();
         self
     }
 
-    pub fn with_github(mut self, github: &'a str) -> Cli<'a> {
+    pub fn with_github(mut self, github: &str) -> Cli {
         self.github = github.to_string();
         self
     }
 
-    pub fn with_version(mut self, version: &'a str) -> Cli<'a> {
+    pub fn with_version(mut self, version: &str) -> Cli {
         self.version = version.to_string();
         self
     }
 
-    pub fn with_commands(mut self, commands: Vec<Command<'a>>) -> Cli {
+    pub fn with_commands(mut self, commands: Vec<Command>) -> Cli {
         self.commands = commands;
         self
     }
@@ -259,18 +265,20 @@ impl<'a> Cli<'a> {
      *
      * If a default command is not set, the auto generated help command will be run
      */
-    pub fn with_default_command(mut self, default_command: &str) -> Cli<'a> {
+    pub fn with_default_command(mut self, default_command: &str) -> Cli {
         self.default_command = Some(default_command.to_string());
         self
     }
 
-    pub fn match_commands(&self) -> &Command<'a> {
+    pub fn match_commands(&self) -> &Command {
         let args: Vec<String> = env::args().collect();
+        if args.contains(&"--help".to_string()) || args.contains(&"-h".to_string()) {}
+
         if args.len() <= 1 {
             if self.default_command.is_some() {
                 self.commands
                     .iter()
-                    .find(|&command| command.name == self.default_command.as_ref().unwrap())
+                    .find(|&command| command.name == *self.default_command.as_ref().unwrap())
                     .unwrap_or_else(|| {
                         println!(
                             "Failed to find set default command: {}",
@@ -284,13 +292,21 @@ impl<'a> Cli<'a> {
             }
         } else {
             let command_name = &args[1];
-            self.commands
+            let command = self
+                .commands
                 .iter()
-                .find(|&command| command.name == command_name)
+                .find(|&command| command.name == *command_name)
                 .unwrap_or_else(|| {
                     println!("Command not found: {}", command_name);
                     std::process::exit(0);
-                })
+                });
+
+            if args.contains(&"--help".to_string()) || args.contains(&"-h".to_string()) {
+                self.help(Some(command_name.to_string()));
+                std::process::exit(0);
+            }
+
+            command
         }
     }
 
@@ -312,7 +328,7 @@ impl<'a> Cli<'a> {
             let command = self
                 .commands
                 .iter()
-                .find(|&command| command.name == command_name.as_ref().unwrap())
+                .find(|&command| command.name == *command_name.as_ref().unwrap())
                 .unwrap_or_else(|| {
                     println!("Command not found: {}", command_name.unwrap());
                     std::process::exit(0);
@@ -327,7 +343,7 @@ impl<'a> Cli<'a> {
         println!();
     }
 
-    fn command_help(&self, command: &Command<'a>) {
+    fn command_help(&self, command: &Command) {
         println!("    {:<12}", command.name);
         println!("        {}", command.description);
 
@@ -339,6 +355,7 @@ impl<'a> Cli<'a> {
                     .unwrap_or("".to_string());
                 let long = arg
                     .long
+                    .as_ref()
                     .map(|s| format!("--{}", s))
                     .unwrap_or("".to_string());
                 let value = format!("<{}>", arg.value_name);

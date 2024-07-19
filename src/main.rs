@@ -1,7 +1,7 @@
 pub mod calculator;
 pub mod cli;
-pub mod colors;
 pub mod commands;
+pub mod styles;
 #[cfg(test)]
 pub mod tests;
 pub mod tokens;
@@ -262,7 +262,7 @@ fn main() {
 
     let command = cli.match_commands();
 
-    match command.name {
+    match command.name.as_str() {
         "help" => {
             let command = command.get_value().to_option();
             cli.help(command)
