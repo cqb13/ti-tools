@@ -12,200 +12,6 @@ pub struct Cli {
     pub default_command: Option<String>,
 }
 
-pub struct Command {
-    pub name: String,
-    pub description: String,
-    pub options: Vec<CmdOption>,
-    pub args: Vec<Arg>,
-}
-
-pub struct CmdOption {
-    name: String,
-    value_name: String,
-    description: String,
-    required: bool,
-}
-
-impl CmdOption {
-    pub fn new(name: &str, value_name: &str, description: &str) -> CmdOption {
-        CmdOption {
-            name: name.to_string(),
-            value_name: value_name.to_string(),
-            description: description.to_string(),
-            required: true,
-        }
-    }
-
-    pub fn optional(mut self) -> CmdOption {
-        self.required = false;
-        self
-    }
-}
-
-pub struct Arg {
-    pub name: String,
-    pub description: String,
-    pub short: char,
-    pub long: String,
-    pub value_name: Option<String>,
-    pub default_value: Option<String>,
-    pub requires: Option<Vec<String>>,
-    pub required: bool,
-}
-
-impl Arg {
-    pub fn new(name: &str, description: &str, long: &str, short: char) -> Arg {
-        Arg {
-            name: name.to_string(),
-            description: description.to_string(),
-            short,
-            long: long.to_string(),
-            value_name: None,
-            default_value: None,
-            requires: None,
-            required: false,
-        }
-    }
-
-    pub fn with_value_name(mut self, value_name: &str) -> Arg {
-        self.value_name = Some(value_name.to_string());
-        self
-    }
-
-    pub fn with_default_value(mut self, default_value: &str) -> Arg {
-        self.default_value = Some(default_value.to_string());
-        self
-    }
-
-    pub fn with_description(mut self, description: &str) -> Arg {
-        self.description = description.to_string();
-        self
-    }
-
-    pub fn requires(mut self, requires: &str) -> Arg {
-        if self.requires.is_none() {
-            self.requires = Some(vec![requires.to_string()])
-        } else {
-            self.requires.as_mut().unwrap().push(requires.to_string());
-        }
-        self
-    }
-
-    pub fn required(mut self) -> Arg {
-        self.required = true;
-        self
-    }
-}
-
-impl Command {
-    pub fn new(name: &str, description: &str) -> Command {
-        Command {
-            name: name.to_string(),
-            description: description.to_string(),
-            options: Vec::new(),
-            args: Vec::new(),
-        }
-    }
-
-    pub fn with_option(mut self, option: CmdOption) -> Command {
-        self.options.push(option);
-        self
-    }
-
-    pub fn with_arg(mut self, arg: Arg) -> Command {
-        self.args.push(arg);
-        self
-    }
-
-    fn check_if_required_args_are_present(&self, env_args: &Vec<String>, arg: &Arg) {
-        if arg.requires.is_some() {
-            for required in arg.requires.as_ref().unwrap() {
-                let required_arg = self.find_arg(required).unwrap();
-                if !env_args
-                    .iter()
-                    .any(|s| *s == format!("-{}", required_arg.short))
-                    && !env_args
-                        .iter()
-                        .any(|s| *s == format!("--{}", required_arg.long))
-                {
-                    println!(
-                        "The argument \"{}\" requires the argument \"{}\"",
-                        arg.name, required
-                    );
-                    std::process::exit(0);
-                }
-            }
-        }
-    }
-
-    fn find_arg(&self, arg_name: &str) -> Option<&Arg> {
-        self.args.iter().find(|&arg| arg.name == arg_name)
-    }
-
-    /**
-     * Get the first string value after command name without a flag
-     */
-    pub fn get_value(&self) -> ArgValue {
-        let args: Vec<String> = env::args().collect();
-        if args.len() <= 2 {
-            return ArgValue::Missing(self.name.to_string());
-        }
-        let mut value = String::new();
-        for arg in &args[2..] {
-            if arg.starts_with("-") {
-                break;
-            }
-            value.push_str(arg);
-            value.push_str(" ");
-        }
-        ArgValue::Present(value.trim().to_string())
-    }
-
-    /**
-     * Check if a flag is present
-     */
-    pub fn has(&self, arg_name: &str) -> bool {
-        self.args
-            .iter()
-            .find(|&arg| arg.name == arg_name)
-            .map(|arg| {
-                let args: Vec<String> = env::args().collect();
-                let found = args
-                    .iter()
-                    .any(|s| *s == format!("-{}", arg.short) || *s == format!("--{}", arg.long));
-
-                if found {
-                    self.check_if_required_args_are_present(&args, arg);
-                }
-
-                found
-            })
-            .unwrap_or(false)
-    }
-
-    /**
-     * Get the value of a flag
-     */
-    pub fn get_value_of(&self, arg_name: &str) -> ArgValue {
-        self.args
-            .iter()
-            .find(|&arg| arg.name == arg_name)
-            .and_then(|arg| {
-                let args: Vec<String> = env::args().collect();
-                let arg_index = args.iter().position(|s| {
-                    *s == format!("-{}", arg.short) || *s == format!("--{}", arg.long)
-                });
-
-                let value = arg_index.and_then(|index| args.get(index + 1));
-                value
-                    .or_else(|| arg.default_value.as_ref())
-                    .map(|s| s.to_string())
-            })
-            .map(|value| ArgValue::Present(value))
-            .unwrap_or(ArgValue::Missing(arg_name.to_string()))
-    }
-}
-
 impl Cli {
     pub fn new() -> Cli {
         Cli {
@@ -313,6 +119,208 @@ impl Cli {
 
     pub fn version(&self) {
         println!("{} {}", self.name, self.version);
+    }
+}
+
+pub struct Command {
+    pub name: String,
+    pub description: String,
+    pub options: Vec<CmdOption>,
+    pub args: Vec<Arg>,
+}
+
+impl Command {
+    pub fn new(name: &str, description: &str) -> Command {
+        Command {
+            name: name.to_string(),
+            description: description.to_string(),
+            options: Vec::new(),
+            args: Vec::new(),
+        }
+    }
+
+    pub fn with_option(mut self, option: CmdOption) -> Command {
+        self.options.push(option);
+        self
+    }
+
+    pub fn with_arg(mut self, arg: Arg) -> Command {
+        self.args.push(arg);
+        self
+    }
+
+    fn check_if_required_args_are_present(&self, env_args: &Vec<String>, arg: &Arg) {
+        if arg.requires.is_some() {
+            for required in arg.requires.as_ref().unwrap() {
+                let required_arg = self.find_arg(required).unwrap();
+                if !env_args
+                    .iter()
+                    .any(|s| *s == format!("-{}", required_arg.short))
+                    && !env_args
+                        .iter()
+                        .any(|s| *s == format!("--{}", required_arg.long))
+                {
+                    println!(
+                        "The argument \"{}\" requires the argument \"{}\"",
+                        arg.name, required
+                    );
+                    std::process::exit(0);
+                }
+            }
+        }
+    }
+
+    fn find_arg(&self, arg_name: &str) -> Option<&Arg> {
+        self.args.iter().find(|&arg| arg.name == arg_name)
+    }
+
+    //TODO: get option
+    /*
+    take in the name of the option,
+    get the index of the option in the options list
+    get the value at the index in the env-arg
+    if value is optional, it will be --
+     */
+
+    /**
+     * Get the first string value after command name without a flag
+     */
+    pub fn get_value(&self) -> ArgValue {
+        let args: Vec<String> = env::args().collect();
+        if args.len() <= 2 {
+            return ArgValue::Missing(self.name.to_string());
+        }
+        let mut value = String::new();
+        for arg in &args[2..] {
+            if arg.starts_with("-") {
+                break;
+            }
+            value.push_str(arg);
+            value.push_str(" ");
+        }
+        ArgValue::Present(value.trim().to_string())
+    }
+
+    /**
+     * Check if a flag is present
+     */
+    pub fn has(&self, arg_name: &str) -> bool {
+        self.args
+            .iter()
+            .find(|&arg| arg.name == arg_name)
+            .map(|arg| {
+                let args: Vec<String> = env::args().collect();
+                let found = args
+                    .iter()
+                    .any(|s| *s == format!("-{}", arg.short) || *s == format!("--{}", arg.long));
+
+                if found {
+                    self.check_if_required_args_are_present(&args, arg);
+                }
+
+                found
+            })
+            .unwrap_or(false)
+    }
+
+    /**
+     * Get the value of a flag
+     */
+    pub fn get_value_of(&self, arg_name: &str) -> ArgValue {
+        self.args
+            .iter()
+            .find(|&arg| arg.name == arg_name)
+            .and_then(|arg| {
+                let args: Vec<String> = env::args().collect();
+                let arg_index = args.iter().position(|s| {
+                    *s == format!("-{}", arg.short) || *s == format!("--{}", arg.long)
+                });
+
+                let value = arg_index.and_then(|index| args.get(index + 1));
+                value
+                    .or_else(|| arg.default_value.as_ref())
+                    .map(|s| s.to_string())
+            })
+            .map(|value| ArgValue::Present(value))
+            .unwrap_or(ArgValue::Missing(arg_name.to_string()))
+    }
+}
+
+pub struct CmdOption {
+    name: String,
+    value_name: String,
+    description: String,
+    required: bool,
+}
+
+impl CmdOption {
+    pub fn new(name: &str, value_name: &str, description: &str) -> CmdOption {
+        CmdOption {
+            name: name.to_string(),
+            value_name: value_name.to_string(),
+            description: description.to_string(),
+            required: true,
+        }
+    }
+
+    pub fn optional(mut self) -> CmdOption {
+        self.required = false;
+        self
+    }
+}
+
+pub struct Arg {
+    pub name: String,
+    pub description: String,
+    pub short: char,
+    pub long: String,
+    pub value_name: Option<String>,
+    pub default_value: Option<String>,
+    pub requires: Option<Vec<String>>,
+    pub required: bool,
+}
+
+impl Arg {
+    pub fn new(name: &str, description: &str, long: &str, short: char) -> Arg {
+        Arg {
+            name: name.to_string(),
+            description: description.to_string(),
+            short,
+            long: long.to_string(),
+            value_name: None,
+            default_value: None,
+            requires: None,
+            required: false,
+        }
+    }
+
+    pub fn with_value_name(mut self, value_name: &str) -> Arg {
+        self.value_name = Some(value_name.to_string());
+        self
+    }
+
+    pub fn with_default_value(mut self, default_value: &str) -> Arg {
+        self.default_value = Some(default_value.to_string());
+        self
+    }
+
+    pub fn with_description(mut self, description: &str) -> Arg {
+        self.description = description.to_string();
+        self
+    }
+
+    pub fn requires(mut self, requires: &str) -> Arg {
+        if self.requires.is_none() {
+            self.requires = Some(vec![requires.to_string()])
+        } else {
+            self.requires.as_mut().unwrap().push(requires.to_string());
+        }
+        self
+    }
+
+    pub fn required(mut self) -> Arg {
+        self.required = true;
+        self
     }
 }
 
