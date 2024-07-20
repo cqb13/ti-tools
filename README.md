@@ -42,62 +42,61 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
 ## Commands
 
 ```
-    help
-        Prints help information
-                                  <COMMAND>    A command to help with
-    version
-        Prints version information
-    decode
-        Converts 8xp to txt
-                                  <INPUT>      The input path to an 8xp file
-        -o           --output     <OUTPUT>     The output path to a txt file
-        -d           --display-mode <DISPLAY_MODE> The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible
-        -c           --content    <>           Display the content of the input file
-        -p           --preview    <>           Preview the output file in the terminal
-    encode
-        Converts txt to 8xp
-                                  <INPUT>      The input path to an 8xp file
-        -o           --output     <OUTPUT>     The output path to a 8xp file
-        -e           --encode-mode <ENCODE_MODE> The mode used to parse tokens [min, max, smart] | Default: smart
-        -c           --content    <>           Display the content of the input file
-        -p           --preview    <>           Preview the output file in the terminal
-    rename
-        Renames the program name in a 8xp file
-                                  <INPUT>      The input path to an 8xp file
-        -n           --name       <NAME>       New program number (8 or less uppercase alphabetic characters)
-        -f           --new-file   <NEW_FILE>   Save the renamed program to a new file
-        -d           --delete-old <>           Delete the old file
-    comment
-        Write a custom comment to an 8xp file
-                                  <INPUT>      The input path to an 8xp file
-        -c           --comment    <COMMENT>    New program comment (42 or less characters)
-        -f           --new-file   <NEW_FILE>   Save the program with a new comment to a new file
-        -d           --delete-old <>           Delete the old file
-    lock
-        Lock an 8xp file
-                                  <INPUT>      The input path to an 8xp file
-        -f           --new-file   <NEW_FILE>   Save the locked program to a new file
-        -d           --delete-old <>           Delete the old file
-    unlock
-        unlock an 8xp file
-                                  <INPUT>      The input path to an 8xp file
-        -f           --new-file   <NEW_FILE>   Save the unlocked program to a new file
-        -d           --delete-old <>           Delete the old file
-    archive
-        Archive an 8xp file
-                                  <INPUT>      The input path to an 8xp file
-        -f           --new-file   <NEW_FILE>   Save the archived program to a new file
-        -d           --delete-old <>           Delete the old file
-    unarchive
-        Unarchive an 8xp file
-                                  <INPUT>      The input path to an 8xp file
-        -f           --new-file   <NEW_FILE>   Save the un-archived program to a new file
-        -d           --delete-old <>           Delete the old file
-    details
-        Displays information about an 8xp file
-                                  <INPUT>      The input path to an 8xp file
-    models
-        Prints the supported TI calculator models
+    help - Prints help information
+        command       <COMMAND>                     (optional) The command you want help with
+
+    version - Prints version information
+
+    decode - Converts 8xp/82p/83p to txt
+        input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
+        -o            --output       <OUTPUT>                  The output path to a txt file
+        -d            --display-mode <DISPLAY_MODE>            The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible
+        -c            --content                                Display the content of the input file
+        -p            --preview                                Display the decoded output
+
+    encode - Converts txt to 8xp
+        input         <INPUT>                       (required) The input path to an txt file
+        -o            --output       <OUTPUT>                  The output path to an 8xp/82p/83p file
+        -e            --encode-mode  <ENCODE_MODE>             The mode used to parse tokens [min, max, smart] | Default: smart
+        -c            --content                                Display the content of the input file
+        -p            --preview                                Display the decoded output
+
+    rename - Renames the program name in a 8xp/82p/83p file
+        input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
+        -n            --name         <NAME>                    The new program name (8 or less alphabetic characters)
+        -f            --new-file     <NEW_FILE>                Save the renamed program to a new file
+        -d            --delete-old                             Delete the old file
+
+    comment - Write a custom comment to an 8xp/82p/83p file
+        input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
+        -c            --comment      <COMMENT>                 The new program comment (42 or less characters)
+        -f            --new-file     <NEW_FILE>                Save the program with the updated comment to a new file
+        -d            --delete-old                             Delete the old file
+
+    lock - Lock an 8xp/82p/83p file
+        input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
+        -f            --new-file     <NEW_FILE>                Save the locked program to a new file
+        -d            --delete-old                             Delete the old file
+
+    unlock - unlock an 8xp/82p/83p file
+        input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
+        -f            --new-file     <NEW_FILE>                Save the unlocked program to a new file
+        -d            --delete-old                             Delete the old file
+
+    archive - Set the program to be sent to Archive
+        input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
+        -f            --new-file     <NEW_FILE>                Save the archived program to a new file
+        -d            --delete-old                             Delete the old file
+
+    unarchive - Set the program to be sent to RAM
+        input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
+        -f            --new-file     <NEW_FILE>                Save the un-archived program to a new file
+        -d            --delete-old                             Delete the old file
+
+    details - Displays information about an 8xp/82p/83p file
+        input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
+
+    models - Prints the supported TI calculator models
 ```
 
 ## Examples

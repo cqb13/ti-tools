@@ -1,22 +1,5 @@
+use crate::prints;
 use std::env;
-
-#[derive(Debug, Clone)]
-pub struct Arg {
-    pub name: String,
-    pub short: Option<char>,
-    pub long: Option<String>,
-    pub value_name: String,
-    pub default: Option<String>,
-    pub help: String,
-    pub requires: Vec<String>,
-}
-
-#[derive(Debug)]
-pub struct Command {
-    pub name: String,
-    pub description: String,
-    pub args: Option<Vec<Arg>>,
-}
 
 pub struct Cli {
     pub name: String,
@@ -29,57 +12,87 @@ pub struct Cli {
     pub default_command: Option<String>,
 }
 
+pub struct Command {
+    pub name: String,
+    pub description: String,
+    pub options: Vec<CmdOption>,
+    pub args: Vec<Arg>,
+}
+
+pub struct CmdOption {
+    name: String,
+    value_name: String,
+    description: String,
+    required: bool,
+}
+
+impl CmdOption {
+    pub fn new(name: &str, value_name: &str, description: &str) -> CmdOption {
+        CmdOption {
+            name: name.to_string(),
+            value_name: value_name.to_string(),
+            description: description.to_string(),
+            required: true,
+        }
+    }
+
+    pub fn optional(mut self) -> CmdOption {
+        self.required = false;
+        self
+    }
+}
+
+pub struct Arg {
+    pub name: String,
+    pub description: String,
+    pub short: char,
+    pub long: String,
+    pub value_name: Option<String>,
+    pub default_value: Option<String>,
+    pub requires: Option<Vec<String>>,
+    pub required: bool,
+}
+
 impl Arg {
-    pub fn new() -> Arg {
+    pub fn new(name: &str, description: &str, long: &str, short: char) -> Arg {
         Arg {
-            name: String::new(),
-            short: None,
-            long: None,
-            value_name: String::new(),
-            default: None,
-            help: String::new(),
-            requires: Vec::new(),
+            name: name.to_string(),
+            description: description.to_string(),
+            short,
+            long: long.to_string(),
+            value_name: None,
+            default_value: None,
+            requires: None,
+            required: false,
         }
-    }
-
-    pub fn with_name(mut self, name: &str) -> Arg {
-        self.name = name.to_string();
-        self
-    }
-
-    pub fn with_short(mut self, short: char) -> Arg {
-        if short == 'h' {
-            panic!("'h' short is reserved for the help command");
-        }
-        self.short = Some(short);
-        self
-    }
-
-    pub fn with_long(mut self, long: &str) -> Arg {
-        if long == "help" {
-            panic!("'help' long is reserved for the help command");
-        }
-        self.long = Some(long.to_string());
-        self
     }
 
     pub fn with_value_name(mut self, value_name: &str) -> Arg {
-        self.value_name = value_name.to_string();
+        self.value_name = Some(value_name.to_string());
         self
     }
 
-    pub fn default(mut self, default: &str) -> Arg {
-        self.default = Some(default.to_string());
+    pub fn with_default_value(mut self, default_value: &str) -> Arg {
+        self.default_value = Some(default_value.to_string());
         self
     }
 
-    pub fn with_help(mut self, help: &str) -> Arg {
-        self.help = help.to_string();
+    pub fn with_description(mut self, description: &str) -> Arg {
+        self.description = description.to_string();
         self
     }
 
     pub fn requires(mut self, requires: &str) -> Arg {
-        self.requires.push(requires.to_string());
+        if self.requires.is_none() {
+            self.requires = Some(vec![requires.to_string()])
+        } else {
+            self.requires.as_mut().unwrap().push(requires.to_string());
+        }
+        self
+    }
+
+    pub fn required(mut self) -> Arg {
+        self.required = true;
         self
     }
 }
@@ -89,58 +102,44 @@ impl Command {
         Command {
             name: name.to_string(),
             description: description.to_string(),
-            args: None,
+            options: Vec::new(),
+            args: Vec::new(),
         }
     }
 
-    /**
-     * Adds an argument to the command
-     */
+    pub fn with_option(mut self, option: CmdOption) -> Command {
+        self.options.push(option);
+        self
+    }
+
     pub fn with_arg(mut self, arg: Arg) -> Command {
-        if self.args.is_none() {
-            self.args = Some(vec![]);
-        }
-        self.args.as_mut().unwrap().push(arg);
+        self.args.push(arg);
         self
     }
 
-    /**
-     * Adds arguments to the command
-     */
-    pub fn with_args(mut self, args: &Vec<Arg>) -> Command {
-        if self.args.is_none() {
-            self.args = Some(vec![]);
-        }
-        self.args.as_mut().unwrap().extend(args.iter().cloned());
-        self
-    }
-
-    /**
-     * Checks if the required arguments are present
-     */
     fn check_if_required_args_are_present(&self, env_args: &Vec<String>, arg: &Arg) {
-        for required in &arg.requires {
-            let required_arg = self.find_arg(required).unwrap();
-            if !env_args
-                .iter()
-                .any(|s| *s == format!("-{}", required_arg.short.unwrap()))
-                && !env_args
+        if arg.requires.is_some() {
+            for required in arg.requires.as_ref().unwrap() {
+                let required_arg = self.find_arg(required).unwrap();
+                if !env_args
                     .iter()
-                    .any(|s| *s == format!("--{}", required_arg.long.as_ref().unwrap()))
-            {
-                println!(
-                    "The argument \"{}\" requires the argument \"{}\"",
-                    arg.name, required
-                );
-                std::process::exit(0);
+                    .any(|s| *s == format!("-{}", required_arg.short))
+                    && !env_args
+                        .iter()
+                        .any(|s| *s == format!("--{}", required_arg.long))
+                {
+                    println!(
+                        "The argument \"{}\" requires the argument \"{}\"",
+                        arg.name, required
+                    );
+                    std::process::exit(0);
+                }
             }
         }
     }
 
     fn find_arg(&self, arg_name: &str) -> Option<&Arg> {
-        self.args
-            .as_ref()
-            .and_then(|args| args.iter().find(|&arg| arg.name == arg_name))
+        self.args.iter().find(|&arg| arg.name == arg_name)
     }
 
     /**
@@ -167,14 +166,13 @@ impl Command {
      */
     pub fn has(&self, arg_name: &str) -> bool {
         self.args
-            .as_ref()
-            .and_then(|args| args.iter().find(|&arg| arg.name == arg_name))
+            .iter()
+            .find(|&arg| arg.name == arg_name)
             .map(|arg| {
                 let args: Vec<String> = env::args().collect();
-                let found = args.iter().any(|s| {
-                    *s == format!("-{}", arg.short.unwrap())
-                        || *s == format!("--{}", arg.long.as_ref().unwrap())
-                });
+                let found = args
+                    .iter()
+                    .any(|s| *s == format!("-{}", arg.short) || *s == format!("--{}", arg.long));
 
                 if found {
                     self.check_if_required_args_are_present(&args, arg);
@@ -190,18 +188,17 @@ impl Command {
      */
     pub fn get_value_of(&self, arg_name: &str) -> ArgValue {
         self.args
-            .as_ref()
-            .and_then(|args| args.iter().find(|&arg| arg.name == arg_name))
+            .iter()
+            .find(|&arg| arg.name == arg_name)
             .and_then(|arg| {
                 let args: Vec<String> = env::args().collect();
                 let arg_index = args.iter().position(|s| {
-                    *s == format!("-{}", arg.short.unwrap())
-                        || *s == format!("--{}", arg.long.as_ref().unwrap())
+                    *s == format!("-{}", arg.short) || *s == format!("--{}", arg.long)
                 });
 
                 let value = arg_index.and_then(|index| args.get(index + 1));
                 value
-                    .or_else(|| arg.default.as_ref())
+                    .or_else(|| arg.default_value.as_ref())
                     .map(|s| s.to_string())
             })
             .map(|value| ArgValue::Present(value))
@@ -302,7 +299,7 @@ impl Cli {
                 });
 
             if args.contains(&"--help".to_string()) || args.contains(&"-h".to_string()) {
-                self.help(Some(command_name.to_string()));
+                self.help(Some(command_name));
                 std::process::exit(0);
             }
 
@@ -310,66 +307,12 @@ impl Cli {
         }
     }
 
+    pub fn help(&self, command_name: Option<&str>) {
+        cli_help(self, command_name);
+    }
+
     pub fn version(&self) {
         println!("{} {}", self.name, self.version);
-    }
-
-    pub fn help(&self, command_name: Option<String>) {
-        println!("{} {}", self.name, self.version);
-        println!("{}", self.description);
-        println!("Author: {}", self.author);
-        println!("Github: {}", self.github);
-        println!();
-        println!("USAGE:");
-        println!("    {} [COMMAND] [OPTIONS]", self.bin);
-        println!();
-        println!("COMMANDS:");
-        if command_name.is_some() {
-            let command = self
-                .commands
-                .iter()
-                .find(|&command| command.name == *command_name.as_ref().unwrap())
-                .unwrap_or_else(|| {
-                    println!("Command not found: {}", command_name.unwrap());
-                    std::process::exit(0);
-                });
-
-            self.command_help(command)
-        } else {
-            for command in &self.commands {
-                self.command_help(&command)
-            }
-        }
-        println!();
-    }
-
-    fn command_help(&self, command: &Command) {
-        println!("    {:<12}", command.name);
-        println!("        {}", command.description);
-
-        if let Some(args) = &command.args {
-            for arg in args {
-                let short = arg
-                    .short
-                    .map(|s| format!("-{}", s))
-                    .unwrap_or("".to_string());
-                let long = arg
-                    .long
-                    .as_ref()
-                    .map(|s| format!("--{}", s))
-                    .unwrap_or("".to_string());
-                let value = format!("<{}>", arg.value_name);
-                let default = arg.default.as_ref().map(|s| format!(" (default: {})", s));
-                println!(
-                    "        {:<12} {:<12} {:<12} {:<12}{}",
-                    short,
-                    long,
-                    value,
-                    arg.help,
-                    default.unwrap_or("".to_string())
-                );
-            }
-        }
     }
 }
 
@@ -396,4 +339,78 @@ impl ArgValue {
             ArgValue::Present(value) => Some(value.to_owned()),
         }
     }
+}
+
+fn cli_help(cli: &Cli, command_name: Option<&str>) {
+    if command_name.is_none() {
+        println!("{} {}", cli.name, cli.version);
+        println!("{}", cli.description);
+        println!("Author: {}", cli.author);
+        prints!("Github: [color:cyan]{}", cli.github);
+        println!();
+        prints!("[style:bold]USAGE:");
+        println!("    {} [COMMAND] [OPTIONS]", cli.bin);
+        println!();
+        prints!("[style:bold]COMMANDS:");
+
+        for command in &cli.commands {
+            command_help(command, 1);
+        }
+    } else {
+        let command_name: Vec<&str> = command_name.unwrap().split(":").collect();
+
+        let command = cli
+            .commands
+            .iter()
+            .find(|command| command.name == command_name[0]);
+
+        if command.is_none() {
+            cli.help(None);
+            return;
+        }
+
+        let command = command.unwrap();
+
+        command_help(command, 0)
+    }
+}
+
+fn command_help(command: &Command, indent: u8) {
+    prints!(
+        "[style:bold]{}{} - {}",
+        "    ".repeat(indent as usize),
+        command.name,
+        command.description
+    );
+    for option in &command.options {
+        println!(
+            "    {}{:<12}  {:<26}  {:>12} {}",
+            "    ".repeat((indent) as usize),
+            option.name,
+            format!("<{}>", option.value_name),
+            if option.required {
+                " (required)"
+            } else {
+                "(optional)"
+            },
+            option.description,
+        )
+    }
+    for arg in &command.args {
+        println!(
+            "    {}-{:<12} --{:<12} {:<14}{:<12}{}",
+            "    ".repeat((indent) as usize),
+            arg.short,
+            arg.long,
+            if arg.value_name.is_some() {
+                format!("<{}>", arg.value_name.as_ref().unwrap())
+            } else {
+                "".to_string()
+            },
+            if arg.required { " (required)" } else { "" },
+            arg.description,
+        );
+    }
+
+    println!();
 }
