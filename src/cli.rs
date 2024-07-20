@@ -174,33 +174,6 @@ impl Command {
         self.args.iter().find(|&arg| arg.name == arg_name)
     }
 
-    //TODO: get option
-    /*
-    take in the name of the option,
-    get the index of the option in the options list
-    get the value at the index in the env-arg
-    if value is optional, it will be --
-     */
-
-    /**
-     * Get the first string value after command name without a flag
-     */
-    pub fn get_value(&self) -> ArgValue {
-        let args: Vec<String> = env::args().collect();
-        if args.len() <= 2 {
-            return ArgValue::Missing(self.name.to_string());
-        }
-        let mut value = String::new();
-        for arg in &args[2..] {
-            if arg.starts_with("-") {
-                break;
-            }
-            value.push_str(arg);
-            value.push_str(" ");
-        }
-        ArgValue::Present(value.trim().to_string())
-    }
-
     /**
      * Check if a flag is present
      */
@@ -224,9 +197,40 @@ impl Command {
     }
 
     /**
+     * Get the value of the option in its location
+     */
+    pub fn get_option(&self, option_name: &str) -> Value {
+        self.options
+            .iter()
+            .enumerate()
+            .find(|(_, option)| option.name == option_name)
+            .and_then(|(index, option)| {
+                let args: Vec<String> = env::args().collect();
+                if args.len() <= 2 + (index) {
+                    return Some(Value::Missing(format!(
+                        "{} could not be found in its location ({})",
+                        option_name, index
+                    )));
+                }
+
+                let value = args[1 + (index + 1)].to_string();
+
+                if value == "--" && option.required {
+                    return Some(Value::Missing(format!(
+                        "{} is a required value and must be specified",
+                        option_name
+                    )));
+                }
+
+                return Some(Value::Present(value));
+            })
+            .unwrap()
+    }
+
+    /**
      * Get the value of a flag
      */
-    pub fn get_value_of(&self, arg_name: &str) -> ArgValue {
+    pub fn get_arg(&self, arg_name: &str) -> Value {
         self.args
             .iter()
             .find(|&arg| arg.name == arg_name)
@@ -241,8 +245,8 @@ impl Command {
                     .or_else(|| arg.default_value.as_ref())
                     .map(|s| s.to_string())
             })
-            .map(|value| ArgValue::Present(value))
-            .unwrap_or(ArgValue::Missing(arg_name.to_string()))
+            .map(|value| Value::Present(value))
+            .unwrap_or(Value::Missing(format!("{} could not be found", arg_name)))
     }
 }
 
@@ -325,26 +329,26 @@ impl Arg {
 }
 
 #[derive(Debug)]
-pub enum ArgValue {
+pub enum Value {
     Missing(String),
     Present(String),
 }
 
-impl ArgValue {
+impl Value {
     pub fn throw_if_none(&self) -> String {
         match self {
-            ArgValue::Missing(name) => {
-                println!("Missing required argument: {}", name);
-                std::process::exit(0);
+            Value::Missing(message) => {
+                println!("Missing Input Value: {}", message);
+                std::process::exit(1);
             }
-            ArgValue::Present(value) => value.to_string(),
+            Value::Present(value) => value.to_string(),
         }
     }
 
     pub fn to_option(&self) -> Option<String> {
         match self {
-            ArgValue::Missing(_) => None,
-            ArgValue::Present(value) => Some(value.to_owned()),
+            Value::Missing(_) => None,
+            Value::Present(value) => Some(value.to_owned()),
         }
     }
 }

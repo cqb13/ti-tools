@@ -157,15 +157,15 @@ fn main() {
 
     match command.name.as_str() {
         "help" => {
-            let command = command.get_value().to_option();
+            let command = command.get_option("command").to_option();
             cli.help(command.as_deref())
         }
         "version" => cli.version(),
         "decode" => {
-            let input_path_string = command.get_value().throw_if_none();
-            let output_path_string = command.get_value_of("output").to_option();
+            let input_path_string = command.get_option("input").throw_if_none();
+            let output_path_string = command.get_arg("output").to_option();
             let display_mode = command
-                .get_value_of("display-mode")
+                .get_arg("display-mode")
                 .to_option()
                 .unwrap_or("accessible".to_string());
             let content = command.has("content");
@@ -185,10 +185,10 @@ fn main() {
             );
         }
         "encode" => {
-            let input_path_string = command.get_value().throw_if_none();
-            let output_path_string = command.get_value_of("output").to_option();
+            let input_path_string = command.get_option("input").throw_if_none();
+            let output_path_string = command.get_arg("output").to_option();
             let encode_mode = command
-                .get_value_of("encode-mode")
+                .get_arg("encode-mode")
                 .to_option()
                 .unwrap_or("smart".to_string());
             let content = command.has("content");
@@ -208,51 +208,51 @@ fn main() {
             );
         }
         "rename" => {
-            let input_path_string = command.get_value().throw_if_none();
-            let name = command.get_value_of("name").throw_if_none();
-            let new_file_path = command.get_value_of("new-file").to_option();
+            let input_path_string = command.get_option("input").throw_if_none();
+            let name = command.get_arg("name").throw_if_none();
+            let new_file_path = command.get_arg("new-file").to_option();
             let delete_old = command.has("delete-old");
 
             rename_command(input_path_string, name, new_file_path, delete_old);
         }
         "comment" => {
-            let input_path_string = command.get_value().throw_if_none();
-            let comment = command.get_value_of("comment").throw_if_none();
-            let new_file_path = command.get_value_of("new-file").to_option();
+            let input_path_string = command.get_option("input").throw_if_none();
+            let comment = command.get_arg("comment").throw_if_none();
+            let new_file_path = command.get_arg("new-file").to_option();
             let delete_old = command.has("delete-old");
 
             comment_command(input_path_string, comment, new_file_path, delete_old);
         }
         "lock" => {
-            let input_path_string = command.get_value().throw_if_none();
-            let new_file_path = command.get_value_of("new-file").to_option();
+            let input_path_string = command.get_option("input").throw_if_none();
+            let new_file_path = command.get_arg("new-file").to_option();
             let delete_old = command.has("delete-old");
 
             lock_command(input_path_string, new_file_path, delete_old);
         }
         "unlock" => {
-            let input_path_string = command.get_value().throw_if_none();
-            let new_file_path = command.get_value_of("new-file").to_option();
+            let input_path_string = command.get_option("input").throw_if_none();
+            let new_file_path = command.get_arg("new-file").to_option();
             let delete_old = command.has("delete-old");
 
             unlock_command(input_path_string, new_file_path, delete_old);
         }
         "archive" => {
-            let input_path_string = command.get_value().throw_if_none();
-            let new_file_path = command.get_value_of("new-file").to_option();
+            let input_path_string = command.get_option("input").throw_if_none();
+            let new_file_path = command.get_arg("new-file").to_option();
             let delete_old = command.has("delete-old");
 
             archive_command(input_path_string, new_file_path, delete_old);
         }
         "unarchive" => {
-            let input_path_string = command.get_value().throw_if_none();
-            let new_file_path = command.get_value_of("new-file").to_option();
+            let input_path_string = command.get_option("input").throw_if_none();
+            let new_file_path = command.get_arg("new-file").to_option();
             let delete_old = command.has("delete-old");
 
             unarchive_command(input_path_string, new_file_path, delete_old);
         }
         "details" => {
-            let input_path_string = command.get_value().throw_if_none();
+            let input_path_string = command.get_option("input").throw_if_none();
 
             details_command(input_path_string)
         }
