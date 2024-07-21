@@ -209,7 +209,8 @@ impl Command {
                 if args.len() <= 2 + (index) {
                     return Some(Value::Missing(format!(
                         "{} could not be found in its location ({})",
-                        option_name, index
+                        option_name,
+                        index + 1
                     )));
                 }
 
