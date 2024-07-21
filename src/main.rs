@@ -20,34 +20,39 @@ use commands::models::models_command;
 
 fn main() {
     let cli = Cli::new()
-        .with_default_command("help")
-        .with_commands(vec![
-        Command::new("help", "Prints help information")
-            .with_option(
-                CmdOption::new("command", "COMMAND", "The command you want help with")
-                    .optional()
-            ),
-        Command::new("version", "Prints version information"),
-        Command::new("decode", "Converts 8xp/82p/83p to txt")
-            .with_option(
-                CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
-            )
-            .with_arg(
-                Arg::new("output", "The output path to a txt file", "output", 'o')
-                    .with_value_name("OUTPUT"),
-            )
-            .with_arg(
-                Arg::new("display-mode", "The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible", "display-mode", 'd')
-                    .with_default_value("accessible")
-                    .with_value_name("DISPLAY_MODE")
-            )
-            .with_arg(
-                Arg::new("content", "Display the content of the input file", "content", 'c')
-            )
-            .with_arg(
-                Arg::new("preview", "Display the decoded output", "preview", 'p')
-            ),
-        Command::new("encode", "Converts txt to 8xp")
+        .with_command(
+            Command::new("help", "Prints help information")
+                .with_option(
+                    CmdOption::new("command", "COMMAND", "The command you want help with")
+                        .optional()
+                )
+        )
+        .with_command(
+            Command::new("version", "Prints version information")
+        )
+        .with_command(
+            Command::new("decode", "Converts 8xp/82p/83p to txt")
+                .with_option(
+                    CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
+                )
+                .with_arg(
+                    Arg::new("output", "The output path to a txt file", "output", 'o')
+                        .with_value_name("OUTPUT"),
+                )
+                .with_arg(
+                    Arg::new("display-mode", "The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible", "display-mode", 'd')
+                        .with_default_value("accessible")
+                        .with_value_name("DISPLAY_MODE")
+                )
+                .with_arg(
+                    Arg::new("content", "Display the content of the input file", "content", 'c')
+                )
+                .with_arg(
+                    Arg::new("preview", "Display the decoded output", "preview", 'p')
+                )
+        )
+        .with_command(
+            Command::new("encode", "Converts txt to 8xp")
             .with_option(
                 CmdOption::new("input", "INPUT", "The input path to an txt file")
             )
@@ -65,8 +70,10 @@ fn main() {
             )
             .with_arg(
                 Arg::new("preview", "Display the decoded output", "preview", 'p')
-            ),
-        Command::new("rename", "Renames the program name in a 8xp/82p/83p file")
+            )
+        )
+        .with_command(
+            Command::new("rename", "Renames the program name in a 8xp/82p/83p file")
             .with_option(
                 CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
             )
@@ -81,8 +88,10 @@ fn main() {
             .with_arg(
                 Arg::new("delete-old", "Delete the old file", "delete-old", 'd')
                     .requires("new-file")
-            ),
-        Command::new("comment", "Write a custom comment to an 8xp/82p/83p file")
+            )
+        )
+        .with_command(
+            Command::new("comment", "Write a custom comment to an 8xp/82p/83p file")
             .with_option(
                 CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
             )
@@ -97,8 +106,10 @@ fn main() {
             .with_arg(
                 Arg::new("delete-old", "Delete the old file", "delete-old", 'd')
                     .requires("new-file")
-            ),
-        Command::new("lock", "Lock an 8xp/82p/83p file")
+            )
+        )
+        .with_command(
+            Command::new("lock", "Lock an 8xp/82p/83p file")
             .with_option(
                 CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
             )
@@ -109,8 +120,10 @@ fn main() {
             .with_arg(
                 Arg::new("delete-old", "Delete the old file", "delete-old", 'd')
                     .requires("new-file")
-            ),
-        Command::new("unlock", "unlock an 8xp/82p/83p file")
+            )
+        )
+        .with_command(
+            Command::new("unlock", "unlock an 8xp/82p/83p file")
             .with_option(
                 CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
             )
@@ -121,8 +134,10 @@ fn main() {
             .with_arg(
                 Arg::new("delete-old", "Delete the old file", "delete-old", 'd')
                     .requires("new-file")
-            ), 
-        Command::new("archive", "Set the program to be sent to Archive")
+            )
+        )
+        .with_command(
+            Command::new("archive", "Set the program to be sent to Archive")
             .with_option(
                 CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
             )
@@ -133,8 +148,10 @@ fn main() {
             .with_arg(
                 Arg::new("delete-old", "Delete the old file", "delete-old", 'd')
                     .requires("new-file")
-            ),
-        Command::new("unarchive", "Set the program to be sent to RAM")
+            )
+        )
+        .with_command(
+            Command::new("unarchive", "Set the program to be sent to RAM")
             .with_option(
                 CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
             )
@@ -145,13 +162,17 @@ fn main() {
             .with_arg(
                 Arg::new("delete-old", "Delete the old file", "delete-old", 'd')
                     .requires("new-file")
-            ),
-        Command::new("details", "Displays information about an 8xp/82p/83p file")
+            )
+        )
+        .with_command(
+            Command::new("details", "Displays information about an 8xp/82p/83p file")
             .with_option(
                 CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
-            ),
-        Command::new("models", "Prints the supported TI calculator models"),
-        ]);
+            )
+        )
+        .with_command(
+            Command::new("models", "Prints the supported TI calculator models")
+        );
 
     let command = cli.match_commands();
 

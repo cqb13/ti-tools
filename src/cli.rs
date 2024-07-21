@@ -56,8 +56,8 @@ impl Cli {
         self
     }
 
-    pub fn with_commands(mut self, commands: Vec<Command>) -> Cli {
-        self.commands = commands;
+    pub fn with_command(mut self, command: Command) -> Cli {
+        self.commands.push(command);
         self
     }
 
