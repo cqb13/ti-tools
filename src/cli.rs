@@ -26,53 +26,55 @@ impl Cli {
         }
     }
 
+    /// Override the name of the program retrieved from the Cargo.toml
     pub fn with_name(mut self, name: &str) -> Cli {
         self.name = name.to_string();
         self
     }
 
+    /// Override the binary name of the program retrieved from the Cargo.toml
     pub fn with_bin(mut self, bin: &str) -> Cli {
         self.bin = bin.to_string();
         self
     }
 
+    /// Override the description of the program retrieved from the Cargo.toml
     pub fn with_description(mut self, description: &str) -> Cli {
         self.description = description.to_string();
         self
     }
 
+    /// Override the author of the program retrieved from the Cargo.toml
     pub fn with_author(mut self, author: &str) -> Cli {
         self.author = author.to_string();
         self
     }
 
+    /// Override the github repository of the program retrieved from the Cargo.toml
     pub fn with_github(mut self, github: &str) -> Cli {
         self.github = github.to_string();
         self
     }
 
+    /// Override the version of the program retrieved from the Cargo.toml
     pub fn with_version(mut self, version: &str) -> Cli {
         self.version = version.to_string();
         self
     }
 
+    /// Add a command to the cli
     pub fn with_command(mut self, command: Command) -> Cli {
         self.commands.push(command);
         self
     }
 
-    /**
-     * The default command to run if just the program name is called
-     * The default_command should be the name of the desired command
-     * If it is a command that should not be normally run, don't add it to cli command list, just match for name in the main function
-     *
-     * If a default command is not set, the auto generated help command will be run
-     */
+    /// Set the default command to be run if no command is specified, if no default command is set the help command will be run
     pub fn with_default_command(mut self, default_command: &str) -> Cli {
         self.default_command = Some(default_command.to_string());
         self
     }
 
+    /// Match the commands and
     pub fn match_commands(&self) -> &Command {
         let args: Vec<String> = env::args().collect();
         if args.contains(&"--help".to_string()) || args.contains(&"-h".to_string()) {}
@@ -139,11 +141,13 @@ impl Command {
         }
     }
 
+    /// Add an option to the command
     pub fn with_option(mut self, option: CmdOption) -> Command {
         self.options.push(option);
         self
     }
 
+    /// Add an argument to the command
     pub fn with_arg(mut self, arg: Arg) -> Command {
         self.args.push(arg);
         self
@@ -174,9 +178,7 @@ impl Command {
         self.args.iter().find(|&arg| arg.name == arg_name)
     }
 
-    /**
-     * Check if a flag is present
-     */
+    /// Check if a flag is present in the arguments
     pub fn has(&self, arg_name: &str) -> bool {
         self.args
             .iter()
@@ -196,9 +198,7 @@ impl Command {
             .unwrap_or(false)
     }
 
-    /**
-     * Get the value of the option in its location
-     */
+    /// Get the value of an option in its location
     pub fn get_option(&self, option_name: &str) -> Value {
         self.options
             .iter()
@@ -227,9 +227,7 @@ impl Command {
             .unwrap()
     }
 
-    /**
-     * Get the value of a flag
-     */
+    /// Get the value of an argument
     pub fn get_arg(&self, arg_name: &str) -> Value {
         self.args
             .iter()
@@ -298,21 +296,19 @@ impl Arg {
         }
     }
 
+    /// Set the value name of the argument, used in the help menu to show the argument takes an input
     pub fn with_value_name(mut self, value_name: &str) -> Arg {
         self.value_name = Some(value_name.to_string());
         self
     }
 
+    /// If no value is provided for the argument, use the default value
     pub fn with_default_value(mut self, default_value: &str) -> Arg {
         self.default_value = Some(default_value.to_string());
         self
     }
 
-    pub fn with_description(mut self, description: &str) -> Arg {
-        self.description = description.to_string();
-        self
-    }
-
+    /// Set the argument to require another argument to be present
     pub fn requires(mut self, requires: &str) -> Arg {
         if self.requires.is_none() {
             self.requires = Some(vec![requires.to_string()])
@@ -322,6 +318,7 @@ impl Arg {
         self
     }
 
+    /// Set the argument to be required
     pub fn required(mut self) -> Arg {
         self.required = true;
         self
