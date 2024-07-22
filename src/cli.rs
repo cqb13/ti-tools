@@ -74,7 +74,7 @@ impl Cli {
         self
     }
 
-    /// Match the commands and
+    /// Match the command being passed in the arguments
     pub fn match_commands(&self) -> &Command {
         let args: Vec<String> = env::args().collect();
         if args.contains(&"--help".to_string()) || args.contains(&"-h".to_string()) {}
