@@ -23,7 +23,7 @@ pub fn create_from_txt(
     let line = file_string
         .lines()
         .nth(3)
-        .ok_or_else(|| "missing archived".to_string())?;
+        .ok_or_else(|| "missing destination".to_string())?;
     let destination = Destination::from_string(line)?;
     let line = file_string
         .lines()
