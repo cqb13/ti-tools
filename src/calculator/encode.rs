@@ -46,7 +46,7 @@ pub fn encode(
     tokens: &Map,
     perform_normalize: bool,
     display_mode: DisplayMode,
-    encode_mode: EncodeMode,
+    encode_mode: &EncodeMode,
 ) -> Result<Vec<u8>, String> {
     let mut encoded_program = Vec::new();
 

@@ -53,7 +53,7 @@ impl Program {
         Ok(program)
     }
 
-    pub fn load_from_txt(path: PathBuf, encode_mode: EncodeMode) -> Result<Program, String> {
+    pub fn load_from_txt(path: PathBuf, encode_mode: &EncodeMode) -> Result<Program, String> {
         if !path.exists() {
             return Err(format!(
                 "Failed to find file at: {:?}",

@@ -54,7 +54,7 @@ fn test_program(path_to_8xp: &str, path_to_txt: &str) {
         path_to_8xp
     );
 
-    let loaded_txt = Program::load_from_txt(path_to_txt.to_path_buf(), EncodeMode::Smart);
+    let loaded_txt = Program::load_from_txt(path_to_txt.to_path_buf(), &EncodeMode::Smart);
 
     assert!(
         loaded_txt.is_ok(),

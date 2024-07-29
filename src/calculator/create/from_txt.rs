@@ -7,7 +7,7 @@ use std::path::PathBuf;
 
 pub fn create_from_txt(
     path: PathBuf,
-    encode_mode: EncodeMode,
+    encode_mode: &EncodeMode,
 ) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), String> {
     let file_string = std::fs::read_to_string(&path).map_err(|err| err.to_string())?;
 
