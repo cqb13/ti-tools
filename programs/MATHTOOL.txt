@@ -1,0 +1,875 @@
+MATHTOOL
+Created by TI-Tools 0.1.6
+Program
+RAM
+accessible
+latest
+BorderColor 4
+DelVar {Y1}:DelVar {Y2}:DelVar {Y3}:DelVar {Y4}:DelVar {Y5}:DelVar {Y6}:DelVar {Y7}:DelVar {Y8}:DelVar {Y9}:DelVar {Y0}
+BackgroundOff
+AxesOff
+FnOff 
+ClrDraw
+TextColor(BLACK
+1->N
+Lbl 10
+ClrHome
+Output(1,3,"M[|a][t]h[t]ool[s]: Alg[|e][|b][r][|a] o[n][|e]
+Output(2,1,"==========================
+Lbl M9
+Output(N+2,1," 
+1->N
+Output(3,1,"|>
+Output(3,2,"1:Eq|u[|a][t]io[n] Sol|v[|e][r]    
+Output(4,2,"2:F[|a][|c][t]o[r] [|a] Poly[n]omi[|a]l
+Output(5,2,"3:Sim[p]lify [|a] R[|a][|d]i[|c][|a]l
+Output(6,2,"4:Py[t]h[|a]go[r][|e][|a][n] Th[|e]o[r][|e]m
+Output(7,2,"5:Q|u[|a][|d][r][|a][t]i[|c] Eq|u[|a][t]io[n]
+Output(8,2,"6:Li[n][|e][|a][r] Eq|u[|a][t]io[n][s]
+Output(9,2,"7:N[|e]x[t] P[|a]g[|e]
+Output(10,2,"8:Q|ui[t]                [1]
+Lbl M1
+Repeat K!=0
+getKey->K
+End
+If K=34 and N=8
+Then
+0->K
+Output(N+2,1," 
+1->N
+Output(N+2,1,"|>
+End
+If K=25 and N=1
+Then
+0->K
+Output(N+2,1," 
+8->N
+Output(N+2,1,"|>
+End
+If K=34 and N<8
+Then
+Output(N+2,1," 
+N+1->N
+Output(N+2,1,"|>
+End
+If K=25 and N>1
+Then
+Output(N+2,1," 
+N-1->N
+Output(N+2,1,"|>
+End
+If K=105 and N=7:Goto S2
+If K=105 and N=8:Goto 9
+If K=105 and N=1:Goto ES
+If K=105 and N=2:Goto 5
+If K=105 and N=3:Goto 3
+If K=105 and N=4:Goto 35
+If K=105 and N=5:Goto 11
+If K=105 and N=6:Goto LE
+If K=72:Goto S2
+If K=73:Goto 9
+If K=92:Goto ES
+If K=93:Goto 5
+If K=94:Goto 3
+If K=82:Goto 35
+If K=83:Goto 11
+If K=84:Goto LE
+If K=45 or K=22:Goto 9
+Goto M1
+Lbl S2
+Output(N+2,1," 
+1->N
+Output(3,1,"|>
+Output(3,4,"[Sy][s][t][|e]m of Eq|u[|a][t]io[n][s]
+Output(4,4,"S[t][|a][t]i[s][t]i[|c][s]         
+Output(5,4,"R[|a][t]io[n][|a]l Eq|u[|a][t]io[n][s]
+Output(6,4,"R[|e][|c]|u[r][s]i|v[|e] Seq|u[|e][n][|c][|e] 
+Output(7,4,"Poly[n]omi[|a]l Di|vi[|d][|e][r]
+Output(8,4,"C[|a]l[|c]|ul[|a][t]o[r]      
+Output(9,4,"H[|e]l[p]
+Output(10,4,"P[r][|e]|vio|u[s] P[|a]g[|e]       [2]
+Lbl M2
+Repeat K!=0
+getKey->K
+End
+If K=34 and N=8
+Then
+0->K
+Output(N+2,1," 
+1->N
+Output(N+2,1,"|>
+End
+If K=25 and N=1
+Then
+0->K
+Output(N+2,1," 
+8->N
+Output(N+2,1,"|>
+End
+If K=34 and N<8
+Then
+Output(N+2,1," 
+N+1->N
+Output(N+2,1,"|>
+End
+If K=25 and N>1
+Then
+Output(N+2,1," 
+N-1->N
+Output(N+2,1,"|>
+End
+If K=105 and N=8:Goto M9
+If K=92:Goto SY
+If K=93:Goto SA
+If K=94:Goto JK
+If K=82:Goto RA
+If K=83:Goto 34
+If K=84:Goto 6
+If K=72:Goto AB
+If K=73:Goto M9
+If K=105 and N=1:Goto SY
+If K=105 and N=2:Goto SA
+If K=105 and N=3:Goto JK
+If K=105 and N=4:Goto RA
+If K=105 and N=5:Goto 34
+If K=105 and N=6:Goto 6
+If K=105 and N=7:Goto AB
+If K=45 or K=22:Goto 9
+Goto M2
+Lbl AB
+ClrHome
+Disp "If yo|u h[|a]|v[|e] [|a][n]y q|u[|e][s][t]io[n][s],
+Disp "[|c]omm[|e][n][t][s] or [s]|ugg[|e][s][t]io[n][s],
+Disp "Co[n][t][|a][|c][t] m[|e] h[|e][r][|e]:
+Disp "TI84C[|a]l[|c]Wi[z].[|c]om
+Output(10,1,"Co[p]y[r]igh[t] 2018
+Pause 
+Goto 10
+Lbl LE
+Menu("     Li[n][|e][|a][r] Eq|u[|a][t]io[n][s]     ","T|wo Poi[n][t][s]",LP,"Fi[n][|d] I[n][t][|e][r][s][|e][|c][t]",LI,"Poi[n][t] and Slo[p][|e]",LA,"Mi[|d][p]oi[n][t]",MI,"Go [|b][|a][|c]k",M1
+Lbl MI
+ClrHome
+Disp "Poi[n][t] O[n][|e]
+Input "Xsmall1=",A
+Input "{Y1}=",B
+Disp "Poi[n][t] T|wo
+Input "Xsmall2=",C
+Input "{Y2}=",D
+(A+C)/2->X
+(B+D)/2->Y
+Disp "Th[|e] Mi[|d][p]oi[n][t] i[s] [|a][t]:
+Output(8,1,"X=
+Output(8,3,X
+Output(9,1,"Y=
+Output(9,3,Y
+Pause 
+Goto 10
+Lbl LP
+ClrHome
+Disp "(A,B)(C,D)"
+Prompt A,B,C,D
+(D-B)/(C-A)->S
+D-CS->I
+(A+C)/2->M
+(B+D)/2->Z
+ClrDraw
+Text(1,55,"(",A,",",B,")","(",C,",",D,")"
+Text(14,1,"Eq|u[|a][t]io[n]:"
+If I>0
+Text(28,1,"Y=",S,"X+",I
+If I<0
+Text(28,1,"Y=",S,"X-",abs(I
+If I=0
+Text(28,1,"Y=",S,"X"
+Text(42,1,"Slo[p][|e]:",S
+Text(56,1,"Y-I[n][t][|e][r][s][|e][|c][t]:",I
+Text(70,1,"Mi[|d][p]oi[n][t]: {",M,",",Z,"}"
+Pause 
+Goto 10
+Lbl LI
+ClrHome
+Disp "y=Ax+B"
+Disp "y=Cx+D"
+Prompt A,B,C,D
+If A=C:Then:Disp "No Sol|u[t]io[n]":Pause :Goto 10:Else
+(D-B)/(A-C)->X
+AX+B->U
+ClrDraw
+Text(1,1,"I[n][t][|e][r][s][|e][|c][t]: ","(",X,",",U,")"
+Pause 
+Goto 10
+Lbl LA
+ClrHome
+Disp "(A,B)
+Prompt A,B
+Input "Slo[p][|e]:",C
+ClrDraw:AxesOff:FnOff 
+Text(1,1,"(",A,",",B,")  Slo[p][|e]: ",C
+B-AC->D
+If D>0
+Text(14,1,"Eq|u[|a][t]io[n]: y=",C,"x+",D
+If D<0
+Text(14,1,"Eq|u[|a][t]io[n]: y=",C,"x-",abs(D
+If D=0
+Text(14,1,"Eq|u[|a][t]io[n]: y=",C,"x"
+Pause 
+ClrDraw
+Goto 10
+Lbl RA
+ClrHome
+Input "f(1)=",F
+Disp "U[s][|e] F(N-1)
+Input "f([n])=",Str1
+Input "Fi[n][|d] T[|e][r]m #:",Z
+length(Str1)->L
+inString(Str1,"F(N-1)->I
+If Z<2 or fPart(Z)!=0
+Then
+Disp "Th[|e] [t][|e][r]m [t]o fi[n][|d] [|c][|a][n][n]o[t]
+Disp "B[|e] l[|e][s][s] [t]h[|a][n] 2 or i[n][|c]l|u[|d][|e]
+Disp "A [|d][|e][|c]im[|a]l
+Pause 
+Goto 10
+End
+If I=0
+Then
+Disp "Yo|u [|d]i[|d][n]'[t] [|e][n][t][|e][r] F(N-1) i[n]
+Disp "yo|u[r] [s][|e]q|u[|e][n][|c][|e]!"
+Disp "[|e]x:F(N-1)+3
+Pause 
+Goto 10
+End
+If L=I+5
+Then
+sub(Str1,1,I-1)->Str2
+Str2+"X"->Str1
+1->C
+F->X
+Goto RF
+End
+If I=1
+Then
+sub(Str1,I+6,L-(I+5))->Str3
+"X"+Str3->Str1
+Else
+sub(Str1,1,I-1)->Str2
+sub(Str1,I+6,L-(I+5))->Str3
+Str2+"X"+Str3->Str1
+End
+1->C
+F->X
+Lbl RF
+If C=Z
+Then
+Goto S
+End
+Str1->{Y1}
+{Y1}->X
+C+1->C
+Goto RF
+Lbl S
+Disp "
+Disp "T[|e][r]m
+Output(6,6,Z
+Disp "i[s]:
+Output(7,4,X
+Pause 
+DelVar {Y1}
+Goto 10
+Lbl ES
+ClrHome
+Disp "P[r][|e][s][s][2[n][|d]][m[|a][t]h]fo[r] =
+Disp "-E[n][t][|e][r] Eq|u[|a][t]io[n]-
+Input ":",Str1
+inString(Str1,"=")->I
+If I=0:Then:Disp "Th[|e][r][|e] i[s] [n]o = i[n] [t]h[|e]":Pause "[|e]q|u[|a][t]io[n] [|e][n][t][|e][r][|e][|d].":Goto 10:End
+sub(Str1,1,I-1)+"-("+sub(Str1,I+1,length(Str1)-I)+")"->{Y1}
+solve({Y1},X,1->X
+Disp "X=
+Output(4,3,X
+Pause 
+DelVar {Y1}
+Goto 10
+Lbl CI
+ClrHome
+Input "I[n]i[t]i[|a]l Amo|u[n][t]:",P
+Disp "A[n]|u[|a]l i[n][t][|e][r][|e][s][t] [r][|a][t][|e] [|a][s]
+Input "[|a] [|d][|e][|c]im[|a]l:",R
+Disp "# of [t]im[|e][s] [|c]om[p]o|u[n][|d][|e][|d]
+Input "[p][|e][r] y[|e][|a][r]:",Z
+Input "# of y[|e][|a][r][s] i[n]|v[|e][s][t][|e][|d]:",T
+ClrHome
+P*(1+(R/Z))^(ZT)->A
+Disp "Th[|e] i[n]|v[|e][s][t][|e][|d] [|b][|a]l[|a][n][|c][|e]"
+Disp "i[s]:"
+Output(2,4,A
+Pause 
+Goto 10
+Lbl SY
+ClrHome
+Disp "AX+BY=C
+Disp "Eq|u[|a][t]io[n] o[n][|e]
+Input "A:",A
+Input "B:",B
+Input "C:",C
+Disp "Eq|u[|a][t]io[n] [t]|wo
+Input "A:",X
+Input "B:",Y
+Input "C:",Z
+{2,3->dim([A]
+A->[A](1,1
+B->[A](1,2
+C->[A](1,3
+X->[A](2,1
+Y->[A](2,2
+Z->[A](2,3
+rref([A])->[B]
+ClrHome
+Disp "I[n] [t]hi[s] [s]y[s][t][|e]m of
+Disp "Eq|u[|a][t]io[n][s]:
+Disp "X=
+Output(3,3,[B](1,3
+Disp "Y=
+Output(4,3,[B](2,3
+Pause 
+Goto 10
+Lbl SA
+Menu("        S[t][|a][t]i[s][t]i[|c][s]        ","MAD Of L1",SB,"S[t][|a][n][|d][|a][r][|d] D[|e]|vi[|a][t]io[n] of L1",SC,"Com[p]o|u[n][|d] I[n][t][|e][r][|e][s][t]",CI,"Go B[|a][|c]k",M2
+Lbl SC
+ClrHome
+Disp "Th[|e] [s][t][|a][n][|d][|a][r][|d] [|d][|e]|vi[|a][t]io[n] i[s]:"
+Pause stdDev(L1
+Goto 10
+Lbl SB
+ClrHome
+mean(L1->X
+DelVar L6
+abs(L1-X)->L6
+Disp "Th[|e] MAD i[s]:
+Pause mean(L6
+DelVar L6
+Goto 10
+Lbl JK
+Menu("    R[|a][t]io[n][|a]l Eq|u[|a][t]io[n][s]    ","Wo[r]k P[r]o[|b]l[|e]m[s]",JA,"R[|a][t][|e] P[r]o[|b]l[|e]m[s]",JB,"A[s]ym[p][t]o[t][|e] Fi[n][|d][|e][r]",JE,"Go B[|a][|c]k",M2
+Lbl JE
+ClrHome
+Disp "Y=(An/dX-B)+C
+Prompt A,B,C
+ClrHome
+Disp "X A[s]ym[p][t]o[t][|e]:"
+Output(1,13,B
+Disp "Y A[s]ym[p][t]o[t][|e]:"
+Output(2,13,C
+Pause 
+Goto 10
+Lbl JB
+Menu("R[|a][t][|e] P[r]o[|b]l[|e]m[s]","T[r][|a]|v[|e]li[n]g To|w[|a][r][|d]",JD,"T[r][|a]|v[|e]li[n]g S[|a]m[|e] Di[r][|e][|c][t]io[n]",JC,"Go B[|a][|c]k",10
+Lbl JD
+ClrHome
+Disp "Thi[n]g o[n][|e] i[s] goi[n]g [t]hi[s]"
+Input "m[|a][n]y |u[n]i[t][s] f[|a][s][t]:",A
+Disp "Thi[n]g [t]|wo i[s] goi[n]g [t]hi[s]"
+Input "m[|a][n]y |u[n]i[t][s] f[|a][s][t]:",B
+Disp "O[n] [|a] [p][|a][t]h [t]h[|a][t] i[s] [t]hi[s]"
+Input "m[|a][n]y |u[n]i[t][s] lo[n]g:",C
+ClrHome
+Disp "So [t]h[|e]y |will [p][|a][s][s] [|a]f[t][|e][r]"
+A+B->A
+C/A->A
+Disp A
+Pause "U[n]i[t][s] of [t]im[|e]"
+Goto 10
+Lbl JC
+ClrHome
+Disp "Fi[r][s][t] [t]hi[n]g l[|e][|a]|v[|e][s] [|a][t]"
+Input "[t]hi[s] [s][p][|e][|e][|d]:",A
+Disp "S[|e][|c]o[n][|d] [t]hi[n]g l[|e][|a]|v[|e][s] 
+Disp "[t]hi[s] m[|a][n]y |u[n]i[t][s] l[|a][t][|e][r]"
+Input "(U[s][|e] [s][|a]m[|e] |u[n]i[t]!):",B
+Input "A[t] [t]hi[s] [s][p][|e][|e][|d]:",C
+B*~1->B
+C*B->D
+A-C->A
+D/A->A
+ClrHome
+Disp "So [t]h[|e]y |will [p][|a][s][s] [|a]f[t][|e][r]"
+Disp A
+Pause "U[n]i[t][s] of [t]im[|e]"
+Goto 10
+Lbl JA
+ClrHome
+Disp "P[|e][r][s]o[n] A [|d]o[|e][s]"
+Input "[t]hi[s] m[|a][n]y [t]hi[n]g[s](jo[|b][s]):",A
+Input "I[n] [t]hi[s] [|a]mo|u[n][t] of [t]im[|e]:",B
+Disp "P[|e][r][s]o[n] B [|d]o[|e][s]"
+Input "[t]hi[s] m[|a][n]y [t]hi[n]g[s](jo[|b][s]):",C
+Input "I[n] [t]hi[s] [|a]mo|u[n][t] of [t]im[|e]:",D
+If fPart(B)!=0 or fPart(D)!=0
+Then
+ClrHome
+Disp "I[n][|c]om[p][|a][t]i[|b]l[|e] |wi[t]h [|d][|e][|c]im[|a]l[s]"
+Pause 
+Goto 10
+End
+ClrHome
+lcm(B,D)->X
+A/B->Z
+C/D->Y
+Z*X->Z
+Y*X->Y
+Z+Y->Z
+X/Z->X
+Disp "So,if [t]h[|e]y |wo[r]k[|e][|d] [t]og[|e][t]h[|e][r]
+Disp "i[t] |wo|ul[|d] [t][|a]k[|e]"
+Disp X
+Disp "|u[n]i[t][s] of [t]im[|e] [t]o [|d]o o[n][|e]"
+Pause 
+Goto 10
+Lbl 34
+Menu("    Poly[n]omi[|a]l Di|vi[|d][|e][r]    ","X^4",91,"X^3",92,"X^2",93,"Go B[|a][|c]k",M2)
+Lbl 91
+ClrHome
+Disp "AX^4+BX^^3+CX^^2+DX+E"
+Input "A= ",A
+Input "B= ",B
+Input "C= ",C
+Input "D= ",D
+Input "E= ",E
+Disp "ALL OVER X+F"
+Input "F= ",F
+ClrDraw
+~F->F
+(D+(ZF))->Y
+(B+(FA))->W
+(C+(WF))->V
+(D+(VF))->U
+(E+(UF))->T
+Y->K
+W->L
+V->M
+U->Z
+T->O
+Text(1,1,A,"X^^3+",W,"X^^2+",V,"X+",U
+Text(20,1,"[r]",T)
+Pause 
+Goto 10
+End
+Lbl 92
+ClrHome
+Disp "AX^^3+BX^^2+CX+D"
+Input "A= ",A
+Input "B= ",B
+Input "C= ",C
+Input "D= ",D
+Disp "ALL OVER X+E"
+Input "E= ",E
+ClrDraw
+~E->E
+(B+(AE))->Z
+(C+(ZE))->Y
+(D+(YE))->W
+Y->S
+Text(1,1,A,"X^^2+",Z,"X+",Y," [r]",W)
+Pause 
+ClrHome
+Goto 10
+End
+Lbl 93
+ClrHome
+Disp "AX^^2+BX+C"
+Input "A= ",A
+Input "B= ",B
+Input "C= ",C
+Disp "ALL OVER X+D"
+Input "D= ",D
+ClrDraw
+~D->D
+(B+(AD))->Z
+(C+(ZD))->Y
+Z->T
+Y->P
+Text(1,1,A,"X+",Z," [r]",Y)
+Pause 
+Goto 10
+End
+Lbl 35
+Menu("    Py[t]h[|a]go[r][|e][|a][n] Th[|e]o[r][|e]m   ","Mi[s][s]i[n]g L[|e][n]g[t]h",1,"Righ[t] T[r]i Ch[|e][|c]k[|e][r]",2,"Di[s][t][|a][n][|c][|e] C[|a]l[|c]|ul[|a][t]o[r]",4,"Go B[|a][|c]k",M1
+Lbl 2
+ClrHome
+0->X
+Disp "A^2+B^2=C^2"
+Prompt A,B,C
+If ((A)^2)+((B)^2)=((C)^2)
+Then
+Disp "Y[|e][s], [t]hi[s] i[s]
+Disp "[|a] [r]igh[t] [t][r]i[|a][n]gl[|e]"
+Else
+Disp "No, [t]hi[s] i[s] [n]o[t]"
+Disp "[|a] [r]igh[t] [t][r]i[|a][n]gl[|e]"
+End
+Pause 
+Goto 10
+Lbl 1
+ClrHome
+Disp "A^2+B^2=C^2"
+Disp "E[n][t][|e][r] 0 fo[r] |u[n]k[n]o|w[n] l[|e][n]g[t]h"
+Disp "-Righ[t] [t][r]i[|a][n]gl[|e][s]-"
+Prompt A,B,C
+0->X
+If A!=0 and B!=0 and C!=0
+Then
+ClrHome
+Pause "E[r][r]o[r]:No V[|a][r]=0"
+Goto 10
+End
+If A=0
+Then
+B^2->B
+C^2->C
+A^2->A
+C-B->C
+sqrt(C->C
+Goto P9
+End
+If B=0
+Then
+A^2->A
+B^2->B
+C^2->C
+C-A->C
+sqrt(C->C
+Lbl P9
+Disp "Th[|e] mi[s][s]i[n]g l[|e][n]g[t]h i[s]:
+Output(7,23,C
+Pause 
+Goto 10
+End
+If C=0
+Then
+A^2->A
+B^2->B
+C^2->C
+A+B->C
+sqrt(C->C
+Goto P9
+End
+Lbl 3
+ClrHome
+Disp "-No |v[|a][r]i[|a][|b]l[|e][s]-"
+Input "squareroot",X
+Lbl GT
+If fPart(X)!=0:Then:Disp "E[r][r]o[r]:D[|e][|c]im[|a]l[s] [|a][r][|e] [n]o[t]":Pause "Com[p][|a][t]i[|b]l[|e]":Goto 10:End
+iPart(sqrt(X)+1)->A
+Repeat fPart(X/A^2)=0
+A-1->A
+End
+ClrDraw
+Text(1,1,A,"sqrt(",X/A^2,")"," or ",sqrt(X
+Pause 
+Goto 10
+Lbl 4
+ClrHome
+Disp "(X1,Y1) and (X2,Y2)
+Disp "E[n][t][|e][r] [t]h[|e] Poi[n][t][s]"
+Input "X1:",A
+Input "Y1:",B
+Input "X2:",C
+Input "Y2:",D
+(C-A)^2+(D-B)^2->X
+If fPart(X)=0:Then:Goto GT:Else
+Disp "Di[s][t][|a][n][|c][|e]=
+Output(7,10,sqrt(X
+Pause 
+End
+Goto 10
+Lbl 5
+DelVar L1:DelVar L2:DelVar L3:DelVar L4:DelVar L5
+ClrDraw:ClrHome
+Input "High[|e][s][t] Ex[p]o[n][|e][n][t]:",D
+0->dim(L1
+For(I,D,0,~1
+2(D-I+1
+If Ans>10
+10
+Output(Ans,1,"x^
+Output(Ans,3,I
+Disp "
+Input ":",C
+C->L1(D-I+1
+End
+D+1->D
+0->C
+0->R
+0->Z
+0->theta
+While not(L1(D
+D-1->D
+Z+1->Z
+End
+If 0>L1(1
+Then
+Text(R,C,"~
+C+6->C
+~L1->L1
+End
+L1(1->A
+For(I,2,dim(L1
+gcd(A,abs(L1(I->A
+End
+If A
+L1/A->L1
+If A>1
+Then
+Text(R,C,A
+C+8+8int(log(A->C
+End
+If Z
+Then
+Text(R,C,"X
+C+8->C
+If Z=2
+Then
+Text(R,C,"^^2
+C+8->C
+End
+If Z>2
+Then
+Text(R,C,"^
+Text(R,C+8,Z
+C+16+8int(log(Z->C
+End
+End
+If D=1
+Goto B3
+Lbl B0
+1->Q
+1->I
+For(J,1,2
+abs(L1(I->A
+{1->L2
+2->B
+While 2<Anot(fPart(A/2
+Lbl B1
+A/B->A
+If fPart(max(L2)/B
+L2->L4
+augment(L4,BL2->L2
+End
+For(G,B+(B=2),sqrt(A),2)
+If fPart(A/G
+End
+G->B
+A->G
+If B^^2<=A
+Goto B1
+augment(L2,AL2->L2
+If I=1
+L2->L3
+D->I
+End
+0->dim(L4
+For(I,1,dim(L2
+For(J,1,dim(L3
+L2(I)/L3(J->L4(1+dim(L4
+End
+End
+0->dim(L2
+0->dim(L3
+SortA(L4
+0->dim(L5
+L4(1->L5(1
+For(I,2,dim(L4
+If L4(I-1)!=L4(I
+L4(I->L5(1+dim(L5
+End
+0->dim(L4
+dim(L5->B
+For(I,max(1,int(B/2)),B
+L5(I->L4(1+dim(L4
+B-I-1->J
+If J>0 and J!=I
+L5(J->L4(1+dim(L4
+End
+0->dim(L5
+1->A
+Lbl B2
+1->B
+Repeat B=2
+D->E
+L1(1->L2(1
+For(I,2,D
+L1(I)+L2(I-1)L4(A->L2(I
+End
+If not(L2(D
+Then
+abs(L4(A->Y
+1->N
+While Y>|E~7N
+N/Y->N
+fPart(Y^^-1->Y
+End
+If 1>fPart(N
+iPart(N->N
+round(N,0->N
+round(NL4(A),0->F
+Text(R,C,"(
+C+6->C
+If N>1
+Then
+Text(R,C,N
+C+8+8int(log(N->C
+End
+Text(R,C,"X
+If theta
+Text(R,C,"X^^2
+If theta
+C+8->C
+C+8->C
+Text(R,C,"-
+If F<0
+Text(R,C,"+
+C+8->C
+If C>=220
+DelVar CR+14->R
+Text(R,C,abs(F
+C+8+8int(log(abs(F->C
+Text(R,C,")
+C+6->C
+D-1->D
+D->dim(L2
+L2/N->L1
+NQ->Q
+End
+If D=E or D=1
+2->B
+End
+If A<=dim(L4
+Then
+If 0>L4(A
+Then
+A+1->A
+Else
+~L4(A->L4(A
+End
+End
+If D>1 and Q<10 and A<=dim(L4
+Goto B2
+If D>1 and A<=dim(L4
+Goto B0
+theta+1->theta
+If D>1 and theta=1
+Then
+For(I,D,2,~1
+If L1(I) and fPart((I-1)/2
+3->theta
+End
+If theta=1
+Then
+{L1(1->L2
+For(I,3,D,2
+L1(I->L2(1+dim(L2
+End
+L2->L1
+0->dim(L2
+dim(L1->D
+End
+End
+If D>1 and theta=1
+Goto B0
+If D>1 and theta=2
+Then
+{L1(1),0->L2
+For(I,2,D
+augment(L2,augment({L1(I)},{0->L2
+End
+dim(L2)-1->dim(L2
+L2->L1
+0->dim(L2
+dim(L1->D
+End
+If D>1
+Then
+Text(R,C,"(
+C+6->C
+For(I,1,dim(L1
+D-I->J
+L1(I->A
+If A
+Then
+If A<0 and I=1
+Then
+Text(R,C,"~
+C+8->C
+End
+If I>1
+Then
+Text(R,C,"-
+If 0<A
+Text(R,C,"+
+C+8->C
+End
+If C>=200
+DelVar CR+14->R
+If 1<abs(A) or not(J
+Then
+Text(R,C,abs(A
+C+8+8int(log(abs(A->C
+End
+If J
+Then
+Text(R,C,"X
+C+8->C
+End
+If J=2
+Then
+Text(R,C,"^^2
+C+8->C
+End
+If J>2
+Then
+Text(R,C,"^
+Text(R,C+8,J
+C+16+8int(log(J->C
+End
+End
+End
+Text(R,C,")
+End
+Lbl B3
+Pause 
+SetUpEditor 
+Output(1,1,"
+Goto 10
+Lbl 6
+ClrHome
+Disp "E[n][t][|e][r] 0 [t]o Exi[t]"
+Lbl 48
+Input "",Str1
+Str1->{Y1}
+{Y1}->X
+DelVar {Y1}
+If Str1="0":Goto 10
+Disp X
+If fPart(X)!=0:Then:Disp "o[r]":Disp X>F<>D:End
+Disp "..............................................................................
+Goto 48
+Lbl 11
+a+bi
+ClrHome
+Disp "E[n][t][|e][r] [|c]o[|e]ffi[|c]i[|e][n][t][s]
+Prompt A,B,C
+B^2-4AC->D
+ClrHome
+Output(1,1,"X=
+Output(1,3,(~B+sqrt(D))/(2A)
+Output(2,1,"[|a][n][|d] X=
+Output(2,7,(~B-sqrt(D))/(2A)
+Pause 
+Goto 10
+Lbl 9
+DelVar ADelVar BDelVar CDelVar DDelVar EDelVar FDelVar GDelVar HDelVar IDelVar JDelVar KDelVar LDelVar MDelVar NDelVar ODelVar PDelVar QDelVar RDelVar SDelVar TDelVar UDelVar VDelVar WDelVar XDelVar YDelVar ZDelVar Str1
+BorderColor 1
+AxesOn 
+ClrHome
+Disp "M[|a][t]h[t]ool[s]: Alg[|e][|b][r][|a] O[n][|e]"
+"TI84C[|a]l[|c]Wi[z].[|c]om"->Str0

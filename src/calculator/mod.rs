@@ -21,6 +21,7 @@ impl EncodeMode {
     }
 }
 
+#[derive(Clone)]
 pub enum DisplayMode {
     Pretty,
     Accessible,

@@ -50,6 +50,9 @@ fn main() {
                 .with_arg(
                     Arg::new("preview", "Display the decoded output", "preview", 'p')
                 )
+                .with_arg(
+                    Arg::new("mass", "Changes input required from file to directory for mass file decoding", "mass", 'm')
+                )
         )
         .with_command(
             Command::new("encode", "Converts txt to 8xp")
@@ -70,6 +73,9 @@ fn main() {
             )
             .with_arg(
                 Arg::new("preview", "Display the decoded output", "preview", 'p')
+            )
+            .with_arg(
+                Arg::new("mass", "Changes input required from file to directory for mass file encoding", "mass", 'm')
             )
         )
         .with_command(
@@ -191,6 +197,7 @@ fn main() {
                 .unwrap_or("accessible".to_string());
             let content = command.has("content");
             let preview = command.has("preview");
+            let mass = command.has("mass");
 
             if output_path_string.is_none() && !preview && !content {
                 println!("No output path or preview option provided");
@@ -203,6 +210,7 @@ fn main() {
                 display_mode,
                 content,
                 preview,
+                mass,
             );
         }
         "encode" => {
@@ -214,6 +222,7 @@ fn main() {
                 .unwrap_or("smart".to_string());
             let content = command.has("content");
             let preview = command.has("preview");
+            let mass = command.has("mass");
 
             if output_path_string.is_none() && !preview && !content {
                 println!("No output path or preview option provided");
@@ -226,6 +235,7 @@ fn main() {
                 encode_mode,
                 content,
                 preview,
+                mass,
             );
         }
         "rename" => {

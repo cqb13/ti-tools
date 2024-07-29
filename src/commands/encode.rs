@@ -9,6 +9,7 @@ pub fn encode_command(
     encode_mode: String,
     content: bool,
     preview: bool,
+    mass: bool,
 ) {
     let encode_mode = match EncodeMode::from_string(&encode_mode) {
         Ok(encode_mode) => encode_mode,

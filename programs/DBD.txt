@@ -1,0 +1,30 @@
+DBD
+Created by TI-Tools 0.1.6
+Program
+RAM
+accessible
+latest
+1->F
+For(I,1,2)
+F->G
+Input "ENTER MONTH ",M
+Input "ENTER DAY ",D
+Input "ENTER YEAR ",Y
+If M<3
+Then:Y-1->Z
+Else:Y->Z:End
+365*Y+D+int(30.6*M-30.3)+int(Z/4)-int(Z/100)+int(Z/400)+int(3/(M+1))*(M+1)+5->F
+
+7*fPart(F/7)->D
+int(D+.5)->D
+If D=0:7->D
+If D=1:Disp "SUNDAY"
+If D=2:Disp "MONDAY"
+If D=3:Disp "TUESDAY"
+If D=4:Disp "WEDNESDAY"
+If D=5:Disp "THURSDAY"
+If D=6:Disp "FRIDAY"
+If D=7:Disp "SATURDAY"
+End
+F-G->D
+Disp "DAYS BETWEEN",D
