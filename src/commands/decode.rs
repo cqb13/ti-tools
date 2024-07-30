@@ -5,7 +5,6 @@ use std::fs;
 use std::io::Write;
 use std::path::Path;
 
-//TODO: on mass decoding/encoding if the error Quit is returned, the program should continue to the next file, if the error is not Quit, the program should exit
 pub fn decode_command(
     input_path_string: String,
     output_path_string: Option<String>,
@@ -22,16 +21,24 @@ pub fn decode_command(
     };
 
     if !mass {
-        let program = decode_file(input_path, display_mode, content, preview);
+        let program = match decode_file(input_path, display_mode, content, preview) {
+            Ok(program) => program,
+            Err(err) => {
+                err.print().exit();
+            }
+        };
 
         let name = program.metadata.name.to_string();
 
         if output_path_string.is_some() {
-            save_file(
+            match save_file(
                 program,
                 Path::new(&output_path_string.unwrap()),
                 display_mode_string.as_str(),
-            )
+            ) {
+                Ok(_) => (),
+                Err(err) => err.print().exit(),
+            }
         }
 
         println!("Successfully converted {} to txt", name)
@@ -53,15 +60,15 @@ pub fn decode_command(
                 std::io::stdout().flush().unwrap();
                 std::io::stdin().read_line(&mut input).unwrap();
                 let input = input.trim();
-                if input == "y" || input == "Y" {
-                    println!("Creating output directory");
-                    fs::create_dir(Path::new(&output_path_string.as_ref().unwrap()))
-                        .expect("Failed to create directory")
-                } else {
+                if input != "y" && input != "Y" {
                     CliError::Quit("Missing output directory".to_string())
                         .print()
                         .exit()
                 }
+
+                println!("Creating output directory");
+                fs::create_dir(Path::new(&output_path_string.as_ref().unwrap()))
+                    .expect("Failed to create directory")
             }
 
             if !Path::new(&output_path_string.as_ref().unwrap()).is_dir() {
@@ -90,7 +97,28 @@ pub fn decode_command(
                 Err(_) => continue,
             };
 
-            let program = decode_file(&path, display_mode.clone(), content, preview);
+            let program = match decode_file(&path, display_mode.clone(), content, preview) {
+                Ok(program) => program,
+                Err(err) => {
+                    println!("Failed to decode file:");
+                    err.print();
+
+                    println!("Would you like to skip this file and continue? [y/N]");
+                    let mut input = String::new();
+                    print!("> ");
+                    input.clear();
+                    std::io::stdout().flush().unwrap();
+                    std::io::stdin().read_line(&mut input).unwrap();
+                    let input = input.trim();
+                    if input != "y" && input != "Y" {
+                        CliError::Quit("User chose to quit".to_string())
+                            .print()
+                            .exit()
+                    }
+
+                    continue;
+                }
+            };
 
             let name = program.metadata.name.to_string();
 
@@ -99,7 +127,28 @@ pub fn decode_command(
                     .join(&name)
                     .with_extension("txt");
 
-                save_file(program, output_path.as_path(), display_mode_string.as_str())
+                match save_file(program, output_path.as_path(), display_mode_string.as_str()) {
+                    Ok(_) => (),
+                    Err(err) => {
+                        println!("Failed to save file:");
+                        err.print();
+
+                        println!("Would you like to skip this file and continue? [y/N]");
+                        let mut input = String::new();
+                        print!("> ");
+                        input.clear();
+                        std::io::stdout().flush().unwrap();
+                        std::io::stdin().read_line(&mut input).unwrap();
+                        let input = input.trim();
+                        if input != "y" && input != "Y" {
+                            CliError::Quit("User chose to quit".to_string())
+                                .print()
+                                .exit()
+                        }
+
+                        continue;
+                    }
+                }
             }
 
             println!("Successfully converted {} to txt", name)
@@ -112,12 +161,12 @@ fn decode_file(
     display_mode: DisplayMode,
     content: bool,
     preview: bool,
-) -> Program {
+) -> Result<Program, CliError> {
     let program = Program::load_from_8xp(input_path.to_path_buf(), display_mode);
 
     let program = match program {
         Ok(program) => program,
-        Err(err) => err.print().exit(),
+        Err(err) => return Err(err),
     };
 
     if content {
@@ -136,10 +185,14 @@ fn decode_file(
         println!();
     }
 
-    program
+    Ok(program)
 }
 
-fn save_file(program: Program, output_path: &Path, display_mode_string: &str) {
+fn save_file(
+    program: Program,
+    output_path: &Path,
+    display_mode_string: &str,
+) -> Result<(), CliError> {
     let result = program.save_to(output_path.to_path_buf());
 
     if display_mode_string == "pretty" {
@@ -147,8 +200,8 @@ fn save_file(program: Program, output_path: &Path, display_mode_string: &str) {
     }
 
     match result {
-        Ok(_) => {}
-        Err(err) => err.print().exit(),
+        Ok(_) => Ok(()),
+        Err(err) => Err(err),
     }
 }
 

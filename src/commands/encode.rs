@@ -21,12 +21,20 @@ pub fn encode_command(
     let input_path = Path::new(&input_path_string);
 
     if !mass {
-        let program = encode_file(input_path, &encode_mode, content, preview);
+        let program = match encode_file(&input_path, &encode_mode, content, preview) {
+            Ok(program) => program,
+            Err(err) => {
+                err.print().exit();
+            }
+        };
 
         let name = program.metadata.name.to_string();
 
         if output_path_string.is_some() {
-            save_file(program, Path::new(&output_path_string.unwrap()))
+            match save_file(program, Path::new(&output_path_string.unwrap())) {
+                Ok(_) => (),
+                Err(err) => err.print().exit(),
+            }
         }
 
         println!("Successfully converted {} to 8xp", name)
@@ -48,15 +56,16 @@ pub fn encode_command(
                 std::io::stdout().flush().unwrap();
                 std::io::stdin().read_line(&mut input).unwrap();
                 let input = input.trim();
-                if input == "y" || input == "Y" {
-                    println!("Creating output directory");
-                    fs::create_dir(Path::new(&output_path_string.as_ref().unwrap()))
-                        .expect("Failed to create directory")
-                } else {
+                if input != "y" && input != "Y" {
+                    println!("{}", input);
                     CliError::Quit("Missing output directory".to_string())
                         .print()
                         .exit()
                 }
+
+                println!("Creating output directory");
+                fs::create_dir(Path::new(&output_path_string.as_ref().unwrap()))
+                    .expect("Failed to create directory")
             }
 
             if !Path::new(&output_path_string.as_ref().unwrap()).is_dir() {
@@ -85,7 +94,28 @@ pub fn encode_command(
                 Err(_) => continue,
             };
 
-            let program = encode_file(&path, &encode_mode, content, preview);
+            let program = match encode_file(&path, &encode_mode, content, preview) {
+                Ok(program) => program,
+                Err(err) => {
+                    println!("Failed to encode file:");
+                    err.print();
+
+                    println!("Would you like to skip this file and continue? [y/N]");
+                    let mut input = String::new();
+                    print!("> ");
+                    input.clear();
+                    std::io::stdout().flush().unwrap();
+                    std::io::stdin().read_line(&mut input).unwrap();
+                    let input = input.trim();
+                    if input != "y" && input != "Y" {
+                        CliError::Quit("User chose to quit".to_string())
+                            .print()
+                            .exit()
+                    }
+
+                    continue;
+                }
+            };
 
             let name = program.metadata.name.to_string();
 
@@ -94,7 +124,28 @@ pub fn encode_command(
                     .join(&name)
                     .with_extension("8xp");
 
-                save_file(program, output_path.as_path())
+                match save_file(program, output_path.as_path()) {
+                    Ok(_) => (),
+                    Err(err) => {
+                        println!("Failed to save file:");
+                        err.print();
+
+                        println!("Would you like to skip this file and continue? [y/N]");
+                        let mut input = String::new();
+                        print!("> ");
+                        input.clear();
+                        std::io::stdout().flush().unwrap();
+                        std::io::stdin().read_line(&mut input).unwrap();
+                        let input = input.trim();
+                        if input != "y" && input != "Y" {
+                            CliError::Quit("User chose to quit".to_string())
+                                .print()
+                                .exit()
+                        }
+
+                        continue;
+                    }
+                }
             }
 
             println!("Successfully converted {} to txt", name)
@@ -107,12 +158,12 @@ fn encode_file(
     encode_mode: &EncodeMode,
     content: bool,
     preview: bool,
-) -> Program {
+) -> Result<Program, CliError> {
     let program = Program::load_from_txt(input_path.to_path_buf(), encode_mode);
 
     let program = match program {
         Ok(program) => program,
-        Err(err) => err.print().exit(),
+        Err(err) => return Err(err),
     };
 
     if content {
@@ -131,15 +182,15 @@ fn encode_file(
         println!();
     }
 
-    program
+    Ok(program)
 }
 
-fn save_file(program: Program, output_path: &Path) {
+fn save_file(program: Program, output_path: &Path) -> Result<(), CliError> {
     let result = program.save_to(output_path.to_path_buf());
 
     match result {
-        Ok(_) => {}
-        Err(err) => err.print().exit(),
+        Ok(_) => Ok(()),
+        Err(err) => Err(err),
     }
 }
 
