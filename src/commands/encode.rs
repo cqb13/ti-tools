@@ -1,6 +1,6 @@
-use super::exit_with_error;
 use crate::calculator::program::{get_file_type, Program};
 use crate::calculator::EncodeMode;
+use crate::errors::CliError;
 use std::fs;
 use std::io::Write;
 use std::path::Path;
@@ -15,7 +15,7 @@ pub fn encode_command(
 ) {
     let encode_mode = match EncodeMode::from_string(&encode_mode) {
         Ok(encode_mode) => encode_mode,
-        Err(err) => exit_with_error(&err),
+        Err(err) => err.print().exit(),
     };
 
     let input_path = Path::new(&input_path_string);
@@ -32,7 +32,9 @@ pub fn encode_command(
         println!("Successfully converted {} to 8xp", name)
     } else {
         if !input_path.is_dir() {
-            exit_with_error("When mass encoding the input path must lead to a directory")
+            CliError::MassConversionInputNotDirectory("encoding".to_string())
+                .print()
+                .exit()
         }
 
         if output_path_string.is_some() {
@@ -51,19 +53,26 @@ pub fn encode_command(
                     fs::create_dir(Path::new(&output_path_string.as_ref().unwrap()))
                         .expect("Failed to create directory")
                 } else {
-                    exit_with_error("Exiting due to missing output directory")
+                    CliError::Quit("Missing output directory".to_string())
+                        .print()
+                        .exit()
                 }
             }
 
             if !Path::new(&output_path_string.as_ref().unwrap()).is_dir() {
-                exit_with_error("When mass encoding the output path must lead to a directory")
+                CliError::MassConversionOutputNotDirectory("encoding".to_string())
+                    .print()
+                    .exit()
             }
         }
 
         for entry in fs::read_dir(input_path).expect("Failed to read directory") {
             let entry = match entry {
                 Ok(entry) => entry,
-                Err(_) => exit_with_error("Failed to read an entry in the input directory"),
+                Err(_) => {
+                    CliError::FailedToReadDirectory(input_path_string.clone()).print();
+                    continue;
+                }
             };
 
             let path = entry.path();
@@ -103,7 +112,7 @@ fn encode_file(
 
     let program = match program {
         Ok(program) => program,
-        Err(err) => exit_with_error(&err),
+        Err(err) => err.print().exit(),
     };
 
     if content {
@@ -130,7 +139,7 @@ fn save_file(program: Program, output_path: &Path) {
 
     match result {
         Ok(_) => {}
-        Err(err) => exit_with_error(&err),
+        Err(err) => err.print().exit(),
     }
 }
 

@@ -1,4 +1,3 @@
-use super::exit_with_error;
 use crate::calculator::program::Program;
 use crate::calculator::DisplayMode;
 use std::path::Path;
@@ -10,7 +9,7 @@ pub fn details_command(input_path_string: String) {
 
     let program = match program {
         Ok(program) => program,
-        Err(err) => exit_with_error(&err),
+        Err(err) => err.print().exit(),
     };
 
     println!("{}", program.metadata.name);

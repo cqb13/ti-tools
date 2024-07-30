@@ -209,9 +209,9 @@ impl Header {
         )
     }
 
-    pub fn comment(&mut self, comment: String) -> Result<(), String> {
+    pub fn comment(&mut self, comment: String) -> Result<(), CliError> {
         if comment.len() > 42 {
-            return Err("Comment must be 42 characters or less".to_string());
+            return Err(CliError::InvalidCommentLength);
         }
 
         let mut comment_bytes = comment.as_bytes().to_vec();
@@ -291,13 +291,13 @@ impl Metadata {
         )
     }
 
-    pub fn rename(&mut self, name: String) -> Result<(), String> {
+    pub fn rename(&mut self, name: String) -> Result<(), CliError> {
         if name.len() > 8 {
-            return Err("Name must be 8 characters or less".to_string());
+            return Err(CliError::InvalidNameLength);
         }
 
         if !name.chars().all(|c| c.is_ascii_alphabetic()) {
-            return Err("Name must be alphabetical characters only".to_string());
+            return Err(CliError::InvalidNameCharacters);
         }
 
         let name = name.to_uppercase();
@@ -315,33 +315,25 @@ impl Metadata {
     }
 
     // byte 5 is the file type byte
-    pub fn lock(&mut self) -> Result<(), String> {
+    pub fn lock(&mut self) {
         self.bytes[4] = FileType::LockedProgram.to_byte();
         self.file_type = FileType::LockedProgram;
-
-        Ok(())
     }
 
-    pub fn unlock(&mut self) -> Result<(), String> {
+    pub fn unlock(&mut self) {
         self.bytes[4] = FileType::Program.to_byte();
         self.file_type = FileType::Program;
-
-        Ok(())
     }
 
     // byte 15 is the archived byte
-    pub fn archive(&mut self) -> Result<(), String> {
+    pub fn archive(&mut self) {
         self.bytes[14] = Destination::Archive.to_byte();
         self.destination = Destination::Archive;
-
-        Ok(())
     }
 
-    pub fn unarchive(&mut self) -> Result<(), String> {
+    pub fn unarchive(&mut self) {
         self.bytes[14] = Destination::RAM.to_byte();
         self.destination = Destination::RAM;
-
-        Ok(())
     }
 }
 

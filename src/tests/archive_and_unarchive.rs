@@ -12,9 +12,7 @@ fn test_archive_and_unarchive() {
 
     let mut program = program.unwrap();
 
-    let result = program.metadata.archive();
-
-    assert!(result.is_ok(), "Failed to lock the program: {:?}", result);
+    program.metadata.archive();
 
     assert!(
         program.metadata.bytes[14] == Destination::Archive.to_byte(),
@@ -28,13 +26,7 @@ fn test_archive_and_unarchive() {
         program.metadata.destination.to_string()
     );
 
-    let result = program.metadata.unarchive();
-
-    assert!(
-        result.is_ok(),
-        "Failed to unlock the program: {:02X?}",
-        result
-    );
+    program.metadata.unarchive();
 
     assert!(
         program.metadata.bytes[14] == Destination::RAM.to_byte(),

@@ -12,9 +12,7 @@ fn test_lock_and_unlock() {
 
     let mut program = program.unwrap();
 
-    let result = program.metadata.lock();
-
-    assert!(result.is_ok(), "Failed to lock the program: {:?}", result);
+    program.metadata.lock();
 
     assert!(
         program.metadata.bytes[4] == FileType::LockedProgram.to_byte(),
@@ -28,9 +26,7 @@ fn test_lock_and_unlock() {
         program.metadata.file_type.to_string()
     );
 
-    let result = program.metadata.unlock();
-
-    assert!(result.is_ok(), "Failed to unlock the program: {:?}", result);
+    program.metadata.unlock();
 
     assert!(
         program.metadata.bytes[4] == FileType::Program.to_byte(),

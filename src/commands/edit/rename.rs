@@ -1,5 +1,4 @@
 use super::{load_program, save_edits};
-use crate::commands::exit_with_error;
 use std::path::Path;
 
 pub fn rename_command(
@@ -15,7 +14,7 @@ pub fn rename_command(
 
     match result {
         Ok(_) => {}
-        Err(err) => exit_with_error(&err),
+        Err(err) => err.print().exit(),
     }
 
     save_edits(program, &input_path, new_file_path, delete_old);

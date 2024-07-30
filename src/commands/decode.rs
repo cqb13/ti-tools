@@ -1,10 +1,11 @@
-use super::exit_with_error;
 use crate::calculator::program::{get_file_type, Program};
 use crate::calculator::DisplayMode;
+use crate::errors::CliError;
 use std::fs;
 use std::io::Write;
 use std::path::Path;
 
+//TODO: on mass decoding/encoding if the error Quit is returned, the program should continue to the next file, if the error is not Quit, the program should exit
 pub fn decode_command(
     input_path_string: String,
     output_path_string: Option<String>,
@@ -17,7 +18,7 @@ pub fn decode_command(
 
     let display_mode = match DisplayMode::from_string(&display_mode_string) {
         Ok(display_mode) => display_mode,
-        Err(err) => exit_with_error(&err),
+        Err(err) => err.print().exit(),
     };
 
     if !mass {
@@ -36,7 +37,9 @@ pub fn decode_command(
         println!("Successfully converted {} to txt", name)
     } else {
         if !input_path.is_dir() {
-            exit_with_error("When mass decoding the input path must lead to a directory")
+            CliError::MassConversionInputNotDirectory("decoding".to_string())
+                .print()
+                .exit()
         }
 
         if output_path_string.is_some() {
@@ -55,19 +58,26 @@ pub fn decode_command(
                     fs::create_dir(Path::new(&output_path_string.as_ref().unwrap()))
                         .expect("Failed to create directory")
                 } else {
-                    exit_with_error("Exiting due to missing output directory")
+                    CliError::Quit("Missing output directory".to_string())
+                        .print()
+                        .exit()
                 }
             }
 
             if !Path::new(&output_path_string.as_ref().unwrap()).is_dir() {
-                exit_with_error("When mass decoding the output path must lead to a directory")
+                CliError::MassConversionOutputNotDirectory("decoding".to_string())
+                    .print()
+                    .exit()
             }
         }
 
         for entry in fs::read_dir(input_path).expect("Failed to read directory") {
             let entry = match entry {
                 Ok(entry) => entry,
-                Err(_) => exit_with_error("Failed to read an entry in the input directory"),
+                Err(_) => {
+                    CliError::FailedToReadDirectory(input_path_string.clone()).print();
+                    continue;
+                }
             };
 
             let path = entry.path();
@@ -107,7 +117,7 @@ fn decode_file(
 
     let program = match program {
         Ok(program) => program,
-        Err(err) => exit_with_error(&err),
+        Err(err) => err.print().exit(),
     };
 
     if content {
@@ -138,7 +148,7 @@ fn save_file(program: Program, output_path: &Path, display_mode_string: &str) {
 
     match result {
         Ok(_) => {}
-        Err(err) => exit_with_error(&err),
+        Err(err) => err.print().exit(),
     }
 }
 

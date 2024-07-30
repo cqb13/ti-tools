@@ -1,3 +1,5 @@
+use std::fmt::Debug;
+
 pub enum CliError {
     FileRead(String),
     FileWrite(String),
@@ -18,6 +20,18 @@ pub enum CliError {
     Quit(String),
     /**File, Error */
     FailedToWriteFile(String, String),
+    InvalidCommentLength,
+    /**Type encode|decode */
+    MassConversionInputNotDirectory(String),
+    /**Type encode|decode */
+    MassConversionOutputNotDirectory(String),
+    FailedToReadDirectory(String),
+}
+
+impl Debug for CliError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.to_string())
+    }
 }
 
 impl CliError {
@@ -53,10 +67,32 @@ impl CliError {
             CliError::FailedToWriteFile(file, err) => {
                 format!("Failed to write file {}: {}", file, err)
             }
+            CliError::InvalidCommentLength => "Comment must be 42 characters or less".to_string(),
+            CliError::MassConversionInputNotDirectory(conversion_type) => {
+                format!(
+                    "When mass {} the input path must lead to a directory",
+                    conversion_type
+                )
+            }
+            CliError::MassConversionOutputNotDirectory(conversion_type) => {
+                format!(
+                    "When mass {} the output path must lead to a directory",
+                    conversion_type
+                )
+            }
+            CliError::FailedToReadDirectory(err) => format!("Failed to read directory: {}", err),
         }
     }
 
-    pub fn print(&self) {
+    pub fn print(self) -> CliError {
         eprintln!("{}", self.to_string());
+        self
+    }
+
+    pub fn exit(&self) -> ! {
+        match self {
+            CliError::Quit(_) => std::process::exit(0),
+            _ => std::process::exit(1),
+        }
     }
 }

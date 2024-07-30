@@ -7,7 +7,7 @@ pub mod unlock;
 
 use crate::calculator::program::Program;
 use crate::calculator::DisplayMode;
-use crate::commands::exit_with_error;
+use crate::errors::CliError;
 use std::path::{Path, PathBuf};
 
 fn load_program(input_path: &PathBuf) -> Program {
@@ -15,7 +15,7 @@ fn load_program(input_path: &PathBuf) -> Program {
 
     let program = match program {
         Ok(program) => program,
-        Err(err) => exit_with_error(&err),
+        Err(err) => err.print().exit(),
     };
 
     program
@@ -32,7 +32,7 @@ fn save_edits(
 
         match result {
             Ok(_) => {}
-            Err(err) => exit_with_error(&err),
+            Err(err) => err.print().exit(),
         }
     } else {
         let new_file_path = new_file_path.unwrap();
@@ -41,7 +41,7 @@ fn save_edits(
 
         match result {
             Ok(_) => {}
-            Err(err) => exit_with_error(&err),
+            Err(err) => err.print().exit(),
         }
 
         if delete_old {
@@ -51,7 +51,7 @@ fn save_edits(
                 Ok(_) => {
                     println!("Deleted old file.");
                 }
-                Err(err) => exit_with_error(&err.to_string()),
+                Err(err) => CliError::FailedToDeleteFile(err.to_string()).print().exit(),
             }
         }
     }
