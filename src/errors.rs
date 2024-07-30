@@ -11,10 +11,17 @@ pub enum CliError {
     MissingProgramInfo(String),
     InvalidNameLength,
     InvalidNameCharacters,
+    FailedToFindFile(String),
+    /**Provided, Accepted */
+    IncompatibleFileType(String, String),
+    FailedToDeleteFile(String),
+    Quit(String),
+    /**File, Error */
+    FailedToWriteFile(String, String),
 }
 
 impl CliError {
-    pub fn to_string(&self) -> String {
+    fn to_string(&self) -> String {
         match self {
             CliError::FileRead(err) => format!("Failed to read file: {}", err),
             CliError::FileWrite(err) => format!("Failed to write file: {}", err),
@@ -34,6 +41,22 @@ impl CliError {
             CliError::MissingProgramInfo(info) => format!("Missing program info: {}", info),
             CliError::InvalidNameLength => "Name must be 8 or less characters".to_string(),
             CliError::InvalidNameCharacters => "Name must be alphabetic".to_string(),
+            CliError::FailedToFindFile(file) => format!("Failed to find file: {}", file),
+            CliError::IncompatibleFileType(provided, accepted) => {
+                format!(
+                    "Incompatible file type: {}, accepted: {}",
+                    provided, accepted
+                )
+            }
+            CliError::FailedToDeleteFile(err) => format!("Failed to delete file: {}", err),
+            CliError::Quit(reason) => format!("Quit: {}", reason),
+            CliError::FailedToWriteFile(file, err) => {
+                format!("Failed to write file {}: {}", file, err)
+            }
         }
+    }
+
+    pub fn print(&self) {
+        eprintln!("{}", self.to_string());
     }
 }

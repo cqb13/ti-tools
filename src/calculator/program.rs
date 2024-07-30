@@ -16,18 +16,20 @@ pub struct Program {
 }
 
 impl Program {
-    pub fn load_from_8xp(path: PathBuf, display_mode: DisplayMode) -> Result<Program, String> {
+    pub fn load_from_8xp(path: PathBuf, display_mode: DisplayMode) -> Result<Program, CliError> {
         if !path.exists() {
-            return Err(format!(
-                "Failed to find file at: {:?}",
-                path.to_str().unwrap()
+            return Err(CliError::FailedToFindFile(
+                path.to_str().unwrap().to_string(),
             ));
         }
 
         let file_type = match get_file_type(&path) {
             Ok(file_type) => {
                 if !file_type.is_8xp() {
-                    return Err("File path must be to 8xp/82p/83p file".to_string());
+                    return Err(CliError::IncompatibleFileType(
+                        "txt".to_string(),
+                        "8xp/83p/82p".to_string(),
+                    ));
                 }
                 file_type
             }
@@ -54,18 +56,20 @@ impl Program {
         Ok(program)
     }
 
-    pub fn load_from_txt(path: PathBuf, encode_mode: &EncodeMode) -> Result<Program, String> {
+    pub fn load_from_txt(path: PathBuf, encode_mode: &EncodeMode) -> Result<Program, CliError> {
         if !path.exists() {
-            return Err(format!(
-                "Failed to find file at: {:?}",
-                path.to_str().unwrap()
+            return Err(CliError::FailedToFindFile(
+                path.to_str().unwrap().to_string(),
             ));
         }
 
         match get_file_type(&path) {
             Ok(file_type) => {
                 if !file_type.is_txt() {
-                    return Err("File path must be to a .txt file".to_string());
+                    return Err(CliError::IncompatibleFileType(
+                        "8xp/83p/82p".to_string(),
+                        "txt".to_string(),
+                    ));
                 }
             }
             Err(err) => return Err(err),
@@ -90,7 +94,7 @@ impl Program {
         Ok(program)
     }
 
-    pub fn save_to(&self, path: PathBuf) -> Result<(), String> {
+    pub fn save_to(&self, path: PathBuf) -> Result<(), CliError> {
         if path.exists() {
             println!("A file already exists at the output path, would you like to delete its content and proceed? [y/N]");
             let mut input = String::new();
@@ -107,11 +111,13 @@ impl Program {
                         println!("Deleted existing file");
                     }
                     Err(err) => {
-                        return Err(format!("Failed to delete file: {}", err));
+                        return Err(CliError::FailedToDeleteFile(err.to_string()));
                     }
                 }
             } else {
-                return Err("Exiting due to existing output file".to_string());
+                return Err(CliError::Quit(
+                    "User chose not to overwrite file".to_string(),
+                ));
             }
         }
 
@@ -129,7 +135,7 @@ impl Program {
                 output_bytes.extend(self.body.bytes.to_vec());
                 output_bytes.extend(self.checksum.bytes.to_vec());
 
-                write_to_file(&path, output_bytes, "8xp")?
+                write_to_file(&path, output_bytes)?
             }
             ProgramFileType::TXT => {
                 let output_string = format!(
@@ -142,7 +148,7 @@ impl Program {
                     self.model.model.to_string(),
                     &self.body.translation
                 );
-                write_to_file(&path, output_string, "txt")?
+                write_to_file(&path, output_string)?
             }
         }
 
@@ -511,14 +517,15 @@ impl Destination {
     }
 }
 
-fn write_to_file<T: AsRef<[u8]>>(
-    path: &PathBuf,
-    content: T,
-    file_type: &str,
-) -> Result<(), String> {
+fn write_to_file<T: AsRef<[u8]>>(path: &PathBuf, content: T) -> Result<(), CliError> {
     match std::fs::write(path, content) {
         Ok(_) => println!("Successfully saved to {}", path.display()),
-        Err(err) => return Err(format!("Failed to write {} file: {}", file_type, err)),
+        Err(err) => {
+            return Err(CliError::FailedToWriteFile(
+                path.to_str().unwrap().to_string(),
+                err.to_string(),
+            ))
+        }
     }
 
     Ok(())
