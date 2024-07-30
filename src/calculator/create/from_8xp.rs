@@ -4,6 +4,7 @@ use crate::calculator::program::{
     Body, Checksum, Destination, FileType, Header, Metadata, ProgramFileType,
 };
 use crate::calculator::DisplayMode;
+use crate::errors::CliError;
 use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
 
@@ -11,14 +12,21 @@ pub fn create_from_8xp(
     path: PathBuf,
     file_type: ProgramFileType,
     display_mode: &DisplayMode,
-) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), String> {
-    let bytes = std::fs::read(&path).map_err(|err| err.to_string())?;
+) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), CliError> {
+    let bytes = match std::fs::read(&path).map_err(|err| err.to_string()) {
+        Ok(bytes) => bytes,
+        Err(err) => return Err(CliError::FileRead(err)),
+    };
 
     let (header_bytes, bytes) = bytes.split_at(55);
     let (metadata_bytes, bytes) = match file_type {
         ProgramFileType::XP => bytes.split_at(19),
         ProgramFileType::XPThree | ProgramFileType::XPTwo => bytes.split_at(17),
-        ProgramFileType::TXT => return Err("TXT files cant be loaded as 8xp files".to_string()),
+        ProgramFileType::TXT => {
+            return Err(CliError::FileRead(
+                "TXT files cant be loaded as 8xp files".to_string(),
+            ))
+        }
     };
     let (body_bytes, checksum_bytes) = bytes.split_at(bytes.len() - 2);
 
@@ -121,7 +129,9 @@ pub fn create_from_8xp(
             )
         }
         ProgramFileType::TXT => {
-            return Err("TXT files cant be loaded as 8xp files".to_string());
+            return Err(CliError::FileRead(
+                "TXT files cant be loaded as 8xp files".to_string(),
+            ))
         }
     };
 

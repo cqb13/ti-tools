@@ -1,4 +1,5 @@
 use super::DisplayMode;
+use crate::errors::CliError;
 use crate::tokens::Map;
 
 pub fn decode(
@@ -6,7 +7,7 @@ pub fn decode(
     map: &Map,
     lang: &str,
     mode: &DisplayMode,
-) -> Result<String, String> {
+) -> Result<String, CliError> {
     let mut decoded_program = String::new();
     let mut index = 0;
     let mut current_bytes = Vec::new();
@@ -17,7 +18,12 @@ pub fn decode(
         let key = match current_bytes.len() {
             1 => format!("${:02X}", current_bytes[0]),
             2 => format!("${:02X}${:02X}", current_bytes[0], current_bytes[1]),
-            _ => return Err(format!("Invalid byte length: {:02X?}", current_bytes)),
+            _ => {
+                return Err(CliError::InvalidByteLength(format!(
+                    "{:02X?}",
+                    current_bytes
+                )))
+            }
         };
 
         let token = map.get_value(format!("{} {}", key, lang).as_str());
@@ -41,6 +47,6 @@ pub fn decode(
     if current_bytes.is_empty() {
         Ok(decoded_program)
     } else {
-        Err(format!("Token not found: {:02X?}", current_bytes))
+        Err(CliError::TokenNotFound(format!("{:02X?}", current_bytes)))
     }
 }

@@ -1,3 +1,5 @@
+use crate::errors::CliError;
+
 mod create;
 mod decode;
 mod encode;
@@ -11,12 +13,15 @@ pub enum EncodeMode {
 }
 
 impl EncodeMode {
-    pub fn from_string(encode_mode: &str) -> Result<EncodeMode, String> {
+    pub fn from_string(encode_mode: &str) -> Result<EncodeMode, CliError> {
         match encode_mode {
             "min" => Ok(EncodeMode::Min),
             "max" => Ok(EncodeMode::Max),
             "smart" => Ok(EncodeMode::Smart),
-            _ => Err(format!("Unknown encode mode: {}", encode_mode)),
+            _ => Err(CliError::Match(
+                encode_mode.to_string(),
+                "EncodeMode".to_string(),
+            )),
         }
     }
 }
@@ -29,12 +34,15 @@ pub enum DisplayMode {
 }
 
 impl DisplayMode {
-    pub fn from_string(display_mode: &str) -> Result<DisplayMode, String> {
+    pub fn from_string(display_mode: &str) -> Result<DisplayMode, CliError> {
         match display_mode {
             "pretty" => Ok(DisplayMode::Pretty),
             "accessible" => Ok(DisplayMode::Accessible),
             "ti" => Ok(DisplayMode::TiAscii),
-            _ => Err(format!("Unknown display mode: {}", display_mode)),
+            _ => Err(CliError::Match(
+                display_mode.to_string(),
+                "DisplayMode".to_string(),
+            )),
         }
     }
 

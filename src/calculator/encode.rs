@@ -1,4 +1,5 @@
 use super::{DisplayMode, EncodeMode};
+use crate::errors::CliError;
 use crate::tokens::Map;
 
 struct EncodeState<'a> {
@@ -47,7 +48,7 @@ pub fn encode(
     perform_normalize: bool,
     display_mode: DisplayMode,
     encode_mode: &EncodeMode,
-) -> Result<Vec<u8>, String> {
+) -> Result<Vec<u8>, CliError> {
     let mut encoded_program = Vec::new();
 
     let decoded_program = if perform_normalize {
@@ -96,7 +97,7 @@ pub fn encode(
                     temp_line = temp_line[value.len()..].to_string();
                 }
                 None => {
-                    return Err(format!("Could not find token for line: {}", temp_line));
+                    return Err(CliError::TokenNotFound(temp_line));
                 }
             }
         }

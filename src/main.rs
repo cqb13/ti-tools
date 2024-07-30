@@ -1,6 +1,7 @@
 pub mod calculator;
 pub mod cli;
 pub mod commands;
+pub mod errors;
 pub mod styles;
 #[cfg(test)]
 pub mod tests;

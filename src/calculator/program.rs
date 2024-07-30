@@ -2,6 +2,7 @@ use super::models::ModelDetails;
 use crate::calculator::create::from_8xp::create_from_8xp;
 use crate::calculator::create::from_txt::create_from_txt;
 use crate::calculator::{DisplayMode, EncodeMode};
+use crate::errors::CliError;
 use std::io::Write;
 use std::path::PathBuf;
 
@@ -399,16 +400,18 @@ impl ProgramFileType {
     }
 }
 
-pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, String> {
+pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, CliError> {
     match path.extension() {
         Some(ext) => match ext.to_str() {
             Some("8xp") => Ok(ProgramFileType::XP),
             Some("83p") => Ok(ProgramFileType::XPThree),
             Some("82p") => Ok(ProgramFileType::XPTwo),
             Some("txt") => Ok(ProgramFileType::TXT),
-            _ => Err("Invalid file extension".to_string()),
+            _ => Err(CliError::InvalidExtension(
+                ext.to_str().unwrap().to_string(),
+            )),
         },
-        None => Err("No file extension".to_string()),
+        None => Err(CliError::MissingExtension),
     }
 }
 
@@ -420,13 +423,16 @@ pub enum FileType {
 }
 
 impl FileType {
-    pub fn from_byte(byte: u8) -> Result<FileType, String> {
+    pub fn from_byte(byte: u8) -> Result<FileType, CliError> {
         match byte {
             0x05 => Ok(FileType::Program),
             0x06 => Ok(FileType::LockedProgram),
             0x17 => Ok(FileType::Group),
             0x24 => Ok(FileType::FlashApplication),
-            _ => Err(format!("Unknown file type byte: {:02X?}", byte)),
+            _ => Err(CliError::Match(
+                format!("{:02X}", byte),
+                "File Type".to_string(),
+            )),
         }
     }
 
@@ -439,13 +445,16 @@ impl FileType {
         }
     }
 
-    pub fn from_string(file_type: &str) -> Result<FileType, String> {
+    pub fn from_string(file_type: &str) -> Result<FileType, CliError> {
         match file_type {
             "Program" => Ok(FileType::Program),
             "Locked Program" => Ok(FileType::LockedProgram),
             "Group" => Ok(FileType::Group),
             "Flash Application" => Ok(FileType::FlashApplication),
-            _ => Err(format!("Unknown file type string: {}", file_type)),
+            _ => Err(CliError::Match(
+                file_type.to_string(),
+                "File Type".to_string(),
+            )),
         }
     }
 
@@ -465,11 +474,14 @@ pub enum Destination {
 }
 
 impl Destination {
-    pub fn from_byte(byte: u8) -> Result<Destination, String> {
+    pub fn from_byte(byte: u8) -> Result<Destination, CliError> {
         match byte {
             0x00 => Ok(Destination::RAM),
             0x80 => Ok(Destination::Archive),
-            _ => Err(format!("Unknown destination byte: {:02X?}", byte)),
+            _ => Err(CliError::Match(
+                format!("{:02X}", byte),
+                "Destination".to_string(),
+            )),
         }
     }
 
@@ -480,11 +492,14 @@ impl Destination {
         }
     }
 
-    pub fn from_string(archived: &str) -> Result<Destination, String> {
+    pub fn from_string(archived: &str) -> Result<Destination, CliError> {
         match archived {
             "RAM" => Ok(Destination::RAM),
             "Archive" => Ok(Destination::Archive),
-            _ => Err(format!("Unknown destination string: {}", archived)),
+            _ => Err(CliError::Match(
+                archived.to_string(),
+                "Destination".to_string(),
+            )),
         }
     }
 

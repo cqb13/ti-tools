@@ -1,5 +1,6 @@
 use crate::calculator::models::Model;
 use crate::calculator::DisplayMode;
+use crate::errors::CliError;
 use serde::Deserialize;
 use std::cmp::Ordering;
 use std::collections::HashMap;
@@ -162,11 +163,15 @@ impl Map {
     }
 }
 
-pub fn load_tokens(target: &OsVersion) -> Result<Map, String> {
+pub fn load_tokens(target: &OsVersion) -> Result<Map, CliError> {
     let json_data = include_str!("./standard_tokens/8X.json");
 
     let tokens: std::collections::BTreeMap<String, TokenData> =
-        serde_json::from_str(json_data).map_err(|err| err.to_string())?;
+        match serde_json::from_str(json_data) {
+            Ok(tokens) => tokens,
+            Err(err) => return Err(CliError::Json(err.to_string())),
+        };
+
     let mut map = Map::new();
 
     for (key, token_data) in tokens {

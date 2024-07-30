@@ -1,3 +1,5 @@
+use crate::errors::CliError;
+
 #[derive(Debug, Eq)]
 pub struct ModelDetails {
     pub model: Model,
@@ -16,7 +18,7 @@ impl ModelDetails {
         }
     }
 
-    pub fn from_byte(byte: u8, signature: &str) -> Result<ModelDetails, String> {
+    pub fn from_byte(byte: u8, signature: &str) -> Result<ModelDetails, CliError> {
         match byte {
             0x00 => match signature {
                 "**TI83F*" => Ok(ModelDetails::new(Model::Latest, "**TI83F*", 0x00, "en")),
@@ -33,7 +35,10 @@ impl ModelDetails {
             )),
             0x13 => Ok(ModelDetails::new(Model::TI84PlusCE, "**TI83F*", 0x13, "en")),
             0x1B => Ok(ModelDetails::new(Model::TI84PlusT, "**TI83F*", 0x1B, "en")),
-            _ => Err(format!("Unknown model byte: {}", byte)),
+            _ => Err(CliError::Match(
+                format!("{}", byte),
+                "Model Details".to_string(),
+            )),
         }
     }
 
