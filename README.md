@@ -53,6 +53,7 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
         -d            --display-mode <DISPLAY_MODE>            The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible
         -c            --content                                Display the content of the input file
         -p            --preview                                Display the decoded output
+        -m            --mass                                   Changes input required from file to directory for mass file decoding
 
     encode - Converts txt to 8xp
         input         <INPUT>                       (required) The input path to an txt file
@@ -60,6 +61,7 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
         -e            --encode-mode  <ENCODE_MODE>             The mode used to parse tokens [min, max, smart] | Default: smart
         -c            --content                                Display the content of the input file
         -p            --preview                                Display the decoded output
+        -m            --mass                                   Changes input required from file to directory for mass file encoding
 
     rename - Renames the program name in a 8xp/82p/83p file
         input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
@@ -107,10 +109,18 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
 ti-tools decode ./src/tests/programs/TOCCATA.8xp -p -c -o ./TOCCATA.txt
 ```
 
+```sh
+ti-tools decode ./src/tests/programs -o ./programs --mass
+```
+
 ### Encode
 
 ```sh
 ti-tools encode ./TOCCATA.txt -p -c -o ./TOCCATA.8xp
+```
+
+```sh
+ti-tools encode ./src/tests/programs -o ./programs --mass
 ```
 
 ## Contributing
