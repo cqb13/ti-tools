@@ -104,11 +104,11 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
 ### Decode
 
 ```sh
-ti-tools decode ./src/tests/programs/TOCCATA.8xp -p -c -o ./TOCCATA.txt
+ti-tools decode ./tests/programs/TOCCATA.8xp -p -c -o ./TOCCATA.txt
 ```
 
 ```sh
-ti-tools decode ./src/tests/programs -o ./programs --mass
+ti-tools decode ./tests/programs -o ./programs --mass
 ```
 
 ### Encode
@@ -118,7 +118,7 @@ ti-tools encode ./TOCCATA.txt -p -c -o ./TOCCATA.8xp
 ```
 
 ```sh
-ti-tools encode ./src/tests/programs -o ./programs --mass
+ti-tools encode ./programs -o ./programs --mass
 ```
 
 ## Troubleshooting
