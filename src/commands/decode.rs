@@ -1,6 +1,7 @@
 use crate::calculator::program::{get_file_type, Program};
 use crate::calculator::DisplayMode;
 use crate::errors::CliError;
+use crate::prints;
 use std::fs;
 use std::io::Write;
 use std::path::Path;
@@ -41,7 +42,10 @@ pub fn decode_command(
             }
         }
 
-        println!("Successfully converted {} to txt", name)
+        prints!(
+            "[color:bright-green]Successfully converted[color:reset] [color:bright-cyan]{}[color:reset] to txt",
+            name
+        );
     } else {
         if !input_path.is_dir() {
             CliError::MassConversionInputNotDirectory("decoding".to_string())
@@ -151,7 +155,10 @@ pub fn decode_command(
                 }
             }
 
-            println!("Successfully converted {} to txt", name)
+            prints!(
+                "[color:bright-green]Successfully converted[color:reset] [color:bright-cyan]{}[color:reset] to txt",
+                name
+            );
         }
     }
 }
@@ -181,7 +188,7 @@ fn decode_file(
     }
 
     if preview {
-        println!("{}", program.display());
+        println!("{}", program.to_string());
         println!();
     }
 
@@ -194,13 +201,21 @@ fn save_file(
     display_mode_string: &str,
 ) -> Result<(), CliError> {
     let result = program.save_to(output_path.to_path_buf());
-
     if display_mode_string == "pretty" {
-        println!("Warning: Pretty tokens can't be accurately encoded")
+        prints!(
+            "[color:bright-yellow]Warning:[color:reset] Pretty tokens can't be accurately encoded"
+        );
     }
 
     match result {
-        Ok(_) => Ok(()),
+        Ok(_) => {
+            prints!(
+                "[color:bright-green]Successfully saved[color:reset] [color:bright-cyan]{}[color:reset] to [color:bright-cyan]{}",
+                program.metadata.name,
+                output_path.to_str().unwrap()
+            );
+            Ok(())
+        }
         Err(err) => Err(err),
     }
 }

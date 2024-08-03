@@ -1,3 +1,5 @@
+use crate::prints;
+
 use super::{load_program, save_edits};
 use std::path::Path;
 
@@ -10,7 +12,7 @@ pub fn comment_command(
     let input_path = Path::new(&input_path_string).to_path_buf();
     let mut program = load_program(&input_path);
 
-    let result = program.header.comment(comment);
+    let result = program.header.comment(comment.clone());
 
     match result {
         Ok(_) => {}
@@ -19,5 +21,8 @@ pub fn comment_command(
 
     save_edits(program, &input_path, new_file_path, delete_old);
 
-    println!("Updated comment on program.");
+    prints!(
+        "[color:bright-green]Successfully set [color:bright-cyan]comment[color:reset] to [color:bright-cyan]{}",
+        comment
+    );
 }

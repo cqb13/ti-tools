@@ -1,4 +1,5 @@
 use super::{load_program, save_edits};
+use crate::prints;
 use std::path::Path;
 
 pub fn unlock_command(input_path_string: String, new_file_path: Option<String>, delete_old: bool) {
@@ -9,5 +10,7 @@ pub fn unlock_command(input_path_string: String, new_file_path: Option<String>, 
 
     save_edits(program, &input_path, new_file_path, delete_old);
 
-    println!("Unlocked program.");
+    prints!(
+        "[color:bright-green]Successfully set [color:bright-cyan]file type[color:reset] to [color:bright-cyan]program"
+    );
 }

@@ -1,6 +1,7 @@
 use crate::calculator::program::{get_file_type, Program};
 use crate::calculator::EncodeMode;
 use crate::errors::CliError;
+use crate::prints;
 use std::fs;
 use std::io::Write;
 use std::path::Path;
@@ -37,7 +38,10 @@ pub fn encode_command(
             }
         }
 
-        println!("Successfully converted {} to 8xp", name)
+        prints!(
+            "[color:bright-green]Successfully converted[color:reset] [color:bright-cyan]{}[color:reset] to [color:bright-cyan]8xp",
+            name
+        );
     } else {
         if !input_path.is_dir() {
             CliError::MassConversionInputNotDirectory("encoding".to_string())
@@ -148,7 +152,10 @@ pub fn encode_command(
                 }
             }
 
-            println!("Successfully converted {} to txt", name)
+            prints!(
+                "[color:bright-green]Successfully converted[color:reset] [color:bright-cyan]{}[color:reset] to [color:bright-cyan]8xp",
+                name
+            );
         }
     }
 }
@@ -167,7 +174,7 @@ fn encode_file(
     };
 
     if content {
-        println!("{}", program.display());
+        println!("{}", program.to_string());
         println!();
     }
 
@@ -189,7 +196,14 @@ fn save_file(program: Program, output_path: &Path) -> Result<(), CliError> {
     let result = program.save_to(output_path.to_path_buf());
 
     match result {
-        Ok(_) => Ok(()),
+        Ok(_) => {
+            prints!(
+                "[color:bright-green]Successfully saved[color:reset] [color:bright-cyan]{}[color:reset] to [color:bright-cyan]{}",
+                program.metadata.name,
+                output_path.to_str().unwrap()
+            );
+            Ok(())
+        }
         Err(err) => Err(err),
     }
 }

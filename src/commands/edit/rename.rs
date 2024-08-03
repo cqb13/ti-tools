@@ -1,4 +1,5 @@
 use super::{load_program, save_edits};
+use crate::prints;
 use std::path::Path;
 
 pub fn rename_command(
@@ -10,7 +11,7 @@ pub fn rename_command(
     let input_path = Path::new(&input_path_string).to_path_buf();
     let mut program = load_program(&input_path);
 
-    let result = program.metadata.rename(name);
+    let result = program.metadata.rename(name.clone());
 
     match result {
         Ok(_) => {}
@@ -19,5 +20,8 @@ pub fn rename_command(
 
     save_edits(program, &input_path, new_file_path, delete_old);
 
-    println!("Renamed program.");
+    prints!(
+        "[color:bright-green]Successfully set [color:bright-cyan]name[color:reset] to [color:bright-cyan]{}",
+        name
+    );
 }

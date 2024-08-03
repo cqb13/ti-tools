@@ -1,4 +1,5 @@
 use super::{load_program, save_edits};
+use crate::prints;
 use std::path::Path;
 
 pub fn unarchive_command(
@@ -13,5 +14,5 @@ pub fn unarchive_command(
 
     save_edits(program, &input_path, new_file_path, delete_old);
 
-    println!("Set program destination to RAM.");
+    prints!("[color:bright-green]Successfully set [color:bright-cyan]destination[color:reset] to [color:bright-cyan]RAM");
 }

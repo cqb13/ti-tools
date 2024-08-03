@@ -1,3 +1,5 @@
+use crate::prints;
+
 use super::{load_program, save_edits};
 use std::path::Path;
 
@@ -9,5 +11,5 @@ pub fn archive_command(input_path_string: String, new_file_path: Option<String>,
 
     save_edits(program, &input_path, new_file_path, delete_old);
 
-    println!("Set the program destination to archive.");
+    prints!("[color:bright-green]Successfully set [color:bright-cyan]destination[color:reset] to [color:bright-cyan]archive");
 }

@@ -155,13 +155,19 @@ impl Program {
         Ok(())
     }
 
-    pub fn display(&self) -> String {
-        let header = self.header.display();
-        let metadata = self.metadata.display();
-        let body = self.body.display();
-        let checksum = self.checksum.display();
-
-        format!("{}\n{}\n{}\n{}", header, metadata, body, checksum)
+    pub fn to_string(&self) -> String {
+        format!(
+            "{}\n{}\nTotal Size: {} bytes\nBody Size: {} bytes\n----- Status -----\nmodel: {}\nlanguage: {}\nDestination: {}\nFile Type: {}\n----- Program -----\n{}",
+            self.metadata.name,
+            self.header.comment,
+            self.header.bytes.len() + self.metadata.bytes.len() + self.body.bytes.len() + 2,
+            self.body.bytes.len(),
+            self.model.model.to_string(),
+            self.model.language,
+            self.metadata.destination.to_string(),
+            self.metadata.file_type.to_string(),
+            self.body.translation
+        )
     }
 }
 
@@ -191,22 +197,6 @@ impl Header {
             comment,
             metadata_and_body_length,
         }
-    }
-
-    pub fn display(&self) -> String {
-        format!(
-            "Header\n\
-            Signature: {}\n\
-            Signature Extra: {:02X?}\n\
-            Product ID: {:02X?}\n\
-            Comment: {}\n\
-            Metadata and Body Length: {}",
-            self.signature,
-            self.signature_extra,
-            self.product_id,
-            self.comment,
-            self.metadata_and_body_length
-        )
     }
 
     pub fn comment(&mut self, comment: String) -> Result<(), CliError> {
@@ -265,30 +255,6 @@ impl Metadata {
             body_and_checksum_length_copy,
             body_length,
         }
-    }
-
-    pub fn display(&self) -> String {
-        format!(
-            "Metadata\n\
-            Flag: {:02X?}\n\
-            Unknown Byte: {:02X?}\n\
-            Body and Checksum Length: {}\n\
-            File Type: {}\n\
-            Name: {}\n\
-            Version: {:02X?}\n\
-            Destination: {}\n\
-            Body and Checksum Length Copy: {}\n\
-            Body Length: {}",
-            self.flag,
-            self.unknown_byte,
-            self.body_and_checksum_length,
-            self.file_type.to_string(),
-            self.name,
-            self.version,
-            self.destination.to_string(),
-            self.body_and_checksum_length_copy,
-            self.body_length
-        )
     }
 
     pub fn rename(&mut self, name: String) -> Result<(), CliError> {
@@ -511,7 +477,7 @@ impl Destination {
 
 fn write_to_file<T: AsRef<[u8]>>(path: &PathBuf, content: T) -> Result<(), CliError> {
     match std::fs::write(path, content) {
-        Ok(_) => println!("Successfully saved to {}", path.display()),
+        Ok(_) => Ok(()),
         Err(err) => {
             return Err(CliError::FailedToWriteFile(
                 path.to_str().unwrap().to_string(),
@@ -519,6 +485,4 @@ fn write_to_file<T: AsRef<[u8]>>(path: &PathBuf, content: T) -> Result<(), CliEr
             ))
         }
     }
-
-    Ok(())
 }
