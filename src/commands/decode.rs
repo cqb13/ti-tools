@@ -43,8 +43,8 @@ pub fn decode_command(
         }
 
         prints!(
-            "[color:bright-green]Successfully converted[color:reset] [color:bright-cyan]{}[color:reset] to txt",
-            name
+            "[color:bright-green]Successfully decoded[color:reset] [color:bright-cyan]{}[color:reset]",
+            name,
         );
     } else {
         if !input_path.is_dir() {
@@ -156,7 +156,7 @@ pub fn decode_command(
             }
 
             prints!(
-                "[color:bright-green]Successfully converted[color:reset] [color:bright-cyan]{}[color:reset] to txt",
+                "[color:bright-green]Successfully decoded[color:reset] [color:bright-cyan]{}[color:reset]",
                 name
             );
         }

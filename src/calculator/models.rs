@@ -1,7 +1,8 @@
 use crate::errors::CliError;
+use serde::Deserialize;
 use serde::Serialize;
 
-#[derive(Debug, Eq, Serialize)]
+#[derive(Debug, Eq, Serialize, Deserialize)]
 pub struct ModelDetails {
     pub model: Model,
     pub signature: String,

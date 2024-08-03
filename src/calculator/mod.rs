@@ -1,5 +1,5 @@
 use crate::errors::CliError;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 mod create;
 mod decode;
@@ -28,7 +28,7 @@ impl EncodeMode {
     }
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 pub enum DisplayMode {
     Pretty,
     Accessible,

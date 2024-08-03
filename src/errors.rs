@@ -27,6 +27,8 @@ pub enum CliError {
     MassConversionOutputNotDirectory(String),
     FailedToReadDirectory(String),
     FailedToSerializeJson(String),
+    FailedToReadFile(String),
+    FailedToDeserializeJson(String),
 }
 
 impl Debug for CliError {
@@ -46,7 +48,7 @@ impl CliError {
             CliError::Json(err) => format!("Failed to parse json: {}", err),
             CliError::InvalidExtension(extension) => {
                 format!(
-                    "Invalid file extension {}, only 8xp, 83p, 82p, and txt are supported",
+                    "Invalid file extension {}, only 8xp, 83p, 82p, json, and txt are supported",
                     extension
                 )
             }
@@ -83,6 +85,10 @@ impl CliError {
             }
             CliError::FailedToReadDirectory(err) => format!("Failed to read directory: {}", err),
             CliError::FailedToSerializeJson(err) => format!("Failed to serialize json: {}", err),
+            CliError::FailedToReadFile(err) => format!("Failed to read file: {}", err),
+            CliError::FailedToDeserializeJson(err) => {
+                format!("Failed to deserialize json: {}", err)
+            }
         }
     }
 

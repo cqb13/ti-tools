@@ -3,11 +3,11 @@ use crate::calculator::create::from_8xp::create_from_8xp;
 use crate::calculator::create::from_txt::create_from_txt;
 use crate::calculator::{DisplayMode, EncodeMode};
 use crate::errors::CliError;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::io::Write;
 use std::path::PathBuf;
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Program {
     pub header: Header,
     pub metadata: Metadata,
@@ -29,7 +29,7 @@ impl Program {
             Ok(file_type) => {
                 if !file_type.is_8xp() {
                     return Err(CliError::IncompatibleFileType(
-                        "txt".to_string(),
+                        "txt/json".to_string(),
                         "8xp/83p/82p".to_string(),
                     ));
                 }
@@ -70,7 +70,7 @@ impl Program {
                 if !file_type.is_txt() {
                     return Err(CliError::IncompatibleFileType(
                         "8xp/83p/82p".to_string(),
-                        "txt".to_string(),
+                        "txt or json".to_string(),
                     ));
                 }
             }
@@ -91,6 +91,38 @@ impl Program {
             checksum,
             display_mode: DisplayMode::Accessible,
             model,
+        };
+
+        Ok(program)
+    }
+
+    pub fn load_from_json(path: PathBuf) -> Result<Program, CliError> {
+        if !path.exists() {
+            return Err(CliError::FailedToFindFile(
+                path.to_str().unwrap().to_string(),
+            ));
+        }
+
+        match get_file_type(&path) {
+            Ok(file_type) => {
+                if !file_type.is_json() {
+                    return Err(CliError::IncompatibleFileType(
+                        "json".to_string(),
+                        "json".to_string(),
+                    ));
+                }
+            }
+            Err(err) => return Err(err),
+        };
+
+        let file_string = match std::fs::read_to_string(&path) {
+            Ok(file_string) => file_string,
+            Err(err) => return Err(CliError::FailedToReadFile(err.to_string())),
+        };
+
+        let program: Program = match serde_json::from_str(&file_string) {
+            Ok(program) => program,
+            Err(err) => return Err(CliError::FailedToDeserializeJson(err.to_string())),
         };
 
         Ok(program)
@@ -183,7 +215,7 @@ impl Program {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Header {
     pub bytes: Vec<u8>,
     pub signature: String,
@@ -230,7 +262,7 @@ impl Header {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Metadata {
     pub bytes: Vec<u8>,
     pub flag: u8,
@@ -317,7 +349,7 @@ impl Metadata {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Body {
     pub bytes: Vec<u8>,
     pub translation: String,
@@ -337,7 +369,7 @@ impl Body {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Checksum {
     pub bytes: Vec<u8>,
     pub value: u16,
@@ -357,7 +389,7 @@ impl Checksum {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub enum ProgramFileType {
     XP,
     TXT,
@@ -387,6 +419,16 @@ impl ProgramFileType {
             _ => false,
         }
     }
+
+    pub fn to_string(&self) -> String {
+        match self {
+            ProgramFileType::XP => "8xp".to_string(),
+            ProgramFileType::TXT => "txt".to_string(),
+            ProgramFileType::XPTwo => "82p".to_string(),
+            ProgramFileType::XPThree => "83p".to_string(),
+            ProgramFileType::JSON => "json".to_string(),
+        }
+    }
 }
 
 pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, CliError> {
@@ -405,7 +447,7 @@ pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, CliError> {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub enum FileType {
     Program,
     LockedProgram,
@@ -459,7 +501,7 @@ impl FileType {
     }
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub enum Destination {
     RAM,
     Archive,

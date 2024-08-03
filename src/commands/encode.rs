@@ -1,4 +1,4 @@
-use crate::calculator::program::{get_file_type, Program};
+use crate::calculator::program::{get_file_type, Program, ProgramFileType};
 use crate::calculator::EncodeMode;
 use crate::errors::CliError;
 use crate::prints;
@@ -166,7 +166,21 @@ fn encode_file(
     content: bool,
     preview: bool,
 ) -> Result<Program, CliError> {
-    let program = Program::load_from_txt(input_path.to_path_buf(), encode_mode);
+    let file_type = match get_file_type(&input_path.to_path_buf()) {
+        Ok(file_type) => file_type,
+        Err(err) => return Err(err),
+    };
+
+    let program = match file_type {
+        ProgramFileType::TXT => Program::load_from_txt(input_path.to_path_buf(), encode_mode),
+        ProgramFileType::JSON => Program::load_from_json(input_path.to_path_buf()),
+        _ => {
+            return Err(CliError::IncompatibleFileType(
+                file_type.to_string(),
+                "txt or json".to_string(),
+            ))
+        }
+    };
 
     let program = match program {
         Ok(program) => program,
