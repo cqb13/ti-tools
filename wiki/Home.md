@@ -47,14 +47,14 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
 
     decode - Converts 8xp/82p/83p to txt
         input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
-        -o            --output       <OUTPUT>                  The output path to a txt file
+        -o            --output       <OUTPUT>                  The output path to a txt or json file
         -d            --display-mode <DISPLAY_MODE>            The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible
         -c            --content                                Display the content of the input file
         -p            --preview                                Display the decoded output
         -m            --mass                                   Changes input required from file to directory for mass file decoding
 
     encode - Converts txt to 8xp
-        input         <INPUT>                       (required) The input path to an txt file
+        input         <INPUT>                       (required) The input path to a txt or json file
         -o            --output       <OUTPUT>                  The output path to an 8xp/82p/83p file
         -e            --encode-mode  <ENCODE_MODE>             The mode used to parse tokens [min, max, smart] | Default: smart
         -c            --content                                Display the content of the input file
@@ -142,9 +142,8 @@ ti-tools encode ./programs -o ./programs --mass
 
 ### Error loading program
 
-- If there is any error loading the program, ensure that you are using a valid file type (`.8xp` or `.txt`).
+- If there is any error loading the program, ensure that you are using a valid file type, `8xp`, `83p` or `82p` when decoding and `txt` or `json` when encoding.
 - If there is an error encoding the program, ensure that the file matches the formatting detailed in [txt File Structure](txt-file-structure).
-- If there is an error decoding the program, ensure that you properly specified the model of the calculator.
 
 - If you are still having issues, please open an issue with the program that is causing the error.
 
