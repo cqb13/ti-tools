@@ -3,8 +3,6 @@ pub mod cli;
 pub mod commands;
 pub mod errors;
 pub mod styles;
-#[cfg(test)]
-pub mod tests;
 pub mod tokens;
 
 use cli::{Arg, Cli, CmdOption, Command};

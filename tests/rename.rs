@@ -1,10 +1,10 @@
-use crate::calculator::program::Program;
-use crate::calculator::DisplayMode;
 use std::path::Path;
+use ti_tools::calculator::program::Program;
+use ti_tools::calculator::DisplayMode;
 
 #[test]
 fn test_rename() {
-    let input_path = Path::new("./src/tests/programs/RADICAL.8xp");
+    let input_path = Path::new("./tests/programs/RADICAL.8xp");
 
     let program = Program::load_from_8xp(input_path.to_path_buf(), DisplayMode::Accessible);
 
@@ -55,7 +55,7 @@ fn test_rename() {
 
 #[test]
 fn test_rename_fail_on_length() {
-    let input_path = Path::new("./src/tests/programs/RADICAL.8xp");
+    let input_path = Path::new("./tests/programs/RADICAL.8xp");
 
     let program = Program::load_from_8xp(input_path.to_path_buf(), DisplayMode::Accessible);
 
@@ -80,7 +80,7 @@ fn test_rename_fail_on_length() {
 
 #[test]
 fn test_rename_fail_on_characters() {
-    let input_path = Path::new("./src/tests/programs/RADICAL.8xp");
+    let input_path = Path::new("./tests/programs/RADICAL.8xp");
 
     let program = Program::load_from_8xp(input_path.to_path_buf(), DisplayMode::Accessible);
 

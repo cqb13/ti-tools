@@ -1,44 +1,35 @@
-use crate::calculator::program::Program;
-use crate::calculator::{DisplayMode, EncodeMode};
 use std::path::Path;
+use ti_tools::calculator::program::Program;
+use ti_tools::calculator::{DisplayMode, EncodeMode};
 
 #[test]
 fn test_decode_and_encode() {
     test_program(
-        "./src/tests/programs/BASECONV.8xp",
-        "./src/tests/programs/BASECONV.txt",
+        "./tests/programs/BASECONV.8xp",
+        "./tests/programs/BASECONV.txt",
+    );
+    test_program("./tests/programs/DBD.8xp", "./tests/programs/DBD.txt");
+    test_program("./tests/programs/FACTOR.8xp", "./tests/programs/FACTOR.txt");
+    test_program(
+        "./tests/programs/MATHTOOL.8xp",
+        "./tests/programs/MATHTOOL.txt",
     );
     test_program(
-        "./src/tests/programs/DBD.8xp",
-        "./src/tests/programs/DBD.txt",
+        "./tests/programs/POLCONIC.8xp",
+        "./tests/programs/POLCONIC.txt",
     );
     test_program(
-        "./src/tests/programs/FACTOR.8xp",
-        "./src/tests/programs/FACTOR.txt",
+        "./tests/programs/QUEUESIM.8xp",
+        "./tests/programs/QUEUESIM.txt",
     );
     test_program(
-        "./src/tests/programs/MATHTOOL.8xp",
-        "./src/tests/programs/MATHTOOL.txt",
+        "./tests/programs/RADICAL.8xp",
+        "./tests/programs/RADICAL.txt",
     );
+    test_program("./tests/programs/SPLINE.8xp", "./tests/programs/SPLINE.txt");
     test_program(
-        "./src/tests/programs/POLCONIC.8xp",
-        "./src/tests/programs/POLCONIC.txt",
-    );
-    test_program(
-        "./src/tests/programs/QUEUESIM.8xp",
-        "./src/tests/programs/QUEUESIM.txt",
-    );
-    test_program(
-        "./src/tests/programs/RADICAL.8xp",
-        "./src/tests/programs/RADICAL.txt",
-    );
-    test_program(
-        "./src/tests/programs/SPLINE.8xp",
-        "./src/tests/programs/SPLINE.txt",
-    );
-    test_program(
-        "./src/tests/programs/TOCCATA.8xp",
-        "./src/tests/programs/TOCCATA.txt",
+        "./tests/programs/TOCCATA.8xp",
+        "./tests/programs/TOCCATA.txt",
     );
 }
 

@@ -1,10 +1,10 @@
-use crate::calculator::program::{FileType, Program};
-use crate::calculator::DisplayMode;
 use std::path::Path;
+use ti_tools::calculator::program::{FileType, Program};
+use ti_tools::calculator::DisplayMode;
 
 #[test]
 fn test_lock_and_unlock() {
-    let input_path = Path::new("./src/tests/programs/RADICAL.8xp");
+    let input_path = Path::new("./tests/programs/RADICAL.8xp");
 
     let program = Program::load_from_8xp(input_path.to_path_buf(), DisplayMode::Accessible);
 
