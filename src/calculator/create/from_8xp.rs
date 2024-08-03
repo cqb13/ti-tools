@@ -27,6 +27,11 @@ pub fn create_from_8xp(
                 "TXT files cant be loaded as 8xp files".to_string(),
             ))
         }
+        ProgramFileType::JSON => {
+            return Err(CliError::FileRead(
+                "JSON files cant be loaded as 8xp files".to_string(),
+            ))
+        }
     };
     let (body_bytes, checksum_bytes) = bytes.split_at(bytes.len() - 2);
 
@@ -131,6 +136,11 @@ pub fn create_from_8xp(
         ProgramFileType::TXT => {
             return Err(CliError::FileRead(
                 "TXT files cant be loaded as 8xp files".to_string(),
+            ))
+        }
+        ProgramFileType::JSON => {
+            return Err(CliError::FileRead(
+                "JSON files cant be loaded as 8xp files".to_string(),
             ))
         }
     };

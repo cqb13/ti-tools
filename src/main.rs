@@ -35,7 +35,7 @@ fn main() {
                     CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
                 )
                 .with_arg(
-                    Arg::new("output", "The output path to a txt file", "output", 'o')
+                    Arg::new("output", "The output path to a txt or json file", "output", 'o')
                         .with_value_name("OUTPUT"),
                 )
                 .with_arg(
@@ -56,7 +56,7 @@ fn main() {
         .with_command(
             Command::new("encode", "Converts txt to 8xp")
             .with_option(
-                CmdOption::new("input", "INPUT", "The input path to an txt file")
+                CmdOption::new("input", "INPUT", "The input path to a txt or json file")
             )
             .with_arg(
                 Arg::new("output", "The output path to an 8xp/82p/83p file", "output", 'o')

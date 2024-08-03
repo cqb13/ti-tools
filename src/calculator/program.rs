@@ -3,9 +3,11 @@ use crate::calculator::create::from_8xp::create_from_8xp;
 use crate::calculator::create::from_txt::create_from_txt;
 use crate::calculator::{DisplayMode, EncodeMode};
 use crate::errors::CliError;
+use serde::Serialize;
 use std::io::Write;
 use std::path::PathBuf;
 
+#[derive(Serialize)]
 pub struct Program {
     pub header: Header,
     pub metadata: Metadata,
@@ -150,6 +152,16 @@ impl Program {
                 );
                 write_to_file(&path, output_string)?
             }
+            ProgramFileType::JSON => {
+                let output_string = match serde_json::to_string_pretty(&self) {
+                    Ok(output_string) => output_string,
+                    Err(err) => {
+                        return Err(CliError::FailedToSerializeJson(err.to_string()));
+                    }
+                };
+
+                write_to_file(&path, output_string)?
+            }
         }
 
         Ok(())
@@ -171,6 +183,7 @@ impl Program {
     }
 }
 
+#[derive(Serialize)]
 pub struct Header {
     pub bytes: Vec<u8>,
     pub signature: String,
@@ -217,6 +230,7 @@ impl Header {
     }
 }
 
+#[derive(Serialize)]
 pub struct Metadata {
     pub bytes: Vec<u8>,
     pub flag: u8,
@@ -303,6 +317,7 @@ impl Metadata {
     }
 }
 
+#[derive(Serialize)]
 pub struct Body {
     pub bytes: Vec<u8>,
     pub translation: String,
@@ -322,6 +337,7 @@ impl Body {
     }
 }
 
+#[derive(Serialize)]
 pub struct Checksum {
     pub bytes: Vec<u8>,
     pub value: u16,
@@ -341,11 +357,13 @@ impl Checksum {
     }
 }
 
+#[derive(Serialize)]
 pub enum ProgramFileType {
     XP,
     TXT,
     XPTwo,
     XPThree,
+    JSON,
 }
 
 impl ProgramFileType {
@@ -362,6 +380,13 @@ impl ProgramFileType {
             _ => false,
         }
     }
+
+    pub fn is_json(&self) -> bool {
+        match self {
+            ProgramFileType::JSON => true,
+            _ => false,
+        }
+    }
 }
 
 pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, CliError> {
@@ -371,6 +396,7 @@ pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, CliError> {
             Some("83p") => Ok(ProgramFileType::XPThree),
             Some("82p") => Ok(ProgramFileType::XPTwo),
             Some("txt") => Ok(ProgramFileType::TXT),
+            Some("json") => Ok(ProgramFileType::JSON),
             _ => Err(CliError::InvalidExtension(
                 ext.to_str().unwrap().to_string(),
             )),
@@ -379,6 +405,7 @@ pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, CliError> {
     }
 }
 
+#[derive(Serialize)]
 pub enum FileType {
     Program,
     LockedProgram,
@@ -432,6 +459,7 @@ impl FileType {
     }
 }
 
+#[derive(Serialize)]
 pub enum Destination {
     RAM,
     Archive,

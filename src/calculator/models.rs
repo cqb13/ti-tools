@@ -1,6 +1,7 @@
 use crate::errors::CliError;
+use serde::Serialize;
 
-#[derive(Debug, Eq)]
+#[derive(Debug, Eq, Serialize)]
 pub struct ModelDetails {
     pub model: Model,
     pub signature: String,
@@ -79,7 +80,7 @@ impl PartialEq for ModelDetails {
     }
 }
 
-#[derive(Debug, Eq, Clone)]
+#[derive(Debug, Eq, Clone, Serialize)]
 pub enum Model {
     TI82,
     TI83,

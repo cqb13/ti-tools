@@ -26,6 +26,7 @@ pub enum CliError {
     /**Type encode|decode */
     MassConversionOutputNotDirectory(String),
     FailedToReadDirectory(String),
+    FailedToSerializeJson(String),
 }
 
 impl Debug for CliError {
@@ -81,6 +82,7 @@ impl CliError {
                 )
             }
             CliError::FailedToReadDirectory(err) => format!("Failed to read directory: {}", err),
+            CliError::FailedToSerializeJson(err) => format!("Failed to serialize json: {}", err),
         }
     }
 
