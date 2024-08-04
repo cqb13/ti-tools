@@ -6,7 +6,7 @@ pub mod styles;
 pub mod tokens;
 
 use cli::{Arg, Cli, CmdOption, Command};
-use commands::decode::decode_command;
+use commands::convert::convert_command;
 use commands::details::details_command;
 use commands::edit::archive::archive_command;
 use commands::edit::comment::comment_command;
@@ -14,7 +14,6 @@ use commands::edit::lock::lock_command;
 use commands::edit::rename::rename_command;
 use commands::edit::unarchive::unarchive_command;
 use commands::edit::unlock::unlock_command;
-use commands::encode::encode_command;
 use commands::models::models_command;
 
 fn main() {
@@ -30,18 +29,23 @@ fn main() {
             Command::new("version", "Prints version information")
         )
         .with_command(
-            Command::new("decode", "Converts 8xp/82p/83p to txt")
+            Command::new("convert", "Converts between 8xp/83p/82p, json, and txt")
                 .with_option(
-                    CmdOption::new("input", "INPUT", "The input path to an 8xp/82p/83p file")
+                    CmdOption::new("input", "INPUT", "The input path to an 8xp, 83p, 82p, json or txt file")
                 )
                 .with_arg(
-                    Arg::new("output", "The output path to a txt or json file", "output", 'o')
+                    Arg::new("output", "The output path to an 8xp, 83p, json, or txt file", "output", 'o')
                         .with_value_name("OUTPUT"),
                 )
                 .with_arg(
                     Arg::new("display-mode", "The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible", "display-mode", 'd')
                         .with_default_value("accessible")
                         .with_value_name("DISPLAY_MODE")
+                )
+                .with_arg(
+                    Arg::new("encode-mode", "The mode used to parse tokens [min, max, smart] | Default: smart", "encode-mode", 'e')
+                        .with_default_value("smart")
+                        .with_value_name("ENCODE_MODE")
                 )
                 .with_arg(
                     Arg::new("content", "Display the content of the input file", "content", 'c')
@@ -52,30 +56,6 @@ fn main() {
                 .with_arg(
                     Arg::new("mass", "Changes input required from file to directory for mass file decoding", "mass", 'm')
                 )
-        )
-        .with_command(
-            Command::new("encode", "Converts txt to 8xp")
-            .with_option(
-                CmdOption::new("input", "INPUT", "The input path to a txt or json file")
-            )
-            .with_arg(
-                Arg::new("output", "The output path to an 8xp/82p/83p file", "output", 'o')
-                    .with_value_name("OUTPUT"),
-            )
-            .with_arg(
-                Arg::new("encode-mode", "The mode used to parse tokens [min, max, smart] | Default: smart", "encode-mode", 'e')
-                    .with_default_value("smart")
-                    .with_value_name("ENCODE_MODE")
-            )
-            .with_arg(
-                Arg::new("content", "Display the content of the input file", "content", 'c')
-            )
-            .with_arg(
-                Arg::new("preview", "Display the decoded output", "preview", 'p')
-            )
-            .with_arg(
-                Arg::new("mass", "Changes input required from file to directory for mass file encoding", "mass", 'm')
-            )
         )
         .with_command(
             Command::new("rename", "Renames the program name in a 8xp/82p/83p file")
@@ -187,34 +167,13 @@ fn main() {
             cli.help(command.as_deref())
         }
         "version" => cli.version(),
-        "decode" => {
+        "convert" => {
             let input_path_string = command.get_option("input").throw_if_none();
             let output_path_string = command.get_arg("output").to_option();
             let display_mode = command
                 .get_arg("display-mode")
                 .to_option()
                 .unwrap_or("accessible".to_string());
-            let content = command.has("content");
-            let preview = command.has("preview");
-            let mass = command.has("mass");
-
-            if output_path_string.is_none() && !preview && !content {
-                println!("No output path or preview option provided");
-                std::process::exit(0);
-            }
-
-            decode_command(
-                input_path_string,
-                output_path_string,
-                display_mode,
-                content,
-                preview,
-                mass,
-            );
-        }
-        "encode" => {
-            let input_path_string = command.get_option("input").throw_if_none();
-            let output_path_string = command.get_arg("output").to_option();
             let encode_mode = command
                 .get_arg("encode-mode")
                 .to_option()
@@ -223,14 +182,10 @@ fn main() {
             let preview = command.has("preview");
             let mass = command.has("mass");
 
-            if output_path_string.is_none() && !preview && !content {
-                println!("No output path or preview option provided");
-                std::process::exit(0);
-            }
-
-            encode_command(
+            convert_command(
                 input_path_string,
                 output_path_string,
+                display_mode,
                 encode_mode,
                 content,
                 preview,

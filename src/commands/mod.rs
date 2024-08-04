@@ -1,5 +1,4 @@
-pub mod decode;
+pub mod convert;
 pub mod details;
 pub mod edit;
-pub mod encode;
 pub mod models;

@@ -45,21 +45,14 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
 
     version - Prints version information
 
-    decode - Converts 8xp/82p/83p to txt
-        input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
-        -o            --output       <OUTPUT>                  The output path to a txt or json file
+    convert - Converts between 8xp/83p/82p, json, and txt
+        input         <INPUT>                       (required) The input path to an 8xp, 83p, 82p, json or txt file
+        -o            --output       <OUTPUT>                  The output path to an 8xp, 83p, json, or txt file
         -d            --display-mode <DISPLAY_MODE>            The characters to translate the tokens to [pretty, accessible, ti] | Default: accessible
-        -c            --content                                Display the content of the input file
-        -p            --preview                                Display the decoded output
-        -m            --mass                                   Changes input required from file to directory for mass file decoding
-
-    encode - Converts txt to 8xp
-        input         <INPUT>                       (required) The input path to a txt or json file
-        -o            --output       <OUTPUT>                  The output path to an 8xp/82p/83p file
         -e            --encode-mode  <ENCODE_MODE>             The mode used to parse tokens [min, max, smart] | Default: smart
         -c            --content                                Display the content of the input file
         -p            --preview                                Display the decoded output
-        -m            --mass                                   Changes input required from file to directory for mass file encoding
+        -m            --mass                                   Changes input required from file to directory for mass file decoding
 
     rename - Renames the program name in a 8xp/82p/83p file
         input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
@@ -104,21 +97,21 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
 ### Decode
 
 ```sh
-ti-tools decode ./tests/programs/TOCCATA.8xp -p -c -o ./TOCCATA.txt
+ti-tools convert ./tests/programs/TOCCATA.8xp -p -c -o ./TOCCATA.txt
 ```
 
 ```sh
-ti-tools decode ./tests/programs -o ./programs --mass
+ti-tools convert ./tests/programs -o ./programs --mass
 ```
 
 ### Encode
 
 ```sh
-ti-tools encode ./TOCCATA.txt -p -c -o ./TOCCATA.8xp
+ti-tools convert ./TOCCATA.txt -p -c -o ./TOCCATA.8xp
 ```
 
 ```sh
-ti-tools encode ./programs -o ./programs --mass
+ti-tools convert ./programs -o ./programs-other --mass
 ```
 
 ## Troubleshooting

@@ -128,7 +128,7 @@ impl Program {
         Ok(program)
     }
 
-    pub fn save_to(&self, path: PathBuf) -> Result<(), CliError> {
+    pub fn save_to(&self, path: &PathBuf) -> Result<(), CliError> {
         if path.exists() {
             println!("A file already exists at the output path, would you like to delete its content and proceed? [y/N]");
             let mut input = String::new();

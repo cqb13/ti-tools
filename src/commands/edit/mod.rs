@@ -28,7 +28,7 @@ fn save_edits(
     delete_old: bool,
 ) {
     if new_file_path.is_none() {
-        let result = program.save_to(input_path.to_path_buf());
+        let result = program.save_to(&input_path.to_path_buf());
 
         match result {
             Ok(_) => {}
@@ -37,7 +37,7 @@ fn save_edits(
     } else {
         let new_file_path = new_file_path.unwrap();
         let new_file_path = Path::new(&new_file_path).to_path_buf();
-        let result = program.save_to(new_file_path);
+        let result = program.save_to(&new_file_path);
 
         match result {
             Ok(_) => {}
