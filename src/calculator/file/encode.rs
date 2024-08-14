@@ -1,6 +1,6 @@
-use super::{DisplayMode, EncodeMode};
+use crate::calculator::tokens::Map;
+use crate::calculator::{DisplayMode, EncodeMode};
 use crate::errors::CliError;
-use crate::tokens::Map;
 
 struct EncodeState<'a> {
     in_string: bool,

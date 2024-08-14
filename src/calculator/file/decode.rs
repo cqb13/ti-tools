@@ -1,6 +1,6 @@
-use super::DisplayMode;
+use crate::calculator::tokens::Map;
+use crate::calculator::DisplayMode;
 use crate::errors::CliError;
-use crate::tokens::Map;
 
 pub fn decode(
     bytestream: &[u8],

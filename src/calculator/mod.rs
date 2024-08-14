@@ -1,11 +1,10 @@
 use crate::errors::CliError;
 use serde::{Deserialize, Serialize};
 
-mod create;
-mod decode;
-mod encode;
+mod file;
 pub mod models;
 pub mod program;
+pub mod tokens;
 
 #[derive(Serialize)]
 pub enum EncodeMode {

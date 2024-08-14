@@ -1,9 +1,9 @@
-use crate::calculator::encode::encode;
+use super::encode::encode;
 use crate::calculator::models::{Model, ModelDetails};
 use crate::calculator::program::{Body, Checksum, Destination, FileType, Header, Metadata};
+use crate::calculator::tokens::{load_tokens, OsVersion};
 use crate::calculator::{DisplayMode, EncodeMode};
 use crate::errors::CliError;
-use crate::tokens::{load_tokens, OsVersion};
 use std::path::PathBuf;
 
 pub fn create_from_txt(

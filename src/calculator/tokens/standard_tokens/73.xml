@@ -1,0 +1,4639 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Credits
+ - Ryan Pitasky
+ - Shaun McFall, through tokenide
+ - Daniel Thorneycroft, through tokenide
+ -->
+<tokens>
+	<token value="$01">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>►DMS</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$04">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>→</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$05">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Boxplot</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$06">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>[</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$07">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>]</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$08">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>{</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$09">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>}</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$0A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ʳ</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$0B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>°</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$0C">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ˉ¹</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$0D">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>²</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$0E">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ᵀ</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$0F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>³</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$10">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$11">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>)</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$12">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>round(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$13">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>pxl-Test(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$14">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>augnment(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$15">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>DependAsk</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$16">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>A_b/c</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$17">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>b/c</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$18">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Autosimp</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$19">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>max(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$1A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>min(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$1B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>R►Pr(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$1C">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>R►Pθ(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$1D">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>P►Rx(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$1E">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>P►Ry(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$1F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>median(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$20">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>randM(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$21">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>mean(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$22">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>mode(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$23">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>solve(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$24">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>seq(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$29">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$2A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>"</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$2B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>,</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$2C">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>[r]</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$2E">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>!</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$2F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>%</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$30">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>0</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$31">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>1</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$32">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>2</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$33">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>3</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$34">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>4</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$35">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>5</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$36">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>6</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$37">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>7</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$38">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>8</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$39">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>9</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$3A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>.</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$3B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ᴇ</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$3C">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&#032;or&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$3D">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&#032;xor&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$3E">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>:</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$3F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&#010;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$40">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&#032;and&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$41">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>A</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$42">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>B</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$43">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>C</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$44">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>D</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$45">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>E</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$46">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>F</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$47">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>G</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$48">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>H</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$49">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>I</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$4A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>J</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$4B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>K</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$4C">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>L</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$4D">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>M</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$4E">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>N</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$4F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>O</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$50">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>P</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$51">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Q</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$52">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>R</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$53">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>S</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$54">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>T</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$55">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>U</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$56">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>V</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$57">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>W</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$58">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>X</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$59">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Y</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$5A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Z</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$5B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>θ</name>
+			</lang>
+		</version>
+	</token>
+	<two-byte value="$5C">
+		<token value="$01">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[A]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$02">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[B]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[C]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$04">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[D]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$05">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[E]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$06">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[F]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$07">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[G]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$08">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[H]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$09">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[I]</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<two-byte value="$5D">
+		<token value="$01">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>L₁</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$02">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>L₂</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>L₃</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$04">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>L₄</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$05">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>L₅</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$06">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>L₆</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<two-byte value="$5E">
+		<token value="$10">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₁</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$11">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₂</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$12">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₃</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$13">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₄</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$14">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₅</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$15">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₆</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$16">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₇</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$17">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₈</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$18">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₉</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$19">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₀</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$20">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>X₁ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$21">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₁ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$22">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>X₂ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$23">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₂ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$24">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>X₃ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$25">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₃ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$26">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>X₄ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$27">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₄ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$28">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>X₅ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$29">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₅ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$2A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>X₆ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$2B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Y₆ᴛ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$40">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>r₁</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$41">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>r₂</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$42">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>r₃</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$43">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>r₄</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$44">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>r₅</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$45">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>r₆</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$80">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>C1</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$81">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>C2</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$82">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>C3</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<token value="$5F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>prgm</name>
+			</lang>
+		</version>
+	</token>
+	<two-byte value="$60">
+		<token value="$01">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pic1</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$02">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pic2</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pic3</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$04">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pic4</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$05">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pic5</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$06">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pic6</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$07">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pic7</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$08">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pic8</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$09">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pic9</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<two-byte value="$61">
+		<token value="$01">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GDB1</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$02">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GDB2</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GDB3</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$04">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GDB4</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$05">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GDB5</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$06">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GDB6</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$07">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GDB7</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$08">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GDB8</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$09">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GDB9</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<two-byte value="$62">
+		<token value="$01">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[RegEQ]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$02">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[n]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ẋ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$04">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Σx</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$05">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Σx²</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$06">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[Sx]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$07">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>σx</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$08">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[minX]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$09">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[maxX]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[minY]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[maxY]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0C">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ȳ</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0D">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Σy</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0E">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Σy²</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0F">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[Sy]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$10">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>σy</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$11">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Σxy</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$12">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>|r</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$13">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[Med]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$14">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[Q1]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$15">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[Q3]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$16">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[|a]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$17">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[|b]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$18">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[|c]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$19">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[|d]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>[|e]</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>x₁</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1C">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>x₂</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1D">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>x₃</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1E">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>y₁</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1F">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>y₂</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$20">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>y₃</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<two-byte value="$63">
+		<token value="$01">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZXscl</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$02">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZYscl</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Xscl</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Xmin</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Xmax</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0C">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Ymin</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0D">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Ymax</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0E">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Tmin</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0F">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Tmax</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$10">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>θMin</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$11">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>θMax</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$12">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZXmin</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$13">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZXmax</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$14">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZYmin</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$15">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZYmax</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$16">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Zθmin</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$17">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Zθmax</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$18">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZTmin</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$19">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZTmax</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>TblStart</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>PlotStart</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1C">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZPlotStart</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$21">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>∆Tbl</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$22">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Tstep</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$23">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>θstep</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$24">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZTstep</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$25">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Zθstep</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$26">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>∆X</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$27">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>∆Y</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$28">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>XFact</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$29">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>YFact</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$2A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>TblInput</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$2B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Factor</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$34">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>PlotStep</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$35">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZPlotStep</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$36">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Xres</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$37">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZXres</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<token value="$64">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Radian</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$65">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Degree</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$66">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Normal</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$67">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Sci</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$68">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Float</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$69">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Fix</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$6A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>=</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$6B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&lt;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$6C">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&gt;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$6D">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>≤</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$6E">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>≥</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$6F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>≠</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$70">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>+</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$71">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>-</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$72">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Ans</name>
+			</lang>
+		</version>
+	</token>
+	<two-byte value="$73">
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>CoordOn</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$04">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>CoordOff</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$07">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>AxesOn</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$08">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>AxesOff</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$09">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GridOn</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GridOff</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>LabelOn</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0C">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>LabelOff</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$12">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>IndpntAuto</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$13">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>IndpntAsk</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$19">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Mansimp</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>SingleConst</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>MultiConst</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<token value="$78">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>PersonIcon</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$79">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>TreeIcon</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$7A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>DollarIcon</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$7B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>FaceIcon</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$7C">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>PieIcon</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$7D">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>DiamondIcon</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$7E">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>StarIcon</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$7F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>□</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$80">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>﹢</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$81">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>·</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$82">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>*</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$83">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>/</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$84">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&#032;Int/&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$85">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Trace</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$86">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ClrDraw</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$87">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ZStandard</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$88">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ZTrig</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$89">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ZBox</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$8A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Zoom In</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$8B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Zoom Out</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$8C">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ZSquare</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$8D">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ZInteger</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$8E">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ZPrevious</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$8F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ZDecimal</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$90">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ZoomStat</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$91">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ZQuadrant1</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$94">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Text(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$95">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&#032;nPr&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$96">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&#032;nCr&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$97">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>FnOn&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$98">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>FnOff&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$99">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>StorePic&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$9A">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>RecallPic&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$9B">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Line(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$9C">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Vertical&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$9D">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Pt-On(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$9E">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Pt-Off(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$9F">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Pt-Change(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$A0">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Pxl-On(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$A1">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Pxl-Off(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$A2">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Pxl-Change(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$A3">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Shade(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$A4">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Circle(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$A5">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Horizontal&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$A6">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Tangent(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$A7">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Manual-Fit&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$A9">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>DrawF&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<two-byte value="$AA">
+		<token value="$01">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Str1</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$02">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Str2</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Str3</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$04">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Str4</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$05">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Str5</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$06">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Str6</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$07">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Str7</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$08">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Str8</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$09">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Str9</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<token value="$AB">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>rand</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$AC">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>π</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$AD">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>getKey</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$AE">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>'</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$AF">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>?</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$B0">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>⁻</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$B1">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>int(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$B2">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>abs(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$B3">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>det(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$B4">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>identity(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$B5">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>dim(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$B6">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>sum(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$B7">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>prod(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$B9">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>iPart(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$BA">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>fPart(</name>
+			</lang>
+		</version>
+	</token>
+	<two-byte value="$BB">
+		<token value="$01">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>lcm(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$02">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>gcd(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>randInt(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$04">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>sub(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$05">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>stdDev(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$06">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>variance(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$07">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>inString(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$08">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>coin(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$09">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>dice(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>remainder(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>cumSum(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0C">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>expr(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0D">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>length(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0E">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>DeltaList(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0F">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ref(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$10">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>rref(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$12">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Matr►list(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$13">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>List►matr(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$14">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>SetConst(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$15">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GraphStyle(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$16">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>SetUpEditor&#032;</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ExprOn</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ExprOff</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1C">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ClrAllLists</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1D">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>GetCalc(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1E">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>DelVar&#032;</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$1F">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Equ►String(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$20">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>String►Equ(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$21">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Clear Home</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$22">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Select(</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$23">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ModBoxPlot</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$24">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>NormProbPlot</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$25">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>PictoPlot</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$26">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>PiePlot</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$27">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>StemPlot</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$28">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>BarPlot</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$29">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ZoomFit</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$2A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>DiagnosticOn</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$2B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>DiagnosticOff</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$2D">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Pen</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+	<token value="$BC">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>√(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$BD">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>³√(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$BE">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ln(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$BF">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>e^(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C0">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>log(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C1">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>₁₀^(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C2">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>sin(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C3">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>sin⁻¹(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C4">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>cos(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C5">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>cos⁻¹(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C6">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>tan(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C7">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>tan⁻¹(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C8">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&gt;Ab/c&lt;&gt;d/e</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$C9">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&gt;F&lt;&gt;D</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$CA">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>&gt;Simp&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$CB">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>^</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$CC">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ˣ√</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$CD">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>SetMenu(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$CE">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>If&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$CF">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Then</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D0">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Else</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D1">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>While&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D2">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Repeat&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D3">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>For(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D4">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>End</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D5">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Return</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D6">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Lbl&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D7">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Goto&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D8">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Pause&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$D9">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Stop</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$DA">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>IS&gt;(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$DB">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>DS&lt;(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$DC">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Input&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$DD">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Prompt&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$DE">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Disp&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$DF">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>DispGraph</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E0">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Output(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E1">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ClrScreen</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E2">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Fill(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E3">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>SortA(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E4">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>SortD(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E5">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>DispTable</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E6">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Menu(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E7">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Send(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E8">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Get(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$E9">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>PlotsOn&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$EA">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>PlotsOff&#032;</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$EB">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>ʟ</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$EC">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Plot1(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$ED">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Plot2(</name>
+			</lang>
+		</version>
+	</token>
+	<token value="$EE">
+		<version>
+			<since>
+				<model>TI-73</model>
+				<os-version>1.3004</os-version>
+			</since>
+			<lang code="en">
+				<name>Plot3(</name>
+			</lang>
+		</version>
+	</token>
+	<two-byte value="$F2">
+		<token value="$01">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>1-Var Stats&#032;</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$02">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>2-Var Stats</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$03">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>LinReg(ax+b)&#032;</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$04">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ExpReg&#032;</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$07">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Med-Med&#032;</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$08">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>QuadReg&#032;</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$09">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ClrList&#032;</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0A">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>ClrTable</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0B">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Histogram</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0C">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>xyLine</name>
+				</lang>
+			</version>
+		</token>
+		<token value="$0D">
+			<version>
+				<since>
+					<model>TI-73</model>
+					<os-version>1.3004</os-version>
+				</since>
+				<lang code="en">
+					<name>Scatter</name>
+				</lang>
+			</version>
+		</token>
+	</two-byte>
+</tokens>

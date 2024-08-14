@@ -1,6 +1,6 @@
 use super::models::ModelDetails;
-use crate::calculator::create::from_8xp::create_from_8xp;
-use crate::calculator::create::from_txt::create_from_txt;
+use crate::calculator::file::from_8xp::create_from_8xp;
+use crate::calculator::file::from_txt::create_from_txt;
 use crate::calculator::{DisplayMode, EncodeMode};
 use crate::errors::CliError;
 use serde::{Deserialize, Serialize};

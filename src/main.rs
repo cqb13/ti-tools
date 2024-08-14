@@ -3,7 +3,6 @@ pub mod cli;
 pub mod commands;
 pub mod errors;
 pub mod styles;
-pub mod tokens;
 
 use cli::{Arg, Cli, CmdOption, Command};
 use commands::convert::convert_command;
