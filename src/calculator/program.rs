@@ -1,8 +1,8 @@
 use super::models::ModelDetails;
+use crate::calculator::errors::TiToolsError;
 use crate::calculator::file::from_8xp::create_from_8xp;
 use crate::calculator::file::from_txt::create_from_txt;
 use crate::calculator::{DisplayMode, EncodeMode};
-use crate::errors::CliError;
 use serde::{Deserialize, Serialize};
 use std::io::Write;
 use std::path::PathBuf;
@@ -18,9 +18,12 @@ pub struct Program {
 }
 
 impl Program {
-    pub fn load_from_8xp(path: PathBuf, display_mode: DisplayMode) -> Result<Program, CliError> {
+    pub fn load_from_8xp(
+        path: PathBuf,
+        display_mode: DisplayMode,
+    ) -> Result<Program, TiToolsError> {
         if !path.exists() {
-            return Err(CliError::FailedToFindFile(
+            return Err(TiToolsError::FailedToFindFile(
                 path.to_str().unwrap().to_string(),
             ));
         }
@@ -28,7 +31,7 @@ impl Program {
         let file_type = match get_file_type(&path) {
             Ok(file_type) => {
                 if !file_type.is_8xp() {
-                    return Err(CliError::IncompatibleFileType(
+                    return Err(TiToolsError::IncompatibleFileType(
                         "txt/json".to_string(),
                         "8xp/83p/82p".to_string(),
                     ));
@@ -58,9 +61,9 @@ impl Program {
         Ok(program)
     }
 
-    pub fn load_from_txt(path: PathBuf, encode_mode: &EncodeMode) -> Result<Program, CliError> {
+    pub fn load_from_txt(path: PathBuf, encode_mode: &EncodeMode) -> Result<Program, TiToolsError> {
         if !path.exists() {
-            return Err(CliError::FailedToFindFile(
+            return Err(TiToolsError::FailedToFindFile(
                 path.to_str().unwrap().to_string(),
             ));
         }
@@ -68,7 +71,7 @@ impl Program {
         match get_file_type(&path) {
             Ok(file_type) => {
                 if !file_type.is_txt() {
-                    return Err(CliError::IncompatibleFileType(
+                    return Err(TiToolsError::IncompatibleFileType(
                         "8xp/83p/82p".to_string(),
                         "txt or json".to_string(),
                     ));
@@ -96,9 +99,9 @@ impl Program {
         Ok(program)
     }
 
-    pub fn load_from_json(path: PathBuf) -> Result<Program, CliError> {
+    pub fn load_from_json(path: PathBuf) -> Result<Program, TiToolsError> {
         if !path.exists() {
-            return Err(CliError::FailedToFindFile(
+            return Err(TiToolsError::FailedToFindFile(
                 path.to_str().unwrap().to_string(),
             ));
         }
@@ -106,7 +109,7 @@ impl Program {
         match get_file_type(&path) {
             Ok(file_type) => {
                 if !file_type.is_json() {
-                    return Err(CliError::IncompatibleFileType(
+                    return Err(TiToolsError::IncompatibleFileType(
                         "json".to_string(),
                         "json".to_string(),
                     ));
@@ -117,18 +120,18 @@ impl Program {
 
         let file_string = match std::fs::read_to_string(&path) {
             Ok(file_string) => file_string,
-            Err(err) => return Err(CliError::FailedToReadFile(err.to_string())),
+            Err(err) => return Err(TiToolsError::FailedToReadFile(err.to_string())),
         };
 
         let program: Program = match serde_json::from_str(&file_string) {
             Ok(program) => program,
-            Err(err) => return Err(CliError::FailedToDeserializeJson(err.to_string())),
+            Err(err) => return Err(TiToolsError::FailedToDeserializeJson(err.to_string())),
         };
 
         Ok(program)
     }
 
-    pub fn save_to(&self, path: &PathBuf) -> Result<(), CliError> {
+    pub fn save_to(&self, path: &PathBuf) -> Result<(), TiToolsError> {
         if path.exists() {
             println!("A file already exists at the output path, would you like to delete its content and proceed? [y/N]");
             let mut input = String::new();
@@ -145,11 +148,11 @@ impl Program {
                         println!("Deleted existing file");
                     }
                     Err(err) => {
-                        return Err(CliError::FailedToDeleteFile(err.to_string()));
+                        return Err(TiToolsError::FailedToDeleteFile(err.to_string()));
                     }
                 }
             } else {
-                return Err(CliError::Quit(
+                return Err(TiToolsError::Quit(
                     "User chose not to overwrite file".to_string(),
                 ));
             }
@@ -188,7 +191,7 @@ impl Program {
                 let output_string = match serde_json::to_string_pretty(&self) {
                     Ok(output_string) => output_string,
                     Err(err) => {
-                        return Err(CliError::FailedToSerializeJson(err.to_string()));
+                        return Err(TiToolsError::FailedToSerializeJson(err.to_string()));
                     }
                 };
 
@@ -244,9 +247,9 @@ impl Header {
         }
     }
 
-    pub fn comment(&mut self, comment: String) -> Result<(), CliError> {
+    pub fn comment(&mut self, comment: String) -> Result<(), TiToolsError> {
         if comment.len() > 42 {
-            return Err(CliError::InvalidCommentLength);
+            return Err(TiToolsError::InvalidCommentLength);
         }
 
         let mut comment_bytes = comment.as_bytes().to_vec();
@@ -303,13 +306,13 @@ impl Metadata {
         }
     }
 
-    pub fn rename(&mut self, name: String) -> Result<(), CliError> {
+    pub fn rename(&mut self, name: String) -> Result<(), TiToolsError> {
         if name.len() > 8 {
-            return Err(CliError::InvalidNameLength);
+            return Err(TiToolsError::InvalidNameLength);
         }
 
         if !name.chars().all(|c| c.is_ascii_alphabetic()) {
-            return Err(CliError::InvalidNameCharacters);
+            return Err(TiToolsError::InvalidNameCharacters);
         }
 
         let name = name.to_uppercase();
@@ -431,7 +434,7 @@ impl ProgramFileType {
     }
 }
 
-pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, CliError> {
+pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, TiToolsError> {
     match path.extension() {
         Some(ext) => match ext.to_str() {
             Some("8xp") => Ok(ProgramFileType::XP),
@@ -439,11 +442,11 @@ pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, CliError> {
             Some("82p") => Ok(ProgramFileType::XPTwo),
             Some("txt") => Ok(ProgramFileType::TXT),
             Some("json") => Ok(ProgramFileType::JSON),
-            _ => Err(CliError::InvalidExtension(
+            _ => Err(TiToolsError::InvalidExtension(
                 ext.to_str().unwrap().to_string(),
             )),
         },
-        None => Err(CliError::MissingExtension),
+        None => Err(TiToolsError::MissingExtension),
     }
 }
 
@@ -456,13 +459,13 @@ pub enum FileType {
 }
 
 impl FileType {
-    pub fn from_byte(byte: u8) -> Result<FileType, CliError> {
+    pub fn from_byte(byte: u8) -> Result<FileType, TiToolsError> {
         match byte {
             0x05 => Ok(FileType::Program),
             0x06 => Ok(FileType::LockedProgram),
             0x17 => Ok(FileType::Group),
             0x24 => Ok(FileType::FlashApplication),
-            _ => Err(CliError::Match(
+            _ => Err(TiToolsError::Match(
                 format!("{:02X}", byte),
                 "File Type".to_string(),
             )),
@@ -478,13 +481,13 @@ impl FileType {
         }
     }
 
-    pub fn from_string(file_type: &str) -> Result<FileType, CliError> {
+    pub fn from_string(file_type: &str) -> Result<FileType, TiToolsError> {
         match file_type {
             "Program" => Ok(FileType::Program),
             "Locked Program" => Ok(FileType::LockedProgram),
             "Group" => Ok(FileType::Group),
             "Flash Application" => Ok(FileType::FlashApplication),
-            _ => Err(CliError::Match(
+            _ => Err(TiToolsError::Match(
                 file_type.to_string(),
                 "File Type".to_string(),
             )),
@@ -508,11 +511,11 @@ pub enum Destination {
 }
 
 impl Destination {
-    pub fn from_byte(byte: u8) -> Result<Destination, CliError> {
+    pub fn from_byte(byte: u8) -> Result<Destination, TiToolsError> {
         match byte {
             0x00 => Ok(Destination::RAM),
             0x80 => Ok(Destination::Archive),
-            _ => Err(CliError::Match(
+            _ => Err(TiToolsError::Match(
                 format!("{:02X}", byte),
                 "Destination".to_string(),
             )),
@@ -526,11 +529,11 @@ impl Destination {
         }
     }
 
-    pub fn from_string(archived: &str) -> Result<Destination, CliError> {
+    pub fn from_string(archived: &str) -> Result<Destination, TiToolsError> {
         match archived {
             "RAM" => Ok(Destination::RAM),
             "Archive" => Ok(Destination::Archive),
-            _ => Err(CliError::Match(
+            _ => Err(TiToolsError::Match(
                 archived.to_string(),
                 "Destination".to_string(),
             )),
@@ -545,11 +548,11 @@ impl Destination {
     }
 }
 
-fn write_to_file<T: AsRef<[u8]>>(path: &PathBuf, content: T) -> Result<(), CliError> {
+fn write_to_file<T: AsRef<[u8]>>(path: &PathBuf, content: T) -> Result<(), TiToolsError> {
     match std::fs::write(path, content) {
         Ok(_) => Ok(()),
         Err(err) => {
-            return Err(CliError::FailedToWriteFile(
+            return Err(TiToolsError::FailedToWriteFile(
                 path.to_str().unwrap().to_string(),
                 err.to_string(),
             ))

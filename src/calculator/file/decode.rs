@@ -1,13 +1,13 @@
+use crate::calculator::errors::TiToolsError;
 use crate::calculator::tokens::Map;
 use crate::calculator::DisplayMode;
-use crate::errors::CliError;
 
 pub fn decode(
     bytestream: &[u8],
     map: &Map,
     lang: &str,
     mode: &DisplayMode,
-) -> Result<String, CliError> {
+) -> Result<String, TiToolsError> {
     let mut decoded_program = String::new();
     let mut index = 0;
     let mut current_bytes = Vec::new();
@@ -19,7 +19,7 @@ pub fn decode(
             1 => format!("${:02X}", current_bytes[0]),
             2 => format!("${:02X}${:02X}", current_bytes[0], current_bytes[1]),
             _ => {
-                return Err(CliError::InvalidByteLength(format!(
+                return Err(TiToolsError::InvalidByteLength(format!(
                     "{:02X?}",
                     current_bytes
                 )))
@@ -47,6 +47,9 @@ pub fn decode(
     if current_bytes.is_empty() {
         Ok(decoded_program)
     } else {
-        Err(CliError::TokenNotFound(format!("{:02X?}", current_bytes)))
+        Err(TiToolsError::TokenNotFound(format!(
+            "{:02X?}",
+            current_bytes
+        )))
     }
 }

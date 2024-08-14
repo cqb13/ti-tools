@@ -7,6 +7,7 @@ TI Tools is a CLI tool designed for converting 8xp files (used by TI-83 and TI-8
 This project would not be possible without the help of the following:
 
 - [TI Toolkit Token Sheet](https://github.com/TI-Toolkit/tokens)
+- [TI Toolkit Discord Bot](https://github.com/TI-Toolkit/DiscordBot/blob/main/tokens.json)
 - [TI Basic Developer Wiki](http://tibasicdev.wikidot.com/tokens)
 - [Link Protocol Guide v1.4](https://merthsoft.com/linkguide/)
 

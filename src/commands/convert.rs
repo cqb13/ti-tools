@@ -1,6 +1,6 @@
+use crate::calculator::errors::TiToolsError;
 use crate::calculator::program::{get_file_type, Program, ProgramFileType};
 use crate::calculator::{DisplayMode, EncodeMode};
-use crate::errors::CliError;
 use crate::prints;
 use std::fs;
 use std::io::Write;
@@ -212,7 +212,7 @@ pub fn convert_command(
                             std::io::stdin().read_line(&mut input).unwrap();
                             let input = input.trim();
                             if input != "y" && input != "Y" {
-                                CliError::Quit("User chose to quit".to_string())
+                                TiToolsError::Quit("User chose to quit".to_string())
                                     .print()
                                     .exit()
                             }
@@ -256,7 +256,7 @@ pub fn convert_command(
                             std::io::stdin().read_line(&mut input).unwrap();
                             let input = input.trim();
                             if input != "y" && input != "Y" {
-                                CliError::Quit("User chose to quit".to_string())
+                                TiToolsError::Quit("User chose to quit".to_string())
                                     .print()
                                     .exit()
                             }
@@ -291,7 +291,7 @@ pub fn convert_command(
                             std::io::stdin().read_line(&mut input).unwrap();
                             let input = input.trim();
                             if input != "y" && input != "Y" {
-                                CliError::Quit("User chose to quit".to_string())
+                                TiToolsError::Quit("User chose to quit".to_string())
                                     .print()
                                     .exit()
                             }

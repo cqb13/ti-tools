@@ -5,9 +5,9 @@ pub mod rename;
 pub mod unarchive;
 pub mod unlock;
 
+use crate::calculator::errors::TiToolsError;
 use crate::calculator::program::Program;
 use crate::calculator::DisplayMode;
-use crate::errors::CliError;
 use std::path::{Path, PathBuf};
 
 fn load_program(input_path: &PathBuf) -> Program {
@@ -51,7 +51,9 @@ fn save_edits(
                 Ok(_) => {
                     println!("Deleted old file.");
                 }
-                Err(err) => CliError::FailedToDeleteFile(err.to_string()).print().exit(),
+                Err(err) => TiToolsError::FailedToDeleteFile(err.to_string())
+                    .print()
+                    .exit(),
             }
         }
     }

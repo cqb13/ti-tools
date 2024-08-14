@@ -1,0 +1,5106 @@
+{
+  "0xB2": [
+    {
+      "syntax": "abs(value)",
+      "description": "Returns the absolute value of a real number, expression, list, or matrix."
+    },
+    {
+      "syntax": "abs(complex value)",
+      "description": "Returns the magnitude of a complex number or list."
+    }
+  ],
+  "0x40": [
+    {
+      "syntax": "valueA and valueB",
+      "description": "Returns 1 (true) when both `valueA` and `valueB` are true.  Otherwise, return is 0 (false).\n`valueA` and `valueB` can be real numbers, expressions, or lists.\nTI Connect\u2122 Program Editor Tip:\nNotice the token is \"_and_\" where \"_\" is a space."
+    }
+  ],
+  "0xBB28": [
+    {
+      "syntax": "angle(value)",
+      "description": "Returns the polar angle of a complex number or list of complex numbers."
+    }
+  ],
+  "0xBB59": [
+    {
+      "syntax": "ANOVA(list1,list2[,list3,...,list20])",
+      "description": "Performs a one-way analysis of variance for comparing the means of two to 20 populations."
+    }
+  ],
+  "0x72": [
+    {
+      "syntax": "Ans",
+      "description": "Returns the last answer."
+    }
+  ],
+  "0xBB68": [
+    {
+      "syntax": "Archive variables",
+      "description": "Moves the specified `variable` from RAM to the user data archive memory."
+    }
+  ],
+  "0x14": [
+    {
+      "syntax": "augment( matrixA ,matrixB )",
+      "description": "Returns a matrix, which is `matrixB` appended to `matrixA` as new columns."
+    },
+    {
+      "syntax": "augment(listA,listB)",
+      "description": "Returns a list, which is `listB` concatenated to the end of `listA`."
+    }
+  ],
+  "0xEF3B": [
+    {
+      "syntax": "AUTO",
+      "description": "Displays answers in a similar format as the input."
+    }
+  ],
+  "0x7E09": [
+    {
+      "syntax": "AxesOff",
+      "description": "Turns off the graph axes."
+    }
+  ],
+  "0x7E08": [
+    {
+      "syntax": "AxesOn[color#]",
+      "description": "Turns on the graph axes with color. The `color `option allows the color of the axes to be specified.\nColor#: 10 - 24 or color name pasted from [vars] COLOR.."
+    }
+  ],
+  "0xBB4F": [
+    {
+      "syntax": "a+bi",
+      "description": "Sets the mode to rectangular complex number format (a+b`i`)."
+    }
+  ],
+  "0xEF64": [
+    {
+      "syntax": "BackgroundOff",
+      "description": "Turns off background image in the graph area."
+    }
+  ],
+  "0xEF5B": [
+    {
+      "syntax": "BackgroundOn n",
+      "description": "Displays a menu the Background Image Var n (Image#n) specified in the graph area."
+    }
+  ],
+  "0xBB02": [
+    {
+      "syntax": "bal(npmt[,roundvalue])",
+      "description": "Computes the balance at `npmt `for an amortization schedule using stored values for `PV`, I%, and `PMT` and rounds the computation to `roundvalue.`"
+    }
+  ],
+  "0xBB16": [
+    {
+      "syntax": "binomcdf(numtrials,p[,x])",
+      "description": "Computes a cumulative probability at `x` for the discrete binomial distribution with the specified `numtrials` and probability `p` of success on each trial."
+    }
+  ],
+  "0xBB15": [
+    {
+      "syntax": "binompdf(numtrials,p[,x])",
+      "description": "Computes a probability at `x` for the discrete binomial distribution with the specified `numtrials` and probability `p` of success on each trial."
+    }
+  ],
+  "0xEF6C": [
+    {
+      "syntax": "BorderColor[color#]",
+      "description": "Turns on a border color surrounding the graph area with the specified color. Color\u00a0#:1-4."
+    }
+  ],
+  "0x05": [
+    {
+      "syntax": "Boxplot Plot#(type,Xlist[,freqlist,color#])",
+      "description": "Defines Plot# (1, 2, or 3) of type"
+    }
+  ],
+  "0xEF02": [
+    {
+      "syntax": "checkTmr(starttime)",
+      "description": "Returns the number of seconds since you used `startTmr` to start the timer. The `starttime` is the value displayed by `startTmr`."
+    }
+  ],
+  "0xBB13": [
+    {
+      "syntax": "\u03c7\u00b2cdf(lowerbound,upperbound,df)",
+      "description": "Computes the \u03c7\u00b2distribution probability between `lowerbound` and` upperbound` for the specified degrees of freedom `df`."
+    }
+  ],
+  "0xBB1D": [
+    {
+      "syntax": "\u03c7\u00b2pdf(x,df)",
+      "description": "Computes the probability density function (pdf) for the \u03c7\u00b2 distribution at a specified `x` value for the specified degrees of freedom `df`."
+    }
+  ],
+  "0xBB40": [
+    {
+      "syntax": "\u03c7\u00b2-Test(observedmatrix,expectedmatrix[,drawflag,color#])",
+      "description": "Performs a chi-square test. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xEF14": [
+    {
+      "syntax": "\u03c7\u00b2GOF-Test(observedlist,expectedlist,df [,drawflag,color#])",
+      "description": "Performs a test to confirm that sample data is from a population that conforms to a specified distribution.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xA5": [
+    {
+      "syntax": "Circle(X,Y,radius[,color#,linestyle#])",
+      "description": "Draws a circle with center (`X`,`Y`) and `radius` with specified\nColor#: 10 - 24 or color name pasted from [vars] COLOR.\nlinestyle#: 1-2."
+    }
+  ],
+  "0xEF38": [
+    {
+      "syntax": "CLASSIC",
+      "description": "Displays inputs and outputs on a single line, such as 1/2+3/4."
+    }
+  ],
+  "0xBB57": [
+    {
+      "syntax": "Clear Entries",
+      "description": "Clears the contents of the Last Entry storage area."
+    }
+  ],
+  "0xEF0F": [
+    {
+      "syntax": "ClockOff",
+      "description": "Turns off the clock display in the mode screen."
+    }
+  ],
+  "0xEF10": [
+    {
+      "syntax": "ClockOn",
+      "description": "Turns on the clock display in the mode screen."
+    }
+  ],
+  "0xBB52": [
+    {
+      "syntax": "ClrAllLists",
+      "description": "Sets to `0` the dimension of all lists in memory."
+    }
+  ],
+  "0x85": [
+    {
+      "syntax": "ClrDraw",
+      "description": "Clears all drawn elements from a graph or drawing."
+    }
+  ],
+  "0xE1": [
+    {
+      "syntax": "ClrHome",
+      "description": "Clears the home screen."
+    }
+  ],
+  "0xFA": [
+    {
+      "syntax": "ClrListlistname1[,listname2, ...,listname n]",
+      "description": "Sets the dimension of one or more listnames to 0."
+    }
+  ],
+  "0xFB": [
+    {
+      "syntax": "ClrTable",
+      "description": "Clears all values from the table."
+    }
+  ],
+  "0xBB25": [
+    {
+      "syntax": "conj(value)",
+      "description": "Returns the complex conjugate of a complex number or list of complex numbers."
+    }
+  ],
+  "0x7E05": [
+    {
+      "syntax": "CoordOff",
+      "description": "Turns off cursor coordinate value display."
+    }
+  ],
+  "0x7E04": [
+    {
+      "syntax": "CoordOn",
+      "description": "Turns on cursor coordinate value display."
+    }
+  ],
+  "0xC4": [
+    {
+      "syntax": "cos(value)",
+      "description": "Returns cosine of a real number, expression, or list."
+    }
+  ],
+  "0xC5": [
+    {
+      "syntax": "cos\u207b\u00b9(value)",
+      "description": "Returns arccosine of a real number, expression, or list."
+    }
+  ],
+  "0xCA": [
+    {
+      "syntax": "cosh(value)",
+      "description": "Returns hyperbolic cosine of a real number, expression, or list."
+    }
+  ],
+  "0xCB": [
+    {
+      "syntax": "cosh\u207b\u00b9 (value)",
+      "description": "Returns hyperbolic arccosine of a real number, expression, or list."
+    }
+  ],
+  "0x2E": [
+    {
+      "syntax": "CubicReg [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits a cubic regression model to `Xlistname` and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0xBB29": [
+    {
+      "syntax": "cumSum(list)",
+      "description": "Returns a list of the cumulative sums of the elements in `list`, starting with the first element."
+    },
+    {
+      "syntax": "cumSum(matrix)",
+      "description": "Returns a matrix of the cumulative sums of `matrix` elements. Each element in the returned matrix is a cumulative sum of a `matrix` column from top to bottom."
+    }
+  ],
+  "0xEF06": [
+    {
+      "syntax": "dayOfWk(year,month,day)",
+      "description": "Returns an integer from 1 to 7, with each integer representing a day of the week. Use `dayOfWk(` to determine on which day of the week a particular date would occur. The `year` must be 4 digits; `month` and `day` can be 1 or 2 digits."
+    }
+  ],
+  "0xBB07": [
+    {
+      "syntax": "dbd(date1,date2)",
+      "description": "Calculates the number of days between `date1` and `date2` using the actual-day-count method."
+    }
+  ],
+  "0xEF3C": [
+    {
+      "syntax": "DEC",
+      "description": "Displays answers as integers or decimal numbers."
+    }
+  ],
+  "0x02": [
+    {
+      "syntax": "value\u25baDec",
+      "description": "Displays a real or complex number, expression, list, or matrix in decimal format."
+    }
+  ],
+  "0x65": [
+    {
+      "syntax": "Degree",
+      "description": "Sets degree angle mode."
+    }
+  ],
+  "0xBB54": [
+    {
+      "syntax": "DelVar variable",
+      "description": "Deletes from memory the contents of `variable`."
+    }
+  ],
+  "0x7D": [
+    {
+      "syntax": "DependAsk",
+      "description": "Sets table to ask for dependent-variable values."
+    }
+  ],
+  "0x7C": [
+    {
+      "syntax": "DependAuto",
+      "description": "Sets table to generate dependent-variable values automatically."
+    }
+  ],
+  "0xB3": [
+    {
+      "syntax": "det(matrix)",
+      "description": "Returns determinant of `matrix`."
+    }
+  ],
+  "0xEF6B": [
+    {
+      "syntax": "DetectAsymOff",
+      "description": "Turns off checks for rational function asymptotes when graphing. Impacts graph speed. Does not perform extra calculations to detect asymptotes pixel to pixel while graphing.  Pixels will connect across the screen even across an asymptote."
+    }
+  ],
+  "0xEF6A": [
+    {
+      "syntax": "DetectAsymOn",
+      "description": "Turns on checks for rational function asymptotes when graphing. Impacts graph speed. Performs more calculations and will not connect pixels across an asymptote on a graph."
+    }
+  ],
+  "0xBB67": [
+    {
+      "syntax": "DiagnosticOff",
+      "description": "Sets diagnostics-off mode; `r`, `r`\u00b2, and `R`\u00b2 are not displayed as regression model results."
+    }
+  ],
+  "0xBB66": [
+    {
+      "syntax": "DiagnosticOn",
+      "description": "Sets diagnostics-on mode; `r`, `r`\u00b2, and `R`\u00b2 are displayed as regression model results."
+    }
+  ],
+  "0xB5": [
+    {
+      "syntax": "dim(listname)",
+      "description": "Returns the dimension of `listname`."
+    },
+    {
+      "syntax": "dim(matrixname)",
+      "description": "Returns the dimension of `matrixname` as a list."
+    },
+    {
+      "syntax": "length\u2192dim(listname)",
+      "description": "Assigns a new dimension (`length`) to a new or existing `listname`."
+    },
+    {
+      "syntax": "{rows,columns}\u2192dim(matrixname)",
+      "description": "Assigns new dimensions to a new or existing `matrixname`."
+    }
+  ],
+  "0xDE": [
+    {
+      "syntax": "Disp",
+      "description": "Displays the home screen."
+    },
+    {
+      "syntax": "Disp [valueA,valueB,valueC,...,value n]",
+      "description": "Displays each value."
+    }
+  ],
+  "0xDF": [
+    {
+      "syntax": "DispGraph",
+      "description": "Displays the graph."
+    }
+  ],
+  "0xE5": [
+    {
+      "syntax": "DispTable",
+      "description": "Displays the table."
+    }
+  ],
+  "0x01": [
+    {
+      "syntax": "value\u25baDMS",
+      "description": "Displays `value` in DMS format."
+    }
+  ],
+  "0x7E07": [
+    {
+      "syntax": "Dot-Thick",
+      "description": "Sets dot plotting mode; resets all Y=editor graph-style settings to Dot-Thick."
+    }
+  ],
+  "0xEF75": [
+    {
+      "syntax": "Dot-Thin",
+      "description": "Sets dot plotting mode; resets all Y=editor graph-style settings to Dot-Thin."
+    }
+  ],
+  "0xA9": [
+    {
+      "syntax": "DrawFexpression[,color#]",
+      "description": "Draws `expression` (in terms of `X`) on the graph with specified\nColor#:10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xA8": [
+    {
+      "syntax": "DrawInvexpression[,color#]",
+      "description": "Draws the inverse of `expression` by plotting `X` values on the y-axis and `Y` values on the x-axis with specified\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xDB": [
+    {
+      "syntax": "DS<(variable,value):commandA:commands",
+      "description": "Decrements `variable` by 1; skips `commandA` if `variable `< `value`."
+    }
+  ],
+  "0xBBB4": [
+    {
+      "syntax": "e",
+      "description": "Returns decimal approximation of the constant `e`."
+    }
+  ],
+  "0xBF": [
+    {
+      "syntax": "e^(power)",
+      "description": "Returns `e` raised to `power`."
+    },
+    {
+      "syntax": "e^(list)",
+      "description": "Returns a list of `e` raised to a `list` of powers."
+    }
+  ],
+  "0x3B": [
+    {
+      "syntax": "Exponent:value\u1d07exponent",
+      "description": "Returns `value` times 10 to the `exponent`."
+    },
+    {
+      "syntax": "Exponent:list\u1d07exponent",
+      "description": "Returns `list` elements times 10 to the `exponent`."
+    },
+    {
+      "syntax": "Exponent:matrix\u1d07exponent",
+      "description": "Returns `matrix` elements times 10 to the `exponent`."
+    }
+  ],
+  "0xBB06": [
+    {
+      "syntax": "\u25baEff(nominal rate,compounding periods)",
+      "description": "Computes the effective interest rate."
+    }
+  ],
+  "0xD0": [
+    {
+      "syntax": "Else",
+      "description": "`See `If:Then:Else"
+    }
+  ],
+  "0xD4": [
+    {
+      "syntax": "End",
+      "description": "Identifies end of` For(`, `If`-`Then`-`Else`, `Repeat`, or `While` loop."
+    }
+  ],
+  "0x68": [
+    {
+      "syntax": "Eng",
+      "description": "Sets engineering display mode."
+    }
+  ],
+  "0xBB55": [
+    {
+      "syntax": "Equ\u25baString(Y= var,Strn)",
+      "description": "Converts the contents of a `Y= var` to a string and stores it in `Str``n`"
+    }
+  ],
+  "0xEF98": [
+    {
+      "syntax": "eval(expression)",
+      "description": "Returns an evaluated expression as a string with 8 significant digits.  The expression must be real."
+    },
+    {
+      "syntax": "eval(expression)",
+      "description": "Returns an evaluated expression as a string with 8 significant digits.  The expression must simplify to a real expression."
+    }
+  ],
+  "0xEF12": [
+    {
+      "syntax": "ExecLib",
+      "description": "Extends TI-Basic (not available)"
+    }
+  ],
+  "0xBB2A": [
+    {
+      "syntax": "expr(string)",
+      "description": "Converts the character string contained in `string` to an expression and executes the expression. `string` can be a string or a string variable."
+    }
+  ],
+  "0xF5": [
+    {
+      "syntax": "ExpReg [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits an exponential regression model to `Xlistname` and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0xBB51": [
+    {
+      "syntax": "ExprOff",
+      "description": "Turns off the expression display during TRACE."
+    }
+  ],
+  "0xBB50": [
+    {
+      "syntax": "ExprOn",
+      "description": "Turns on the expression display during TRACE."
+    }
+  ],
+  "0xBB14": [
+    {
+      "syntax": "\ud835\udc05cdf(lowerbound,upperbound,numerator df,denominator df)",
+      "description": "Computes the \ud835\udc05 distribution probability between `lowerbound `and `upperbound` for the specified `numerator df` (degrees of freedom) and `denominator df`."
+    }
+  ],
+  "0xEF31": [
+    {
+      "syntax": "\u25baF \u25c4\u25baD",
+      "description": "Converts an answer from a fraction to a decimal or from a decimal to a fraction. Fraction and or decimal may be an approximation."
+    }
+  ],
+  "0xE2": [
+    {
+      "syntax": "Fill(value,matrixname)",
+      "description": "Stores `value` to each element in `matrixname`."
+    },
+    {
+      "syntax": "Fill(value,listname)",
+      "description": "Stores `value` to each element in `listname`."
+    }
+  ],
+  "0x73": [
+    {
+      "syntax": "Fix #",
+      "description": "Sets fixed-decimal mode for # of decimal places."
+    }
+  ],
+  "0x69": [
+    {
+      "syntax": "Float",
+      "description": "Sets floating decimal mode."
+    }
+  ],
+  "0x28": [
+    {
+      "syntax": "fMax(expression,variable,lower,upper[,tolerance])",
+      "description": "Returns the value of `variable` where the local maximum of `expression` occurs, between `lower` and `upper`,with specified `tolerance`."
+    }
+  ],
+  "0x27": [
+    {
+      "syntax": "fMin(expression,variable,lower,upper[,tolerance])",
+      "description": "Returns the value of `variable` where the local minimum of `expression` occurs, between `lower` and `upper`, with specified `tolerance`."
+    }
+  ],
+  "0x24": [
+    {
+      "syntax": "fnInt(expression,variable,lower,upper[,tolerance])",
+      "description": "Returns the function integral of `expression` with respect to `variable`, between `lower` and `upper`, with specified `tolerance`."
+    }
+  ],
+  "0x97": [
+    {
+      "syntax": "FnOff [function#,function#,...,function n]",
+      "description": "Deselects all `Y=`\u00a0functions or specified `Y=`\u00a0functions."
+    }
+  ],
+  "0x96": [
+    {
+      "syntax": "FnOn [function#,function#,...,function n]",
+      "description": "Selects all `Y=`\u00a0functions or specified `Y=` functions."
+    }
+  ],
+  "0xD3": [
+    {
+      "syntax": ":For(variable,begin,end[,increment]):commands:End:commands",
+      "description": "Executes `commands` through `End`, incrementing `variable` from `begin` by `increment`  until `variable`>`end`."
+    }
+  ],
+  "0xBA": [
+    {
+      "syntax": "fPart(value)",
+      "description": "Returns the fractional part or parts of a real or complex number, expression, list, or matrix."
+    }
+  ],
+  "0xBB1E": [
+    {
+      "syntax": "\ud835\udc05pdf(x,numerator df,denominator df)",
+      "description": "Computes the \ud835\udc05 distribution probability between `lowerbound `and `upperbound` for the specified `numerator df` (degrees of freedom) and `denominator df`."
+    }
+  ],
+  "0x03": [
+    {
+      "syntax": "value\u25baFrac",
+      "description": "Displays a real or complex number, expression, list, or matrix as a fraction simplified to its simplest terms."
+    }
+  ],
+  "0x75": [
+    {
+      "syntax": "Full",
+      "description": "Sets full screen mode."
+    }
+  ],
+  "0x76": [
+    {
+      "syntax": "Func",
+      "description": "Sets function graphing mode."
+    }
+  ],
+  "0xBBCE": [
+    {
+      "syntax": "GarbageCollect",
+      "description": "Displays the garbage collection menu to allow cleanup of unused archive memory."
+    }
+  ],
+  "0xBB09": [
+    {
+      "syntax": "gcd(valueA,valueB)",
+      "description": "Returns the greatest common divisor of `valueA` and `valueB`, which can be real numbers or lists."
+    }
+  ],
+  "0xBB1A": [
+    {
+      "syntax": "geometcdf(p,x)",
+      "description": "Computes a cumulative probability at `x`, the number of the trial on which the first success occurs, for the discrete geometric distribution with the specified probability of success `p.`"
+    }
+  ],
+  "0xBB19": [
+    {
+      "syntax": "geometpdf(p,x)",
+      "description": "Computes a probability at `x`, the number of the trial on which the first success occurs, for the discrete geometric distribution with the specified probability of success `p.`"
+    }
+  ],
+  "0xE8": [
+    {
+      "syntax": "Get(variable)",
+      "description": "Retrieves a value from a connected TI-Innovator\u2122 Hub and stores the data to a variable on the receiving CE calculator.\nNote: See also Send( and eval("
+    },
+    {
+      "syntax": "Get(variable",
+      "description": "Retrieves a value from a connected TI-Innovator\u2122 Hub and stores the data to a variable on the receiving CE calculator.\nNote: See also Send( and eval("
+    }
+  ],
+  "0xBB53": [
+    {
+      "syntax": "GetCalc(variable[,portflag])",
+      "description": "Gets contents of `variable` on another TI-84 Plus CE and stores it to `variable` on the receiving TI-84 Plus CE. By default, the TI-84 Plus CE uses the USB port if it is connected. If the USB cable is not connected, it uses the I/O port.`portflag`=0 use USB port if connected;`portflag`=1 use USB port;`portflag`=2 use I/O port.(Ignored when program runs on the TI-84 Plus CE.)"
+    }
+  ],
+  "0xEF09": [
+    {
+      "syntax": "getDate",
+      "description": "Returns a list giving the date according to the current value of the clock. The list is in {year,month,day} format."
+    }
+  ],
+  "0xEF0C": [
+    {
+      "syntax": "getDtFmt",
+      "description": "Returns an integer representing the date format that is currently set on the device.\n1 = M/D/Y2 = D/M/Y3 = Y/M/D"
+    }
+  ],
+  "0xEF07": [
+    {
+      "syntax": "getDtStr(integer)",
+      "description": "Returns a string of the current date in the format specified by `integer`, where:\n1 = M/D/Y2 = D/M/Y3 = Y/M/D"
+    }
+  ],
+  "0xEF0A": [
+    {
+      "syntax": "getTime",
+      "description": "Returns a list giving the time according to the current value of the clock. The list is in {hour,minute,second} format. The time is returned in the 24 hour format."
+    }
+  ],
+  "0xEF0D": [
+    {
+      "syntax": "getTmFmt",
+      "description": "Returns an integer representing the clock time format that is currently set on the device.\n12 = 12 hour format24 = 24 hour format"
+    }
+  ],
+  "0xEF08": [
+    {
+      "syntax": "getTmStr(integer)",
+      "description": "Returns a string of the current clock time in the format specified by `integer`, where:\n12 = 12 hour format24 = 24 hour format"
+    }
+  ],
+  "0xAD": [
+    {
+      "syntax": "getKey",
+      "description": "Returns the key code for the current keystroke, or `0`, if no key is pressed."
+    }
+  ],
+  "0xD7": [
+    {
+      "syntax": "Gotolabel",
+      "description": "Transfers control to `label`."
+    }
+  ],
+  "0xEF65": [
+    {
+      "syntax": "GraphColor(function#,color#)",
+      "description": "Sets the color for `function#`.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xBB45": [
+    {
+      "syntax": "GraphStyle(function#,graphstyle#)",
+      "description": "Sets a `graphstyle` for `function#`."
+    }
+  ],
+  "0x7E0A": [
+    {
+      "syntax": "GridDot [color#]",
+      "description": "Turns on grid dots in the graph area in the specified color.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xEF5A": [
+    {
+      "syntax": "GridLine [color#]",
+      "description": "Turns on grid lines in the graph area in the specified color.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0x7E0B": [
+    {
+      "syntax": "GridOff",
+      "description": "Turns off grid format."
+    }
+  ],
+  "0xBB64": [
+    {
+      "syntax": "G-T",
+      "description": "Sets graph-table vertical split-screen mode."
+    }
+  ],
+  "0xFC": [
+    {
+      "syntax": "Plot#(type,Xlist[,freqlist,color#])",
+      "description": "Used as the \"type\" argument in the command\nWhere # gives Plot1, Plot2 or Plot3."
+    }
+  ],
+  "0x74": [
+    {
+      "syntax": "Horiz",
+      "description": "Sets horizontal split-screen mode."
+    }
+  ],
+  "0xA6": [
+    {
+      "syntax": "Horizontal\u00a0y[,color#,linestyle#]",
+      "description": "Draws a horizontal line at `y` in a specified\nColor#: 10 - 24 or color name pasted from [vars] COLOR.\nline style\u00a0#: 1-4."
+    }
+  ],
+  "0x2C": [
+    {
+      "syntax": "i",
+      "description": "Returns the complex number `i`."
+    }
+  ],
+  "0xB4": [
+    {
+      "syntax": "identity(dimension)",
+      "description": "Returns the identity matrix of `dimension` rows x `dimension` columns."
+    }
+  ],
+  "0xCE": [
+    {
+      "syntax": "If condition:commandA:commands",
+      "description": "If `condition`\u00a0=\u00a00 (false), skips `commandA`."
+    },
+    {
+      "syntax": "If:conditionThen:commandsEnd:commands",
+      "description": "Executes `commands` from `Then` to `End` if `condition`\u00a0=\u00a01 (true)."
+    },
+    {
+      "syntax": "If:conditionThen:commandsElse:commandsEnd:commands",
+      "description": "Executes `commands` from `Then` to `Else` if `condition`\u00a0=\u00a01 (true); from `Else` to `End` if `condition` = 0 (false)."
+    }
+  ],
+  "0xBB27": [
+    {
+      "syntax": "imag(value)",
+      "description": "Returns the imaginary (non-real) part of a complex number or list of complex numbers."
+    }
+  ],
+  "0xEF95": [
+    {
+      "syntax": "invBinom(area,trial,p)",
+      "description": "The inverse binomial cumulative distribution function results in the minimum number of successes, such that the cumulative probability for that minimum number of successes \u2265 the given cumulative probability (area).  If more information is needed, also find the binomcdf for the result from invBinom( as shown below for a full analysis.\nDetails:\nAssume the toss of a fair coin 30 times.  What is the minimum number of heads you must observe such that the cumulative probability for that number of observed heads is at least 0.95?\nThe results on the screen first show that the minimum number of successes to obtain at least the given cumulative probability of 0.95 is 19.  Next, the cumulative probability for up to 19 is computed using binomcdf( and is approximately 0.9506314271 which meets the criteria of  0.9506314271\u22650.95\n\nAlternate Method:\nSet Y1=binomcdf(30,0.5,X) and use the table of values (starting at 0 and increment by 1) to find when the cumulative probability is at or just above the given cumulative probability.  This gives you a view of all values to make decisions.  For this example, search in the table to find the cumulative probability just larger than 0.95.  Again, the number of successes is 19.\n"
+    }
+  ],
+  "0x7B": [
+    {
+      "syntax": "IndpntAsk",
+      "description": "Sets table to ask for independent-variable values."
+    }
+  ],
+  "0x7A": [
+    {
+      "syntax": "IndpntAuto",
+      "description": "Sets table to generate independent-variable values automatically."
+    }
+  ],
+  "0xDC": [
+    {
+      "syntax": "Input",
+      "description": "Displays graph."
+    },
+    {
+      "syntax": "Input [variable]",
+      "description": "Prompts for value to store to `variable`."
+    },
+    {
+      "syntax": "Input [Strn,variable]",
+      "description": "Displays `Strn` and stores entered value to `variable`."
+    }
+  ],
+  "0xBB0F": [
+    {
+      "syntax": "inString(string,substring[,start])",
+      "description": "Returns the character position in `string` of the first character of `substring `beginning at `start`."
+    }
+  ],
+  "0xB1": [
+    {
+      "syntax": "int(value)",
+      "description": "Returns the largest integer \u2264 a real or complex number, expression, list, or matrix."
+    }
+  ],
+  "0xBB04": [
+    {
+      "syntax": "\u03a3Int(pmt1,pmt2[,roundvalue])",
+      "description": "Computes the sum, rounded to `roundvalue`, of the interest amount between `pmt1` and `pmt2` for an amortization schedule."
+    }
+  ],
+  "0xBB11": [
+    {
+      "syntax": "invNorm(area[,\u00b5,\u03c3,tail])",
+      "description": "Computes the inverse cumulative normal distribution function for a given area under the normal distribution curve specified by \u03bc and s.. The optional argument tail can be LEFT (-\u221e,-a), CENTER [-a,a] or RIGHT (a, \u221e) for Real a.\nThe tokens LEFT, CENTER and RIGHT can be found in [catalog]."
+    }
+  ],
+  "0xEF92": [
+    {
+      "syntax": "LEFT",
+      "description": "LEFT is a tail argument for the invNorm( command where the optional argument tail can be LEFT (-\u221e,-a), CENTER [-a,a] or RIGHT (a, \u221e) for Real a.\nSee also invNorm(."
+    }
+  ],
+  "0xEF94": [
+    {
+      "syntax": "RIGHT",
+      "description": "RIGHT is a tail argument for the invNorm( command where the optional argument tail can be LEFT (-\u221e,-a), CENTER [-a,a] or RIGHT (a, \u221e) for Real a.\nSee also invNorm(."
+    }
+  ],
+  "0xEF93": [
+    {
+      "syntax": "CENTER",
+      "description": "CENTER is a tail argument for the invNorm( command where the optional argument tail can be LEFT (-\u221e,-a), CENTER [-a,a] or RIGHT (a, \u221e) for Real a.\nSee also invNorm(."
+    }
+  ],
+  "0xEF13": [
+    {
+      "syntax": "invT(area,df)",
+      "description": "Computes the inverse cumulative student-t probability function specified by degree of freedom, df for a given area under the curve."
+    }
+  ],
+  "0xB9": [
+    {
+      "syntax": "iPart(value)",
+      "description": "Returns the integer part of a real or complex number, expression, list, or matrix."
+    }
+  ],
+  "0xBB01": [
+    {
+      "syntax": "irr(CF0,CFList[,CFFreq])",
+      "description": "Returns the interest rate at which the net present value of the cash flow is equal to zero."
+    }
+  ],
+  "0xEF0E": [
+    {
+      "syntax": "isClockOn",
+      "description": "Identifies if clock is ON or OFF. Returns 1 if the clock is ON. Returns 0 if the clock is OFF."
+    }
+  ],
+  "0xDA": [
+    {
+      "syntax": ":IS>(variable,value) :commandA:commands",
+      "description": "Increments `variable` by 1; skips `commandA` if `variable`>`value`."
+    }
+  ],
+  "0xEB": [
+    {
+      "syntax": "\u029flistname",
+      "description": "Identifies the next one to five characters as a user-created list name."
+    }
+  ],
+  "0x7E0D": [
+    {
+      "syntax": "LabelOff",
+      "description": "Turns off axes labels."
+    }
+  ],
+  "0x7E0C": [
+    {
+      "syntax": "LabelOn",
+      "description": "Turns on axes labels."
+    }
+  ],
+  "0xD6": [
+    {
+      "syntax": "Lbl label",
+      "description": "Creates a `label` of one or two characters."
+    }
+  ],
+  "0xBB08": [
+    {
+      "syntax": "lcm(valueA,valueB)",
+      "description": "Returns the least common multiple of `valueA` and `valueB`, which can be real numbers or lists."
+    }
+  ],
+  "0xBB2B": [
+    {
+      "syntax": "length(string)",
+      "description": "Returns the number of characters in `string`."
+    }
+  ],
+  "0x9C": [
+    {
+      "syntax": "Line(X1,Y1,X2,Y2[,erase#,color#,linestyle#])",
+      "description": "Draws a line from (`X1`,`Y1`) to (`X2`,`Y2`) with the following options: erase\u00a0#:\u00a01,0, color\u00a0#:\u00a010-24, and line style\u00a0#:\u00a01-4."
+    },
+    {
+      "syntax": "Line(X1,Y1,X2,Y2,0[,line#])",
+      "description": "Erases a line (erase\u00a0#:\u00a01,0) from (`X1`,`Y1`) to (`X2`,`Y2`)."
+    }
+  ],
+  "0xF4": [
+    {
+      "syntax": "LinReg(a+bx) [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits a linear regression model to` Xlistname` and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0xFF": [
+    {
+      "syntax": "LinReg(ax+b) [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits a linear regression model to` Xlistname` and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0xEF15": [
+    {
+      "syntax": "LinRegTInt [Xlistname,Ylistname,freqlist,confidence level, regequ]",
+      "description": "Performs a linear regression and computes the t confidence interval for the slope coefficient b."
+    }
+  ],
+  "0xBB34": [
+    {
+      "syntax": "LinRegTTest [Xlistname,Ylistname,freqlist,alternative,regequ]",
+      "description": "Performs a linear regression and a `t`-test. `alternative`=-`1` is <; `alternative`=`0` is \u2260; `alternative`=`1` is >."
+    }
+  ],
+  "0xBB2C": [
+    {
+      "syntax": "\u0394List(list)",
+      "description": "Returns a list containing the differences between consecutive elements in `list`."
+    }
+  ],
+  "0xBB3A": [
+    {
+      "syntax": "List\u25bamatr(listname1,...,listname n,matrixname)",
+      "description": "Fills `matrixname` column by column with the elements from each specified `listname`."
+    }
+  ],
+  "0xBE": [
+    {
+      "syntax": "ln(value)",
+      "description": "Returns the natural logarithm of a real or complex number, expression, or list."
+    }
+  ],
+  "0xF6": [
+    {
+      "syntax": "LnReg [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits a logarithmic regression model to `Xlistname` and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0xC0": [
+    {
+      "syntax": "log(value)",
+      "description": "Returns logarithm of a real or complex number, expression, or list."
+    }
+  ],
+  "0xEF34": [
+    {
+      "syntax": "logBASE(value, base)",
+      "description": "Returns the logarithm of a specifed value determined from a specified base: logBASE(value, base)."
+    }
+  ],
+  "0xBB33": [
+    {
+      "syntax": "Logistic [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits a logistic regression model to` Xlistname `and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0xEF16": [
+    {
+      "syntax": "Manual-Fit[equname,color#,line style#]",
+      "description": "Fits a linear equation to a scatter plot with specified color and line style.\nColor#: 10 - 24 or color name pasted from [vars] COLOR.\nline style\u00a0#:\u00a01-4."
+    }
+  ],
+  "0xEF37": [
+    {
+      "syntax": "MATHPRINT",
+      "description": "Displays most entries and answers the way they are displayed in textbooks, such as ."
+    }
+  ],
+  "0xBB39": [
+    {
+      "syntax": "Matr\u25balist(matrix,listnameA,...,listname n)",
+      "description": "Fills each `listname` with elements from each column in `matrix`."
+    },
+    {
+      "syntax": "Matr\u25balist(matrix,column#,listname)",
+      "description": "Fills a `listname` with elements from a specified `column#` in `matrix`."
+    }
+  ],
+  "0x19": [
+    {
+      "syntax": "max(valueA,valueB)",
+      "description": "Returns the larger of `valueA` and `valueB`."
+    },
+    {
+      "syntax": "max(list)",
+      "description": "Returns the larger of `valueA` and `valueB`."
+    },
+    {
+      "syntax": "max(list)",
+      "description": "Returns largest real or complex element in `list`."
+    },
+    {
+      "syntax": "max(listA,listB)",
+      "description": "Returns a real or complex list of the larger of each pair of elements in `listA` and `listB`."
+    },
+    {
+      "syntax": "max(value,list)",
+      "description": "Returns a real or complex list of the larger of `value` or each `list` element."
+    }
+  ],
+  "0x21": [
+    {
+      "syntax": "mean(list[,freqlist])",
+      "description": "Returns the mean of `list` with frequency `freqlist`."
+    }
+  ],
+  "0x1F": [
+    {
+      "syntax": "median(list[,freqlist])",
+      "description": "Returns the median of `list` with frequency `freqlist`."
+    }
+  ],
+  "0xF8": [
+    {
+      "syntax": "Med-Med [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits a median-median model to `Xlistname` and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0xE6": [
+    {
+      "syntax": "Menu(\"title\",\"text1\",label1[,...,\"text7\",label7])",
+      "description": "Generates a menu of up to seven items during program execution."
+    }
+  ],
+  "0x1A": [
+    {
+      "syntax": "min(valueA,valueB)",
+      "description": "Returns smaller of `valueA` and `valueB`."
+    },
+    {
+      "syntax": "min(list)",
+      "description": "Returns smallest real or complex element in `list`."
+    },
+    {
+      "syntax": "min(listA,listB)",
+      "description": "Returns real or complex list of the smaller of each pair of elements in `listA` and `listB`."
+    },
+    {
+      "syntax": "min(value,list)",
+      "description": "Returns a real or complex list of the smaller of `value` or each `list` element."
+    }
+  ],
+  "0xBB5A": [
+    {
+      "syntax": "Plot#(type,Xlist[,freqlist,color#])",
+      "description": "Used as the \"type\" argument in the command.\nWhere # gives Plot1, Plot2 or Plot3."
+    }
+  ],
+  "0x95": [
+    {
+      "syntax": "valueA nCr valueB",
+      "description": "Returns the number of combinations of `valueA` taken `valueB` at a time."
+    },
+    {
+      "syntax": "value nCr list",
+      "description": "Returns a list of the combinations of `value` taken each element in `list` at a time."
+    },
+    {
+      "syntax": "list nCr value",
+      "description": "Returns a list of the combinations of each element in `list` taken `value` at a time."
+    },
+    {
+      "syntax": "listA nCr listB",
+      "description": "Returns a list of the combinations of each element in `listA` taken each element in `listB` at a time."
+    }
+  ],
+  "0xEF39": [
+    {
+      "syntax": "n/d",
+      "description": "Displays results as a simple fraction."
+    }
+  ],
+  "0x25": [
+    {
+      "syntax": "nDeriv(expression,variable,value[,\u03b5])",
+      "description": "When command is used in Classic mode, returns approximate numerical derivative of `expression` with respect to `variable` at `value`, with specific tolerance \u03b5.\nIn MathPrint mode, numeric derivative template pastes and uses default tolerance \u03b5."
+    }
+  ],
+  "0xEF30": [
+    {
+      "syntax": "\u25ban/d \u25c4\u25baUn/d",
+      "description": "Converts the results from a fraction to mixed number or from a mixed number to a fraction, if applicable."
+    }
+  ],
+  "0xBB05": [
+    {
+      "syntax": "\u25baNom(effective rate,compounding periods)",
+      "description": "Computes the nominal interest rate."
+    }
+  ],
+  "0x66": [
+    {
+      "syntax": "Normal",
+      "description": "Sets normal display mode."
+    }
+  ],
+  "0xBB10": [
+    {
+      "syntax": "normalcdf(lowerbound,upperbound[,\u03bc,\u03c3])",
+      "description": "Computes the normal distribution probability between `lowerbound` and `upperbound` for the specified \u03bc and \u03c3."
+    }
+  ],
+  "0xBB1B": [
+    {
+      "syntax": "normalpdf(x[,\u03bc,\u03c3])",
+      "description": "Computes the probability density function for the normal distribution at a specified `x` value for the specified \u03bc and \u03c3."
+    }
+  ],
+  "0xBB5B": [
+    {
+      "syntax": "Plot#(type,Xlist[,freqlist,color#])",
+      "description": "Used as the \"type\" argument in the command\nWhere # gives Plot1, Plot2 or Plot3."
+    }
+  ],
+  "0xB8": [
+    {
+      "syntax": "not(value)",
+      "description": "Returns `0` if `value` is \u2260 0. `value` can be a real number, expression, or list."
+    }
+  ],
+  "0x94": [
+    {
+      "syntax": "valueA nPr valueB",
+      "description": "Returns the number of permutations of `valueA` taken `valueB` at a time."
+    },
+    {
+      "syntax": "value nPr list",
+      "description": "Returns a list of the permutations of `value` taken each element in `list` at a time."
+    },
+    {
+      "syntax": "list nPr value",
+      "description": "Returns a list of the permutations of each element in `list` taken `value` at a time."
+    },
+    {
+      "syntax": "listA nPr listB",
+      "description": "Returns a list of the permutations of each element in `listA` taken each element in `listB` at a time."
+    }
+  ],
+  "0xBB00": [
+    {
+      "syntax": "npv(interest rate,CF0,CFList[,CFFreq])",
+      "description": "Computes the sum of the present values for cash inflows and outflows."
+    }
+  ],
+  "0xEF11": [
+    {
+      "syntax": "OpenLib(",
+      "description": "Extends TI-Basic. (Not available.)"
+    }
+  ],
+  "0x3C": [
+    {
+      "syntax": "valueA or valueB",
+      "description": "Returns 1 if `valueA` or `valueB` is \u2260 0. `valueA` and `valueB` can be real numbers, expressions, or lists."
+    }
+  ],
+  "0xE0": [
+    {
+      "syntax": "Output(row,column,\"text\")",
+      "description": "Displays `text` beginning at specified `row` and `column `of the home screen."
+    },
+    {
+      "syntax": "Output(row,column,value)",
+      "description": "Displays `value` beginning at specified `row` and `column `of the home screen."
+    }
+  ],
+  "0x77": [
+    {
+      "syntax": "Param",
+      "description": "Sets parametric graphing mode."
+    }
+  ],
+  "0xD8": [
+    {
+      "syntax": "Pause",
+      "description": "Suspends program execution until you press \u00cd."
+    },
+    {
+      "syntax": "Pause [value]",
+      "description": "Displays `value`; suspends program execution until you press \u00cd."
+    },
+    {
+      "syntax": "Pause [value, time]",
+      "description": "Displays value on the current home screen and execution of the program continues after the time period specified. For time only, use Pause `\u201c\u201d,time` where the value is a blank string. Time is in seconds.\nPause `value,time`."
+    }
+  ],
+  "0xEFA6": [
+    {
+      "syntax": "piecewise(",
+      "description": "New piecewise function to support entry of functions as they are seen in textbook. This command can be found in \u00bb MATH `B:piecewise(`"
+    }
+  ],
+  "0xEC": [
+    {
+      "syntax": "Plot#(type,Xlist,Ylist[,mark,color#])",
+      "description": "Defines `Plot#` (`1`, `2`, or `3`) of `type` `Scatter` or `xyLine` for `Xlist` and `Ylist` using `mark `and `color. `\nColor#: 10 - 24 or color name pasted from [vars] COLOR.\nNote: `Xlist `and `Ylist `represent the Xlist and Ylist names."
+    },
+    {
+      "syntax": "Plot#(type,Xlist[,freqlist,color#])",
+      "description": "Defines `Plot#` (`1`, `2`, or `3`) of `type` ` Histogram` or `Boxplot` for `Xlist` with frequency `freqlist `and color\u00a0#.\nColor#: 10 - 24 or color name pasted from [vars] COLOR.\nNote: `Xlist `represents the Xlist name."
+    },
+    {
+      "syntax": "Plot#(type,Xlist[,freqlist,mark,color#])",
+      "description": "Defines `Plot#` (`1`, `2`, or `3`) of `type` ` ModBoxplot` for `Xlist` with frequency `freqlist` using `mark `and `color #`.\nColor#: 10 - 24 or color name pasted from [vars] COLOR.\nNote: `Xlist `represents the Xlist name."
+    },
+    {
+      "syntax": "Plot#(type,datalist[,data axis,mark,color#])",
+      "description": "Defines `Plot#` (`1`, `2`, or `3`) of `type` ` NormProbPlot` for `datalist` on `data axis` using `mark `and `color #` `data axis` can be `X` or `Y`.\nColor#: 10 - 24 or color name pasted from [vars] COLOR.\nNote: `datalist `represents the datalist name."
+    }
+  ],
+  "0xEA": [
+    {
+      "syntax": "PlotsOff [1,2,3]",
+      "description": "Deselects all stat plots or one or more specified stat plots (`1`, `2`, or `3`)."
+    }
+  ],
+  "0xE9": [
+    {
+      "syntax": "PlotsOn [1,2,3]",
+      "description": "Selects all stat plots or one or more specified stat plots (`1`, `2`, or `3`)."
+    }
+  ],
+  "0xBB4C": [
+    {
+      "syntax": "Pmt_Bgn",
+      "description": "Specifies an annuity due, where payments occur at the beginning of each payment period."
+    }
+  ],
+  "0xBB4B": [
+    {
+      "syntax": "Pmt_End",
+      "description": "Specifies an ordinary annuity, where payments occur at the end of each payment period."
+    }
+  ],
+  "0xBB18": [
+    {
+      "syntax": "poissoncdf(\u03bc,x)",
+      "description": "Computes a cumulative probability at `x` for the discrete Poisson distribution with specified mean \u03bc."
+    }
+  ],
+  "0xBB17": [
+    {
+      "syntax": "poissonpdf(\u03bc,x)",
+      "description": "Computes a probability at `x` for the discrete Poisson distribution with the specified mean \u03bc."
+    }
+  ],
+  "0x78": [
+    {
+      "syntax": "Polar",
+      "description": "Sets polar graphing mode."
+    }
+  ],
+  "0xBB30": [
+    {
+      "syntax": "complex value \u25baPolar",
+      "description": "Displays `complex value` in polar format."
+    }
+  ],
+  "0x7E02": [
+    {
+      "syntax": "PolarGC",
+      "description": "Sets polar graphing coordinates format."
+    }
+  ],
+  "0x5F": [
+    {
+      "syntax": "prgmname",
+      "description": "Executes the program `name`."
+    }
+  ],
+  "0xBB03": [
+    {
+      "syntax": "\u03a3Prn(pmt1,pmt2[,roundvalue])",
+      "description": "Computes the sum, rounded to `roundvalue`, of the principal amount between `pmt1` and `pmt2` for an amortization schedule."
+    }
+  ],
+  "0xB7": [
+    {
+      "syntax": "prod(list[,start,end])",
+      "description": "Returns product of `list` elements between `start` and `end`"
+    }
+  ],
+  "0xDD": [
+    {
+      "syntax": "Prompt variableA[,variableB,...,variable n]",
+      "description": "Prompts for value for `variableA`, then `variableB`, and so on."
+    }
+  ],
+  "0xBB43": [
+    {
+      "syntax": "1-PropZInt(x,n[,confidence level])",
+      "description": "Computes a one-proportion `z` confidence interval."
+    }
+  ],
+  "0xBB44": [
+    {
+      "syntax": "2-PropZInt(x1,n1,x2,n2[,confidence level])",
+      "description": "Computes a two-proportion `z` confidence interval."
+    }
+  ],
+  "0xBB3E": [
+    {
+      "syntax": "1-PropZTest(p0,x,n[,alternative,drawflag, color#])",
+      "description": "Computes a one-proportion `z` test. `alternative`=-`1` is <; `alternative`=`0` is \u2260; `alternative`=`1` is >. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xBB3F": [
+    {
+      "syntax": "2-PropZTest(x1,n1,x2,n2[,alternative,drawflag, color#])",
+      "description": "Computes a two-proportion `z` test. `alternative`=-`1` is <; `alternative`=`0` is \u2260; `alternative`=`1` is >. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xA0": [
+    {
+      "syntax": "Pt-Change(x,y[,color#])",
+      "description": "Toggles a point on or off at (`x`,`y`) on the graph area. Off will be in the Background color and On will be the specified\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0x9F": [
+    {
+      "syntax": "Pt-Off(x,y[,mark])",
+      "description": "Erases a point at (`x`,`y`) on the graph area using `mark`. The Off state may be the background color determined by the `ImageVar` or `color` setting.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0x9E": [
+    {
+      "syntax": "Pt-On(x,y[,mark,color#])",
+      "description": "Draws a point at (`x`,`y`) on the graph area using `mark `and the specified `color#`.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xF7": [
+    {
+      "syntax": "PwrReg [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits a power regression model to `Xlistname` and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0xA3": [
+    {
+      "syntax": "Pxl-Change(row,column[,color#])",
+      "description": "Toggles Off to On in the graph area: with specified color# Toggles On to Off in the graph area: Off will display the set Background Image Var or Color.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xA2": [
+    {
+      "syntax": "Pxl-Off(row,column)",
+      "description": "The Off state will display the set Background Image Var or COLOR."
+    }
+  ],
+  "0xA1": [
+    {
+      "syntax": "Pxl-On(row,column[,color#])",
+      "description": "Draws pixel on the graph area at (`row`,`column`) in the specified color.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0x13": [
+    {
+      "syntax": "pxl-Test(row,column)",
+      "description": "Returns 1 if pixel (`row`, `column`) is on, 0 if it is off;"
+    }
+  ],
+  "0x1D": [
+    {
+      "syntax": "P\u25baRx(r,\u03b8)",
+      "description": "Returns `X`, given polar coordinates `r` and \u03b8 or a list of polar coordinates."
+    }
+  ],
+  "0x1E": [
+    {
+      "syntax": "P\u25baRy(r,\u03b8)",
+      "description": "Returns `Y`, given polar coordinates `r` and \u03b8 or a list of polar coordinates."
+    }
+  ],
+  "0xF9": [
+    {
+      "syntax": "QuadReg [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits a quadratic regression model to` Xlistname` and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0x2F": [
+    {
+      "syntax": "QuartReg [Xlistname,Ylistname,freqlist,regequ]",
+      "description": "Fits a quartic regression model to` Xlistname` and `Ylistname` with frequency `freqlist`, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0x64": [
+    {
+      "syntax": "Radian",
+      "description": "Sets radian angle mode."
+    }
+  ],
+  "0xAB": [
+    {
+      "syntax": "rand[(numtrials)]",
+      "description": "Returns a random number between 0 and 1 for a specified number of trials `numtrials`."
+    }
+  ],
+  "0xBB0B": [
+    {
+      "syntax": "randBin(numtrials,prob[,numsimulations])",
+      "description": "Generates and displays a random real number from a specified Binomial distribution."
+    }
+  ],
+  "0xBB0A": [
+    {
+      "syntax": "randInt( lower,upper [,numtrials])",
+      "description": "Generates and displays a random integer within a range specified by `lower` and `upper` integer bounds for a specified number of trials `numtrials`."
+    }
+  ],
+  "0xEF35": [
+    {
+      "syntax": "randIntNoRep(lowerint,upperint [,numelements])",
+      "description": "Returns a random ordered list of integers from a lower integer to an upper integer which may include the lower integer and upper integer. If the optional argument `numelements` is specified, the first `numelements` are listed. The first `numelements` term in the list of random integers are displayed."
+    }
+  ],
+  "0x20": [
+    {
+      "syntax": "randM(rows,columns)",
+      "description": "Returns a random matrix of `rows` \u00d7 `columns`.\nMax rows x columns = 400 matrix elements."
+    }
+  ],
+  "0xBB1F": [
+    {
+      "syntax": "randNorm(\u03bc,\u03c3[,numtrials])",
+      "description": "Generates and displays a random real number from a specified Normal distribution specified by \u03bc and \u03c3 for a specified number of trials `numtrials`."
+    }
+  ],
+  "0xBB4E": [
+    {
+      "syntax": "re^\u03b8i",
+      "description": "Sets the mode to polar complex number mode (`re``^`\u03b8`i`)."
+    }
+  ],
+  "0xBB4D": [
+    {
+      "syntax": "Real",
+      "description": "Sets mode to display complex results only when you enter complex numbers."
+    }
+  ],
+  "0xBB26": [
+    {
+      "syntax": "real(value)",
+      "description": "Returns the real part of a complex number or list of complex numbers."
+    }
+  ],
+  "0x9B": [
+    {
+      "syntax": "RecallGDB n",
+      "description": "Restores all settings stored in the graph database variable `GDBn`."
+    }
+  ],
+  "0x99": [
+    {
+      "syntax": "RecallPic n",
+      "description": "Displays the graph and adds the picture stored in `Picn`."
+    }
+  ],
+  "0xBB2F": [
+    {
+      "syntax": "complex value \u25baRect",
+      "description": "Displays `complex value` or list in rectangular format."
+    }
+  ],
+  "0x7E03": [
+    {
+      "syntax": "RectGC",
+      "description": "Sets rectangular graphing coordinates format."
+    }
+  ],
+  "0xBB2D": [
+    {
+      "syntax": "ref(matrix)",
+      "description": "Returns the row-echelon form of a `matrix`."
+    }
+  ],
+  "0xEF32": [
+    {
+      "syntax": "remainder(dividend, divisor)",
+      "description": "Reports the remainder as a whole number from a division of two whole numbers where the divisor is not zero."
+    },
+    {
+      "syntax": "remainder(list, divisor)",
+      "description": "Reports the remainder as a whole number from a division of two lists where the divisor is not zero."
+    },
+    {
+      "syntax": "remainder(dividend, list)",
+      "description": "Reports the remainder as a whole number from a division of two whole numbers where the divisor is a list."
+    },
+    {
+      "syntax": "remainder(list, list)",
+      "description": "Reports the remainder as a whole number from a division of two lists."
+    }
+  ],
+  "0xD2": [
+    {
+      "syntax": "Repeatcondition:commands:End:commands",
+      "description": "Executes `commands` until `condition` is true."
+    }
+  ],
+  "0xD5": [
+    {
+      "syntax": "Return",
+      "description": "Returns to the calling program."
+    }
+  ],
+  "0x12": [
+    {
+      "syntax": "round(value[,#decimals])",
+      "description": "Returns a number, expression, list, or matrix rounded to `#decimals` (\u0081\u00a09)."
+    }
+  ],
+  "0x17": [
+    {
+      "syntax": "*row(value,matrix,row)",
+      "description": "Returns a matrix with `row` of `matrix` multiplied by `value` and stored in `row`."
+    }
+  ],
+  "0x16": [
+    {
+      "syntax": "row+(matrix,rowA,rowB)",
+      "description": "Returns a matrix with `rowA` of `matrix` added to `rowB` and stored in `rowB`."
+    }
+  ],
+  "0x18": [
+    {
+      "syntax": "*row+(value,matrix,rowA,rowB)",
+      "description": "Returns a matrix with `rowA` of `matrix` multiplied by `value`, added to `rowB`, and stored in `rowB`."
+    }
+  ],
+  "0x15": [
+    {
+      "syntax": "rowSwap(matrix,rowA,rowB)",
+      "description": "Returns a matrix with `rowA` of `matrix` swapped with `rowB`."
+    }
+  ],
+  "0xBB2E": [
+    {
+      "syntax": "rref(matrix)",
+      "description": "Returns the reduced row-echelon form of a `matrix`."
+    }
+  ],
+  "0x1B": [
+    {
+      "syntax": "R\u25baPr(x,y)",
+      "description": "Returns `R`, given rectangular coordinates `x` and `y` or a list of rectangular coordinates."
+    }
+  ],
+  "0x1C": [
+    {
+      "syntax": "R\u25baP\u03b8(x,y)",
+      "description": "Returns \u03b8, given rectangular coordinates `x` and `y` or a list of rectangular coordinates."
+    }
+  ],
+  "0xBB47": [
+    {
+      "syntax": "2-Samp\ud835\udc05Test[listname1,listname2,freqlist1,freqlist2,alternative,drawflag,color#]",
+      "description": "Performs a two-sample \ud835\udc05\u00a0test. `alternative`=-`1` is `<`; `alternative`=`0` is \u2260; `alternative`=`1` is `>`. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    },
+    {
+      "syntax": "2-Samp\ud835\udc05TestSx1,n1,Sx2,n2[,alternative,drawflag,color#]",
+      "description": "Performs a two-sample \ud835\udc05\u00a0test. `alternative`=-`1` is `<`; `alternative`=`0` is \u2260; `alternative`=`1` is `>`. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xBB49": [
+    {
+      "syntax": "2-SampTInt[listname1,listname2,freqlist1,freqlist2,confidence level,pooled]",
+      "description": "Computes a two-sample `t` confidence interval. `pooled`=`1` pools variances; `pooled`=`0` does not pool variances."
+    },
+    {
+      "syntax": "2-SampTIntx\u03041,Sx1,n1,x\u03042,Sx2,n2[,confidence \u00a0level,pooled]",
+      "description": "Computes a two-sample `t` confidence interval. `pooled`=`1` pools variances; `pooled`=`0` does not pool variances."
+    }
+  ],
+  "0xBB46": [
+    {
+      "syntax": "2-SampTTest [listname1,listname2,freqlist1,freqlist2,alternative,pooled,drawflag,color#])",
+      "description": "Computes a two-sample `t` test. `alternative`=-`1` is `<`; `alternative`=`0` is \u2260; `alternative`=`1` is `>`. `pooled`=`1` pools variances; `pooled`=`0` does not pool variances. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    },
+    {
+      "syntax": "2-SampTTestx\u03041,Sx1,n1,v2,Sx2,n2[,alternative,pooled,drawflag,color#])",
+      "description": "Computes a two-sample `t` test. `alternative`=-`1` is `<`; `alternative`=`0` is \u2260; `alternative`=`1` is `>`. `pooled`=`1` pools variances; `pooled`=`0` does not pool variances. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xBB42": [
+    {
+      "syntax": "2-SampZInt(\u03c31,\u03c32[,listname1,listname2,freqlist1,freqlist2,confidence level])",
+      "description": "Computes a two-sample `z` confidence interval."
+    },
+    {
+      "syntax": "2-SampZInt(\u03c31,\u03c32,x\u03041,n1,x\u03042,n2[,confidence level])",
+      "description": "Computes a two-sample `z` confidence interval."
+    }
+  ],
+  "0xBB3D": [
+    {
+      "syntax": "2-SampZTest( \u03c31,\u03c32[,listname1,listname2,freqlist1,freqlist2,alternative,drawflag,color#])",
+      "description": "Computes a two-sample `z` test. `alternative`=-`1` is `<`; `alternative`=`0` is \u2260; `alternative`=`1` is `>`. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    },
+    {
+      "syntax": "2-SampZTest(\u03c31,\u03c32,x\u03041,n1,x\u03042,n2[,alternative,drawflag,color#])",
+      "description": "Computes a two-sample `z` test. `alternative`=-`1` is `<`; `alternative`=`0` is \u2260; `alternative`=`1` is `>`. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xFE": [
+    {
+      "syntax": "Plot#(type,Xlist[,freqlist,color#])",
+      "description": "Used as the \"type\" argument in the command\nWhere # gives Plot1, Plot2 or Plot3."
+    }
+  ],
+  "0x67": [
+    {
+      "syntax": "Sci",
+      "description": "Sets scientific notation display mode."
+    }
+  ],
+  "0xBB58": [
+    {
+      "syntax": "Select(Xlistname,Ylistname)",
+      "description": "Selects one or more specific data points from a scatter plot or xyLine plot (only), and then store's the selected data points to two new lists, `Xlistname` and `Ylistname`."
+    }
+  ],
+  "0xE7": [
+    {
+      "syntax": "Send(string)",
+      "description": "Sends one or more TI-Innovator\u2122 Hub commands to a connected hub.\nNotes:\nSee also eval( and Get( command related to the Send( command.\nTI-Innovator\u2122 Hub commands are supported in the HUB submenu in the CE OS v.5.2 program editor."
+    },
+    {
+      "syntax": "Send(string)",
+      "description": "Sends one or more TI-Innovator\u2122 Hub commands to a connected hub.\nNotes:\nSee also eval( and Get( command related to the Send( command.\nTI-Innovator\u2122 Hub commands are supported in the HUB submenu in the CE OS v.5.2 program editor."
+    }
+  ],
+  "0x23": [
+    {
+      "syntax": "seq(expression,variable,begin,end[,increment])",
+      "description": "Returns list created by evaluating `expression` with regard to `variable`, from `begin` to `end` by `increment.`"
+    }
+  ],
+  "0xEF8F": [
+    {
+      "syntax": "Seq(n)",
+      "description": "In sequence mode, SEQ(`n`) sets the sequence editor type to enter sequence functions, u, v, or w, as a function of the independent variable `n`.   Can also be set from the Y= editor in SEQ mode."
+    }
+  ],
+  "0xEF90": [
+    {
+      "syntax": "Seq(n+1)",
+      "description": "In sequence mode, SEQ(`n+1`) sets the sequence editor type to enter sequence functions, u, v, or w, as a function of the independent variable `n+1`.   Can also be set from the Y= editor in SEQ mode."
+    }
+  ],
+  "0xEF91": [
+    {
+      "syntax": "Seq(n+2)",
+      "description": "In sequence mode, SEQ(`n+2`) sets the sequence editor type to enter sequence functions, u, v, or w, as a function of the independent variable `n+2`.   Can also be set from the Y= editor in SEQ mode."
+    }
+  ],
+  "0x79": [
+    {
+      "syntax": "Seq",
+      "description": "Sets sequence graphing mode."
+    }
+  ],
+  "0x7E00": [
+    {
+      "syntax": "Sequential",
+      "description": "Sets mode to graph functions sequentially."
+    }
+  ],
+  "0xEF00": [
+    {
+      "syntax": "setDate(year,month,day)",
+      "description": "Sets the date using a year, month, day format. The `year` must be 4 digits; `month` and `day` can be 1 or 2 digit."
+    }
+  ],
+  "0xEF03": [
+    {
+      "syntax": "setDtFmt(integer)",
+      "description": "Sets the date format.\n1 = M/D/Y2 = D/M/Y3 = Y/M/D"
+    }
+  ],
+  "0xEF01": [
+    {
+      "syntax": "setTime(hour,minute, second)",
+      "description": "Sets the time using an hour, minute, second format. The `hour` must be in 24 hour format, in which 13 = 1 p.m."
+    }
+  ],
+  "0xEF04": [
+    {
+      "syntax": "setTmFmt(integer)",
+      "description": "Sets the time format.\n12 = 12 hour format24 = 24 hour format"
+    }
+  ],
+  "0xBB4A": [
+    {
+      "syntax": "SetUpEditor",
+      "description": "Removes all list names from the stat list editor, and then restores list names `L1` through `L6` to columns `1` through `6`."
+    },
+    {
+      "syntax": "SetUpEditor listname1[,listname2,...,listname20]",
+      "description": "Removes all list names from the stat list editor, then sets it up to display one or more `listnames` in the specified order, starting with column `1`."
+    }
+  ],
+  "0xA4": [
+    {
+      "syntax": "Shade(lowerfunc,upperfunc[,Xleft,Xright,pattern,patres,color#])",
+      "description": "Draws `lowerfunc` and `upperfunc` in terms of `X` on the current graph and uses `pattern` and `patres` to shade and color the area bounded by `lowerfunc`, `upperfunc`, `Xleft`, and `Xright`. `lowerfunc `and `upperfunc `are shaded in the same specified color.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xBB37": [
+    {
+      "syntax": "Shade\u03c7\u00b2(lowerbound,upperbound,df[,color#])",
+      "description": "Draws the density function for the \u03c7\u00b2 distribution specified by degrees of freedom `df`, and shades and colors the area between `lowerbound` and `upperbound`.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xBB38": [
+    {
+      "syntax": "Shade\ud835\udc05(lowerbound,upperbound,numerator\u00a0df,denominator df[,color#])",
+      "description": "Draws the density function for the \ud835\udc05` `distribution specified by `numerator df` and `denominator df` and shades and colors the area between `lowerbound` and `upperbound`.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xBB35": [
+    {
+      "syntax": "ShadeNorm(lowerbound,upperbound[,\u03bc,\u03c3,color#])",
+      "description": "Draws the normal density function specified by \u03bc and \u03c3 and shades and colors the area between `lowerbound` and `upperbound`.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xBB36": [
+    {
+      "syntax": "Shade_t(lowerbound,upperbound,df[,color#])",
+      "description": "Draws the density function for the Student-t distribution specified by degrees of freedom df, and shades or colors the area between `lowerbound` and `upperbound`.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0x7E01": [
+    {
+      "syntax": "Simul",
+      "description": "Sets mode to graph functions simultaneously."
+    }
+  ],
+  "0xC2": [
+    {
+      "syntax": "sin(value)",
+      "description": "Returns the sine of a real number, expression, or list."
+    }
+  ],
+  "0xC3": [
+    {
+      "syntax": "sin\u207b\u00b9(value)",
+      "description": "Returns the arcsine of a real number, expression, or list."
+    }
+  ],
+  "0xC8": [
+    {
+      "syntax": "sinh(value)",
+      "description": "Returns the hyperbolic sine of a real number, expression, or list."
+    }
+  ],
+  "0xC9": [
+    {
+      "syntax": "sinh\u207b\u00b9 (value)",
+      "description": "Returns the hyperbolic arcsine of a real number, expression, or list."
+    }
+  ],
+  "0xBB32": [
+    {
+      "syntax": "SinReg [iterations,Xlistname,Ylistname,period,regequ]",
+      "description": "Attempts `iterations` times to fit a sinusoidal regression model to `Xlistname` and `Ylistname` using a `period` guess, and stores the regression equation to `regequ`."
+    }
+  ],
+  "0x22": [
+    {
+      "syntax": "solve(expression,variable,guess,{lower,upper})",
+      "description": "Solves `expression` for `variable`, given an initial `guess` and `lower` and `upper` bounds within which the solution is sought."
+    }
+  ],
+  "0xE3": [
+    {
+      "syntax": "SortA(listname)",
+      "description": "Sorts elements of `listname` in ascending order."
+    },
+    {
+      "syntax": "SortA(keylistname,dependlist1[,dependlist2,...,dependlist n])",
+      "description": "Sorts elements of `keylistname` in ascending order, then sorts each `dependlist` as a dependent list."
+    }
+  ],
+  "0xE4": [
+    {
+      "syntax": "SortD(listname)",
+      "description": "Sorts elements of `listname` in descending order."
+    },
+    {
+      "syntax": "SortD(keylistname,dependlist1[,dependlist2,..., dependlist n])",
+      "description": "Sorts elements of `keylistname` in descending order, then sorts each `dependlist` as a dependent list."
+    }
+  ],
+  "0xEF0B": [
+    {
+      "syntax": "startTmr",
+      "description": "Starts the clock timer. Store or note the displayed value, and use it as the argument for `checkTmr(\u00a0)` to check the elapsed time."
+    }
+  ],
+  "0xEF40": [
+    {
+      "syntax": "STATWIZARD OFF",
+      "description": "Disables wizard syntax help for statistical commands, distributions, and seq(."
+    }
+  ],
+  "0xEF3F": [
+    {
+      "syntax": "STATWIZARD ON",
+      "description": "Enables wizard syntax help for statistical commands, distributions, and seq(."
+    }
+  ],
+  "0xBB0D": [
+    {
+      "syntax": "stdDev(list[,freqlist])",
+      "description": "Returns the standard deviation of the elements in `list` with frequency `freqlist`."
+    }
+  ],
+  "0xD9": [
+    {
+      "syntax": "Stop",
+      "description": "Ends program execution; returns to home screen."
+    }
+  ],
+  "0x04": [
+    {
+      "syntax": "Store: value\u2192variable",
+      "description": "Stores `value` in `variable`."
+    }
+  ],
+  "0x9A": [
+    {
+      "syntax": "StoreGDB n",
+      "description": "Stores current graph in database `GDBn`."
+    }
+  ],
+  "0x98": [
+    {
+      "syntax": "StorePic n",
+      "description": "Stores current picture in picture `Picn`."
+    }
+  ],
+  "0xBB56": [
+    {
+      "syntax": "String\u25baEqu(string,Y= var)",
+      "description": "Converts `string` into an equation and stores it in `Y= var`.\nstring can be a string or string variable.\nString\u25baEqu( is the inverse of Equ\u25baString(."
+    }
+  ],
+  "0xBB0C": [
+    {
+      "syntax": "sub(string,begin,length)",
+      "description": "Returns a string that is a subset of another `string`, from `begin` to `length`.\nDivides a real number, expression, or list by 100."
+    }
+  ],
+  "0xB6": [
+    {
+      "syntax": "sum(list[,start,end])",
+      "description": "Returns the sum of elements of `list` from `start` to `end`."
+    }
+  ],
+  "0xEF33": [
+    {
+      "syntax": "\u03a3(expression[,start,end])",
+      "description": "Classic command as shown.\nIn MathPrint\u2122 the summation entry template displays and returns the sum of elements of `list`  from `start`  to `end, `where` start\u00a0`<=`\u00a0end`."
+    }
+  ],
+  "0xC6": [
+    {
+      "syntax": "tan(value)",
+      "description": "Returns the tangent of a real number, expression, or list."
+    }
+  ],
+  "0xC7": [
+    {
+      "syntax": "tan\u207b\u00b9(value)",
+      "description": "Returns the arctangent of a real number, expression, or list."
+    }
+  ],
+  "0xA7": [
+    {
+      "syntax": "Tangent(expression,value[,color#,linestyle#])",
+      "description": "Draws a line tangent to `expression` at `X`=`value` with specified `color`\u00a0#: 10-24 and line style `linestyle\u00a0#: `1-2.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xCC": [
+    {
+      "syntax": "tanh(value)",
+      "description": "Returns hyperbolic tangent of a real number, expression, or list."
+    }
+  ],
+  "0xCD": [
+    {
+      "syntax": "tanh\u207b\u00b9(value)",
+      "description": "Returns the hyperbolic arctangent of a real number, expression, or list."
+    }
+  ],
+  "0xBB12": [
+    {
+      "syntax": "tcdf(lowerbound,upperbound,df)",
+      "description": "Computes the Student-`t` distribution probability between `lowerbound` and` upperbound` for the specified degrees of freedom` df`."
+    }
+  ],
+  "0x93": [
+    {
+      "syntax": "Text(row,column,text1,text2,...,text n)",
+      "description": "Writes `text` on graph beginning at pixel (`row`,`column`), where 0\u00a0\u2264\u00a0`row`\u00a0\u2264\u00a0164 and 0\u00a0\u2264\u00a0`column`\u00a0\u2264\u00a0264.\nFull mode, row must be <=148; column must be 256\nHoriz mode, row must be row<=66 and column must be <=256\nG-T mode, row must be row <=126; column must be 176"
+    }
+  ],
+  "0xEF67": [
+    {
+      "syntax": "TextColor([color#]",
+      "description": "Set text color prior to using the `Text( `command.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xCF": [
+    {
+      "syntax": "ThenSee If:Then",
+      "description": "When you want more than one line of code to depend on the same condition, use an If-Then block."
+    }
+  ],
+  "0x7E06": [
+    {
+      "syntax": "Thick",
+      "description": "Resets all Y=editor line-style settings to Thick."
+    }
+  ],
+  "0xEF74": [
+    {
+      "syntax": "Thin",
+      "description": "Resets all Y=editor line-style settings to Thin."
+    }
+  ],
+  "0x7E0F": [
+    {
+      "syntax": "Time",
+      "description": "Sets sequence graphs to plot with respect to time."
+    }
+  ],
+  "0xEF05": [
+    {
+      "syntax": "timeCnv(seconds)",
+      "description": "Converts seconds to units of time that can be more easily understood for evaluation. The list is in {days,hours,minutes,seconds} format."
+    }
+  ],
+  "0xBB48": [
+    {
+      "syntax": "TInterval [listname,freqlist,confidence level]",
+      "description": "Computes a `t` confidence interval."
+    },
+    {
+      "syntax": "TInterval x\u0304,Sx,n[,confidence level]",
+      "description": "Computes a `t` confidence interval."
+    }
+  ],
+  "0xEF97": [
+    {
+      "syntax": "toString((value[,format])",
+      "description": "Converts value to a string where `value` can be real, complex, an evaluated expression, list, or matrix.  String `value` displays in classic `format` (0) following the mode setting AUTO/DEC or in decimal `format` (1)."
+    }
+  ],
+  "0xBB1C": [
+    {
+      "syntax": "tpdf(x,df)",
+      "description": "Computes the probability density function (pdf) for the Student-`t` distribution at a specified `x` value with specified degrees of freedom `df`."
+    }
+  ],
+  "0x84": [
+    {
+      "syntax": "Trace",
+      "description": "Displays the graph and enters TRACE mode."
+    }
+  ],
+  "0xBB3C": [
+    {
+      "syntax": "T-Test \u03bc0[,listname,freqlist,alternative,drawflag,color#]) ",
+      "description": "Performs a `t` test with frequency `freqlist`. `alternative`=-`1` is `<`; `alternative`=`0` is \u2260; `alternative`=`1` is `>`. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    },
+    {
+      "syntax": "T-Test \u03bc0,x\u0304,Sx,n[,alternative,drawflag,color#])",
+      "description": "Performs a `t` test with frequency `freqlist`. `alternative`=-`1` is < ; `alternative`=`0` is \u00c4\u0083; `alternative`=`1` is >. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0xBB24": [
+    {
+      "syntax": "tvm_FV[(\ud835\udde1,I%,PV,PMT,P/Y,C/Y)]",
+      "description": "Computes the future value."
+    }
+  ],
+  "0xBB21": [
+    {
+      "syntax": "tvm_I%[(\ud835\udde1,PV,PMT,FV,P/Y,C/Y)]",
+      "description": "Computes the annual interest rate."
+    }
+  ],
+  "0xBB23": [
+    {
+      "syntax": "tvm_\ud835\udde1[(I%,PV,PMT,FV,P/Y,C/Y)]",
+      "description": "Computes the number of payment periods."
+    }
+  ],
+  "0xBB20": [
+    {
+      "syntax": "tvm_Pmt[(\ud835\udde1,I%,PV,FV,P/Y,C/Y)]",
+      "description": "Computes the amount of each payment."
+    }
+  ],
+  "0xBB22": [
+    {
+      "syntax": "tvm_PV[(\ud835\udde1,I%,PMT,FV,P/Y,C/Y)]",
+      "description": "Computes the present value."
+    }
+  ],
+  "0xBB69": [
+    {
+      "syntax": "UnArchive variable",
+      "description": "Moves the specified variables from the user data archive memory to RAM.\nTo archive variables, use `Archive`."
+    }
+  ],
+  "0xEF3A": [
+    {
+      "syntax": "Un/d",
+      "description": "Displays results as a mixed number, if applicable."
+    }
+  ],
+  "0x7E10": [
+    {
+      "syntax": "uvAxes",
+      "description": "Sets sequence graphs to plot `u(n``)` on the x-axis and `v(``n``)` on the y-axis."
+    }
+  ],
+  "0x7E12": [
+    {
+      "syntax": "uwAxes",
+      "description": "Sets sequence graphs to plot `u(n``)` on the x-axis and `w(``n``)` on the y-axis."
+    }
+  ],
+  "0xF2": [
+    {
+      "syntax": "1-VarStats [Xlistname,freqlist]",
+      "description": "Performs one-variable analysis on the data in `Xlistname` with frequency `freqlist`."
+    }
+  ],
+  "0xF3": [
+    {
+      "syntax": "2-VarStats [Xlistname,Ylistname,freqlist]",
+      "description": "Performs two-variable analysis on the data in `Xlistname` and `Ylistname` with frequency `freqlist`."
+    }
+  ],
+  "0xBB0E": [
+    {
+      "syntax": "variance(list[,freqlist])",
+      "description": "Returns the variance of the elements in `list` with frequency `freqlist`."
+    }
+  ],
+  "0x9D": [
+    {
+      "syntax": "Vertical\u00a0x[,color#,linestyle#]",
+      "description": "Draws a vertical line at `x `with specified color and line style.\nColor#: 10 - 24 or color name pasted from [vars] COLOR.\nline style\u00a0#: 1-4."
+    }
+  ],
+  "0x7E11": [
+    {
+      "syntax": "vwAxes",
+      "description": "Sets sequence graphs to plot `v(n``)` on the x-axis and `w(``n``)` on the y-axis."
+    }
+  ],
+  "0xEF96": [
+    {
+      "syntax": "Waittime",
+      "description": "Suspends execution of a program for a given time.  Maximum time is 100 seconds."
+    },
+    {
+      "syntax": "Waittime",
+      "description": "Suspends execution of a program for a given time.  Maximum time is 100 seconds."
+    }
+  ],
+  "0x7E0E": [
+    {
+      "syntax": "Web",
+      "description": "Sets sequence graphs to trace as webs."
+    }
+  ],
+  "0xD1": [
+    {
+      "syntax": ":Whilecondition:commands\n :End:command",
+      "description": "Executes `commands` while `condition` is true."
+    }
+  ],
+  "0x3D": [
+    {
+      "syntax": "valueA xor valueB",
+      "description": "Returns 1 if only `valueA` or `valueB` = 0. `valueA` and `valueB` can be real numbers, expressions, or lists."
+    }
+  ],
+  "0xFD": [
+    {
+      "syntax": "Plot#(type,Xlist[,freqlist,color#])",
+      "description": "Used as the \"type\" argument in the command\nWhere # gives Plot1, Plot2 or Plot3."
+    }
+  ],
+  "0x88": [
+    {
+      "syntax": "ZBox",
+      "description": "Displays a graph, lets you draw a box that defines a new viewing window, and updates the window."
+    }
+  ],
+  "0x8E": [
+    {
+      "syntax": "ZDecimal",
+      "description": "Adjusts the viewing window so that `TraceStep=0.1`, \u0394`X=0.5` and \u0394`Y=0.5`, and displays the graph screen with the origin centered on the screen."
+    }
+  ],
+  "0xEF18": [
+    {
+      "syntax": "ZFrac1/2",
+      "description": "Sets the window variables so that you can trace in increments of , if possible. Sets `TraceStep `to  and \u0394`X` and \u0394`Y `to ."
+    }
+  ],
+  "0xEF19": [
+    {
+      "syntax": "ZFrac1/3",
+      "description": "Sets the window variables so that you can trace in increments of , if possible. Sets `TraceStep `to  and \u0394`X` and \u0394`Y `to ."
+    }
+  ],
+  "0xEF1A": [
+    {
+      "syntax": "ZFrac1/4",
+      "description": "Sets the window variables so that you can trace in increments of , if possible. Sets `TraceStep `to  and \u0394`X` and \u0394`Y `to ."
+    }
+  ],
+  "0xEF1B": [
+    {
+      "syntax": "ZFrac1/5",
+      "description": "Sets the window variables so that you can trace in increments of , if possible. Sets `TraceStep `to  and \u0394`X` and \u0394`Y `to ."
+    }
+  ],
+  "0xEF1C": [
+    {
+      "syntax": "ZFrac1/8",
+      "description": "Sets the window variables so that you can trace in increments of , if possible. Sets `TraceStep `to  and \u0394`X` and \u0394`Y `to ."
+    }
+  ],
+  "0xEF1D": [
+    {
+      "syntax": "ZFrac1/10",
+      "description": "Sets the window variables so that you can trace in increments of , if possible. Sets `TraceStep `to  and \u0394`X` and \u0394`Y `to ."
+    }
+  ],
+  "0x8C": [
+    {
+      "syntax": "ZInteger",
+      "description": "Redefines the viewing window using the following dimensions: `TraceStep=1, `\u0394`X=0.5, Xscl=10, `\u0394`Y=1, Yscl=10.`"
+    }
+  ],
+  "0xBB41": [
+    {
+      "syntax": "ZInterval\u03c3[,listname,freqlist,confidence level]",
+      "description": "Computes a `z` confidence interval."
+    },
+    {
+      "syntax": "ZInterval\u03c3,x\u0304,n[,confidence level]",
+      "description": "Computes a `z` confidence interval."
+    }
+  ],
+  "0x89": [
+    {
+      "syntax": "Zoom In",
+      "description": "Magnifies the part of the graph that surrounds the cursor location."
+    }
+  ],
+  "0x8A": [
+    {
+      "syntax": "Zoom Out",
+      "description": "Displays a greater portion of the graph, centered on the cursor location."
+    }
+  ],
+  "0xBB65": [
+    {
+      "syntax": "ZoomFit",
+      "description": "Recalculates `Ymin` and `Ymax` to include the minimum and maximum `Y` values, between `Xmin` and `Xmax`, of the selected functions and replots the functions."
+    }
+  ],
+  "0x90": [
+    {
+      "syntax": "ZoomRcl",
+      "description": "Graphs the selected functions in a user-defined viewing window."
+    }
+  ],
+  "0x8F": [
+    {
+      "syntax": "ZoomStat",
+      "description": "Redefines the viewing window so that all statistical data points are displayed."
+    }
+  ],
+  "0x92": [
+    {
+      "syntax": "ZoomSto",
+      "description": "Immediately stores the current viewing window."
+    }
+  ],
+  "0x8D": [
+    {
+      "syntax": "ZPrevious",
+      "description": "Replots the graph using the window variables of the graph that was displayed before you executed the last ZOOM instruction."
+    }
+  ],
+  "0xEF17": [
+    {
+      "syntax": "ZQuadrant1",
+      "description": "Displays the portion of the graph that is in quadrant 1."
+    }
+  ],
+  "0x8B": [
+    {
+      "syntax": "ZSquare",
+      "description": "Adjusts the `X` or `Y` window settings so that each pixel represents an equal width and height in the coordinate system, and updates the viewing window."
+    }
+  ],
+  "0x86": [
+    {
+      "syntax": "ZStandard",
+      "description": "Replots the functions immediately, updating the window variables to the default values."
+    }
+  ],
+  "0xBB3B": [
+    {
+      "syntax": "Z-Test(\u03bc0,\u03c3[,listname,freqlist,alternative,drawflag,color#])",
+      "description": "Performs a `z` test with frequency `freqlist`. `alternative`= -`1` is `<`; `alternative`=`0` is \u2260; `alternative`=`1` is `>`. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    },
+    {
+      "syntax": "Z-Test(\u03bc0,\u03c3,x\u0304,n[,alternative,drawflag,color#])",
+      "description": "Performs a `z` test. `alternative`=-`1` is `<`; `alternative`=`0` is \u2260; `alternative`=`1` is `>`. `drawflag`=`1` draws results; `drawflag`=`0` calculates results.\nColor#: 10 - 24 or color name pasted from [vars] COLOR."
+    }
+  ],
+  "0x87": [
+    {
+      "syntax": "ZTrig",
+      "description": "Replots the functions immediately, updating the window variables to preset values for plotting trig functions."
+    }
+  ],
+  "0x06": [
+    {
+      "syntax": "[",
+      "description": "Used to define matrices or lists."
+    }
+  ],
+  "0x07": [
+    {
+      "syntax": "]",
+      "description": "Used to define matrices or lists."
+    }
+  ],
+  "0x08": [
+    {
+      "syntax": "{",
+      "description": "Used for entering lists or sets of numbers in mathematical operations."
+    }
+  ],
+  "0x09": [
+    {
+      "syntax": "}",
+      "description": "Used for entering lists or sets of numbers in mathematical operations."
+    }
+  ],
+  "0x0A": [
+    {
+      "syntax": "\u02b3",
+      "description": "Normally, when the calculator is in degree mode, the trigonometric functions only return values calculated in degrees. With the \u02b3 symbol you can have the angle evaluated as if in radian mode because it converts the angle into degrees."
+    }
+  ],
+  "0x0B": [
+    {
+      "syntax": "\u00b0",
+      "description": "Normally, when the calculator is in radian mode, the trigonometric functions only return values calculated in radians. With the \u00b0 symbol you can have the angle evaluated as if in degree mode because it converts the angle into radians."
+    }
+  ],
+  "0x0C": [
+    {
+      "syntax": "\u207b\u00b9",
+      "description": "Returns the reciprocal of a number, equivalent to dividing 1 by the number. It also works for lists, by calculating the reciprocal of each element."
+    }
+  ],
+  "0x0D": [
+    {
+      "syntax": "\u00b2",
+      "description": "Raises an input to the second power. If used on a list, it will return a list with all of the elements squared. If used on a matrix, it will return the second matrix power of the input matrix."
+    }
+  ],
+  "0x0E": [
+    {
+      "syntax": "\u1d40",
+      "description": "Used to calculate the transpose of a matrix: it flips a matrix along its main diagonal. This means that the (i,j)th element becomes the (j,i)th element, and vice versa. As a result, the transpose of an M by N matrix is an N by M matrix."
+    }
+  ],
+  "0x0F": [
+    {
+      "syntax": "\u00b3",
+      "description": "Raises an input to the third power. If used on a list, it will return a list with all of the elements cubed. If used on a matrix, it will return the third matrix power of the input matrix."
+    }
+  ],
+  "0x10": [
+    {
+      "syntax": "(",
+      "description": "Groups terms and control the order of operations."
+    }
+  ],
+  "0x11": [
+    {
+      "syntax": ")",
+      "description": "Groups terms and control the order of operations."
+    }
+  ],
+  "0x29": [
+    {
+      "syntax": " ",
+      "description": "Space"
+    }
+  ],
+  "0x2A": [
+    {
+      "syntax": "\"",
+      "description": "Used to denote a string"
+    }
+  ],
+  "0x2B": [
+    {
+      "syntax": ",",
+      "description": "A character symbol"
+    }
+  ],
+  "0x2D": [
+    {
+      "syntax": "!",
+      "description": "A character symbol"
+    }
+  ],
+  "0x30": [
+    {
+      "syntax": "0",
+      "description": "Number 0"
+    }
+  ],
+  "0x31": [
+    {
+      "syntax": "1",
+      "description": "Number 1"
+    }
+  ],
+  "0x32": [
+    {
+      "syntax": "2",
+      "description": " Number 2"
+    }
+  ],
+  "0x33": [
+    {
+      "syntax": "3",
+      "description": "Number 3"
+    }
+  ],
+  "0x34": [
+    {
+      "syntax": "4",
+      "description": "Number 4"
+    }
+  ],
+  "0x35": [
+    {
+      "syntax": "5",
+      "description": "Number 5"
+    }
+  ],
+  "0x36": [
+    {
+      "syntax": "6",
+      "description": "Number 6"
+    }
+  ],
+  "0x37": [
+    {
+      "syntax": "7",
+      "description": " Number 7"
+    }
+  ],
+  "0x38": [
+    {
+      "syntax": "8",
+      "description": "Number 8"
+    }
+  ],
+  "0x39": [
+    {
+      "syntax": "9",
+      "description": "Number 9"
+    }
+  ],
+  "0x3A": [
+    {
+      "syntax": ".",
+      "description": "A character symbol"
+    }
+  ],
+  "0x3E": [
+    {
+      "syntax": ":",
+      "description": "A character symbol"
+    }
+  ],
+  "0x3F": [
+    {
+      "syntax": "\n",
+      "description": "Creates a new line in text output."
+    }
+  ],
+  "0x41": [
+    {
+      "syntax": "A",
+      "description": "The letter A"
+    }
+  ],
+  "0x42": [
+    {
+      "syntax": "B",
+      "description": "The letter B"
+    }
+  ],
+  "0x43": [
+    {
+      "syntax": "C",
+      "description": "The letter C"
+    }
+  ],
+  "0x44": [
+    {
+      "syntax": "D",
+      "description": "The letter D"
+    }
+  ],
+  "0x45": [
+    {
+      "syntax": "E",
+      "description": "The letter E"
+    }
+  ],
+  "0x46": [
+    {
+      "syntax": "F",
+      "description": "The letter F"
+    }
+  ],
+  "0x47": [
+    {
+      "syntax": "G",
+      "description": "The letter G"
+    }
+  ],
+  "0x48": [
+    {
+      "syntax": "H",
+      "description": "The letter H"
+    }
+  ],
+  "0x49": [
+    {
+      "syntax": "I",
+      "description": "The letter I"
+    }
+  ],
+  "0x4A": [
+    {
+      "syntax": "J",
+      "description": "The letter J"
+    }
+  ],
+  "0x4B": [
+    {
+      "syntax": "K",
+      "description": "The letter K"
+    }
+  ],
+  "0x4C": [
+    {
+      "syntax": "L",
+      "description": "The letter L"
+    }
+  ],
+  "0x4D": [
+    {
+      "syntax": "M",
+      "description": "The letter M"
+    }
+  ],
+  "0x4E": [
+    {
+      "syntax": "N",
+      "description": "The letter N"
+    }
+  ],
+  "0x4F": [
+    {
+      "syntax": "O",
+      "description": "The letter O"
+    }
+  ],
+  "0x50": [
+    {
+      "syntax": "P",
+      "description": "The letter P"
+    }
+  ],
+  "0x51": [
+    {
+      "syntax": "Q",
+      "description": "THe letter Q"
+    }
+  ],
+  "0x52": [
+    {
+      "syntax": "R",
+      "description": "The letter R"
+    }
+  ],
+  "0x53": [
+    {
+      "syntax": "S",
+      "description": "The letter S"
+    }
+  ],
+  "0x54": [
+    {
+      "syntax": "T",
+      "description": "The letter T"
+    }
+  ],
+  "0x55": [
+    {
+      "syntax": "U",
+      "description": "The letter U"
+    }
+  ],
+  "0x56": [
+    {
+      "syntax": "V",
+      "description": "The letter V"
+    }
+  ],
+  "0x57": [
+    {
+      "syntax": "W",
+      "description": "The letter W"
+    }
+  ],
+  "0x58": [
+    {
+      "syntax": "X",
+      "description": "The letter X"
+    }
+  ],
+  "0x59": [
+    {
+      "syntax": "Y",
+      "description": "The letter Y"
+    }
+  ],
+  "0x5A": [
+    {
+      "syntax": "Z",
+      "description": "The letter Z"
+    }
+  ],
+  "0x5B": [
+    {
+      "syntax": "\u03b8",
+      "description": "Usually represents the angular position of a vector."
+    }
+  ],
+  "0x5C00": [
+    {
+      "syntax": "[A]",
+      "description": ""
+    }
+  ],
+  "0x5C01": [
+    {
+      "syntax": "[B]",
+      "description": ""
+    }
+  ],
+  "0x5C02": [
+    {
+      "syntax": "[C]",
+      "description": ""
+    }
+  ],
+  "0x5C03": [
+    {
+      "syntax": "[D]",
+      "description": ""
+    }
+  ],
+  "0x5C04": [
+    {
+      "syntax": "[E]",
+      "description": ""
+    }
+  ],
+  "0x5C05": [
+    {
+      "syntax": "[F]",
+      "description": ""
+    }
+  ],
+  "0x5C06": [
+    {
+      "syntax": "[G]",
+      "description": ""
+    }
+  ],
+  "0x5C07": [
+    {
+      "syntax": "[H]",
+      "description": ""
+    }
+  ],
+  "0x5C08": [
+    {
+      "syntax": "[I]",
+      "description": ""
+    }
+  ],
+  "0x5C09": [
+    {
+      "syntax": "[J]",
+      "description": ""
+    }
+  ],
+  "0x5D00": [
+    {
+      "syntax": "L\u2081",
+      "description": ""
+    }
+  ],
+  "0x5D01": [
+    {
+      "syntax": "L\u2082",
+      "description": ""
+    }
+  ],
+  "0x5D02": [
+    {
+      "syntax": "L\u2083",
+      "description": ""
+    }
+  ],
+  "0x5D03": [
+    {
+      "syntax": "L\u2084",
+      "description": ""
+    }
+  ],
+  "0x5D04": [
+    {
+      "syntax": "L\u2085",
+      "description": ""
+    }
+  ],
+  "0x5D05": [
+    {
+      "syntax": "L\u2086",
+      "description": ""
+    }
+  ],
+  "0x5E10": [
+    {
+      "syntax": "Y\u2081",
+      "description": ""
+    }
+  ],
+  "0x5E11": [
+    {
+      "syntax": "Y\u2082",
+      "description": ""
+    }
+  ],
+  "0x5E12": [
+    {
+      "syntax": "Y\u2083",
+      "description": ""
+    }
+  ],
+  "0x5E13": [
+    {
+      "syntax": "Y\u2084",
+      "description": ""
+    }
+  ],
+  "0x5E14": [
+    {
+      "syntax": "Y\u2085",
+      "description": ""
+    }
+  ],
+  "0x5E15": [
+    {
+      "syntax": "Y\u2086",
+      "description": ""
+    }
+  ],
+  "0x5E16": [
+    {
+      "syntax": "Y\u2087",
+      "description": ""
+    }
+  ],
+  "0x5E17": [
+    {
+      "syntax": "Y\u2088",
+      "description": ""
+    }
+  ],
+  "0x5E18": [
+    {
+      "syntax": "Y\u2089",
+      "description": ""
+    }
+  ],
+  "0x5E19": [
+    {
+      "syntax": "Y\u2080",
+      "description": ""
+    }
+  ],
+  "0x5E20": [
+    {
+      "syntax": "X\u2081\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E21": [
+    {
+      "syntax": "Y\u2081\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E22": [
+    {
+      "syntax": "X\u2082\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E23": [
+    {
+      "syntax": "Y\u2082\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E24": [
+    {
+      "syntax": "X\u2083\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E25": [
+    {
+      "syntax": "Y\u2083\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E26": [
+    {
+      "syntax": "X\u2084\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E27": [
+    {
+      "syntax": "Y\u2084\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E28": [
+    {
+      "syntax": "X\u2085\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E29": [
+    {
+      "syntax": "Y\u2085\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E2A": [
+    {
+      "syntax": "X\u2086\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E2B": [
+    {
+      "syntax": "Y\u2086\u1d1b",
+      "description": ""
+    }
+  ],
+  "0x5E40": [
+    {
+      "syntax": "r\u2081",
+      "description": ""
+    }
+  ],
+  "0x5E41": [
+    {
+      "syntax": "r\u2082",
+      "description": ""
+    }
+  ],
+  "0x5E42": [
+    {
+      "syntax": "r\u2083",
+      "description": ""
+    }
+  ],
+  "0x5E43": [
+    {
+      "syntax": "r\u2084",
+      "description": ""
+    }
+  ],
+  "0x5E44": [
+    {
+      "syntax": "r\u2085",
+      "description": ""
+    }
+  ],
+  "0x5E45": [
+    {
+      "syntax": "r\u2086",
+      "description": ""
+    }
+  ],
+  "0x5E80": [
+    {
+      "syntax": "|u",
+      "description": ""
+    }
+  ],
+  "0x5E81": [
+    {
+      "syntax": "|v",
+      "description": ""
+    }
+  ],
+  "0x5E82": [
+    {
+      "syntax": "|w",
+      "description": ""
+    }
+  ],
+  "0x6000": [
+    {
+      "syntax": "Pic1",
+      "description": ""
+    }
+  ],
+  "0x6001": [
+    {
+      "syntax": "Pic2",
+      "description": ""
+    }
+  ],
+  "0x6002": [
+    {
+      "syntax": "Pic3",
+      "description": ""
+    }
+  ],
+  "0x6003": [
+    {
+      "syntax": "Pic4",
+      "description": ""
+    }
+  ],
+  "0x6004": [
+    {
+      "syntax": "Pic5",
+      "description": ""
+    }
+  ],
+  "0x6005": [
+    {
+      "syntax": "Pic6",
+      "description": ""
+    }
+  ],
+  "0x6006": [
+    {
+      "syntax": "Pic7",
+      "description": ""
+    }
+  ],
+  "0x6007": [
+    {
+      "syntax": "Pic8",
+      "description": ""
+    }
+  ],
+  "0x6008": [
+    {
+      "syntax": "Pic9",
+      "description": ""
+    }
+  ],
+  "0x6009": [
+    {
+      "syntax": "Pic0",
+      "description": ""
+    }
+  ],
+  "0x6100": [
+    {
+      "syntax": "GDB1",
+      "description": ""
+    }
+  ],
+  "0x6101": [
+    {
+      "syntax": "GDB2",
+      "description": ""
+    }
+  ],
+  "0x6102": [
+    {
+      "syntax": "GDB3",
+      "description": ""
+    }
+  ],
+  "0x6103": [
+    {
+      "syntax": "GDB4",
+      "description": ""
+    }
+  ],
+  "0x6104": [
+    {
+      "syntax": "GDB5",
+      "description": ""
+    }
+  ],
+  "0x6105": [
+    {
+      "syntax": "GDB6",
+      "description": ""
+    }
+  ],
+  "0x6106": [
+    {
+      "syntax": "GDB7",
+      "description": ""
+    }
+  ],
+  "0x6107": [
+    {
+      "syntax": "GDB8",
+      "description": ""
+    }
+  ],
+  "0x6108": [
+    {
+      "syntax": "GDB9",
+      "description": ""
+    }
+  ],
+  "0x6109": [
+    {
+      "syntax": "GDB0",
+      "description": ""
+    }
+  ],
+  "0x6201": [
+    {
+      "syntax": "RegEQ",
+      "description": ""
+    }
+  ],
+  "0x6202": [
+    {
+      "syntax": "n",
+      "description": ""
+    }
+  ],
+  "0x6203": [
+    {
+      "syntax": "x\u0304",
+      "description": ""
+    }
+  ],
+  "0x6204": [
+    {
+      "syntax": "\u03a3x",
+      "description": ""
+    }
+  ],
+  "0x6205": [
+    {
+      "syntax": "\u03a3x\u00b2",
+      "description": ""
+    }
+  ],
+  "0x6206": [
+    {
+      "syntax": "[Sx]",
+      "description": ""
+    }
+  ],
+  "0x6207": [
+    {
+      "syntax": "\u03c3x",
+      "description": ""
+    }
+  ],
+  "0x6208": [
+    {
+      "syntax": "[minX]",
+      "description": ""
+    }
+  ],
+  "0x6209": [
+    {
+      "syntax": "[maxX]",
+      "description": ""
+    }
+  ],
+  "0x620A": [
+    {
+      "syntax": "[minY]",
+      "description": ""
+    }
+  ],
+  "0x620B": [
+    {
+      "syntax": "[maxY]",
+      "description": ""
+    }
+  ],
+  "0x620C": [
+    {
+      "syntax": "\u0233",
+      "description": ""
+    }
+  ],
+  "0x620D": [
+    {
+      "syntax": "\u03a3y",
+      "description": ""
+    }
+  ],
+  "0x620E": [
+    {
+      "syntax": "\u03a3y\u00b2",
+      "description": ""
+    }
+  ],
+  "0x620F": [
+    {
+      "syntax": "[Sy]",
+      "description": ""
+    }
+  ],
+  "0x6210": [
+    {
+      "syntax": "\u03c3y",
+      "description": ""
+    }
+  ],
+  "0x6211": [
+    {
+      "syntax": "\u03a3xy",
+      "description": ""
+    }
+  ],
+  "0x6212": [
+    {
+      "syntax": "[r]",
+      "description": ""
+    }
+  ],
+  "0x6213": [
+    {
+      "syntax": "[Med]",
+      "description": ""
+    }
+  ],
+  "0x6214": [
+    {
+      "syntax": "Q\u2081",
+      "description": ""
+    }
+  ],
+  "0x6215": [
+    {
+      "syntax": "Q\u2083",
+      "description": ""
+    }
+  ],
+  "0x6216": [
+    {
+      "syntax": "[|a]",
+      "description": ""
+    }
+  ],
+  "0x6217": [
+    {
+      "syntax": "[|b]",
+      "description": ""
+    }
+  ],
+  "0x6218": [
+    {
+      "syntax": "[|c]",
+      "description": ""
+    }
+  ],
+  "0x6219": [
+    {
+      "syntax": "[|d]",
+      "description": ""
+    }
+  ],
+  "0x621A": [
+    {
+      "syntax": "[|e]",
+      "description": ""
+    }
+  ],
+  "0x621B": [
+    {
+      "syntax": "x\u2081",
+      "description": ""
+    }
+  ],
+  "0x621C": [
+    {
+      "syntax": "x\u2082",
+      "description": ""
+    }
+  ],
+  "0x621D": [
+    {
+      "syntax": "x\u2083",
+      "description": ""
+    }
+  ],
+  "0x621E": [
+    {
+      "syntax": "y\u2081",
+      "description": ""
+    }
+  ],
+  "0x621F": [
+    {
+      "syntax": "y\u2082",
+      "description": ""
+    }
+  ],
+  "0x6220": [
+    {
+      "syntax": "y\u2083",
+      "description": ""
+    }
+  ],
+  "0x6221": [
+    {
+      "syntax": "\ud835\udc5b",
+      "description": ""
+    }
+  ],
+  "0x6222": [
+    {
+      "syntax": "[p]",
+      "description": ""
+    }
+  ],
+  "0x6223": [
+    {
+      "syntax": "[z]",
+      "description": ""
+    }
+  ],
+  "0x6224": [
+    {
+      "syntax": "[t]",
+      "description": ""
+    }
+  ],
+  "0x6225": [
+    {
+      "syntax": "\u03c7\u00b2",
+      "description": ""
+    }
+  ],
+  "0x6226": [
+    {
+      "syntax": "[|F]",
+      "description": ""
+    }
+  ],
+  "0x6227": [
+    {
+      "syntax": "[df]",
+      "description": ""
+    }
+  ],
+  "0x6228": [
+    {
+      "syntax": "p\u0302",
+      "description": ""
+    }
+  ],
+  "0x6229": [
+    {
+      "syntax": "p\u0302\u2081",
+      "description": ""
+    }
+  ],
+  "0x622A": [
+    {
+      "syntax": "p\u0302\u2082",
+      "description": ""
+    }
+  ],
+  "0x622B": [
+    {
+      "syntax": "x\u0304\u2081",
+      "description": ""
+    }
+  ],
+  "0x622C": [
+    {
+      "syntax": "Sx\u2081",
+      "description": ""
+    }
+  ],
+  "0x622D": [
+    {
+      "syntax": "n\u2081",
+      "description": ""
+    }
+  ],
+  "0x622E": [
+    {
+      "syntax": "x\u0304\u2082",
+      "description": ""
+    }
+  ],
+  "0x622F": [
+    {
+      "syntax": "Sx\u2082",
+      "description": ""
+    }
+  ],
+  "0x6230": [
+    {
+      "syntax": "n\u2082",
+      "description": ""
+    }
+  ],
+  "0x6231": [
+    {
+      "syntax": "Sxp",
+      "description": ""
+    }
+  ],
+  "0x6232": [
+    {
+      "syntax": "lower",
+      "description": ""
+    }
+  ],
+  "0x6233": [
+    {
+      "syntax": "upper",
+      "description": ""
+    }
+  ],
+  "0x6234": [
+    {
+      "syntax": "[s]",
+      "description": ""
+    }
+  ],
+  "0x6235": [
+    {
+      "syntax": "r\u00b2",
+      "description": ""
+    }
+  ],
+  "0x6236": [
+    {
+      "syntax": "R\u00b2",
+      "description": ""
+    }
+  ],
+  "0x6237": [
+    {
+      "syntax": "[factordf]",
+      "description": ""
+    }
+  ],
+  "0x6238": [
+    {
+      "syntax": "[factorSS]",
+      "description": ""
+    }
+  ],
+  "0x6239": [
+    {
+      "syntax": "[factorMS]",
+      "description": ""
+    }
+  ],
+  "0x623A": [
+    {
+      "syntax": "[errordf]",
+      "description": ""
+    }
+  ],
+  "0x623B": [
+    {
+      "syntax": "[errorSS]",
+      "description": ""
+    }
+  ],
+  "0x623C": [
+    {
+      "syntax": "[errorMS]",
+      "description": ""
+    }
+  ],
+  "0x6300": [
+    {
+      "syntax": "ZXscl",
+      "description": ""
+    }
+  ],
+  "0x6301": [
+    {
+      "syntax": "ZYscl",
+      "description": ""
+    }
+  ],
+  "0x6302": [
+    {
+      "syntax": "Xscl",
+      "description": ""
+    }
+  ],
+  "0x6303": [
+    {
+      "syntax": "Yscl",
+      "description": ""
+    }
+  ],
+  "0x6304": [
+    {
+      "syntax": "u(\ud835\udc5bMin)",
+      "description": ""
+    }
+  ],
+  "0x6305": [
+    {
+      "syntax": "v(\ud835\udc5bMin)",
+      "description": ""
+    }
+  ],
+  "0x6306": [
+    {
+      "syntax": "U\ud835\udc5b-\u2081",
+      "description": ""
+    }
+  ],
+  "0x6307": [
+    {
+      "syntax": "V\ud835\udc5b-\u2081",
+      "description": ""
+    }
+  ],
+  "0x6308": [
+    {
+      "syntax": "Zu(\ud835\udc5bMin)",
+      "description": ""
+    }
+  ],
+  "0x6309": [
+    {
+      "syntax": "Zv(\ud835\udc5bMin)",
+      "description": ""
+    }
+  ],
+  "0x630A": [
+    {
+      "syntax": "Xmin",
+      "description": ""
+    }
+  ],
+  "0x630B": [
+    {
+      "syntax": "Xmax",
+      "description": ""
+    }
+  ],
+  "0x630C": [
+    {
+      "syntax": "Ymin",
+      "description": ""
+    }
+  ],
+  "0x630D": [
+    {
+      "syntax": "Ymax",
+      "description": ""
+    }
+  ],
+  "0x630E": [
+    {
+      "syntax": "Tmin",
+      "description": ""
+    }
+  ],
+  "0x630F": [
+    {
+      "syntax": "Tmax",
+      "description": ""
+    }
+  ],
+  "0x6310": [
+    {
+      "syntax": "\u03b8Min",
+      "description": ""
+    }
+  ],
+  "0x6311": [
+    {
+      "syntax": "\u03b8Max",
+      "description": ""
+    }
+  ],
+  "0x6312": [
+    {
+      "syntax": "ZXmin",
+      "description": ""
+    }
+  ],
+  "0x6313": [
+    {
+      "syntax": "ZXmax",
+      "description": ""
+    }
+  ],
+  "0x6314": [
+    {
+      "syntax": "ZYmin",
+      "description": ""
+    }
+  ],
+  "0x6315": [
+    {
+      "syntax": "ZYmax",
+      "description": ""
+    }
+  ],
+  "0x6316": [
+    {
+      "syntax": "Z\u03b8min",
+      "description": ""
+    }
+  ],
+  "0x6317": [
+    {
+      "syntax": "Z\u03b8max",
+      "description": ""
+    }
+  ],
+  "0x6318": [
+    {
+      "syntax": "ZTmin",
+      "description": ""
+    }
+  ],
+  "0x6319": [
+    {
+      "syntax": "ZTmax",
+      "description": ""
+    }
+  ],
+  "0x631A": [
+    {
+      "syntax": "TblStart",
+      "description": ""
+    }
+  ],
+  "0x631B": [
+    {
+      "syntax": "PlotStart",
+      "description": ""
+    }
+  ],
+  "0x631C": [
+    {
+      "syntax": "ZPlotStart",
+      "description": ""
+    }
+  ],
+  "0x631D": [
+    {
+      "syntax": "\ud835\udc5bMax",
+      "description": ""
+    }
+  ],
+  "0x631E": [
+    {
+      "syntax": "Z\ud835\udc5bMax",
+      "description": ""
+    }
+  ],
+  "0x631F": [
+    {
+      "syntax": "\ud835\udc5bMin",
+      "description": ""
+    }
+  ],
+  "0x6320": [
+    {
+      "syntax": "Z\ud835\udc5bMin",
+      "description": ""
+    }
+  ],
+  "0x6321": [
+    {
+      "syntax": "\u2206Tbl",
+      "description": ""
+    }
+  ],
+  "0x6322": [
+    {
+      "syntax": "Tstep",
+      "description": ""
+    }
+  ],
+  "0x6323": [
+    {
+      "syntax": "\u03b8step",
+      "description": ""
+    }
+  ],
+  "0x6324": [
+    {
+      "syntax": "ZTstep",
+      "description": ""
+    }
+  ],
+  "0x6325": [
+    {
+      "syntax": "Z\u03b8step",
+      "description": ""
+    }
+  ],
+  "0x6326": [
+    {
+      "syntax": "\u2206X",
+      "description": ""
+    }
+  ],
+  "0x6327": [
+    {
+      "syntax": "\u2206Y",
+      "description": ""
+    }
+  ],
+  "0x6328": [
+    {
+      "syntax": "XFact",
+      "description": ""
+    }
+  ],
+  "0x6329": [
+    {
+      "syntax": "YFact",
+      "description": ""
+    }
+  ],
+  "0x632A": [
+    {
+      "syntax": "TblInput",
+      "description": ""
+    }
+  ],
+  "0x632B": [
+    {
+      "syntax": "\ud835\udde1",
+      "description": ""
+    }
+  ],
+  "0x632C": [
+    {
+      "syntax": "I%",
+      "description": ""
+    }
+  ],
+  "0x632D": [
+    {
+      "syntax": "PV",
+      "description": ""
+    }
+  ],
+  "0x632E": [
+    {
+      "syntax": "PMT",
+      "description": ""
+    }
+  ],
+  "0x632F": [
+    {
+      "syntax": "FV",
+      "description": ""
+    }
+  ],
+  "0x6330": [
+    {
+      "syntax": "|P/Y",
+      "description": ""
+    }
+  ],
+  "0x6331": [
+    {
+      "syntax": "|C/Y",
+      "description": ""
+    }
+  ],
+  "0x6332": [
+    {
+      "syntax": "w(\ud835\udc5bMin)",
+      "description": ""
+    }
+  ],
+  "0x6333": [
+    {
+      "syntax": "Zw(\ud835\udc5bMin)",
+      "description": ""
+    }
+  ],
+  "0x6334": [
+    {
+      "syntax": "PlotStep",
+      "description": ""
+    }
+  ],
+  "0x6335": [
+    {
+      "syntax": "ZPlotStep",
+      "description": ""
+    }
+  ],
+  "0x6336": [
+    {
+      "syntax": "Xres",
+      "description": ""
+    }
+  ],
+  "0x6337": [
+    {
+      "syntax": "ZXres",
+      "description": ""
+    }
+  ],
+  "0x6338": [
+    {
+      "syntax": "TraceStep",
+      "description": ""
+    }
+  ],
+  "0x6A": [
+    {
+      "syntax": "=",
+      "description": ""
+    }
+  ],
+  "0x6B": [
+    {
+      "syntax": "<",
+      "description": ""
+    }
+  ],
+  "0x6C": [
+    {
+      "syntax": ">",
+      "description": ""
+    }
+  ],
+  "0x6D": [
+    {
+      "syntax": "\u2264",
+      "description": ""
+    }
+  ],
+  "0x6E": [
+    {
+      "syntax": "\u2265",
+      "description": ""
+    }
+  ],
+  "0x6F": [
+    {
+      "syntax": "\u2260",
+      "description": ""
+    }
+  ],
+  "0x70": [
+    {
+      "syntax": "+",
+      "description": ""
+    }
+  ],
+  "0x71": [
+    {
+      "syntax": "-",
+      "description": ""
+    }
+  ],
+  "0x7E": [
+    {
+      "syntax": "Graph Format",
+      "description": ""
+    }
+  ],
+  "0x7F": [
+    {
+      "syntax": "\u25a1",
+      "description": ""
+    }
+  ],
+  "0x80": [
+    {
+      "syntax": "\ufe62",
+      "description": ""
+    }
+  ],
+  "0x81": [
+    {
+      "syntax": "\u00b7",
+      "description": ""
+    }
+  ],
+  "0x82": [
+    {
+      "syntax": "*",
+      "description": ""
+    }
+  ],
+  "0x83": [
+    {
+      "syntax": "/",
+      "description": ""
+    }
+  ],
+  "0x91": [
+    {
+      "syntax": "PrintScreen",
+      "description": ""
+    }
+  ],
+  "0xAA00": [
+    {
+      "syntax": "Str1",
+      "description": ""
+    }
+  ],
+  "0xAA01": [
+    {
+      "syntax": "Str2",
+      "description": ""
+    }
+  ],
+  "0xAA02": [
+    {
+      "syntax": "Str3",
+      "description": ""
+    }
+  ],
+  "0xAA03": [
+    {
+      "syntax": "Str4",
+      "description": ""
+    }
+  ],
+  "0xAA04": [
+    {
+      "syntax": "Str5",
+      "description": ""
+    }
+  ],
+  "0xAA05": [
+    {
+      "syntax": "Str6",
+      "description": ""
+    }
+  ],
+  "0xAA06": [
+    {
+      "syntax": "Str7",
+      "description": ""
+    }
+  ],
+  "0xAA07": [
+    {
+      "syntax": "Str8",
+      "description": ""
+    }
+  ],
+  "0xAA08": [
+    {
+      "syntax": "Str9",
+      "description": ""
+    }
+  ],
+  "0xAA09": [
+    {
+      "syntax": "Str0",
+      "description": ""
+    }
+  ],
+  "0xAA": [
+    {
+      "syntax": "VARSTRING",
+      "description": ""
+    }
+  ],
+  "0xAC": [
+    {
+      "syntax": "\u03c0",
+      "description": ""
+    }
+  ],
+  "0xAE": [
+    {
+      "syntax": "'",
+      "description": ""
+    }
+  ],
+  "0xAF": [
+    {
+      "syntax": "?",
+      "description": ""
+    }
+  ],
+  "0xB0": [
+    {
+      "syntax": "\u207b",
+      "description": ""
+    }
+  ],
+  "0xBB31": [
+    {
+      "syntax": "e",
+      "description": ""
+    }
+  ],
+  "0xBB6A": [
+    {
+      "syntax": "Asm(",
+      "description": ""
+    }
+  ],
+  "0xBB6B": [
+    {
+      "syntax": "AsmComp(",
+      "description": ""
+    }
+  ],
+  "0xBB6C": [
+    {
+      "syntax": "AsmPrgm",
+      "description": ""
+    }
+  ],
+  "0xBB6D": [
+    {
+      "syntax": "[CompiledAsm83P]",
+      "description": ""
+    }
+  ],
+  "0xBB6E": [
+    {
+      "syntax": "\u00c1",
+      "description": ""
+    }
+  ],
+  "0xBB6F": [
+    {
+      "syntax": "\u00c0",
+      "description": ""
+    }
+  ],
+  "0xBB70": [
+    {
+      "syntax": "\u00c2",
+      "description": ""
+    }
+  ],
+  "0xBB71": [
+    {
+      "syntax": "\u00c4",
+      "description": ""
+    }
+  ],
+  "0xBB72": [
+    {
+      "syntax": "\u00e1",
+      "description": ""
+    }
+  ],
+  "0xBB73": [
+    {
+      "syntax": "\u00e0",
+      "description": ""
+    }
+  ],
+  "0xBB74": [
+    {
+      "syntax": "\u00e2",
+      "description": ""
+    }
+  ],
+  "0xBB75": [
+    {
+      "syntax": "\u00e4",
+      "description": ""
+    }
+  ],
+  "0xBB76": [
+    {
+      "syntax": "\u00c9",
+      "description": ""
+    }
+  ],
+  "0xBB77": [
+    {
+      "syntax": "\u00c8",
+      "description": ""
+    }
+  ],
+  "0xBB78": [
+    {
+      "syntax": "\u00ca",
+      "description": ""
+    }
+  ],
+  "0xBB79": [
+    {
+      "syntax": "\u00cb",
+      "description": ""
+    }
+  ],
+  "0xBB7A": [
+    {
+      "syntax": "\u00e9",
+      "description": ""
+    }
+  ],
+  "0xBB7B": [
+    {
+      "syntax": "\u00e8",
+      "description": ""
+    }
+  ],
+  "0xBB7C": [
+    {
+      "syntax": "\u00ea",
+      "description": ""
+    }
+  ],
+  "0xBB7D": [
+    {
+      "syntax": "\u00eb",
+      "description": ""
+    }
+  ],
+  "0xBB7F": [
+    {
+      "syntax": "\u00cc",
+      "description": ""
+    }
+  ],
+  "0xBB80": [
+    {
+      "syntax": "\u00ce",
+      "description": ""
+    }
+  ],
+  "0xBB81": [
+    {
+      "syntax": "\u00cf",
+      "description": ""
+    }
+  ],
+  "0xBB82": [
+    {
+      "syntax": "\u00ed",
+      "description": ""
+    }
+  ],
+  "0xBB83": [
+    {
+      "syntax": "\u00ec",
+      "description": ""
+    }
+  ],
+  "0xBB84": [
+    {
+      "syntax": "\u00ee",
+      "description": ""
+    }
+  ],
+  "0xBB85": [
+    {
+      "syntax": "\u00ef",
+      "description": ""
+    }
+  ],
+  "0xBB86": [
+    {
+      "syntax": "\u00d3",
+      "description": ""
+    }
+  ],
+  "0xBB87": [
+    {
+      "syntax": "\u00d2",
+      "description": ""
+    }
+  ],
+  "0xBB88": [
+    {
+      "syntax": "\u00d4",
+      "description": ""
+    }
+  ],
+  "0xBB89": [
+    {
+      "syntax": "\u00d6",
+      "description": ""
+    }
+  ],
+  "0xBB8A": [
+    {
+      "syntax": "\u00f3",
+      "description": ""
+    }
+  ],
+  "0xBB8B": [
+    {
+      "syntax": "\u00f2",
+      "description": ""
+    }
+  ],
+  "0xBB8C": [
+    {
+      "syntax": "\u00f4",
+      "description": ""
+    }
+  ],
+  "0xBB8D": [
+    {
+      "syntax": "\u00f6",
+      "description": ""
+    }
+  ],
+  "0xBB8E": [
+    {
+      "syntax": "\u00da",
+      "description": ""
+    }
+  ],
+  "0xBB8F": [
+    {
+      "syntax": "\u00d9",
+      "description": ""
+    }
+  ],
+  "0xBB90": [
+    {
+      "syntax": "\u00db",
+      "description": ""
+    }
+  ],
+  "0xBB91": [
+    {
+      "syntax": "\u00dc",
+      "description": ""
+    }
+  ],
+  "0xBB92": [
+    {
+      "syntax": "\u00fa",
+      "description": ""
+    }
+  ],
+  "0xBB93": [
+    {
+      "syntax": "\u00f9",
+      "description": ""
+    }
+  ],
+  "0xBB94": [
+    {
+      "syntax": "\u00fb",
+      "description": ""
+    }
+  ],
+  "0xBB95": [
+    {
+      "syntax": "\u00fc",
+      "description": ""
+    }
+  ],
+  "0xBB96": [
+    {
+      "syntax": "\u00c7",
+      "description": ""
+    }
+  ],
+  "0xBB97": [
+    {
+      "syntax": "\u00e7",
+      "description": ""
+    }
+  ],
+  "0xBB98": [
+    {
+      "syntax": "\u00d1",
+      "description": ""
+    }
+  ],
+  "0xBB99": [
+    {
+      "syntax": "\u00f1",
+      "description": ""
+    }
+  ],
+  "0xBB9A": [
+    {
+      "syntax": "\u00b4",
+      "description": ""
+    }
+  ],
+  "0xBB9B": [
+    {
+      "syntax": "`",
+      "description": ""
+    }
+  ],
+  "0xBB9C": [
+    {
+      "syntax": "\u00a8",
+      "description": ""
+    }
+  ],
+  "0xBB9D": [
+    {
+      "syntax": "\u00bf",
+      "description": ""
+    }
+  ],
+  "0xBB9E": [
+    {
+      "syntax": "\u00a1",
+      "description": ""
+    }
+  ],
+  "0xBB9F": [
+    {
+      "syntax": "\u03b1",
+      "description": ""
+    }
+  ],
+  "0xBBA0": [
+    {
+      "syntax": "\u03b2",
+      "description": ""
+    }
+  ],
+  "0xBBA1": [
+    {
+      "syntax": "\u03b3",
+      "description": ""
+    }
+  ],
+  "0xBBA2": [
+    {
+      "syntax": "\u0394",
+      "description": ""
+    }
+  ],
+  "0xBBA3": [
+    {
+      "syntax": "\u03b4",
+      "description": ""
+    }
+  ],
+  "0xBBA4": [
+    {
+      "syntax": "\u03b5",
+      "description": ""
+    }
+  ],
+  "0xBBA5": [
+    {
+      "syntax": "\u03bb",
+      "description": ""
+    }
+  ],
+  "0xBBA6": [
+    {
+      "syntax": "\u03bc",
+      "description": ""
+    }
+  ],
+  "0xBBA7": [
+    {
+      "syntax": "|\u03c0",
+      "description": ""
+    }
+  ],
+  "0xBBA8": [
+    {
+      "syntax": "\u03c1",
+      "description": ""
+    }
+  ],
+  "0xBBA9": [
+    {
+      "syntax": "\u03a3",
+      "description": ""
+    }
+  ],
+  "0xBBAB": [
+    {
+      "syntax": "\u03a6",
+      "description": ""
+    }
+  ],
+  "0xBBAC": [
+    {
+      "syntax": "\u03a9",
+      "description": ""
+    }
+  ],
+  "0xBBAD": [
+    {
+      "syntax": "\u1e57",
+      "description": ""
+    }
+  ],
+  "0xBBAE": [
+    {
+      "syntax": "\u03c7",
+      "description": ""
+    }
+  ],
+  "0xBBAF": [
+    {
+      "syntax": "\ud835\udc05",
+      "description": ""
+    }
+  ],
+  "0xBBB0": [
+    {
+      "syntax": "a",
+      "description": ""
+    }
+  ],
+  "0xBBB1": [
+    {
+      "syntax": "b",
+      "description": ""
+    }
+  ],
+  "0xBBB2": [
+    {
+      "syntax": "c",
+      "description": ""
+    }
+  ],
+  "0xBBB3": [
+    {
+      "syntax": "d",
+      "description": ""
+    }
+  ],
+  "0xBBB5": [
+    {
+      "syntax": "f",
+      "description": ""
+    }
+  ],
+  "0xBBB6": [
+    {
+      "syntax": "g",
+      "description": ""
+    }
+  ],
+  "0xBBB7": [
+    {
+      "syntax": "h",
+      "description": ""
+    }
+  ],
+  "0xBBB8": [
+    {
+      "syntax": "i",
+      "description": ""
+    }
+  ],
+  "0xBBB9": [
+    {
+      "syntax": "j",
+      "description": ""
+    }
+  ],
+  "0xBBBA": [
+    {
+      "syntax": "k",
+      "description": ""
+    }
+  ],
+  "0xBBBC": [
+    {
+      "syntax": "l",
+      "description": ""
+    }
+  ],
+  "0xBBBD": [
+    {
+      "syntax": "m",
+      "description": ""
+    }
+  ],
+  "0xBBBE": [
+    {
+      "syntax": "n",
+      "description": ""
+    }
+  ],
+  "0xBBBF": [
+    {
+      "syntax": "o",
+      "description": ""
+    }
+  ],
+  "0xBBC0": [
+    {
+      "syntax": "p",
+      "description": ""
+    }
+  ],
+  "0xBBC1": [
+    {
+      "syntax": "q",
+      "description": ""
+    }
+  ],
+  "0xBBC2": [
+    {
+      "syntax": "r",
+      "description": ""
+    }
+  ],
+  "0xBBC3": [
+    {
+      "syntax": "s",
+      "description": ""
+    }
+  ],
+  "0xBBC4": [
+    {
+      "syntax": "t",
+      "description": ""
+    }
+  ],
+  "0xBBC5": [
+    {
+      "syntax": "u",
+      "description": ""
+    }
+  ],
+  "0xBBC6": [
+    {
+      "syntax": "v",
+      "description": ""
+    }
+  ],
+  "0xBBC7": [
+    {
+      "syntax": "w",
+      "description": ""
+    }
+  ],
+  "0xBBC8": [
+    {
+      "syntax": "x",
+      "description": ""
+    }
+  ],
+  "0xBBC9": [
+    {
+      "syntax": "y",
+      "description": ""
+    }
+  ],
+  "0xBBCA": [
+    {
+      "syntax": "z",
+      "description": ""
+    }
+  ],
+  "0xBBCB": [
+    {
+      "syntax": "\u03c3",
+      "description": ""
+    }
+  ],
+  "0xBBCC": [
+    {
+      "syntax": "\u03c4",
+      "description": ""
+    }
+  ],
+  "0xBBCD": [
+    {
+      "syntax": "\u00cd",
+      "description": ""
+    }
+  ],
+  "0xBBCF": [
+    {
+      "syntax": "~",
+      "description": ""
+    }
+  ],
+  "0xBBD1": [
+    {
+      "syntax": "@",
+      "description": ""
+    }
+  ],
+  "0xBBD2": [
+    {
+      "syntax": "#",
+      "description": ""
+    }
+  ],
+  "0xBBD3": [
+    {
+      "syntax": "$",
+      "description": ""
+    }
+  ],
+  "0xBBD4": [
+    {
+      "syntax": "&",
+      "description": ""
+    }
+  ],
+  "0xBBD5": [
+    {
+      "syntax": "\u201b",
+      "description": ""
+    }
+  ],
+  "0xBBD6": [
+    {
+      "syntax": ";",
+      "description": ""
+    }
+  ],
+  "0xBBD7": [
+    {
+      "syntax": "\\",
+      "description": ""
+    }
+  ],
+  "0xBBD8": [
+    {
+      "syntax": "|",
+      "description": ""
+    }
+  ],
+  "0xBBD9": [
+    {
+      "syntax": "_",
+      "description": ""
+    }
+  ],
+  "0xBBD0": [
+    {
+      "syntax": "'",
+      "description": ""
+    }
+  ],
+  "0xBBDA": [
+    {
+      "syntax": "%",
+      "description": ""
+    }
+  ],
+  "0xBBDB": [
+    {
+      "syntax": "\u2026",
+      "description": ""
+    }
+  ],
+  "0xBBDC": [
+    {
+      "syntax": "\u2220",
+      "description": ""
+    }
+  ],
+  "0xBBDD": [
+    {
+      "syntax": "\u00df",
+      "description": ""
+    }
+  ],
+  "0xBBDE": [
+    {
+      "syntax": "\u02e3",
+      "description": ""
+    }
+  ],
+  "0xBBDF": [
+    {
+      "syntax": "\u1d1b",
+      "description": ""
+    }
+  ],
+  "0xBBE0": [
+    {
+      "syntax": "\u2080",
+      "description": ""
+    }
+  ],
+  "0xBBE1": [
+    {
+      "syntax": "\u2081",
+      "description": ""
+    }
+  ],
+  "0xBBE2": [
+    {
+      "syntax": "\u2082",
+      "description": ""
+    }
+  ],
+  "0xBBE3": [
+    {
+      "syntax": "\u2083",
+      "description": ""
+    }
+  ],
+  "0xBBE4": [
+    {
+      "syntax": "\u2084",
+      "description": ""
+    }
+  ],
+  "0xBBE5": [
+    {
+      "syntax": "\u2085",
+      "description": ""
+    }
+  ],
+  "0xBBE6": [
+    {
+      "syntax": "\u2086",
+      "description": ""
+    }
+  ],
+  "0xBBE7": [
+    {
+      "syntax": "\u2087",
+      "description": ""
+    }
+  ],
+  "0xBBE8": [
+    {
+      "syntax": "\u2088",
+      "description": ""
+    }
+  ],
+  "0xBBE9": [
+    {
+      "syntax": "\u2089",
+      "description": ""
+    }
+  ],
+  "0xBBEA": [
+    {
+      "syntax": "\u2081\u2080",
+      "description": ""
+    }
+  ],
+  "0xBBEB": [
+    {
+      "syntax": "\u25c4",
+      "description": ""
+    }
+  ],
+  "0xBBEC": [
+    {
+      "syntax": "\u25ba",
+      "description": ""
+    }
+  ],
+  "0xBBED": [
+    {
+      "syntax": "\u2191",
+      "description": ""
+    }
+  ],
+  "0xBBEE": [
+    {
+      "syntax": "\u2193",
+      "description": ""
+    }
+  ],
+  "0xBBF0": [
+    {
+      "syntax": "\u00d7",
+      "description": ""
+    }
+  ],
+  "0xBBF1": [
+    {
+      "syntax": "\u222b",
+      "description": ""
+    }
+  ],
+  "0xBBF2": [
+    {
+      "syntax": "\ud83e\udc45",
+      "description": ""
+    }
+  ],
+  "0xBBF3": [
+    {
+      "syntax": "\ud83e\udc47",
+      "description": ""
+    }
+  ],
+  "0xBBF4": [
+    {
+      "syntax": "\u221a",
+      "description": ""
+    }
+  ],
+  "0xBBF5": [
+    {
+      "syntax": "\u2338",
+      "description": ""
+    }
+  ],
+  "0xBC": [
+    {
+      "syntax": "\u221a(",
+      "description": ""
+    }
+  ],
+  "0xBD": [
+    {
+      "syntax": "\u00b3\u221a(",
+      "description": ""
+    }
+  ],
+  "0xC1": [
+    {
+      "syntax": "\u2081\u2080^(",
+      "description": ""
+    }
+  ],
+  "0xED": [
+    {
+      "syntax": "Plot2(",
+      "description": ""
+    }
+  ],
+  "0xEE": [
+    {
+      "syntax": "Plot3(",
+      "description": ""
+    }
+  ],
+  "0xEF1E": [
+    {
+      "syntax": "\u2b1a",
+      "description": ""
+    }
+  ],
+  "0xEF2E": [
+    {
+      "syntax": "\u2044",
+      "description": ""
+    }
+  ],
+  "0xEF2F": [
+    {
+      "syntax": "\u1d64",
+      "description": ""
+    }
+  ],
+  "0xEF36": [
+    {
+      "syntax": "CLASSIC",
+      "description": ""
+    }
+  ],
+  "0xEF3D": [
+    {
+      "syntax": "FRAC-APPROX",
+      "description": ""
+    }
+  ],
+  "0xEF41": [
+    {
+      "syntax": "BLUE",
+      "description": ""
+    }
+  ],
+  "0xEF42": [
+    {
+      "syntax": "RED",
+      "description": ""
+    }
+  ],
+  "0xEF43": [
+    {
+      "syntax": "BLACK",
+      "description": ""
+    }
+  ],
+  "0xEF44": [
+    {
+      "syntax": "MAGENTA",
+      "description": ""
+    }
+  ],
+  "0xEF45": [
+    {
+      "syntax": "GREEN",
+      "description": ""
+    }
+  ],
+  "0xEF46": [
+    {
+      "syntax": "ORANGE",
+      "description": ""
+    }
+  ],
+  "0xEF47": [
+    {
+      "syntax": "BROWN",
+      "description": ""
+    }
+  ],
+  "0xEF48": [
+    {
+      "syntax": "NAVY",
+      "description": ""
+    }
+  ],
+  "0xEF49": [
+    {
+      "syntax": "LTBLUE",
+      "description": ""
+    }
+  ],
+  "0xEF4A": [
+    {
+      "syntax": "YELLOW",
+      "description": ""
+    }
+  ],
+  "0xEF4B": [
+    {
+      "syntax": "WHITE",
+      "description": ""
+    }
+  ],
+  "0xEF4C": [
+    {
+      "syntax": "LTGRAY",
+      "description": ""
+    }
+  ],
+  "0xEF4D": [
+    {
+      "syntax": "MEDGRAY",
+      "description": ""
+    }
+  ],
+  "0xEF4E": [
+    {
+      "syntax": "GRAY",
+      "description": ""
+    }
+  ],
+  "0xEF4F": [
+    {
+      "syntax": "DARKGRAY",
+      "description": ""
+    }
+  ],
+  "0xEF50": [
+    {
+      "syntax": "Image1",
+      "description": ""
+    }
+  ],
+  "0xEF51": [
+    {
+      "syntax": "Image2",
+      "description": ""
+    }
+  ],
+  "0xEF52": [
+    {
+      "syntax": "Image3",
+      "description": ""
+    }
+  ],
+  "0xEF53": [
+    {
+      "syntax": "Image4",
+      "description": ""
+    }
+  ],
+  "0xEF54": [
+    {
+      "syntax": "Image5",
+      "description": ""
+    }
+  ],
+  "0xEF55": [
+    {
+      "syntax": "Image6",
+      "description": ""
+    }
+  ],
+  "0xEF56": [
+    {
+      "syntax": "Image7",
+      "description": ""
+    }
+  ],
+  "0xEF57": [
+    {
+      "syntax": "Image8",
+      "description": ""
+    }
+  ],
+  "0xEF58": [
+    {
+      "syntax": "Image9",
+      "description": ""
+    }
+  ],
+  "0xEF59": [
+    {
+      "syntax": "Image0",
+      "description": ""
+    }
+  ],
+  "0xEF66": [
+    {
+      "syntax": "QuickPlot&Fit-EQ",
+      "description": ""
+    }
+  ],
+  "0xEF68": [
+    {
+      "syntax": "Asm84CPrgm",
+      "description": ""
+    }
+  ],
+  "0xEF69": [
+    {
+      "syntax": "[CompiledAsm84C]",
+      "description": ""
+    }
+  ],
+  "0xEF73": [
+    {
+      "syntax": "\u00b7",
+      "description": ""
+    }
+  ],
+  "0xEF7A": [
+    {
+      "syntax": "Asm84CEPrgm",
+      "description": ""
+    }
+  ],
+  "0xEF7B": [
+    {
+      "syntax": "[CompiledAsmCE]",
+      "description": ""
+    }
+  ],
+  "0xEF81": [
+    {
+      "syntax": "Quartiles Setting\u2026",
+      "description": ""
+    }
+  ],
+  "0xEF82": [
+    {
+      "syntax": "u(\ud835\udc5b-2)",
+      "description": ""
+    }
+  ],
+  "0xEF83": [
+    {
+      "syntax": "v(\ud835\udc5b-2)",
+      "description": ""
+    }
+  ],
+  "0xEF84": [
+    {
+      "syntax": "w(\ud835\udc5b-2)",
+      "description": ""
+    }
+  ],
+  "0xEF85": [
+    {
+      "syntax": "u(\ud835\udc5b-1)",
+      "description": ""
+    }
+  ],
+  "0xEF86": [
+    {
+      "syntax": "v(\ud835\udc5b-1)",
+      "description": ""
+    }
+  ],
+  "0xEF87": [
+    {
+      "syntax": "w(\ud835\udc5b-1)",
+      "description": ""
+    }
+  ],
+  "0xEF88": [
+    {
+      "syntax": "u(\ud835\udc5b)",
+      "description": ""
+    }
+  ],
+  "0xEF89": [
+    {
+      "syntax": "v(\ud835\udc5b)",
+      "description": ""
+    }
+  ],
+  "0xEF8A": [
+    {
+      "syntax": "w(\ud835\udc5b)",
+      "description": ""
+    }
+  ],
+  "0xEF8B": [
+    {
+      "syntax": "u(\ud835\udc5b+1)",
+      "description": ""
+    }
+  ],
+  "0xEF8C": [
+    {
+      "syntax": "v(\ud835\udc5b+1)",
+      "description": ""
+    }
+  ],
+  "0xEF8D": [
+    {
+      "syntax": "w(\ud835\udc5b+1)",
+      "description": ""
+    }
+  ],
+  "0xEF9E": [
+    {
+      "syntax": "Execute Program",
+      "description": ""
+    }
+  ],
+  "0xEF9F": [
+    {
+      "syntax": "Undo Clear",
+      "description": ""
+    }
+  ],
+  "0xEFA0": [
+    {
+      "syntax": "Insert Line Above",
+      "description": ""
+    }
+  ],
+  "0xEFA1": [
+    {
+      "syntax": "Cut Line",
+      "description": ""
+    }
+  ],
+  "0xEFA2": [
+    {
+      "syntax": "Copy Line",
+      "description": ""
+    }
+  ],
+  "0xEFA3": [
+    {
+      "syntax": "Paste Line Below",
+      "description": ""
+    }
+  ],
+  "0xEFA4": [
+    {
+      "syntax": "Insert Comment Above",
+      "description": ""
+    }
+  ],
+  "0xEFA5": [
+    {
+      "syntax": "Quit Editor",
+      "description": ""
+    }
+  ],
+  "0xF0": [
+    {
+      "syntax": "^",
+      "description": ""
+    }
+  ],
+  "0xF1": [
+    {
+      "syntax": "\u02e3\u221a",
+      "description": ""
+    }
+  ]
+}

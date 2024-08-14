@@ -1,43 +1,43 @@
 use super::encode::encode;
+use crate::calculator::errors::TiToolsError;
 use crate::calculator::models::{Model, ModelDetails};
 use crate::calculator::program::{Body, Checksum, Destination, FileType, Header, Metadata};
 use crate::calculator::tokens::{load_tokens, OsVersion};
 use crate::calculator::{DisplayMode, EncodeMode};
-use crate::errors::CliError;
 use std::path::PathBuf;
 
 pub fn create_from_txt(
     path: PathBuf,
     encode_mode: &EncodeMode,
-) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), CliError> {
+) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), TiToolsError> {
     let file_string = match std::fs::read_to_string(&path) {
         Ok(file_string) => file_string,
-        Err(err) => return Err(CliError::FileRead(err.to_string())),
+        Err(err) => return Err(TiToolsError::FileRead(err.to_string())),
     };
 
     let name = file_string
         .lines()
         .next()
-        .ok_or_else(|| CliError::MissingProgramInfo("name".to_string()))?;
+        .ok_or_else(|| TiToolsError::MissingProgramInfo("name".to_string()))?;
     let line = file_string
         .lines()
         .nth(2)
-        .ok_or_else(|| CliError::MissingProgramInfo("file type".to_string()))?;
+        .ok_or_else(|| TiToolsError::MissingProgramInfo("file type".to_string()))?;
     let file_type = FileType::from_string(line)?;
     let line = file_string
         .lines()
         .nth(3)
-        .ok_or_else(|| CliError::MissingProgramInfo("destination".to_string()))?;
+        .ok_or_else(|| TiToolsError::MissingProgramInfo("destination".to_string()))?;
     let destination = Destination::from_string(line)?;
     let line = file_string
         .lines()
         .nth(4)
-        .ok_or_else(|| CliError::MissingProgramInfo("display mode".to_string()))?;
+        .ok_or_else(|| TiToolsError::MissingProgramInfo("display mode".to_string()))?;
     let display_mode = DisplayMode::from_string(line)?;
     let line = file_string
         .lines()
         .nth(5)
-        .ok_or_else(|| CliError::MissingProgramInfo("model".to_string()))?;
+        .ok_or_else(|| TiToolsError::MissingProgramInfo("model".to_string()))?;
 
     let model = Model::from_string(line);
     let model_details = ModelDetails::from_model(&model);
@@ -50,11 +50,11 @@ pub fn create_from_txt(
     let tokens = load_tokens(&version)?;
 
     if name.len() > 8 {
-        return Err(CliError::InvalidNameLength);
+        return Err(TiToolsError::InvalidNameLength);
     }
 
     if !name.chars().all(|c| c.is_ascii_alphabetic()) {
-        return Err(CliError::InvalidNameCharacters);
+        return Err(TiToolsError::InvalidNameCharacters);
     }
 
     let body_string = file_string

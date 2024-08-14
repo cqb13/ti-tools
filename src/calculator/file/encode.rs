@@ -1,6 +1,6 @@
+use crate::calculator::errors::TiToolsError;
 use crate::calculator::tokens::Map;
 use crate::calculator::{DisplayMode, EncodeMode};
-use crate::errors::CliError;
 
 struct EncodeState<'a> {
     in_string: bool,
@@ -48,7 +48,7 @@ pub fn encode(
     perform_normalize: bool,
     display_mode: DisplayMode,
     encode_mode: &EncodeMode,
-) -> Result<Vec<u8>, CliError> {
+) -> Result<Vec<u8>, TiToolsError> {
     let mut encoded_program = Vec::new();
 
     let decoded_program = if perform_normalize {
@@ -97,7 +97,7 @@ pub fn encode(
                     temp_line = temp_line[value.len()..].to_string();
                 }
                 None => {
-                    return Err(CliError::TokenNotFound(temp_line));
+                    return Err(TiToolsError::TokenNotFound(temp_line));
                 }
             }
         }

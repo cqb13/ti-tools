@@ -1,7 +1,6 @@
 pub mod calculator;
 pub mod cli;
 pub mod commands;
-pub mod errors;
 pub mod styles;
 
 use cli::{Arg, Cli, CmdOption, Command};
@@ -14,6 +13,7 @@ use commands::edit::rename::rename_command;
 use commands::edit::unarchive::unarchive_command;
 use commands::edit::unlock::unlock_command;
 use commands::models::models_command;
+use commands::search::search_command;
 
 fn main() {
     let cli = Cli::new()
@@ -55,6 +55,17 @@ fn main() {
                 .with_arg(
                     Arg::new("mass", "Changes input required from file to directory for mass file decoding", "mass", 'm')
                 )
+        )
+        .with_command(
+            Command::new("search", "Retrieves a description for a token")
+            .with_option(
+                CmdOption::new("token", "TOKEN", "The token to search for")
+            )
+            .with_arg(
+                Arg::new("type", "The type of token to search for [accessible, pretty, byte] | Default: accessible", "type", 't')
+                    .with_value_name("TYPE")
+                    .with_default_value("accessible")
+            )
         )
         .with_command(
             Command::new("rename", "Renames the program name in a 8xp/82p/83p file")
@@ -169,14 +180,8 @@ fn main() {
         "convert" => {
             let input_path_string = command.get_option("input").throw_if_none();
             let output_path_string = command.get_arg("output").to_option();
-            let display_mode = command
-                .get_arg("display-mode")
-                .to_option()
-                .unwrap_or("accessible".to_string());
-            let encode_mode = command
-                .get_arg("encode-mode")
-                .to_option()
-                .unwrap_or("smart".to_string());
+            let display_mode = command.get_arg("display-mode").throw_if_none();
+            let encode_mode = command.get_arg("encode-mode").throw_if_none();
             let content = command.has("content");
             let preview = command.has("preview");
             let mass = command.has("mass");
@@ -190,6 +195,12 @@ fn main() {
                 preview,
                 mass,
             );
+        }
+        "search" => {
+            let token = command.get_option("token").throw_if_none();
+            let token_type = command.get_arg("type").throw_if_none();
+
+            search_command(token, token_type)
         }
         "rename" => {
             let input_path_string = command.get_option("input").throw_if_none();

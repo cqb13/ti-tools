@@ -1,21 +1,21 @@
 use super::decode::decode;
+use crate::calculator::errors::TiToolsError;
 use crate::calculator::models::ModelDetails;
 use crate::calculator::program::{
     Body, Checksum, Destination, FileType, Header, Metadata, ProgramFileType,
 };
 use crate::calculator::tokens::{load_tokens, OsVersion};
 use crate::calculator::DisplayMode;
-use crate::errors::CliError;
 use std::path::PathBuf;
 
 pub fn create_from_8xp(
     path: PathBuf,
     file_type: ProgramFileType,
     display_mode: &DisplayMode,
-) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), CliError> {
+) -> Result<(Header, Metadata, Body, Checksum, ModelDetails), TiToolsError> {
     let bytes = match std::fs::read(&path).map_err(|err| err.to_string()) {
         Ok(bytes) => bytes,
-        Err(err) => return Err(CliError::FileRead(err)),
+        Err(err) => return Err(TiToolsError::FileRead(err)),
     };
 
     let (header_bytes, bytes) = bytes.split_at(55);
@@ -23,12 +23,12 @@ pub fn create_from_8xp(
         ProgramFileType::XP => bytes.split_at(19),
         ProgramFileType::XPThree | ProgramFileType::XPTwo => bytes.split_at(17),
         ProgramFileType::TXT => {
-            return Err(CliError::FileRead(
+            return Err(TiToolsError::FileRead(
                 "TXT files cant be loaded as 8xp files".to_string(),
             ))
         }
         ProgramFileType::JSON => {
-            return Err(CliError::FileRead(
+            return Err(TiToolsError::FileRead(
                 "JSON files cant be loaded as 8xp files".to_string(),
             ))
         }
@@ -134,12 +134,12 @@ pub fn create_from_8xp(
             )
         }
         ProgramFileType::TXT => {
-            return Err(CliError::FileRead(
+            return Err(TiToolsError::FileRead(
                 "TXT files cant be loaded as 8xp files".to_string(),
             ))
         }
         ProgramFileType::JSON => {
-            return Err(CliError::FileRead(
+            return Err(TiToolsError::FileRead(
                 "JSON files cant be loaded as 8xp files".to_string(),
             ))
         }

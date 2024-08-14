@@ -10,9 +10,7 @@
           "ti-ascii": "05444D53",
           "display": "►DMS",
           "accessible": ">DMS",
-          "variants": [
-            "►DMS"
-          ]
+          "variants": ["►DMS"]
         }
       }
     }
@@ -28,9 +26,7 @@
           "ti-ascii": "05446563",
           "display": "►Dec",
           "accessible": ">Dec",
-          "variants": [
-            "►Dec"
-          ]
+          "variants": ["►Dec"]
         }
       }
     }
@@ -46,9 +42,7 @@
           "ti-ascii": "0546726163",
           "display": "►Frac",
           "accessible": ">Frac",
-          "variants": [
-            "►Frac"
-          ]
+          "variants": ["►Frac"]
         }
       }
     }
@@ -64,9 +58,7 @@
           "ti-ascii": "1C",
           "display": "→",
           "accessible": "->",
-          "variants": [
-            "→"
-          ]
+          "variants": ["→"]
         }
       }
     }
@@ -157,9 +149,7 @@
           "ti-ascii": "15",
           "display": "ʳ",
           "accessible": "^^r",
-          "variants": [
-            "ʳ"
-          ]
+          "variants": ["ʳ"]
         }
       }
     }
@@ -175,9 +165,7 @@
           "ti-ascii": "14",
           "display": "°",
           "accessible": "^^o",
-          "variants": [
-            "°"
-          ]
+          "variants": ["°"]
         }
       }
     }
@@ -193,10 +181,7 @@
           "ti-ascii": "11",
           "display": "⁻¹",
           "accessible": "^^-1",
-          "variants": [
-            "⁻¹",
-            "ˉ¹"
-          ]
+          "variants": ["⁻¹", "ˉ¹"]
         }
       }
     }
@@ -212,9 +197,7 @@
           "ti-ascii": "12",
           "display": "²",
           "accessible": "^^2",
-          "variants": [
-            "²"
-          ]
+          "variants": ["²"]
         }
       }
     }
@@ -230,9 +213,7 @@
           "ti-ascii": "16",
           "display": "ᵀ",
           "accessible": "^^T",
-          "variants": [
-            "ᵀ"
-          ]
+          "variants": ["ᵀ"]
         }
       }
     }
@@ -248,9 +229,7 @@
           "ti-ascii": "D5",
           "display": "³",
           "accessible": "^^3",
-          "variants": [
-            "³"
-          ]
+          "variants": ["³"]
         }
       }
     }
@@ -431,9 +410,7 @@
           "ti-ascii": "5205507228",
           "display": "R►Pr(",
           "accessible": "R>Pr(",
-          "variants": [
-            "R►Pr("
-          ]
+          "variants": ["R►Pr("]
         }
       }
     }
@@ -449,11 +426,7 @@
           "ti-ascii": "5205505B28",
           "display": "R►Pθ(",
           "accessible": "R>Ptheta(",
-          "variants": [
-            "R►Pθ(",
-            "R►Ptheta(",
-            "R>Pθ("
-          ]
+          "variants": ["R►Pθ(", "R►Ptheta(", "R>Pθ("]
         }
       }
     }
@@ -469,9 +442,7 @@
           "ti-ascii": "5005527828",
           "display": "P►Rx(",
           "accessible": "P>Rx(",
-          "variants": [
-            "P►Rx("
-          ]
+          "variants": ["P►Rx("]
         }
       }
     }
@@ -487,9 +458,7 @@
           "ti-ascii": "5005527928",
           "display": "P►Ry(",
           "accessible": "P>Ry(",
-          "variants": [
-            "P►Ry("
-          ]
+          "variants": ["P►Ry("]
         }
       }
     }
@@ -685,9 +654,7 @@
           "ti-ascii": "D7",
           "display": "𝑖",
           "accessible": "[i]",
-          "variants": [
-            "𝑖"
-          ]
+          "variants": ["𝑖"]
         }
       }
     }
@@ -913,9 +880,7 @@
           "ti-ascii": "1B",
           "display": "ᴇ",
           "accessible": "|E",
-          "variants": [
-            "ᴇ"
-          ]
+          "variants": ["ᴇ"]
         }
       }
     }
@@ -976,9 +941,7 @@
           "ti-ascii": "D6",
           "display": "\n",
           "accessible": "\n",
-          "variants": [
-            "\r\n"
-          ]
+          "variants": ["\r\n"]
         }
       }
     }
@@ -1399,9 +1362,7 @@
           "ti-ascii": "5B",
           "display": "θ",
           "accessible": "theta",
-          "variants": [
-            "θ"
-          ]
+          "variants": ["θ"]
         }
       }
     }
@@ -1570,9 +1531,7 @@
             "ti-ascii": "4C81",
             "display": "L₁",
             "accessible": "L1",
-            "variants": [
-              "L₁"
-            ]
+            "variants": ["L₁"]
           }
         }
       }
@@ -1588,9 +1547,7 @@
             "ti-ascii": "4C82",
             "display": "L₂",
             "accessible": "L2",
-            "variants": [
-              "L₂"
-            ]
+            "variants": ["L₂"]
           }
         }
       }
@@ -1606,9 +1563,7 @@
             "ti-ascii": "4C83",
             "display": "L₃",
             "accessible": "L3",
-            "variants": [
-              "L₃"
-            ]
+            "variants": ["L₃"]
           }
         }
       }
@@ -1624,9 +1579,7 @@
             "ti-ascii": "4C84",
             "display": "L₄",
             "accessible": "L4",
-            "variants": [
-              "L₄"
-            ]
+            "variants": ["L₄"]
           }
         }
       }
@@ -1642,9 +1595,7 @@
             "ti-ascii": "4C85",
             "display": "L₅",
             "accessible": "L5",
-            "variants": [
-              "L₅"
-            ]
+            "variants": ["L₅"]
           }
         }
       }
@@ -1660,9 +1611,7 @@
             "ti-ascii": "4C86",
             "display": "L₆",
             "accessible": "L6",
-            "variants": [
-              "L₆"
-            ]
+            "variants": ["L₆"]
           }
         }
       }
@@ -1680,9 +1629,7 @@
             "ti-ascii": "5981",
             "display": "Y₁",
             "accessible": "{Y1}",
-            "variants": [
-              "Y₁"
-            ]
+            "variants": ["Y₁"]
           }
         }
       }
@@ -1698,9 +1645,7 @@
             "ti-ascii": "5983",
             "display": "Y₂",
             "accessible": "{Y2}",
-            "variants": [
-              "Y₂"
-            ]
+            "variants": ["Y₂"]
           }
         }
       }
@@ -1716,9 +1661,7 @@
             "ti-ascii": "5984",
             "display": "Y₃",
             "accessible": "{Y3}",
-            "variants": [
-              "Y₃"
-            ]
+            "variants": ["Y₃"]
           }
         }
       }
@@ -1734,9 +1677,7 @@
             "ti-ascii": "5985",
             "display": "Y₄",
             "accessible": "{Y4}",
-            "variants": [
-              "Y₄"
-            ]
+            "variants": ["Y₄"]
           }
         }
       }
@@ -1752,9 +1693,7 @@
             "ti-ascii": "5986",
             "display": "Y₅",
             "accessible": "{Y5}",
-            "variants": [
-              "Y₅"
-            ]
+            "variants": ["Y₅"]
           }
         }
       }
@@ -1770,9 +1709,7 @@
             "ti-ascii": "5986",
             "display": "Y₆",
             "accessible": "{Y6}",
-            "variants": [
-              "Y₆"
-            ]
+            "variants": ["Y₆"]
           }
         }
       }
@@ -1788,9 +1725,7 @@
             "ti-ascii": "5987",
             "display": "Y₇",
             "accessible": "{Y7}",
-            "variants": [
-              "Y₇"
-            ]
+            "variants": ["Y₇"]
           }
         }
       }
@@ -1806,9 +1741,7 @@
             "ti-ascii": "5988",
             "display": "Y₈",
             "accessible": "{Y8}",
-            "variants": [
-              "Y₈"
-            ]
+            "variants": ["Y₈"]
           }
         }
       }
@@ -1824,9 +1757,7 @@
             "ti-ascii": "5989",
             "display": "Y₉",
             "accessible": "{Y9}",
-            "variants": [
-              "Y₉"
-            ]
+            "variants": ["Y₉"]
           }
         }
       }
@@ -1842,9 +1773,7 @@
             "ti-ascii": "5980",
             "display": "Y₀",
             "accessible": "{Y0}",
-            "variants": [
-              "Y₀"
-            ]
+            "variants": ["Y₀"]
           }
         }
       }
@@ -1860,9 +1789,7 @@
             "ti-ascii": "58810D",
             "display": "X₁ᴛ",
             "accessible": "{X1T}",
-            "variants": [
-              "X₁ᴛ"
-            ]
+            "variants": ["X₁ᴛ"]
           }
         }
       }
@@ -1878,9 +1805,7 @@
             "ti-ascii": "59810D",
             "display": "Y₁ᴛ",
             "accessible": "{Y1T}",
-            "variants": [
-              "Y₁ᴛ"
-            ]
+            "variants": ["Y₁ᴛ"]
           }
         }
       }
@@ -1896,9 +1821,7 @@
             "ti-ascii": "58820D",
             "display": "X₂ᴛ",
             "accessible": "{X2T}",
-            "variants": [
-              "X₂ᴛ"
-            ]
+            "variants": ["X₂ᴛ"]
           }
         }
       }
@@ -1914,9 +1837,7 @@
             "ti-ascii": "59820D",
             "display": "Y₂ᴛ",
             "accessible": "{Y2T}",
-            "variants": [
-              "Y₂ᴛ"
-            ]
+            "variants": ["Y₂ᴛ"]
           }
         }
       }
@@ -1932,9 +1853,7 @@
             "ti-ascii": "58830D",
             "display": "X₃ᴛ",
             "accessible": "{X3T}",
-            "variants": [
-              "X₃ᴛ"
-            ]
+            "variants": ["X₃ᴛ"]
           }
         }
       }
@@ -1950,9 +1869,7 @@
             "ti-ascii": "59830D",
             "display": "Y₃ᴛ",
             "accessible": "{Y3T}",
-            "variants": [
-              "Y₃ᴛ"
-            ]
+            "variants": ["Y₃ᴛ"]
           }
         }
       }
@@ -1968,9 +1885,7 @@
             "ti-ascii": "58840D",
             "display": "X₄ᴛ",
             "accessible": "{X4T}",
-            "variants": [
-              "X₄ᴛ"
-            ]
+            "variants": ["X₄ᴛ"]
           }
         }
       }
@@ -1986,9 +1901,7 @@
             "ti-ascii": "59840D",
             "display": "Y₄ᴛ",
             "accessible": "{Y4T}",
-            "variants": [
-              "Y₄ᴛ"
-            ]
+            "variants": ["Y₄ᴛ"]
           }
         }
       }
@@ -2004,9 +1917,7 @@
             "ti-ascii": "58850D",
             "display": "X₅ᴛ",
             "accessible": "{X5T}",
-            "variants": [
-              "X₅ᴛ"
-            ]
+            "variants": ["X₅ᴛ"]
           }
         }
       }
@@ -2022,9 +1933,7 @@
             "ti-ascii": "59850D",
             "display": "Y₅ᴛ",
             "accessible": "{Y5T}",
-            "variants": [
-              "Y₅ᴛ"
-            ]
+            "variants": ["Y₅ᴛ"]
           }
         }
       }
@@ -2040,9 +1949,7 @@
             "ti-ascii": "58860D",
             "display": "X₆ᴛ",
             "accessible": "{X6T}",
-            "variants": [
-              "X₆ᴛ"
-            ]
+            "variants": ["X₆ᴛ"]
           }
         }
       }
@@ -2058,9 +1965,7 @@
             "ti-ascii": "59860D",
             "display": "Y₆ᴛ",
             "accessible": "{Y6T}",
-            "variants": [
-              "Y₆ᴛ"
-            ]
+            "variants": ["Y₆ᴛ"]
           }
         }
       }
@@ -2076,9 +1981,7 @@
             "ti-ascii": "7281",
             "display": "r₁",
             "accessible": "{r1}",
-            "variants": [
-              "r₁"
-            ]
+            "variants": ["r₁"]
           }
         }
       }
@@ -2094,9 +1997,7 @@
             "ti-ascii": "7282",
             "display": "r₂",
             "accessible": "{r2}",
-            "variants": [
-              "r₂"
-            ]
+            "variants": ["r₂"]
           }
         }
       }
@@ -2112,9 +2013,7 @@
             "ti-ascii": "7283",
             "display": "r₃",
             "accessible": "{r3}",
-            "variants": [
-              "r₃"
-            ]
+            "variants": ["r₃"]
           }
         }
       }
@@ -2130,9 +2029,7 @@
             "ti-ascii": "7284",
             "display": "r₄",
             "accessible": "{r4}",
-            "variants": [
-              "r₄"
-            ]
+            "variants": ["r₄"]
           }
         }
       }
@@ -2148,9 +2045,7 @@
             "ti-ascii": "7285",
             "display": "r₅",
             "accessible": "{r5}",
-            "variants": [
-              "r₅"
-            ]
+            "variants": ["r₅"]
           }
         }
       }
@@ -2166,9 +2061,7 @@
             "ti-ascii": "7286",
             "display": "r₆",
             "accessible": "{r6}",
-            "variants": [
-              "r₆"
-            ]
+            "variants": ["r₆"]
           }
         }
       }
@@ -2550,9 +2443,7 @@
             "ti-ascii": "5265674551",
             "display": "RegEQ",
             "accessible": "[RegEQ]",
-            "variants": [
-              "RegEQ"
-            ]
+            "variants": ["RegEQ"]
           }
         }
       }
@@ -2583,10 +2474,7 @@
             "ti-ascii": "CB",
             "display": "x̄",
             "accessible": "[xhat]",
-            "variants": [
-              "x̄",
-              "ẋ"
-            ]
+            "variants": ["x̄", "ẋ"]
           }
         }
       }
@@ -2602,9 +2490,7 @@
             "ti-ascii": "C678",
             "display": "Σx",
             "accessible": "[Sigmax]",
-            "variants": [
-              "Σx"
-            ]
+            "variants": ["Σx"]
           }
         }
       }
@@ -2620,11 +2506,7 @@
             "ti-ascii": "C67812",
             "display": "Σx²",
             "accessible": "[Sigmax^2]",
-            "variants": [
-              "Σx²",
-              "Σx^2",
-              "sigmax²"
-            ]
+            "variants": ["Σx²", "Σx^2", "sigmax²"]
           }
         }
       }
@@ -2640,9 +2522,7 @@
             "ti-ascii": "5378",
             "display": "Sx",
             "accessible": "[Sx]",
-            "variants": [
-              "Sx"
-            ]
+            "variants": ["Sx"]
           }
         }
       }
@@ -2658,9 +2538,7 @@
             "ti-ascii": "C778",
             "display": "σx",
             "accessible": "[sigmax]",
-            "variants": [
-              "σx"
-            ]
+            "variants": ["σx"]
           }
         }
       }
@@ -2676,9 +2554,7 @@
             "ti-ascii": "6D696E58",
             "display": "minX",
             "accessible": "[minX]",
-            "variants": [
-              "minX"
-            ]
+            "variants": ["minX"]
           }
         }
       }
@@ -2694,9 +2570,7 @@
             "ti-ascii": "6D617858",
             "display": "maxX",
             "accessible": "[maxX]",
-            "variants": [
-              "maxX"
-            ]
+            "variants": ["maxX"]
           }
         }
       }
@@ -2712,9 +2586,7 @@
             "ti-ascii": "6D696E59",
             "display": "minY",
             "accessible": "[minY]",
-            "variants": [
-              "minY"
-            ]
+            "variants": ["minY"]
           }
         }
       }
@@ -2730,9 +2602,7 @@
             "ti-ascii": "6D617859",
             "display": "maxY",
             "accessible": "[maxY]",
-            "variants": [
-              "maxY"
-            ]
+            "variants": ["maxY"]
           }
         }
       }
@@ -2748,9 +2618,7 @@
             "ti-ascii": "CC",
             "display": "ȳ",
             "accessible": "[yhat]",
-            "variants": [
-              "ȳ"
-            ]
+            "variants": ["ȳ"]
           }
         }
       }
@@ -2766,9 +2634,7 @@
             "ti-ascii": "C679",
             "display": "Σy",
             "accessible": "[Sigmay]",
-            "variants": [
-              "Σy"
-            ]
+            "variants": ["Σy"]
           }
         }
       }
@@ -2784,11 +2650,7 @@
             "ti-ascii": "C67912",
             "display": "Σy²",
             "accessible": "[Sigmay^2]",
-            "variants": [
-              "Σy²",
-              "Σy^2",
-              "sigmay²"
-            ]
+            "variants": ["Σy²", "Σy^2", "sigmay²"]
           }
         }
       }
@@ -2804,9 +2666,7 @@
             "ti-ascii": "5379",
             "display": "Sy",
             "accessible": "[Sy]",
-            "variants": [
-              "Sy"
-            ]
+            "variants": ["Sy"]
           }
         }
       }
@@ -2822,9 +2682,7 @@
             "ti-ascii": "C779",
             "display": "σy",
             "accessible": "[sigmay]",
-            "variants": [
-              "σy"
-            ]
+            "variants": ["σy"]
           }
         }
       }
@@ -2840,9 +2698,7 @@
             "ti-ascii": "C67879",
             "display": "Σxy",
             "accessible": "[Sigmaxy]",
-            "variants": [
-              "Σxy"
-            ]
+            "variants": ["Σxy"]
           }
         }
       }
@@ -2873,9 +2729,7 @@
             "ti-ascii": "4D6564",
             "display": "Med",
             "accessible": "[Med]",
-            "variants": [
-              "Med"
-            ]
+            "variants": ["Med"]
           }
         }
       }
@@ -2891,10 +2745,7 @@
             "ti-ascii": "5181",
             "display": "Q₁",
             "accessible": "[Q1]",
-            "variants": [
-              "Q₁",
-              "[Q₁]"
-            ]
+            "variants": ["Q₁", "[Q₁]"]
           }
         }
       }
@@ -2910,10 +2761,7 @@
             "ti-ascii": "5183",
             "display": "Q₃",
             "accessible": "[Q3]",
-            "variants": [
-              "Q₃",
-              "[Q₃]"
-            ]
+            "variants": ["Q₃", "[Q₃]"]
           }
         }
       }
@@ -3004,9 +2852,7 @@
             "ti-ascii": "7881",
             "display": "x₁",
             "accessible": "[x1]",
-            "variants": [
-              "x₁"
-            ]
+            "variants": ["x₁"]
           }
         }
       }
@@ -3022,9 +2868,7 @@
             "ti-ascii": "7882",
             "display": "x₂",
             "accessible": "[x2]",
-            "variants": [
-              "x₂"
-            ]
+            "variants": ["x₂"]
           }
         }
       }
@@ -3040,9 +2884,7 @@
             "ti-ascii": "7883",
             "display": "x₃",
             "accessible": "[x3]",
-            "variants": [
-              "x₃"
-            ]
+            "variants": ["x₃"]
           }
         }
       }
@@ -3058,9 +2900,7 @@
             "ti-ascii": "7981",
             "display": "y₁",
             "accessible": "[y1]",
-            "variants": [
-              "y₁"
-            ]
+            "variants": ["y₁"]
           }
         }
       }
@@ -3076,9 +2916,7 @@
             "ti-ascii": "7982",
             "display": "y₂",
             "accessible": "[y2]",
-            "variants": [
-              "y₂"
-            ]
+            "variants": ["y₂"]
           }
         }
       }
@@ -3094,9 +2932,7 @@
             "ti-ascii": "7983",
             "display": "y₃",
             "accessible": "[y3]",
-            "variants": [
-              "y₃"
-            ]
+            "variants": ["y₃"]
           }
         }
       }
@@ -3112,10 +2948,7 @@
             "ti-ascii": "01",
             "display": "𝑛",
             "accessible": "[recursiven]",
-            "variants": [
-              "𝑛",
-              "[𝒏]"
-            ]
+            "variants": ["𝑛", "[𝒏]"]
           }
         }
       }
@@ -3176,11 +3009,7 @@
             "ti-ascii": "D912",
             "display": "χ²",
             "accessible": "[chi^2]",
-            "variants": [
-              "χ²",
-              "χ^2",
-              "chi²"
-            ]
+            "variants": ["χ²", "χ^2", "chi²"]
           }
         }
       }
@@ -3226,10 +3055,7 @@
             "ti-ascii": "D8",
             "display": "p̂",
             "accessible": "[phat]",
-            "variants": [
-              "[p̂]",
-              "[ṗ]"
-            ]
+            "variants": ["[p̂]", "[ṗ]"]
           }
         }
       }
@@ -3245,13 +3071,7 @@
             "ti-ascii": "D881",
             "display": "p̂₁",
             "accessible": "[phat1]",
-            "variants": [
-              "p̂₁",
-              "p̂1",
-              "ṗ₁",
-              "ṗ1",
-              "phat₁"
-            ]
+            "variants": ["p̂₁", "p̂1", "ṗ₁", "ṗ1", "phat₁"]
           }
         }
       }
@@ -3267,13 +3087,7 @@
             "ti-ascii": "D882",
             "display": "p̂₂",
             "accessible": "[phat2]",
-            "variants": [
-              "p̂₂",
-              "p̂2",
-              "ṗ₂",
-              "ṗ2",
-              "phat₂"
-            ]
+            "variants": ["p̂₂", "p̂2", "ṗ₂", "ṗ2", "phat₂"]
           }
         }
       }
@@ -3289,12 +3103,7 @@
             "ti-ascii": "CB81",
             "display": "x̄₁",
             "accessible": "[xhat1]",
-            "variants": [
-              "x̄₁",
-              "ẋ₁",
-              "ẋ1",
-              "xhat₁"
-            ]
+            "variants": ["x̄₁", "ẋ₁", "ẋ1", "xhat₁"]
           }
         }
       }
@@ -3310,9 +3119,7 @@
             "ti-ascii": "537881",
             "display": "Sx₁",
             "accessible": "[Sx1]",
-            "variants": [
-              "Sx₁"
-            ]
+            "variants": ["Sx₁"]
           }
         }
       }
@@ -3328,9 +3135,7 @@
             "ti-ascii": "6E81",
             "display": "n₁",
             "accessible": "[n1]",
-            "variants": [
-              "n₁"
-            ]
+            "variants": ["n₁"]
           }
         }
       }
@@ -3346,13 +3151,7 @@
             "ti-ascii": "CB82",
             "display": "x̄₂",
             "accessible": "[xhat2]",
-            "variants": [
-              "x̄₂",
-              "x̄2",
-              "ẋ₂",
-              "ẋ2",
-              "xhat₂"
-            ]
+            "variants": ["x̄₂", "x̄2", "ẋ₂", "ẋ2", "xhat₂"]
           }
         }
       }
@@ -3368,9 +3167,7 @@
             "ti-ascii": "537882",
             "display": "Sx₂",
             "accessible": "[Sx2]",
-            "variants": [
-              "Sx₂"
-            ]
+            "variants": ["Sx₂"]
           }
         }
       }
@@ -3386,9 +3183,7 @@
             "ti-ascii": "6E82",
             "display": "n₂",
             "accessible": "[n2]",
-            "variants": [
-              "n₂"
-            ]
+            "variants": ["n₂"]
           }
         }
       }
@@ -3404,9 +3199,7 @@
             "ti-ascii": "537870",
             "display": "Sxp",
             "accessible": "[Sxp]",
-            "variants": [
-              "Sxp"
-            ]
+            "variants": ["Sxp"]
           }
         }
       }
@@ -3422,9 +3215,7 @@
             "ti-ascii": "6C6F776572",
             "display": "lower",
             "accessible": "[lower]",
-            "variants": [
-              "lower"
-            ]
+            "variants": ["lower"]
           }
         }
       }
@@ -3440,9 +3231,7 @@
             "ti-ascii": "7570706572",
             "display": "upper",
             "accessible": "[upper]",
-            "variants": [
-              "upper"
-            ]
+            "variants": ["upper"]
           }
         }
       }
@@ -3473,9 +3262,7 @@
             "ti-ascii": "7212",
             "display": "r²",
             "accessible": "[r^2]",
-            "variants": [
-              "r²"
-            ]
+            "variants": ["r²"]
           }
         }
       }
@@ -3491,9 +3278,7 @@
             "ti-ascii": "5212",
             "display": "R²",
             "accessible": "[R^2]",
-            "variants": [
-              "R²"
-            ]
+            "variants": ["R²"]
           }
         }
       }
@@ -3678,10 +3463,7 @@
             "ti-ascii": "7528014D696E29",
             "display": "u(𝑛Min)",
             "accessible": "u(nMin)",
-            "variants": [
-              "u(𝑛Min)",
-              "u(𝒏Min)"
-            ]
+            "variants": ["u(𝑛Min)", "u(𝒏Min)"]
           }
         }
       }
@@ -3701,9 +3483,7 @@
             "ti-ascii": "56015374617274",
             "display": "VnStart",
             "accessible": "VnStart",
-            "variants": [
-              "V𝒏Start"
-            ]
+            "variants": ["V𝒏Start"]
           }
         }
       },
@@ -3717,10 +3497,7 @@
             "ti-ascii": "7628014D696E29",
             "display": "v(𝑛Min)",
             "accessible": "v(nMin)",
-            "variants": [
-              "v(𝑛Min)",
-              "v(𝒏Min)"
-            ]
+            "variants": ["v(𝑛Min)", "v(𝒏Min)"]
           }
         }
       }
@@ -3740,11 +3517,7 @@
             "ti-ascii": "55012D81",
             "display": "U𝑛-₁",
             "accessible": "Un-1",
-            "variants": [
-              "U𝑛-₁",
-              "U𝒏-₁",
-              "Un-₁"
-            ]
+            "variants": ["U𝑛-₁", "U𝒏-₁", "Un-₁"]
           }
         }
       },
@@ -3758,11 +3531,7 @@
             "ti-ascii": "55012D81",
             "display": "U𝑛-₁",
             "accessible": "Un-1",
-            "variants": [
-              "U𝑛-₁",
-              "U𝒏-₁",
-              "Un-₁"
-            ]
+            "variants": ["U𝑛-₁", "U𝒏-₁", "Un-₁"]
           }
         }
       }
@@ -3782,11 +3551,7 @@
             "ti-ascii": "56012D81",
             "display": "V𝑛-₁",
             "accessible": "Vn-1",
-            "variants": [
-              "V𝑛-₁",
-              "V𝒏-₁",
-              "Vn-₁"
-            ]
+            "variants": ["V𝑛-₁", "V𝒏-₁", "Vn-₁"]
           }
         }
       },
@@ -3800,11 +3565,7 @@
             "ti-ascii": "56012D81",
             "display": "V𝑛-₁",
             "accessible": "Vn-1",
-            "variants": [
-              "V𝑛-₁",
-              "V𝒏-₁",
-              "Vn-₁"
-            ]
+            "variants": ["V𝑛-₁", "V𝒏-₁", "Vn-₁"]
           }
         }
       }
@@ -3820,11 +3581,7 @@
             "ti-ascii": "5A7528014D696E29",
             "display": "Zu(𝑛Min)",
             "accessible": "Zu(nMin)",
-            "variants": [
-              "Zu(𝑛Min)",
-              "Zu(𝒏Min)",
-              "Zu(nmin)"
-            ]
+            "variants": ["Zu(𝑛Min)", "Zu(𝒏Min)", "Zu(nmin)"]
           }
         }
       }
@@ -3840,11 +3597,7 @@
             "ti-ascii": "5A7628014D696E29",
             "display": "Zv(𝑛Min)",
             "accessible": "Zv(nMin)",
-            "variants": [
-              "Zv(𝑛Min)",
-              "Zv(𝒏Min)",
-              "Zv(nmin)"
-            ]
+            "variants": ["Zv(𝑛Min)", "Zv(𝒏Min)", "Zv(nmin)"]
           }
         }
       }
@@ -3950,10 +3703,7 @@
             "ti-ascii": "5B6D696E",
             "display": "θmin",
             "accessible": "thetaMin",
-            "variants": [
-              "θmin",
-              "θMin"
-            ]
+            "variants": ["θmin", "θMin"]
           }
         }
       }
@@ -3969,10 +3719,7 @@
             "ti-ascii": "5B6D6178",
             "display": "θmax",
             "accessible": "thetaMax",
-            "variants": [
-              "θmax",
-              "θMax"
-            ]
+            "variants": ["θmax", "θMax"]
           }
         }
       }
@@ -4048,9 +3795,7 @@
             "ti-ascii": "5A5B6D696E",
             "display": "Zθmin",
             "accessible": "Zthetamin",
-            "variants": [
-              "Zθmin"
-            ]
+            "variants": ["Zθmin"]
           }
         }
       }
@@ -4066,9 +3811,7 @@
             "ti-ascii": "5A5B6D6178",
             "display": "Zθmax",
             "accessible": "Zthetamax",
-            "variants": [
-              "Zθmax"
-            ]
+            "variants": ["Zθmax"]
           }
         }
       }
@@ -4133,10 +3876,7 @@
             "ti-ascii": "014D696E",
             "display": "𝑛Min",
             "accessible": "nMin",
-            "variants": [
-              "𝑛Min",
-              "𝒏Min"
-            ]
+            "variants": ["𝑛Min", "𝒏Min"]
           }
         }
       },
@@ -4180,10 +3920,7 @@
             "ti-ascii": "014D6178",
             "display": "𝑛Max",
             "accessible": "nMax",
-            "variants": [
-              "𝑛Max",
-              "𝒏Max"
-            ]
+            "variants": ["𝑛Max", "𝒏Max"]
           }
         }
       }
@@ -4199,10 +3936,7 @@
             "ti-ascii": "5A014D6178",
             "display": "Z𝑛Max",
             "accessible": "ZnMax",
-            "variants": [
-              "Z𝑛Max",
-              "Z𝒏Max"
-            ]
+            "variants": ["Z𝑛Max", "Z𝒏Max"]
           }
         }
       }
@@ -4222,9 +3956,7 @@
             "ti-ascii": "015374617274",
             "display": "𝑛Start",
             "accessible": "nStart",
-            "variants": [
-              "𝑛Start"
-            ]
+            "variants": ["𝑛Start"]
           }
         }
       },
@@ -4238,10 +3970,7 @@
             "ti-ascii": "014D696E",
             "display": "𝑛Min",
             "accessible": "nMin",
-            "variants": [
-              "𝑛Min",
-              "𝒏Min"
-            ]
+            "variants": ["𝑛Min", "𝒏Min"]
           }
         }
       }
@@ -4257,10 +3986,7 @@
             "ti-ascii": "5A014D696E",
             "display": "Z𝑛Min",
             "accessible": "ZnMin",
-            "variants": [
-              "Z𝑛Min",
-              "Z𝒏Min"
-            ]
+            "variants": ["Z𝑛Min", "Z𝒏Min"]
           }
         }
       }
@@ -4276,10 +4002,7 @@
             "ti-ascii": "BE54626C",
             "display": "ΔTbl",
             "accessible": "DeltaTbl",
-            "variants": [
-              "ΔTbl",
-              "∆Tbl"
-            ]
+            "variants": ["ΔTbl", "∆Tbl"]
           }
         }
       }
@@ -4310,9 +4033,7 @@
             "ti-ascii": "5B73746570",
             "display": "θstep",
             "accessible": "thetastep",
-            "variants": [
-              "θstep"
-            ]
+            "variants": ["θstep"]
           }
         }
       }
@@ -4343,9 +4064,7 @@
             "ti-ascii": "5A5B73746570",
             "display": "Zθstep",
             "accessible": "Zthetastep",
-            "variants": [
-              "Zθstep"
-            ]
+            "variants": ["Zθstep"]
           }
         }
       }
@@ -4361,10 +4080,7 @@
             "ti-ascii": "BE58",
             "display": "ΔX",
             "accessible": "DeltaX",
-            "variants": [
-              "ΔX",
-              "∆X"
-            ]
+            "variants": ["ΔX", "∆X"]
           }
         }
       }
@@ -4380,10 +4096,7 @@
             "ti-ascii": "BE59",
             "display": "ΔY",
             "accessible": "DeltaY",
-            "variants": [
-              "ΔY",
-              "∆Y"
-            ]
+            "variants": ["ΔY", "∆Y"]
           }
         }
       }
@@ -4444,10 +4157,7 @@
             "ti-ascii": "DD",
             "display": "𝗡",
             "accessible": "|N",
-            "variants": [
-              "𝗡",
-              "|𝗡"
-            ]
+            "variants": ["𝗡", "|𝗡"]
           }
         }
       }
@@ -4523,9 +4233,7 @@
             "ti-ascii": "502F59",
             "display": "P/Y",
             "accessible": "|P/Y",
-            "variants": [
-              "P/Y"
-            ]
+            "variants": ["P/Y"]
           }
         }
       }
@@ -4541,9 +4249,7 @@
             "ti-ascii": "432F59",
             "display": "C/Y",
             "accessible": "|C/Y",
-            "variants": [
-              "C/Y"
-            ]
+            "variants": ["C/Y"]
           }
         }
       }
@@ -4559,10 +4265,7 @@
             "ti-ascii": "7728014D696E29",
             "display": "w(𝑛Min)",
             "accessible": "w(nMin)",
-            "variants": [
-              "w(𝑛Min)",
-              "w(𝒏Min)"
-            ]
+            "variants": ["w(𝑛Min)", "w(𝒏Min)"]
           }
         }
       }
@@ -4578,10 +4281,7 @@
             "ti-ascii": "5A7728014D696E29",
             "display": "Zw(𝑛Min)",
             "accessible": "Zw(nMin)",
-            "variants": [
-              "Zw(𝑛Min)",
-              "Zw(𝒏Min)"
-            ]
+            "variants": ["Zw(𝑛Min)", "Zw(𝒏Min)"]
           }
         }
       }
@@ -4808,9 +4508,7 @@
           "ti-ascii": "17",
           "display": "≤",
           "accessible": "<=",
-          "variants": [
-            "≤"
-          ]
+          "variants": ["≤"]
         }
       }
     }
@@ -4826,9 +4524,7 @@
           "ti-ascii": "19",
           "display": "≥",
           "accessible": ">=",
-          "variants": [
-            "≥"
-          ]
+          "variants": ["≥"]
         }
       }
     }
@@ -4844,9 +4540,7 @@
           "ti-ascii": "18",
           "display": "≠",
           "accessible": "!=",
-          "variants": [
-            "≠"
-          ]
+          "variants": ["≠"]
         }
       }
     }
@@ -5427,10 +5121,7 @@
           "ti-ascii": "0A",
           "display": "□",
           "accessible": "squareplot",
-          "variants": [
-            "□",
-            "plotsquare"
-          ]
+          "variants": ["□", "plotsquare"]
         }
       }
     }
@@ -5446,10 +5137,7 @@
           "ti-ascii": "0B",
           "display": "﹢",
           "accessible": "crossplot",
-          "variants": [
-            "﹢",
-            "plotcross"
-          ]
+          "variants": ["﹢", "plotcross"]
         }
       }
     }
@@ -5465,9 +5153,7 @@
           "ti-ascii": "0C",
           "display": "·",
           "accessible": "dotplot",
-          "variants": [
-            "plotdot"
-          ]
+          "variants": ["plotdot"]
         }
       }
     }
@@ -6280,9 +5966,7 @@
           "ti-ascii": "27",
           "display": "\\'",
           "accessible": "'",
-          "variants": [
-            "\\'"
-          ]
+          "variants": ["\\'"]
         }
       }
     }
@@ -6313,10 +5997,7 @@
           "ti-ascii": "1A",
           "display": "⁻",
           "accessible": "~",
-          "variants": [
-            "⁻",
-            "|-"
-          ]
+          "variants": ["⁻", "|-"]
         }
       }
     }
@@ -6664,9 +6345,7 @@
             "ti-ascii": "C650726E28",
             "display": "ΣPrn(",
             "accessible": "SigmaPrn(",
-            "variants": [
-              "ΣPrn("
-            ]
+            "variants": ["ΣPrn("]
           }
         }
       }
@@ -6682,9 +6361,7 @@
             "ti-ascii": "C6496E7428",
             "display": "ΣInt(",
             "accessible": "SigmaInt(",
-            "variants": [
-              "ΣInt("
-            ]
+            "variants": ["ΣInt("]
           }
         }
       }
@@ -6700,9 +6377,7 @@
             "ti-ascii": "054E6F6D28",
             "display": "►Nom(",
             "accessible": ">Nom(",
-            "variants": [
-              "►Nom("
-            ]
+            "variants": ["►Nom("]
           }
         }
       }
@@ -6718,9 +6393,7 @@
             "ti-ascii": "0545666628",
             "display": "►Eff(",
             "accessible": ">Eff(",
-            "variants": [
-              "►Eff("
-            ]
+            "variants": ["►Eff("]
           }
         }
       }
@@ -6916,11 +6589,7 @@
             "ti-ascii": "D91263646628",
             "display": "χ²cdf(",
             "accessible": "chi^2cdf(",
-            "variants": [
-              "χ²cdf(",
-              "χ^2cdf(",
-              "chi²cdf("
-            ]
+            "variants": ["χ²cdf(", "χ^2cdf(", "chi²cdf("]
           }
         }
       }
@@ -6936,10 +6605,7 @@
             "ti-ascii": "DA63646628",
             "display": "𝙵cdf(",
             "accessible": "Fcdf(",
-            "variants": [
-              "𝙵cdf(",
-              "𝐅cdf("
-            ]
+            "variants": ["𝙵cdf(", "𝐅cdf("]
           }
         }
       }
@@ -7075,11 +6741,7 @@
             "ti-ascii": "D91270646628",
             "display": "χ²pdf(",
             "accessible": "chi^2pdf(",
-            "variants": [
-              "χ²pdf(",
-              "χ^2pdf(",
-              "chi²pdf("
-            ]
+            "variants": ["χ²pdf(", "χ^2pdf(", "chi²pdf("]
           }
         }
       }
@@ -7095,10 +6757,7 @@
             "ti-ascii": "DA70646628",
             "display": "𝙵pdf(",
             "accessible": "Fpdf(",
-            "variants": [
-              "𝙵pdf(",
-              "𝐅pdf("
-            ]
+            "variants": ["𝙵pdf(", "𝐅pdf("]
           }
         }
       }
@@ -7174,9 +6833,7 @@
             "ti-ascii": "74766D5FDD",
             "display": "tvm_𝗡",
             "accessible": "tvm_N",
-            "variants": [
-              "tvm_𝗡"
-            ]
+            "variants": ["tvm_𝗡"]
           }
         }
       }
@@ -7312,9 +6969,7 @@
             "ti-ascii": "BE4C69737428",
             "display": "ΔList(",
             "accessible": "DeltaList(",
-            "variants": [
-              "ΔList("
-            ]
+            "variants": ["ΔList("]
           }
         }
       }
@@ -7360,9 +7015,7 @@
             "ti-ascii": "0552656374",
             "display": "►Rect",
             "accessible": ">Rect",
-            "variants": [
-              "►Rect"
-            ]
+            "variants": ["►Rect"]
           }
         }
       }
@@ -7378,9 +7031,7 @@
             "ti-ascii": "05506F6C6172",
             "display": "►Polar",
             "accessible": ">Polar",
-            "variants": [
-              "►Polar"
-            ]
+            "variants": ["►Polar"]
           }
         }
       }
@@ -7396,9 +7047,7 @@
             "ti-ascii": "DB",
             "display": "𝑒",
             "accessible": "[e]",
-            "variants": [
-              "𝑒"
-            ]
+            "variants": ["𝑒"]
           }
         }
       }
@@ -7489,11 +7138,7 @@
             "ti-ascii": "5368616465D91228",
             "display": "Shadeχ²(",
             "accessible": "Shadechi^2(",
-            "variants": [
-              "Shadeχ²(",
-              "Shadeχ^2(",
-              "Shadechi²("
-            ]
+            "variants": ["Shadeχ²(", "Shadeχ^2(", "Shadechi²("]
           }
         }
       }
@@ -7509,10 +7154,7 @@
             "ti-ascii": "5368616465DA28BB39",
             "display": "Shade𝙵(",
             "accessible": "ShadeF(",
-            "variants": [
-              "Shade𝙵(",
-              "Shade𝐅("
-            ]
+            "variants": ["Shade𝙵(", "Shade𝐅("]
           }
         }
       }
@@ -7528,9 +7170,7 @@
             "ti-ascii": "4D617472056C69737428",
             "display": "Matr►list(",
             "accessible": "Matr>list(",
-            "variants": [
-              "Matr►list("
-            ]
+            "variants": ["Matr►list("]
           }
         }
       }
@@ -7546,9 +7186,7 @@
             "ti-ascii": "4C697374056D61747228",
             "display": "List►matr(",
             "accessible": "List>matr(",
-            "variants": [
-              "List►matr("
-            ]
+            "variants": ["List►matr("]
           }
         }
       }
@@ -7639,11 +7277,7 @@
             "ti-ascii": "D9122D5465737428",
             "display": "χ²-Test(",
             "accessible": "chi^2-Test(",
-            "variants": [
-              "χ²-Test(",
-              "χ^2-Test(",
-              "chi²-Test("
-            ]
+            "variants": ["χ²-Test(", "χ^2-Test(", "chi²-Test("]
           }
         }
       }
@@ -7749,10 +7383,7 @@
             "ti-ascii": "322D53616D70DA5465737420",
             "display": "2-Samp𝙵Test ",
             "accessible": "2-SampFTest ",
-            "variants": [
-              "2-Samp𝙵Test ",
-              "2-Samp𝐅Test "
-            ]
+            "variants": ["2-Samp𝙵Test ", "2-Samp𝐅Test "]
           }
         }
       }
@@ -7858,12 +7489,7 @@
             "ti-ascii": "72DB5E5BD7",
             "display": "r𝑒^θ𝑖",
             "accessible": "re^thetai",
-            "variants": [
-              "r𝑒^θ𝑖",
-              "re^θ𝑖",
-              "re^θi",
-              "re^theta𝑖"
-            ]
+            "variants": ["r𝑒^θ𝑖", "re^θ𝑖", "re^θi", "re^theta𝑖"]
           }
         }
       }
@@ -7879,9 +7505,7 @@
             "ti-ascii": "612B62D7",
             "display": "a+b𝑖",
             "accessible": "a+bi",
-            "variants": [
-              "a+b𝑖"
-            ]
+            "variants": ["a+b𝑖"]
           }
         }
       }
@@ -7989,9 +7613,7 @@
             "ti-ascii": "45717505537472696E6728",
             "display": "Equ►String(",
             "accessible": "Equ>String(",
-            "variants": [
-              "Equ►String("
-            ]
+            "variants": ["Equ►String("]
           }
         }
       }
@@ -8007,9 +7629,7 @@
             "ti-ascii": "537472696E670545717528",
             "display": "String►Equ(",
             "accessible": "String>Equ(",
-            "variants": [
-              "String►Equ("
-            ]
+            "variants": ["String►Equ("]
           }
         }
       }
@@ -8880,10 +8500,7 @@
             "ti-ascii": "B6",
             "display": "´",
             "accessible": "|'",
-            "variants": [
-              "´",
-              "^^'"
-            ]
+            "variants": ["´", "^^'"]
           }
         }
       }
@@ -8899,9 +8516,7 @@
             "ti-ascii": "B7",
             "display": "`",
             "accessible": "|`",
-            "variants": [
-              "^^`"
-            ]
+            "variants": ["^^`"]
           }
         }
       }
@@ -8917,10 +8532,7 @@
             "ti-ascii": "B8",
             "display": "¨",
             "accessible": "|:",
-            "variants": [
-              "¨",
-              "^^:"
-            ]
+            "variants": ["¨", "^^:"]
           }
         }
       }
@@ -8936,9 +8548,7 @@
             "ti-ascii": "B9",
             "display": "¿",
             "accessible": "|?",
-            "variants": [
-              "¿"
-            ]
+            "variants": ["¿"]
           }
         }
       }
@@ -8954,9 +8564,7 @@
             "ti-ascii": "BA",
             "display": "¡",
             "accessible": "|!",
-            "variants": [
-              "¡"
-            ]
+            "variants": ["¡"]
           }
         }
       }
@@ -8972,9 +8580,7 @@
             "ti-ascii": "BB",
             "display": "α",
             "accessible": "alpha",
-            "variants": [
-              "α"
-            ]
+            "variants": ["α"]
           }
         }
       }
@@ -8990,9 +8596,7 @@
             "ti-ascii": "BC",
             "display": "β",
             "accessible": "beta",
-            "variants": [
-              "β"
-            ]
+            "variants": ["β"]
           }
         }
       }
@@ -9008,9 +8612,7 @@
             "ti-ascii": "BD",
             "display": "γ",
             "accessible": "gamma",
-            "variants": [
-              "γ"
-            ]
+            "variants": ["γ"]
           }
         }
       }
@@ -9026,9 +8628,7 @@
             "ti-ascii": "BE",
             "display": "Δ",
             "accessible": "Delta",
-            "variants": [
-              "Δ"
-            ]
+            "variants": ["Δ"]
           }
         }
       }
@@ -9044,9 +8644,7 @@
             "ti-ascii": "BF",
             "display": "δ",
             "accessible": "delta",
-            "variants": [
-              "δ"
-            ]
+            "variants": ["δ"]
           }
         }
       }
@@ -9062,9 +8660,7 @@
             "ti-ascii": "C0",
             "display": "ε",
             "accessible": "epsilon",
-            "variants": [
-              "ε"
-            ]
+            "variants": ["ε"]
           }
         }
       }
@@ -9080,9 +8676,7 @@
             "ti-ascii": "C2",
             "display": "λ",
             "accessible": "lambda",
-            "variants": [
-              "λ"
-            ]
+            "variants": ["λ"]
           }
         }
       }
@@ -9098,9 +8692,7 @@
             "ti-ascii": "C3",
             "display": "μ",
             "accessible": "mu",
-            "variants": [
-              "μ"
-            ]
+            "variants": ["μ"]
           }
         }
       }
@@ -9116,9 +8708,7 @@
             "ti-ascii": "C4",
             "display": "π",
             "accessible": "greek_pi",
-            "variants": [
-              "|π"
-            ]
+            "variants": ["|π"]
           }
         }
       }
@@ -9134,9 +8724,7 @@
             "ti-ascii": "C5",
             "display": "ρ",
             "accessible": "rho",
-            "variants": [
-              "ρ"
-            ]
+            "variants": ["ρ"]
           }
         }
       }
@@ -9152,9 +8740,7 @@
             "ti-ascii": "C6",
             "display": "Σ",
             "accessible": "Sigma",
-            "variants": [
-              "Σ"
-            ]
+            "variants": ["Σ"]
           }
         }
       }
@@ -9170,9 +8756,7 @@
             "ti-ascii": "C9",
             "display": "Φ",
             "accessible": "Phi",
-            "variants": [
-              "Φ"
-            ]
+            "variants": ["Φ"]
           }
         }
       }
@@ -9188,9 +8772,7 @@
             "ti-ascii": "CA",
             "display": "Ω",
             "accessible": "Omega",
-            "variants": [
-              "Ω"
-            ]
+            "variants": ["Ω"]
           }
         }
       }
@@ -9206,9 +8788,7 @@
             "ti-ascii": "D8",
             "display": "p̂",
             "accessible": "phat",
-            "variants": [
-              "ṗ"
-            ]
+            "variants": ["ṗ"]
           }
         }
       }
@@ -9224,9 +8804,7 @@
             "ti-ascii": "D9",
             "display": "χ",
             "accessible": "chi",
-            "variants": [
-              "χ"
-            ]
+            "variants": ["χ"]
           }
         }
       }
@@ -9242,10 +8820,7 @@
             "ti-ascii": "DA",
             "display": "𝙵",
             "accessible": "|F",
-            "variants": [
-              "𝐅",
-              "|𝐅"
-            ]
+            "variants": ["𝐅", "|𝐅"]
           }
         }
       }
@@ -9651,9 +9226,7 @@
             "ti-ascii": "C7",
             "display": "σ",
             "accessible": "sigma",
-            "variants": [
-              "σ"
-            ]
+            "variants": ["σ"]
           }
         }
       }
@@ -9669,9 +9242,7 @@
             "ti-ascii": "C8",
             "display": "τ",
             "accessible": "tau",
-            "variants": [
-              "τ"
-            ]
+            "variants": ["τ"]
           }
         }
       }
@@ -9882,9 +9453,7 @@
             "ti-ascii": "CE",
             "display": "…",
             "accessible": "...",
-            "variants": [
-              "…"
-            ]
+            "variants": ["…"]
           }
         }
       }
@@ -9900,9 +9469,7 @@
             "ti-ascii": "13",
             "display": "∠",
             "accessible": "|<",
-            "variants": [
-              "∠"
-            ]
+            "variants": ["∠"]
           }
         }
       }
@@ -9918,9 +9485,7 @@
             "ti-ascii": "F4",
             "display": "ß",
             "accessible": "sharps",
-            "variants": [
-              "ß"
-            ]
+            "variants": ["ß"]
           }
         }
       }
@@ -9936,9 +9501,7 @@
             "ti-ascii": "CD",
             "display": "ˣ",
             "accessible": "^^x",
-            "variants": [
-              "ˣ"
-            ]
+            "variants": ["ˣ"]
           }
         }
       }
@@ -9954,9 +9517,7 @@
             "ti-ascii": "0D",
             "display": "ᴛ",
             "accessible": "smallT",
-            "variants": [
-              "ᴛ"
-            ]
+            "variants": ["ᴛ"]
           }
         }
       }
@@ -9972,9 +9533,7 @@
             "ti-ascii": "80",
             "display": "₀",
             "accessible": "small0",
-            "variants": [
-              "₀"
-            ]
+            "variants": ["₀"]
           }
         }
       }
@@ -9990,9 +9549,7 @@
             "ti-ascii": "81",
             "display": "₁",
             "accessible": "small1",
-            "variants": [
-              "₁"
-            ]
+            "variants": ["₁"]
           }
         }
       }
@@ -10008,9 +9565,7 @@
             "ti-ascii": "82",
             "display": "₂",
             "accessible": "small2",
-            "variants": [
-              "₂"
-            ]
+            "variants": ["₂"]
           }
         }
       }
@@ -10026,9 +9581,7 @@
             "ti-ascii": "83",
             "display": "₃",
             "accessible": "small3",
-            "variants": [
-              "₃"
-            ]
+            "variants": ["₃"]
           }
         }
       }
@@ -10044,9 +9597,7 @@
             "ti-ascii": "84",
             "display": "₄",
             "accessible": "small4",
-            "variants": [
-              "₄"
-            ]
+            "variants": ["₄"]
           }
         }
       }
@@ -10062,9 +9613,7 @@
             "ti-ascii": "85",
             "display": "₅",
             "accessible": "small5",
-            "variants": [
-              "₅"
-            ]
+            "variants": ["₅"]
           }
         }
       }
@@ -10080,9 +9629,7 @@
             "ti-ascii": "86",
             "display": "₆",
             "accessible": "small6",
-            "variants": [
-              "₆"
-            ]
+            "variants": ["₆"]
           }
         }
       }
@@ -10098,9 +9645,7 @@
             "ti-ascii": "87",
             "display": "₇",
             "accessible": "small7",
-            "variants": [
-              "₇"
-            ]
+            "variants": ["₇"]
           }
         }
       }
@@ -10116,9 +9661,7 @@
             "ti-ascii": "88",
             "display": "₈",
             "accessible": "small8",
-            "variants": [
-              "₈"
-            ]
+            "variants": ["₈"]
           }
         }
       }
@@ -10134,9 +9677,7 @@
             "ti-ascii": "89",
             "display": "₉",
             "accessible": "small9",
-            "variants": [
-              "₉"
-            ]
+            "variants": ["₉"]
           }
         }
       }
@@ -10152,9 +9693,7 @@
             "ti-ascii": "1D",
             "display": "₁₀",
             "accessible": "small10",
-            "variants": [
-              "₁₀"
-            ]
+            "variants": ["₁₀"]
           }
         }
       }
@@ -10170,9 +9709,7 @@
             "ti-ascii": "CF",
             "display": "◄",
             "accessible": "<|",
-            "variants": [
-              "◄"
-            ]
+            "variants": ["◄"]
           }
         }
       }
@@ -10188,9 +9725,7 @@
             "ti-ascii": "05",
             "display": "►",
             "accessible": "|>",
-            "variants": [
-              "►"
-            ]
+            "variants": ["►"]
           }
         }
       }
@@ -10206,9 +9741,7 @@
             "ti-ascii": "1E",
             "display": "↑",
             "accessible": "uparrow",
-            "variants": [
-              "↑"
-            ]
+            "variants": ["↑"]
           }
         }
       }
@@ -10224,9 +9757,7 @@
             "ti-ascii": "1F",
             "display": "↓",
             "accessible": "downarrow",
-            "variants": [
-              "↓"
-            ]
+            "variants": ["↓"]
           }
         }
       }
@@ -10242,9 +9773,7 @@
             "ti-ascii": "09",
             "display": "×",
             "accessible": "xmark",
-            "variants": [
-              "×"
-            ]
+            "variants": ["×"]
           }
         }
       }
@@ -10260,9 +9789,7 @@
             "ti-ascii": "08",
             "display": "∫",
             "accessible": "integral",
-            "variants": [
-              "∫"
-            ]
+            "variants": ["∫"]
           }
         }
       }
@@ -10278,10 +9805,7 @@
             "ti-ascii": "F3",
             "display": "🡁",
             "accessible": "bolduparrow",
-            "variants": [
-              "🡁",
-              "🡅"
-            ]
+            "variants": ["🡁", "🡅"]
           }
         }
       }
@@ -10297,10 +9821,7 @@
             "ti-ascii": "07",
             "display": "🠿",
             "accessible": "bolddownarrow",
-            "variants": [
-              "🠿",
-              "🡇"
-            ]
+            "variants": ["🠿", "🡇"]
           }
         }
       }
@@ -10331,9 +9852,7 @@
             "ti-ascii": "7F",
             "display": "⌸",
             "accessible": "invertedequal",
-            "variants": [
-              "⌸"
-            ]
+            "variants": ["⌸"]
           }
         }
       }
@@ -10354,9 +9873,7 @@
           "ti-ascii": "10",
           "display": "√",
           "accessible": "sqrt",
-          "variants": [
-            "√"
-          ]
+          "variants": ["√"]
         }
       }
     },
@@ -10370,9 +9887,7 @@
           "ti-ascii": "1028",
           "display": "√(",
           "accessible": "sqrt(",
-          "variants": [
-            "√("
-          ]
+          "variants": ["√("]
         }
       }
     }
@@ -10392,9 +9907,7 @@
           "ti-ascii": "0E10",
           "display": "³√",
           "accessible": "cuberoot",
-          "variants": [
-            "³√"
-          ]
+          "variants": ["³√"]
         }
       }
     },
@@ -10408,9 +9921,7 @@
           "ti-ascii": "0E1028",
           "display": "³√(",
           "accessible": "cuberoot(",
-          "variants": [
-            "³√("
-          ]
+          "variants": ["³√("]
         }
       }
     }
@@ -10462,9 +9973,7 @@
           "ti-ascii": "DB5E",
           "display": "𝑒^",
           "accessible": "e^^",
-          "variants": [
-            "𝑒^"
-          ]
+          "variants": ["𝑒^"]
         }
       }
     },
@@ -10478,9 +9987,7 @@
           "ti-ascii": "DB5E28",
           "display": "𝑒^(",
           "accessible": "e^^(",
-          "variants": [
-            "𝑒^("
-          ]
+          "variants": ["𝑒^("]
         }
       }
     }
@@ -10532,9 +10039,7 @@
           "ti-ascii": "1D5E",
           "display": "₁₀^",
           "accessible": "10^^",
-          "variants": [
-            "₁₀^"
-          ]
+          "variants": ["₁₀^"]
         }
       }
     },
@@ -10548,9 +10053,7 @@
           "ti-ascii": "1D5E28",
           "display": "₁₀^(",
           "accessible": "10^^(",
-          "variants": [
-            "₁₀^("
-          ]
+          "variants": ["₁₀^("]
         }
       }
     }
@@ -10602,11 +10105,7 @@
           "ti-ascii": "73696E1120",
           "display": "sin⁻¹ ",
           "accessible": "sin^-1 ",
-          "variants": [
-            "sin⁻¹ ",
-            "arcsin ",
-            "asin "
-          ]
+          "variants": ["sin⁻¹ ", "arcsin ", "asin "]
         }
       }
     },
@@ -10620,11 +10119,7 @@
           "ti-ascii": "73696E1128",
           "display": "sin⁻¹(",
           "accessible": "sin^-1(",
-          "variants": [
-            "sin⁻¹(",
-            "arcsin(",
-            "asin("
-          ]
+          "variants": ["sin⁻¹(", "arcsin(", "asin("]
         }
       }
     }
@@ -10676,11 +10171,7 @@
           "ti-ascii": "636F731120",
           "display": "cos⁻¹ ",
           "accessible": "cos^-1 ",
-          "variants": [
-            "cos⁻¹ ",
-            "arccos ",
-            "acos "
-          ]
+          "variants": ["cos⁻¹ ", "arccos ", "acos "]
         }
       }
     },
@@ -10694,11 +10185,7 @@
           "ti-ascii": "636F731128",
           "display": "cos⁻¹(",
           "accessible": "cos^-1(",
-          "variants": [
-            "cos⁻¹(",
-            "arccos(",
-            "acos("
-          ]
+          "variants": ["cos⁻¹(", "arccos(", "acos("]
         }
       }
     }
@@ -10750,11 +10237,7 @@
           "ti-ascii": "74616E1120",
           "display": "tan⁻¹ ",
           "accessible": "tan^-1 ",
-          "variants": [
-            "tan⁻¹ ",
-            "arctan ",
-            "atan "
-          ]
+          "variants": ["tan⁻¹ ", "arctan ", "atan "]
         }
       }
     },
@@ -10768,11 +10251,7 @@
           "ti-ascii": "74616E1128",
           "display": "tan⁻¹(",
           "accessible": "tan^-1(",
-          "variants": [
-            "tan⁻¹(",
-            "arctan(",
-            "atan("
-          ]
+          "variants": ["tan⁻¹(", "arctan(", "atan("]
         }
       }
     }
@@ -10824,11 +10303,7 @@
           "ti-ascii": "73696E681120",
           "display": "sinh⁻¹ ",
           "accessible": "sinh^-1 ",
-          "variants": [
-            "sinh⁻¹ ",
-            "arcsinh ",
-            "asinh "
-          ]
+          "variants": ["sinh⁻¹ ", "arcsinh ", "asinh "]
         }
       }
     },
@@ -10842,11 +10317,7 @@
           "ti-ascii": "73696E681128",
           "display": "sinh⁻¹(",
           "accessible": "sinh^-1(",
-          "variants": [
-            "sinh⁻¹(",
-            "arcsinh(",
-            "asinh("
-          ]
+          "variants": ["sinh⁻¹(", "arcsinh(", "asinh("]
         }
       }
     }
@@ -10898,11 +10369,7 @@
           "ti-ascii": "636F73681120",
           "display": "cosh⁻¹ ",
           "accessible": "cosh^-1 ",
-          "variants": [
-            "cosh⁻¹ ",
-            "arccosh ",
-            "acosh "
-          ]
+          "variants": ["cosh⁻¹ ", "arccosh ", "acosh "]
         }
       }
     },
@@ -10916,11 +10383,7 @@
           "ti-ascii": "636F73681128",
           "display": "cosh⁻¹(",
           "accessible": "cosh^-1(",
-          "variants": [
-            "cosh⁻¹(",
-            "arccosh(",
-            "acosh("
-          ]
+          "variants": ["cosh⁻¹(", "arccosh(", "acosh("]
         }
       }
     }
@@ -10972,11 +10435,7 @@
           "ti-ascii": "74616E681120",
           "display": "tanh⁻¹ ",
           "accessible": "tanh^-1 ",
-          "variants": [
-            "tanh⁻¹ ",
-            "arctanh( ",
-            "atanh( "
-          ]
+          "variants": ["tanh⁻¹ ", "arctanh( ", "atanh( "]
         }
       }
     },
@@ -10990,11 +10449,7 @@
           "ti-ascii": "74616E681128",
           "display": "tanh⁻¹(",
           "accessible": "tanh^-1(",
-          "variants": [
-            "tanh⁻¹(",
-            "arctanh(",
-            "atanh("
-          ]
+          "variants": ["tanh⁻¹(", "arctanh(", "atanh("]
         }
       }
     }
@@ -11445,11 +10900,7 @@
           "ti-ascii": "DC",
           "display": "ʟ",
           "accessible": "smallL",
-          "variants": [
-            "ʟ",
-            "⌊",
-            "|L"
-          ]
+          "variants": ["ʟ", "⌊", "|L"]
         }
       }
     }
@@ -11811,11 +11262,7 @@
             "ti-ascii": "D912474F462D5465737428",
             "display": "χ²GOF-Test(",
             "accessible": "chi^2GOF-Test(",
-            "variants": [
-              "χ²GOF-Test(",
-              "χ^2GOF-Test(",
-              "chi²GOF-Test("
-            ]
+            "variants": ["χ²GOF-Test(", "χ^2GOF-Test(", "chi²GOF-Test("]
           }
         }
       }
@@ -11876,9 +11323,7 @@
             "ti-ascii": "5A4672616331F632",
             "display": "ZFrac1⁄2",
             "accessible": "ZFrac1/2",
-            "variants": [
-              "ZFrac1⁄2"
-            ]
+            "variants": ["ZFrac1⁄2"]
           }
         }
       }
@@ -11894,9 +11339,7 @@
             "ti-ascii": "5A4672616331F633",
             "display": "ZFrac1⁄3",
             "accessible": "ZFrac1/3",
-            "variants": [
-              "ZFrac1⁄3"
-            ]
+            "variants": ["ZFrac1⁄3"]
           }
         }
       }
@@ -11912,9 +11355,7 @@
             "ti-ascii": "5A4672616331F634",
             "display": "ZFrac1⁄4",
             "accessible": "ZFrac1/4",
-            "variants": [
-              "ZFrac1⁄4"
-            ]
+            "variants": ["ZFrac1⁄4"]
           }
         }
       }
@@ -11930,9 +11371,7 @@
             "ti-ascii": "5A4672616331F635",
             "display": "ZFrac1⁄5",
             "accessible": "ZFrac1/5",
-            "variants": [
-              "ZFrac1⁄5"
-            ]
+            "variants": ["ZFrac1⁄5"]
           }
         }
       }
@@ -11948,9 +11387,7 @@
             "ti-ascii": "5A4672616331F638",
             "display": "ZFrac1⁄8",
             "accessible": "ZFrac1/8",
-            "variants": [
-              "ZFrac1⁄8"
-            ]
+            "variants": ["ZFrac1⁄8"]
           }
         }
       }
@@ -11966,9 +11403,7 @@
             "ti-ascii": "5A4672616331F63130",
             "display": "ZFrac1⁄10",
             "accessible": "ZFrac1/10",
-            "variants": [
-              "ZFrac1⁄10"
-            ]
+            "variants": ["ZFrac1⁄10"]
           }
         }
       }
@@ -11984,9 +11419,7 @@
             "ti-ascii": "F7",
             "display": ".",
             "accessible": "mathprintbox",
-            "variants": [
-              "⬚"
-            ]
+            "variants": ["⬚"]
           }
         }
       }
@@ -12002,9 +11435,7 @@
             "ti-ascii": "F6",
             "display": "⁄",
             "accessible": "n/d",
-            "variants": [
-              "⁄"
-            ]
+            "variants": ["⁄"]
           }
         }
       }
@@ -12020,10 +11451,7 @@
             "ti-ascii": "F5",
             "display": "󸏵",
             "accessible": "Un/d",
-            "variants": [
-              "󸏵",
-              "ᵤ"
-            ]
+            "variants": ["󸏵", "ᵤ"]
           }
         }
       }
@@ -12039,11 +11467,7 @@
             "ti-ascii": "056EF664CF05556EF664",
             "display": "►n⁄d◄►Un⁄d",
             "accessible": ">n/d<>Un/d",
-            "variants": [
-              "►n⁄d◄►Un⁄d",
-              "►n/d◄►Un/d",
-              ">n⁄d<>Un⁄d"
-            ]
+            "variants": ["►n⁄d◄►Un⁄d", "►n/d◄►Un/d", ">n⁄d<>Un⁄d"]
           }
         }
       }
@@ -12059,9 +11483,7 @@
             "ti-ascii": "0546CF0544",
             "display": "►F◄►D",
             "accessible": ">F<>D",
-            "variants": [
-              "►F◄►D"
-            ]
+            "variants": ["►F◄►D"]
           }
         }
       }
@@ -12092,9 +11514,7 @@
             "ti-ascii": "C628",
             "display": "Σ(",
             "accessible": "Sigma(",
-            "variants": [
-              "Σ("
-            ]
+            "variants": ["Σ("]
           }
         }
       }
@@ -12140,9 +11560,7 @@
             "ti-ascii": "4D4154485052494E54",
             "display": "MATHPRINT",
             "accessible": "[MATHPRINT]",
-            "variants": [
-              "MATHPRINT"
-            ]
+            "variants": ["MATHPRINT"]
           }
         }
       }
@@ -12158,9 +11576,7 @@
             "ti-ascii": "434C4153534943",
             "display": "CLASSIC",
             "accessible": "[CLASSIC]",
-            "variants": [
-              "CLASSIC"
-            ]
+            "variants": ["CLASSIC"]
           }
         }
       }
@@ -12176,9 +11592,7 @@
             "ti-ascii": "6EF664",
             "display": "n⁄d",
             "accessible": "[n/d]",
-            "variants": [
-              "n⁄d"
-            ]
+            "variants": ["n⁄d"]
           }
         }
       }
@@ -12194,9 +11608,7 @@
             "ti-ascii": "556EF664",
             "display": "Un⁄d",
             "accessible": "[Un/d]",
-            "variants": [
-              "Un⁄d"
-            ]
+            "variants": ["Un⁄d"]
           }
         }
       }
@@ -12212,9 +11624,7 @@
             "ti-ascii": "4155544F",
             "display": "AUTO",
             "accessible": "[AUTO]",
-            "variants": [
-              "AUTO"
-            ]
+            "variants": ["AUTO"]
           }
         }
       }
@@ -12230,9 +11640,7 @@
             "ti-ascii": "444543",
             "display": "DEC",
             "accessible": "[DEC]",
-            "variants": [
-              "DEC"
-            ]
+            "variants": ["DEC"]
           }
         }
       }
@@ -12252,9 +11660,7 @@
             "ti-ascii": "46524143",
             "display": "FRAC",
             "accessible": "[FRAC]",
-            "variants": [
-              "FRAC"
-            ]
+            "variants": ["FRAC"]
           }
         }
       },
@@ -12268,9 +11674,7 @@
             "ti-ascii": "465241432D415050524F58",
             "display": "FRAC-APPROX",
             "accessible": "[FRAC-APPROX]",
-            "variants": [
-              "FRAC-APPROX"
-            ]
+            "variants": ["FRAC-APPROX"]
           }
         }
       }
@@ -12286,9 +11690,7 @@
             "ti-ascii": "5354415457495A415244204F4E",
             "display": "STATWIZARD ON",
             "accessible": "[STATWIZARD ON]",
-            "variants": [
-              "STATWIZARD ON"
-            ]
+            "variants": ["STATWIZARD ON"]
           }
         }
       }
@@ -12304,9 +11706,7 @@
             "ti-ascii": "5354415457495A415244204F4646",
             "display": "STATWIZARD OFF",
             "accessible": "[STATWIZARD OFF]",
-            "variants": [
-              "STATWIZARD OFF"
-            ]
+            "variants": ["STATWIZARD OFF"]
           }
         }
       }
@@ -12322,9 +11722,7 @@
             "ti-ascii": "424C5545",
             "display": "BLUE",
             "accessible": "BLUE",
-            "variants": [
-              "Blue"
-            ]
+            "variants": ["Blue"]
           }
         }
       }
@@ -12340,9 +11738,7 @@
             "ti-ascii": "524544",
             "display": "RED",
             "accessible": "RED",
-            "variants": [
-              "Red"
-            ]
+            "variants": ["Red"]
           }
         }
       }
@@ -12358,9 +11754,7 @@
             "ti-ascii": "424C41434B",
             "display": "BLACK",
             "accessible": "BLACK",
-            "variants": [
-              "Black"
-            ]
+            "variants": ["Black"]
           }
         }
       }
@@ -12376,9 +11770,7 @@
             "ti-ascii": "4D4147454E5441",
             "display": "MAGENTA",
             "accessible": "MAGENTA",
-            "variants": [
-              "Magenta"
-            ]
+            "variants": ["Magenta"]
           }
         }
       }
@@ -12394,9 +11786,7 @@
             "ti-ascii": "475245454E",
             "display": "GREEN",
             "accessible": "GREEN",
-            "variants": [
-              "Green"
-            ]
+            "variants": ["Green"]
           }
         }
       }
@@ -12412,9 +11802,7 @@
             "ti-ascii": "4F52414E4745",
             "display": "ORANGE",
             "accessible": "ORANGE",
-            "variants": [
-              "Orange"
-            ]
+            "variants": ["Orange"]
           }
         }
       }
@@ -12430,9 +11818,7 @@
             "ti-ascii": "42524F574E",
             "display": "BROWN",
             "accessible": "BROWN",
-            "variants": [
-              "Brown"
-            ]
+            "variants": ["Brown"]
           }
         }
       }
@@ -12448,9 +11834,7 @@
             "ti-ascii": "4E415659",
             "display": "NAVY",
             "accessible": "NAVY",
-            "variants": [
-              "Navy"
-            ]
+            "variants": ["Navy"]
           }
         }
       }
@@ -12466,9 +11850,7 @@
             "ti-ascii": "4C54424C5545",
             "display": "LTBLUE",
             "accessible": "LTBLUE",
-            "variants": [
-              "LtBlue"
-            ]
+            "variants": ["LtBlue"]
           }
         }
       }
@@ -12484,9 +11866,7 @@
             "ti-ascii": "59454C4C4F57",
             "display": "YELLOW",
             "accessible": "YELLOW",
-            "variants": [
-              "Yellow"
-            ]
+            "variants": ["Yellow"]
           }
         }
       }
@@ -12502,9 +11882,7 @@
             "ti-ascii": "5748495445",
             "display": "WHITE",
             "accessible": "WHITE",
-            "variants": [
-              "White"
-            ]
+            "variants": ["White"]
           }
         }
       }
@@ -12520,11 +11898,7 @@
             "ti-ascii": "4C5447524159",
             "display": "LTGRAY",
             "accessible": "LTGRAY",
-            "variants": [
-              "LtGray",
-              "LTGREY",
-              "LtGrey"
-            ]
+            "variants": ["LtGray", "LTGREY", "LtGrey"]
           }
         }
       }
@@ -12540,11 +11914,7 @@
             "ti-ascii": "4D454447524159",
             "display": "MEDGRAY",
             "accessible": "MEDGRAY",
-            "variants": [
-              "MedGray",
-              "MEDGREY",
-              "MedGrey"
-            ]
+            "variants": ["MedGray", "MEDGREY", "MedGrey"]
           }
         }
       }
@@ -12560,11 +11930,7 @@
             "ti-ascii": "47524159",
             "display": "GRAY",
             "accessible": "GRAY",
-            "variants": [
-              "Gray",
-              "GREY",
-              "Grey"
-            ]
+            "variants": ["Gray", "GREY", "Grey"]
           }
         }
       }
@@ -12580,11 +11946,7 @@
             "ti-ascii": "4441524B47524159",
             "display": "DARKGRAY",
             "accessible": "DARKGRAY",
-            "variants": [
-              "DarkGray",
-              "DARKGREY",
-              "DarkGrey"
-            ]
+            "variants": ["DarkGray", "DARKGREY", "DarkGrey"]
           }
         }
       }
@@ -12900,9 +12262,7 @@
             "ti-ascii": "F9",
             "display": ".",
             "accessible": "plottinydot",
-            "variants": [
-              "·"
-            ]
+            "variants": ["·"]
           }
         }
       }
@@ -12978,9 +12338,7 @@
             "ti-ascii": "5175617274696C65732053657474696E67CE",
             "display": "Quartiles Setting…",
             "accessible": "Quartiles Setting...",
-            "variants": [
-              "Quartiles Setting…"
-            ]
+            "variants": ["Quartiles Setting…"]
           }
         }
       }
@@ -12996,10 +12354,7 @@
             "ti-ascii": "7528012D3229",
             "display": "u(𝑛-2)",
             "accessible": "u(n-2)",
-            "variants": [
-              "u(𝑛-2)",
-              "u(𝒏-2)"
-            ]
+            "variants": ["u(𝑛-2)", "u(𝒏-2)"]
           }
         }
       }
@@ -13015,10 +12370,7 @@
             "ti-ascii": "7628012D3229",
             "display": "v(𝑛-2)",
             "accessible": "v(n-2)",
-            "variants": [
-              "v(𝑛-2)",
-              "v(𝒏-2)"
-            ]
+            "variants": ["v(𝑛-2)", "v(𝒏-2)"]
           }
         }
       }
@@ -13034,10 +12386,7 @@
             "ti-ascii": "7728012D3229",
             "display": "w(𝑛-2)",
             "accessible": "w(n-2)",
-            "variants": [
-              "w(𝑛-2)",
-              "w(𝒏-2)"
-            ]
+            "variants": ["w(𝑛-2)", "w(𝒏-2)"]
           }
         }
       }
@@ -13053,10 +12402,7 @@
             "ti-ascii": "7528012D3129",
             "display": "u(𝑛-1)",
             "accessible": "u(n-1)",
-            "variants": [
-              "u(𝑛-1)",
-              "u(𝒏-1)"
-            ]
+            "variants": ["u(𝑛-1)", "u(𝒏-1)"]
           }
         }
       }
@@ -13072,10 +12418,7 @@
             "ti-ascii": "7628012D3129",
             "display": "v(𝑛-1)",
             "accessible": "v(n-1)",
-            "variants": [
-              "v(𝑛-1)",
-              "v(𝒏-1)"
-            ]
+            "variants": ["v(𝑛-1)", "v(𝒏-1)"]
           }
         }
       }
@@ -13091,10 +12434,7 @@
             "ti-ascii": "7728012D3129",
             "display": "w(𝑛-1)",
             "accessible": "w(n-1)",
-            "variants": [
-              "w(𝑛-1)",
-              "w(𝒏-1)"
-            ]
+            "variants": ["w(𝑛-1)", "w(𝒏-1)"]
           }
         }
       }
@@ -13110,10 +12450,7 @@
             "ti-ascii": "75280129",
             "display": "u(𝑛)",
             "accessible": "u(n)",
-            "variants": [
-              "u(𝑛)",
-              "u(𝒏)"
-            ]
+            "variants": ["u(𝑛)", "u(𝒏)"]
           }
         }
       }
@@ -13129,10 +12466,7 @@
             "ti-ascii": "76280129",
             "display": "v(𝑛)",
             "accessible": "v(n)",
-            "variants": [
-              "v(𝑛)",
-              "v(𝒏)"
-            ]
+            "variants": ["v(𝑛)", "v(𝒏)"]
           }
         }
       }
@@ -13148,10 +12482,7 @@
             "ti-ascii": "77280129",
             "display": "w(𝑛)",
             "accessible": "w(n)",
-            "variants": [
-              "w(𝑛)",
-              "w(𝒏)"
-            ]
+            "variants": ["w(𝑛)", "w(𝒏)"]
           }
         }
       }
@@ -13167,10 +12498,7 @@
             "ti-ascii": "7528012B3129",
             "display": "u(𝑛+1)",
             "accessible": "u(n+1)",
-            "variants": [
-              "u(𝑛+1)",
-              "u(𝒏+1)"
-            ]
+            "variants": ["u(𝑛+1)", "u(𝒏+1)"]
           }
         }
       }
@@ -13186,10 +12514,7 @@
             "ti-ascii": "7628012B3129",
             "display": "v(𝑛+1)",
             "accessible": "v(n+1)",
-            "variants": [
-              "v(𝑛+1)",
-              "v(𝒏+1)"
-            ]
+            "variants": ["v(𝑛+1)", "v(𝒏+1)"]
           }
         }
       }
@@ -13205,10 +12530,7 @@
             "ti-ascii": "7728012B3129",
             "display": "w(𝑛+1)",
             "accessible": "w(n+1)",
-            "variants": [
-              "w(𝑛+1)",
-              "w(𝒏+1)"
-            ]
+            "variants": ["w(𝑛+1)", "w(𝒏+1)"]
           }
         }
       }
@@ -13243,10 +12565,7 @@
             "ti-ascii": "534551280129",
             "display": "SEQ(𝑛)",
             "accessible": "SEQ(n)",
-            "variants": [
-              "SEQ(𝑛)",
-              "SEQ(𝒏)"
-            ]
+            "variants": ["SEQ(𝑛)", "SEQ(𝒏)"]
           }
         }
       }
@@ -13262,10 +12581,7 @@
             "ti-ascii": "53455128012B3129",
             "display": "SEQ(𝑛+1)",
             "accessible": "SEQ(n+1)",
-            "variants": [
-              "SEQ(𝑛+1)",
-              "SEQ(𝒏+1)"
-            ]
+            "variants": ["SEQ(𝑛+1)", "SEQ(𝒏+1)"]
           }
         }
       }
@@ -13281,10 +12597,7 @@
             "ti-ascii": "53455128012B3229",
             "display": "SEQ(𝑛+2)",
             "accessible": "SEQ(n+2)",
-            "variants": [
-              "SEQ(𝑛+2)",
-              "SEQ(𝒏+2)"
-            ]
+            "variants": ["SEQ(𝑛+2)", "SEQ(𝒏+2)"]
           }
         }
       }
@@ -13556,9 +12869,7 @@
           "ti-ascii": "CD10",
           "display": "ˣ√",
           "accessible": "xroot",
-          "variants": [
-            "ˣ√"
-          ]
+          "variants": ["ˣ√"]
         }
       }
     }
