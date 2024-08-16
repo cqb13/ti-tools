@@ -2628,403 +2628,403 @@
   "0x5C00": [
     {
       "syntax": "[A]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5C01": [
     {
       "syntax": "[B]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5C02": [
     {
       "syntax": "[C]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5C03": [
     {
       "syntax": "[D]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5C04": [
     {
       "syntax": "[E]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5C05": [
     {
       "syntax": "[F]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5C06": [
     {
       "syntax": "[G]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5C07": [
     {
       "syntax": "[H]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5C08": [
     {
       "syntax": "[I]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5C09": [
     {
       "syntax": "[J]",
-      "description": ""
+      "description": "Used for matricies."
     }
   ],
   "0x5D00": [
     {
       "syntax": "L\u2081",
-      "description": ""
+      "description": "Used for lists."
     }
   ],
   "0x5D01": [
     {
       "syntax": "L\u2082",
-      "description": ""
+      "description": "Used for lists."
     }
   ],
   "0x5D02": [
     {
       "syntax": "L\u2083",
-      "description": ""
+      "description": "Used for lists."
     }
   ],
   "0x5D03": [
     {
       "syntax": "L\u2084",
-      "description": ""
+      "description": "Used for lists."
     }
   ],
   "0x5D04": [
     {
       "syntax": "L\u2085",
-      "description": ""
+      "description": "Used for lists."
     }
   ],
   "0x5D05": [
     {
       "syntax": "L\u2086",
-      "description": ""
+      "description": "Used for lists."
     }
   ],
   "0x5E10": [
     {
       "syntax": "Y\u2081",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E11": [
     {
       "syntax": "Y\u2082",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E12": [
     {
       "syntax": "Y\u2083",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E13": [
     {
       "syntax": "Y\u2084",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E14": [
     {
       "syntax": "Y\u2085",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E15": [
     {
       "syntax": "Y\u2086",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E16": [
     {
       "syntax": "Y\u2087",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E17": [
     {
       "syntax": "Y\u2088",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E18": [
     {
       "syntax": "Y\u2089",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E19": [
     {
       "syntax": "Y\u2080",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E20": [
     {
       "syntax": "X\u2081\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E21": [
     {
       "syntax": "Y\u2081\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E22": [
     {
       "syntax": "X\u2082\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E23": [
     {
       "syntax": "Y\u2082\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E24": [
     {
       "syntax": "X\u2083\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E25": [
     {
       "syntax": "Y\u2083\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E26": [
     {
       "syntax": "X\u2084\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E27": [
     {
       "syntax": "Y\u2084\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E28": [
     {
       "syntax": "X\u2085\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E29": [
     {
       "syntax": "Y\u2085\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E2A": [
     {
       "syntax": "X\u2086\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E2B": [
     {
       "syntax": "Y\u2086\u1d1b",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E40": [
     {
       "syntax": "r\u2081",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E41": [
     {
       "syntax": "r\u2082",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E42": [
     {
       "syntax": "r\u2083",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E43": [
     {
       "syntax": "r\u2084",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E44": [
     {
       "syntax": "r\u2085",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E45": [
     {
       "syntax": "r\u2086",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E80": [
     {
       "syntax": "|u",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E81": [
     {
       "syntax": "|v",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x5E82": [
     {
       "syntax": "|w",
-      "description": ""
+      "description": "Used for equations."
     }
   ],
   "0x6000": [
     {
       "syntax": "Pic1",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6001": [
     {
       "syntax": "Pic2",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6002": [
     {
       "syntax": "Pic3",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6003": [
     {
       "syntax": "Pic4",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6004": [
     {
       "syntax": "Pic5",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6005": [
     {
       "syntax": "Pic6",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6006": [
     {
       "syntax": "Pic7",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6007": [
     {
       "syntax": "Pic8",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6008": [
     {
       "syntax": "Pic9",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6009": [
     {
       "syntax": "Pic0",
-      "description": ""
+      "description": "Used for pictures."
     }
   ],
   "0x6100": [
     {
       "syntax": "GDB1",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6101": [
     {
       "syntax": "GDB2",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6102": [
     {
       "syntax": "GDB3",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6103": [
     {
       "syntax": "GDB4",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6104": [
     {
       "syntax": "GDB5",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6105": [
     {
       "syntax": "GDB6",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6106": [
     {
       "syntax": "GDB7",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6107": [
     {
       "syntax": "GDB8",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6108": [
     {
       "syntax": "GDB9",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6109": [
     {
       "syntax": "GDB0",
-      "description": ""
+      "description": "Used to store graph settings."
     }
   ],
   "0x6201": [
@@ -3822,61 +3822,61 @@
   "0xAA00": [
     {
       "syntax": "Str1",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA01": [
     {
       "syntax": "Str2",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA02": [
     {
       "syntax": "Str3",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA03": [
     {
       "syntax": "Str4",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA04": [
     {
       "syntax": "Str5",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA05": [
     {
       "syntax": "Str6",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA06": [
     {
       "syntax": "Str7",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA07": [
     {
       "syntax": "Str8",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA08": [
     {
       "syntax": "Str9",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA09": [
     {
       "syntax": "Str0",
-      "description": ""
+      "description": "Used to store and manipulate strings."
     }
   ],
   "0xAA": [
