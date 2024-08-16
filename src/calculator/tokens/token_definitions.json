@@ -2376,13 +2376,13 @@
   "0x2B": [
     {
       "syntax": ",",
-      "description": "A character symbol"
+      "description": "A character symbol."
     }
   ],
   "0x2D": [
     {
       "syntax": "!",
-      "description": "A character symbol"
+      "description": "A character symbol."
     }
   ],
   "0x30": [
@@ -2448,13 +2448,13 @@
   "0x3A": [
     {
       "syntax": ".",
-      "description": "A character symbol"
+      "description": "A character symbol."
     }
   ],
   "0x3E": [
     {
       "syntax": ":",
-      "description": "A character symbol"
+      "description": "A character symbol."
     }
   ],
   "0x3F": [
@@ -3732,49 +3732,49 @@
   "0x6A": [
     {
       "syntax": "=",
-      "description": ""
+      "description": "Equal sign."
     }
   ],
   "0x6B": [
     {
       "syntax": "<",
-      "description": ""
+      "description": "Less than sign."
     }
   ],
   "0x6C": [
     {
       "syntax": ">",
-      "description": ""
+      "description": "Greater than sign."
     }
   ],
   "0x6D": [
     {
       "syntax": "\u2264",
-      "description": ""
+      "description": "Less than or equal to sign."
     }
   ],
   "0x6E": [
     {
       "syntax": "\u2265",
-      "description": ""
+      "description": "Greater than or equal to sign."
     }
   ],
   "0x6F": [
     {
       "syntax": "\u2260",
-      "description": ""
+      "description": "Not euqal to sign."
     }
   ],
   "0x70": [
     {
       "syntax": "+",
-      "description": ""
+      "description": "Addition sign."
     }
   ],
   "0x71": [
     {
       "syntax": "-",
-      "description": ""
+      "description": "Subtraction sign."
     }
   ],
   "0x7E": [
@@ -3786,37 +3786,37 @@
   "0x7F": [
     {
       "syntax": "\u25a1",
-      "description": ""
+      "description": "Square plot."
     }
   ],
   "0x80": [
     {
       "syntax": "\ufe62",
-      "description": ""
+      "description": "Cross plot."
     }
   ],
   "0x81": [
     {
       "syntax": "\u00b7",
-      "description": ""
+      "description": "Dot plot"
     }
   ],
   "0x82": [
     {
       "syntax": "*",
-      "description": ""
+      "description": "Multiplication sign."
     }
   ],
   "0x83": [
     {
       "syntax": "/",
-      "description": ""
+      "description": "Division sign."
     }
   ],
   "0x91": [
     {
       "syntax": "PrintScreen",
-      "description": ""
+      "description": "On the TI-82 prints the current screen on a printer attached to an IBM®-compatible computer or a Macintosh® if you are using TI-GRAPH LINK. On TI-83 series it causes an error."
     }
   ],
   "0xAA00": [
@@ -3887,836 +3887,836 @@
   ],
   "0xAC": [
     {
-      "syntax": "\u03c0",
-      "description": ""
+      "syntax": "π",
+      "description": "Approximates the mathematical constant π (pi)"
     }
   ],
   "0xAE": [
     {
       "syntax": "'",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xAF": [
     {
       "syntax": "?",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xB0": [
     {
-      "syntax": "\u207b",
-      "description": ""
+      "syntax": "⁻",
+      "description": "Negative symbol"
     }
   ],
   "0xBB31": [
     {
       "syntax": "e",
-      "description": ""
+      "description": "A constant holding the approximate value of Euler's number."
     }
   ],
   "0xBB6A": [
     {
       "syntax": "Asm(",
-      "description": ""
+      "description": "Used for running an assembly program. "
     }
   ],
   "0xBB6B": [
     {
       "syntax": "AsmComp(",
-      "description": ""
+      "description": "Used to compress an assembly program written using AsmPrgm into an \"assembled\" assembly program."
     }
   ],
   "0xBB6C": [
     {
       "syntax": "AsmPrgm",
-      "description": ""
+      "description": "Denotes the start of an assembly program in hexadecimal form."
     }
   ],
   "0xBB6D": [
     {
       "syntax": "[CompiledAsm83P]",
-      "description": ""
+      "description": "Used to start an assembly program."
     }
   ],
   "0xBB6E": [
     {
       "syntax": "\u00c1",
-      "description": ""
+      "description": "The letter \u00c1."
     }
   ],
   "0xBB6F": [
     {
       "syntax": "\u00c0",
-      "description": ""
+      "description": "The letter \u00c0."
     }
   ],
   "0xBB70": [
     {
       "syntax": "\u00c2",
-      "description": ""
+      "description": "The letter \u00c2."
     }
   ],
   "0xBB71": [
     {
       "syntax": "\u00c4",
-      "description": ""
+      "description": "The letter \u00c4."
     }
   ],
   "0xBB72": [
     {
       "syntax": "\u00e1",
-      "description": ""
+      "description": "The letter \u00e1."
     }
   ],
   "0xBB73": [
     {
       "syntax": "\u00e0",
-      "description": ""
+      "description": "The letter \u00e0."
     }
   ],
   "0xBB74": [
     {
       "syntax": "\u00e2",
-      "description": ""
+      "description": "The letter \u00e2."
     }
   ],
   "0xBB75": [
     {
       "syntax": "\u00e4",
-      "description": ""
+      "description": "The letter \u00e4."
     }
   ],
   "0xBB76": [
     {
       "syntax": "\u00c9",
-      "description": ""
+      "description": "The letter \u00c9."
     }
   ],
   "0xBB77": [
     {
       "syntax": "\u00c8",
-      "description": ""
+      "description": "The letter \u00c8."
     }
   ],
   "0xBB78": [
     {
       "syntax": "\u00ca",
-      "description": ""
+      "description": "The letter \u00ca."
     }
   ],
   "0xBB79": [
     {
       "syntax": "\u00cb",
-      "description": ""
+      "description": "The letter \u00cb."
     }
   ],
   "0xBB7A": [
     {
       "syntax": "\u00e9",
-      "description": ""
+      "description": "The letter \u00e9."
     }
   ],
   "0xBB7B": [
     {
       "syntax": "\u00e8",
-      "description": ""
+      "description": "The letter \u00e8."
     }
   ],
   "0xBB7C": [
     {
       "syntax": "\u00ea",
-      "description": ""
+      "description": "The letter \u00ea."
     }
   ],
   "0xBB7D": [
     {
       "syntax": "\u00eb",
-      "description": ""
+      "description": "The letter \u00eb."
     }
   ],
   "0xBB7F": [
     {
       "syntax": "\u00cc",
-      "description": ""
+      "description": "The letter \u00cc."
     }
   ],
   "0xBB80": [
     {
       "syntax": "\u00ce",
-      "description": ""
+      "description": "The letter \u00ce."
     }
   ],
   "0xBB81": [
     {
       "syntax": "\u00cf",
-      "description": ""
+      "description": "The letter \u00cf."
     }
   ],
   "0xBB82": [
     {
       "syntax": "\u00ed",
-      "description": ""
+      "description": "The letter \u00ed."
     }
   ],
   "0xBB83": [
     {
       "syntax": "\u00ec",
-      "description": ""
+      "description": "The letter \u00ec."
     }
   ],
   "0xBB84": [
     {
       "syntax": "\u00ee",
-      "description": ""
+      "description": "The letter \u00ee."
     }
   ],
   "0xBB85": [
     {
       "syntax": "\u00ef",
-      "description": ""
+      "description": "The letter \u00ef."
     }
   ],
   "0xBB86": [
     {
       "syntax": "\u00d3",
-      "description": ""
+      "description": "The letter \u00d3."
     }
   ],
   "0xBB87": [
     {
       "syntax": "\u00d2",
-      "description": ""
+      "description": "The letter \u00d2."
     }
   ],
   "0xBB88": [
     {
       "syntax": "\u00d4",
-      "description": ""
+      "description": "The letter \u00d4."
     }
   ],
   "0xBB89": [
     {
       "syntax": "\u00d6",
-      "description": ""
+      "description": "The letter \u00d6."
     }
   ],
   "0xBB8A": [
     {
       "syntax": "\u00f3",
-      "description": ""
+      "description": "The letter \u00f3."
     }
   ],
   "0xBB8B": [
     {
       "syntax": "\u00f2",
-      "description": ""
+      "description": "The letter \u00f2."
     }
   ],
   "0xBB8C": [
     {
       "syntax": "\u00f4",
-      "description": ""
+      "description": "The letter \u00f4."
     }
   ],
   "0xBB8D": [
     {
       "syntax": "\u00f6",
-      "description": ""
+      "description": "The letter \u00f6."
     }
   ],
   "0xBB8E": [
     {
       "syntax": "\u00da",
-      "description": ""
+      "description": "The letter \u00da."
     }
   ],
   "0xBB8F": [
     {
       "syntax": "\u00d9",
-      "description": ""
+      "description": "The letter \u00d9."
     }
   ],
   "0xBB90": [
     {
       "syntax": "\u00db",
-      "description": ""
+      "description": "The letter \u00db."
     }
   ],
   "0xBB91": [
     {
       "syntax": "\u00dc",
-      "description": ""
+      "description": "The letter \u00dc."
     }
   ],
   "0xBB92": [
     {
       "syntax": "\u00fa",
-      "description": ""
+      "description": "The letter \u00fa."
     }
   ],
   "0xBB93": [
     {
       "syntax": "\u00f9",
-      "description": ""
+      "description": "The letter \u00f9."
     }
   ],
   "0xBB94": [
     {
       "syntax": "\u00fb",
-      "description": ""
+      "description": "The letter \u00fb."
     }
   ],
   "0xBB95": [
     {
       "syntax": "\u00fc",
-      "description": ""
+      "description": "The letter \u00fc."
     }
   ],
   "0xBB96": [
     {
       "syntax": "\u00c7",
-      "description": ""
+      "description": "The letter \u00c7."
     }
   ],
   "0xBB97": [
     {
       "syntax": "\u00e7",
-      "description": ""
+      "description": "The letter \u00e7."
     }
   ],
   "0xBB98": [
     {
       "syntax": "\u00d1",
-      "description": ""
+      "description": "The letter \u00d1."
     }
   ],
   "0xBB99": [
     {
       "syntax": "\u00f1",
-      "description": ""
+      "description": "The letter \u00f1."
     }
   ],
   "0xBB9A": [
     {
       "syntax": "\u00b4",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBB9B": [
     {
       "syntax": "`",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBB9C": [
     {
       "syntax": "\u00a8",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBB9D": [
     {
       "syntax": "\u00bf",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBB9E": [
     {
       "syntax": "\u00a1",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBB9F": [
     {
       "syntax": "\u03b1",
-      "description": ""
+      "description": "The letter \u03b1."
     }
   ],
   "0xBBA0": [
     {
       "syntax": "\u03b2",
-      "description": ""
+      "description": "The letter \u03b2."
     }
   ],
   "0xBBA1": [
     {
       "syntax": "\u03b3",
-      "description": ""
+      "description": "The letter \u03b3."
     }
   ],
   "0xBBA2": [
     {
       "syntax": "\u0394",
-      "description": ""
+      "description": "The letter \u0394."
     }
   ],
   "0xBBA3": [
     {
       "syntax": "\u03b4",
-      "description": ""
+      "description": "The letter \u03b4."
     }
   ],
   "0xBBA4": [
     {
       "syntax": "\u03b5",
-      "description": ""
+      "description": "The letter \u03b5."
     }
   ],
   "0xBBA5": [
     {
       "syntax": "\u03bb",
-      "description": ""
+      "description": "The letter \u03bb."
     }
   ],
   "0xBBA6": [
     {
       "syntax": "\u03bc",
-      "description": ""
+      "description": "The letter \u03bc."
     }
   ],
   "0xBBA7": [
     {
       "syntax": "|\u03c0",
-      "description": ""
+      "description": "The letter |\u03c0."
     }
   ],
   "0xBBA8": [
     {
       "syntax": "\u03c1",
-      "description": ""
+      "description": "The letter \u03c1."
     }
   ],
   "0xBBA9": [
     {
       "syntax": "\u03a3",
-      "description": ""
+      "description": "The letter \u03a3."
     }
   ],
   "0xBBAB": [
     {
       "syntax": "\u03a6",
-      "description": ""
+      "description": "The letter \u03a6."
     }
   ],
   "0xBBAC": [
     {
       "syntax": "\u03a9",
-      "description": ""
+      "description": "The letter \u03a9."
     }
   ],
   "0xBBAD": [
     {
       "syntax": "\u1e57",
-      "description": ""
+      "description": "The letter \u1e57."
     }
   ],
   "0xBBAE": [
     {
       "syntax": "\u03c7",
-      "description": ""
+      "description": "The letter \u03c7."
     }
   ],
   "0xBBAF": [
     {
       "syntax": "\ud835\udc05",
-      "description": ""
+      "description": "Used to denote sets."
     }
   ],
   "0xBBB0": [
     {
       "syntax": "a",
-      "description": ""
+      "description": "The letter a."
     }
   ],
   "0xBBB1": [
     {
       "syntax": "b",
-      "description": ""
+      "description": "The letter b."
     }
   ],
   "0xBBB2": [
     {
       "syntax": "c",
-      "description": ""
+      "description": "The letter c."
     }
   ],
   "0xBBB3": [
     {
       "syntax": "d",
-      "description": ""
+      "description": "The letter d."
     }
   ],
   "0xBBB5": [
     {
       "syntax": "f",
-      "description": ""
+      "description": "The letter f."
     }
   ],
   "0xBBB6": [
     {
       "syntax": "g",
-      "description": ""
+      "description": "The letter g."
     }
   ],
   "0xBBB7": [
     {
       "syntax": "h",
-      "description": ""
+      "description": "The letter h."
     }
   ],
   "0xBBB8": [
     {
       "syntax": "i",
-      "description": ""
+      "description": "The letter i."
     }
   ],
   "0xBBB9": [
     {
       "syntax": "j",
-      "description": ""
+      "description": "The letter j."
     }
   ],
   "0xBBBA": [
     {
       "syntax": "k",
-      "description": ""
+      "description": "The letter k."
     }
   ],
   "0xBBBC": [
     {
       "syntax": "l",
-      "description": ""
+      "description": "The letter l."
     }
   ],
   "0xBBBD": [
     {
       "syntax": "m",
-      "description": ""
+      "description": "The letter m."
     }
   ],
   "0xBBBE": [
     {
       "syntax": "n",
-      "description": ""
+      "description": "The letter n."
     }
   ],
   "0xBBBF": [
     {
       "syntax": "o",
-      "description": ""
+      "description": "The letter o."
     }
   ],
   "0xBBC0": [
     {
       "syntax": "p",
-      "description": ""
+      "description": "The letter p."
     }
   ],
   "0xBBC1": [
     {
       "syntax": "q",
-      "description": ""
+      "description": "The letter q."
     }
   ],
   "0xBBC2": [
     {
       "syntax": "r",
-      "description": ""
+      "description": "The letter r."
     }
   ],
   "0xBBC3": [
     {
       "syntax": "s",
-      "description": ""
+      "description": "The letter s."
     }
   ],
   "0xBBC4": [
     {
       "syntax": "t",
-      "description": ""
+      "description": "The letter t."
     }
   ],
   "0xBBC5": [
     {
       "syntax": "u",
-      "description": ""
+      "description": "The letter u."
     }
   ],
   "0xBBC6": [
     {
       "syntax": "v",
-      "description": ""
+      "description": "The letter v."
     }
   ],
   "0xBBC7": [
     {
       "syntax": "w",
-      "description": ""
+      "description": "The letter w."
     }
   ],
   "0xBBC8": [
     {
       "syntax": "x",
-      "description": ""
+      "description": "The letter x."
     }
   ],
   "0xBBC9": [
     {
       "syntax": "y",
-      "description": ""
+      "description": "The letter y."
     }
   ],
   "0xBBCA": [
     {
       "syntax": "z",
-      "description": ""
+      "description": "The letter z."
     }
   ],
   "0xBBCB": [
     {
       "syntax": "\u03c3",
-      "description": ""
+      "description": "Used to denote standard deviation."
     }
   ],
   "0xBBCC": [
     {
       "syntax": "\u03c4",
-      "description": ""
+      "description": "Used to denote a constant in differential equations or specific types of transformations."
     }
   ],
   "0xBBCD": [
     {
       "syntax": "\u00cd",
-      "description": ""
+      "description": "The letter \u00cd."
     }
   ],
   "0xBBCF": [
     {
       "syntax": "~",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD1": [
     {
       "syntax": "@",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD2": [
     {
       "syntax": "#",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD3": [
     {
       "syntax": "$",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD4": [
     {
       "syntax": "&",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD5": [
     {
       "syntax": "\u201b",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD6": [
     {
       "syntax": ";",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD7": [
     {
       "syntax": "\\",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD8": [
     {
       "syntax": "|",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD9": [
     {
       "syntax": "_",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBD0": [
     {
       "syntax": "'",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBDA": [
     {
       "syntax": "%",
-      "description": ""
+      "description": "Converts numbers to percents."
     }
   ],
   "0xBBDB": [
     {
       "syntax": "\u2026",
-      "description": ""
+      "description": "A character symbol."
     }
   ],
   "0xBBDC": [
     {
       "syntax": "\u2220",
-      "description": ""
+      "description": "Used to denote an angle."
     }
   ],
   "0xBBDD": [
     {
       "syntax": "\u00df",
-      "description": ""
+      "description": "The letter \u00df."
     }
   ],
   "0xBBDE": [
     {
       "syntax": "\u02e3",
-      "description": ""
+      "description": "Used in phonetic notation to indicate a superscript \"3\" and can also be used in various specialized notations."
     }
   ],
   "0xBBDF": [
     {
       "syntax": "\u1d1b",
-      "description": ""
+      "description": "Used to represent variables, constants, or specific symbols."
     }
   ],
   "0xBBE0": [
     {
       "syntax": "\u2080",
-      "description": ""
+      "description": "Denotes a 0 in subscript form."
     }
   ],
   "0xBBE1": [
     {
       "syntax": "\u2081",
-      "description": ""
+      "description": "Denotes a 1 in subscript form."
     }
   ],
   "0xBBE2": [
     {
       "syntax": "\u2082",
-      "description": ""
+      "description": "Denotes a 2 in subscript form."
     }
   ],
   "0xBBE3": [
     {
       "syntax": "\u2083",
-      "description": ""
+      "description": "Denotes a 3 in subscript form."
     }
   ],
   "0xBBE4": [
     {
       "syntax": "\u2084",
-      "description": ""
+      "description": "Denotes a 4 in subscript form."
     }
   ],
   "0xBBE5": [
     {
       "syntax": "\u2085",
-      "description": ""
+      "description": "Denotes a 5 in subscript form."
     }
   ],
   "0xBBE6": [
     {
       "syntax": "\u2086",
-      "description": ""
+      "description": "Denotes a 6 in subscript form."
     }
   ],
   "0xBBE7": [
     {
       "syntax": "\u2087",
-      "description": ""
+      "description": "Denotes a 7 in subscript form."
     }
   ],
   "0xBBE8": [
     {
       "syntax": "\u2088",
-      "description": ""
+      "description": "Denotes a 8 in subscript form."
     }
   ],
   "0xBBE9": [
     {
       "syntax": "\u2089",
-      "description": ""
+      "description": "Denotes a 9 in subscript form."
     }
   ],
   "0xBBEA": [
     {
       "syntax": "\u2081\u2080",
-      "description": ""
+      "description": "Denotes a 10 in subscript form."
     }
   ],
   "0xBBEB": [
     {
       "syntax": "\u25c4",
-      "description": ""
+      "description": "Black left pointing triangle."
     }
   ],
   "0xBBEC": [
     {
       "syntax": "\u25ba",
-      "description": ""
+      "description": "Black right pointing triangle."
     }
   ],
   "0xBBED": [
     {
       "syntax": "\u2191",
-      "description": ""
+      "description": "Black up pointing triangle."
     }
   ],
   "0xBBEE": [
     {
       "syntax": "\u2193",
-      "description": ""
+      "description": "Black down pointing triangle."
     }
   ],
   "0xBBF0": [
     {
       "syntax": "\u00d7",
-      "description": ""
+      "description": "X mark."
     }
   ],
   "0xBBF1": [
     {
       "syntax": "\u222b",
-      "description": ""
+      "description": "Used to denote an integral."
     }
   ],
   "0xBBF2": [
     {
       "syntax": "\ud83e\udc45",
-      "description": ""
+      "description": "Bold up arrow."
     }
   ],
   "0xBBF3": [
     {
       "syntax": "\ud83e\udc47",
-      "description": ""
+      "description": "Bold down arrow."
     }
   ],
   "0xBBF4": [
     {
       "syntax": "\u221a",
-      "description": ""
+      "description": "Square root."
     }
   ],
   "0xBBF5": [
     {
       "syntax": "\u2338",
-      "description": ""
+      "description": "Inverted equal sign."
     }
   ],
   "0xBC": [
