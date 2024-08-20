@@ -4776,25 +4776,25 @@
   "0xEF1E": [
     {
       "syntax": "\u2b1a",
-      "description": ""
+      "description": "Box placeholders to help you enter mathematical expressions."
     }
   ],
   "0xEF2E": [
     {
       "syntax": "\u2044",
-      "description": ""
+      "description": "Used to represent fractions in a linear format."
     }
   ],
   "0xEF2F": [
     {
       "syntax": "\u1d64",
-      "description": ""
+      "description": "Used in phonetic transcription or to represent a small subscript \"u\"."
     }
   ],
   "0xEF36": [
     {
       "syntax": "CLASSIC",
-      "description": ""
+      "description": "CLASSIC will put the calculator into Classic mode as opposed to MathPrint mode. The Classic mode will make the calculator display everything as pre-MathPrint OS would, including input. For instance, rather than superscripting exponents as MathPrint mode would, Classic mode uses the simple caret syntax (^)."
     }
   ],
   "0xEF3D": [
@@ -4806,151 +4806,151 @@
   "0xEF41": [
     {
       "syntax": "BLUE",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF42": [
     {
       "syntax": "RED",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF43": [
     {
       "syntax": "BLACK",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF44": [
     {
       "syntax": "MAGENTA",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF45": [
     {
       "syntax": "GREEN",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF46": [
     {
       "syntax": "ORANGE",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF47": [
     {
       "syntax": "BROWN",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF48": [
     {
       "syntax": "NAVY",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF49": [
     {
       "syntax": "LTBLUE",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF4A": [
     {
       "syntax": "YELLOW",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF4B": [
     {
       "syntax": "WHITE",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF4C": [
     {
       "syntax": "LTGRAY",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF4D": [
     {
       "syntax": "MEDGRAY",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF4E": [
     {
       "syntax": "GRAY",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF4F": [
     {
       "syntax": "DARKGRAY",
-      "description": ""
+      "description": "Color Variable"
     }
   ],
   "0xEF50": [
     {
       "syntax": "Image1",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF51": [
     {
       "syntax": "Image2",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF52": [
     {
       "syntax": "Image3",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF53": [
     {
       "syntax": "Image4",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF54": [
     {
       "syntax": "Image5",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF55": [
     {
       "syntax": "Image6",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF56": [
     {
       "syntax": "Image7",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF57": [
     {
       "syntax": "Image8",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF58": [
     {
       "syntax": "Image9",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF59": [
     {
       "syntax": "Image0",
-      "description": ""
+      "description": "Image Variable"
     }
   ],
   "0xEF66": [
@@ -4962,7 +4962,7 @@
   "0xEF68": [
     {
       "syntax": "Asm84CPrgm",
-      "description": ""
+      "description": "Denotes the start of an assembly program in hexadecimal form. Only avalible on TI-84+CSE."
     }
   ],
   "0xEF69": [
@@ -4974,13 +4974,13 @@
   "0xEF73": [
     {
       "syntax": "\u00b7",
-      "description": ""
+      "description": "tiny dot plot"
     }
   ],
   "0xEF7A": [
     {
       "syntax": "Asm84CEPrgm",
-      "description": ""
+      "description": "Denotes the start of an assembly program in hexadecimal form. Only avalible on TI-84+CSE."
     }
   ],
   "0xEF7B": [
@@ -5070,61 +5070,61 @@
   "0xEF9E": [
     {
       "syntax": "Execute Program",
-      "description": ""
+      "description": "Used in program editing menu."
     }
   ],
   "0xEF9F": [
     {
       "syntax": "Undo Clear",
-      "description": ""
+      "description": "Used in program editing menu."
     }
   ],
   "0xEFA0": [
     {
       "syntax": "Insert Line Above",
-      "description": ""
+      "description": "Used in program editing menu."
     }
   ],
   "0xEFA1": [
     {
       "syntax": "Cut Line",
-      "description": ""
+      "description": "Used in program editing menu."
     }
   ],
   "0xEFA2": [
     {
       "syntax": "Copy Line",
-      "description": ""
+      "description": "Used in program editing menu."
     }
   ],
   "0xEFA3": [
     {
       "syntax": "Paste Line Below",
-      "description": ""
+      "description": "Used in program editing menu."
     }
   ],
   "0xEFA4": [
     {
       "syntax": "Insert Comment Above",
-      "description": ""
+      "description": "Used in program editing menu."
     }
   ],
   "0xEFA5": [
     {
       "syntax": "Quit Editor",
-      "description": ""
+      "description": "Used in program editing menu."
     }
   ],
   "0xF0": [
     {
       "syntax": "^",
-      "description": ""
+      "description": "Used to raise a number to a power."
     }
   ],
   "0xF1": [
     {
       "syntax": "\u02e3\u221a",
-      "description": ""
+      "description": "Takes the xth root of a number. If used on a list, it will return a list with the xth root of each element."
     }
   ]
 }
