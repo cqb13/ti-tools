@@ -12,6 +12,19 @@ pub struct OsVersion {
     pub version: String,
 }
 
+impl OsVersion {
+    pub fn new(model: Model, version: String) -> OsVersion {
+        OsVersion { model, version }
+    }
+
+    pub fn latest() -> OsVersion {
+        OsVersion {
+            model: Model::Latest,
+            version: "latest".to_string(),
+        }
+    }
+}
+
 impl<'de> Deserialize<'de> for Model {
     fn deserialize<D>(deserializer: D) -> Result<Model, D::Error>
     where
@@ -161,6 +174,24 @@ impl Map {
             Some((shortest_key.to_string(), shortest_value))
         }
     }
+}
+
+#[derive(Debug, Deserialize)]
+pub struct TokenDefinition {
+    pub syntax: String,
+    pub description: String,
+}
+
+pub fn load_token_definitions() -> Result<HashMap<String, Vec<TokenDefinition>>, TiToolsError> {
+    let json_data = include_str!("./token_definitions.json");
+
+    let token_definitions: HashMap<String, Vec<TokenDefinition>> =
+        match serde_json::from_str(json_data) {
+            Ok(token_definitions) => token_definitions,
+            Err(err) => return Err(TiToolsError::Json(err.to_string())),
+        };
+
+    return Ok(token_definitions);
 }
 
 pub fn load_tokens(target: &OsVersion) -> Result<Map, TiToolsError> {
