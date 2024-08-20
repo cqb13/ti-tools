@@ -1,14 +1,36 @@
+use crate::calculator::errors::TiToolsError;
 use crate::calculator::tokens::{load_token_definitions, load_tokens, OsVersion};
 use crate::calculator::DisplayMode;
 use crate::prints;
 
-pub fn search_command(token: String, token_type: String) {
-    if token_type != "accessible" && token_type != "pretty" && token_type != "byte" {
-        prints!("[color:bright-red]Error:[color:reset] [color:bright-cyan]{}[color:reset] is an invalid token type", token_type);
-        std::process::exit(1);
-    }
+#[derive(Debug, PartialEq)]
+enum SearchTokenType {
+    Accessible,
+    Pretty,
+    Byte,
+}
 
-    if token_type == "pretty" {
+impl SearchTokenType {
+    pub fn from_string(search_token_type: &str) -> Result<SearchTokenType, TiToolsError> {
+        match search_token_type {
+            "accessible" => Ok(SearchTokenType::Accessible),
+            "pretty" => Ok(SearchTokenType::Pretty),
+            "byte" => Ok(SearchTokenType::Byte),
+            _ => Err(TiToolsError::Match(
+                search_token_type.to_string(),
+                "Search Token Type".to_string(),
+            )),
+        }
+    }
+}
+
+pub fn search_command(token: String, token_type_string: String) {
+    let token_type = match SearchTokenType::from_string(&token_type_string) {
+        Ok(token_type) => token_type,
+        Err(err) => err.print().exit(),
+    };
+
+    if token_type == SearchTokenType::Pretty {
         prints!("[color:bright-yellow]Warning:[color:reset] Pretty tokens are less accurate for best results use accessible")
     }
 
@@ -17,8 +39,8 @@ pub fn search_command(token: String, token_type: String) {
         Err(err) => err.print().exit(),
     };
 
-    let byte = if token_type != "byte" {
-        if token_type == "accessible" {
+    let byte = if token_type != SearchTokenType::Byte {
+        if token_type == SearchTokenType::Accessible {
             match tokens.get_longest_matching_token(&token, &DisplayMode::Accessible) {
                 Some(byte) => fix_byte_format(&byte.0),
                 None => {
@@ -26,7 +48,7 @@ pub fn search_command(token: String, token_type: String) {
                     std::process::exit(1);
                 }
             }
-        } else if token_type == "pretty" {
+        } else if token_type == SearchTokenType::Pretty {
             match tokens.get_longest_matching_token(&token, &DisplayMode::Pretty) {
                 Some(byte) => fix_byte_format(&byte.0),
                 None => {
@@ -35,7 +57,7 @@ pub fn search_command(token: String, token_type: String) {
                 }
             }
         } else {
-            prints!("[color:bright-red]Error:[color:reset] [color:bright-cyan]{}[color:reset] is an invalid token type", token_type);
+            prints!("[color:bright-red]Error:[color:reset] [color:bright-cyan]{}[color:reset] is an invalid token type", token_type_string);
             std::process::exit(1);
         }
     } else {
