@@ -28,17 +28,14 @@ pub fn decode(
 
         let token = map.get_value(format!("{} {}", key, lang).as_str());
 
-        match token {
-            Some(token) => {
-                let representation = match mode {
-                    DisplayMode::Pretty => &token.display,
-                    DisplayMode::Accessible => &token.accessible,
-                    DisplayMode::TiAscii => &token.ti_ascii,
-                };
-                decoded_program.push_str(representation);
-                current_bytes.clear();
-            }
-            None => {}
+        if let Some(token) = token {
+            let representation = match mode {
+                DisplayMode::Pretty => &token.display,
+                DisplayMode::Accessible => &token.accessible,
+                DisplayMode::TiAscii => &token.ti_ascii,
+            };
+            decoded_program.push_str(representation);
+            current_bytes.clear();
         }
 
         index += 1;

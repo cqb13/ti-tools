@@ -146,7 +146,7 @@ pub fn create_from_8xp(
     };
 
     // body translation
-    let translation = decode(body_bytes, &tokens, "en", &display_mode)?;
+    let translation = decode(body_bytes, &tokens, "en", display_mode)?;
 
     let body = Body::new(body_bytes.to_vec(), translation);
 

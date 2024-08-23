@@ -43,9 +43,7 @@ impl Ord for OsVersion {
         self_order.cmp(&other_order).then_with(|| {
             if self.version == "latest" {
                 Ordering::Greater
-            } else if other.version == "latest" {
-                Ordering::Less
-            } else if self.version.is_empty() {
+            } else if other.version == "latest" || self.version.is_empty() {
                 Ordering::Less
             } else if other.version.is_empty() {
                 Ordering::Greater
@@ -97,7 +95,7 @@ pub struct Map {
 }
 
 impl Map {
-    pub fn new() -> Self {
+    pub fn new() -> Map {
         Map {
             map: HashMap::new(),
         }
@@ -127,12 +125,10 @@ impl Map {
                 DisplayMode::TiAscii => &translation.ti_ascii,
             };
 
-            if value.starts_with(translation) {
-                if translation.len() > longest_length {
-                    longest_key = token;
-                    longest_value = translation.to_string();
-                    longest_length = translation.len();
-                }
+            if value.starts_with(translation) && translation.len() > longest_length {
+                longest_key = token;
+                longest_value = translation.to_string();
+                longest_length = translation.len();
             }
         }
 
@@ -159,12 +155,10 @@ impl Map {
                 DisplayMode::TiAscii => &translation.ti_ascii,
             };
 
-            if value.starts_with(translation) {
-                if translation.len() < shortest_length {
-                    shortest_key = token;
-                    shortest_value = translation.to_string();
-                    shortest_length = translation.len();
-                }
+            if value.starts_with(translation) && translation.len() < shortest_length {
+                shortest_key = token;
+                shortest_value = translation.to_string();
+                shortest_length = translation.len();
             }
         }
 
@@ -191,7 +185,7 @@ pub fn load_token_definitions() -> Result<HashMap<String, Vec<TokenDefinition>>,
             Err(err) => return Err(TiToolsError::Json(err.to_string())),
         };
 
-    return Ok(token_definitions);
+    Ok(token_definitions)
 }
 
 pub fn load_tokens(target: &OsVersion) -> Result<Map, TiToolsError> {
@@ -212,7 +206,7 @@ pub fn load_tokens(target: &OsVersion) -> Result<Map, TiToolsError> {
                     .into_iter()
                     .filter(|token| token.since <= *target)
                     .filter(|token| {
-                        token.until.is_none() || token.until.as_ref().unwrap() >= &target
+                        token.until.is_none() || token.until.as_ref().unwrap() >= target
                     })
                     .collect();
 
@@ -229,7 +223,7 @@ pub fn load_tokens(target: &OsVersion) -> Result<Map, TiToolsError> {
                         .into_iter()
                         .filter(|token| token.since <= *target)
                         .filter(|token| {
-                            token.until.is_none() || token.until.as_ref().unwrap() >= &target
+                            token.until.is_none() || token.until.as_ref().unwrap() >= target
                         })
                         .collect();
                     for token in new_tokens {

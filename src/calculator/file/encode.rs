@@ -20,16 +20,13 @@ impl<'a> EncodeState<'a> {
             in_custom_name: false,
             in_list_name: false,
             last_token_key: Vec::new(),
-            current_mode: &mode,
-            default_mode: &mode,
+            current_mode: mode,
+            default_mode: mode,
         }
     }
 
     fn default_is_smart(&self) -> bool {
-        match self.default_mode {
-            EncodeMode::Smart => true,
-            _ => false,
-        }
+        matches!(self.default_mode, EncodeMode::Smart)
     }
 
     fn reset(&mut self) {
@@ -52,12 +49,12 @@ pub fn encode(
     let mut encoded_program = Vec::new();
 
     let decoded_program = if perform_normalize {
-        normalize(&decoded_program)
+        normalize(decoded_program)
     } else {
         decoded_program.to_string()
     };
 
-    let mut state = EncodeState::new(&encode_mode);
+    let mut state = EncodeState::new(encode_mode);
     for line in decoded_program.lines() {
         let mut temp_line = line.to_string();
 
@@ -110,12 +107,9 @@ pub fn encode(
     Ok(encoded_program)
 }
 
-fn normalize(string: &str) -> String {
-    let string = string
-        .replace('\u{0398}', "θ")
-        .replace('\u{03F4}', "θ")
-        .replace('\u{1DBF}', "θ");
+fn normalize(string: &str) -> String { 
     string
+        .replace(['\u{0398}', '\u{03F4}', '\u{1DBF}'], "θ")
 }
 
 fn convert_key_to_bytes(key: &str) -> Vec<u8> {

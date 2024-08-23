@@ -43,7 +43,7 @@ pub fn convert_command(
 
     // Normal conversion
     if !mass {
-        let program_file_type = match get_file_type(&input_path.to_path_buf()) {
+        let program_file_type = match get_file_type(input_path) {
             Ok(program_file_type) => program_file_type,
             Err(err) => err.print().exit(),
         };
@@ -101,24 +101,22 @@ pub fn convert_command(
     }
 
     // Mass conversion
-    if output_path_string.is_some() {
-        if !Path::new(&output_path_string.as_ref().unwrap()).exists() {
-            println!("The output directory does not exist. Would you like to create one? [y/N]");
-            let mut input = String::new();
-            print!("> ");
-            input.clear();
-            std::io::stdout().flush().unwrap();
-            std::io::stdin().read_line(&mut input).unwrap();
-            let input = input.trim();
-            if input != "y" && input != "Y" {
-                prints!("[color:bright-red]Error:[color:reset] An output directory must be created for files to be saved");
-                std::process::exit(1)
-            }
-
-            println!("Creating output directory");
-            fs::create_dir(Path::new(&output_path_string.as_ref().unwrap()))
-                .expect("Failed to create directory")
+    if output_path_string.is_some() && !Path::new(&output_path_string.as_ref().unwrap()).exists() {
+        println!("The output directory does not exist. Would you like to create one? [y/N]");
+        let mut input = String::new();
+        print!("> ");
+        input.clear();
+        std::io::stdout().flush().unwrap();
+        std::io::stdin().read_line(&mut input).unwrap();
+        let input = input.trim();
+        if input != "y" && input != "Y" {
+            prints!("[color:bright-red]Error:[color:reset] An output directory must be created for files to be saved");
+            std::process::exit(1)
         }
+
+        println!("Creating output directory");
+        fs::create_dir(Path::new(&output_path_string.as_ref().unwrap()))
+            .expect("Failed to create directory")
     }
 
     for entry in fs::read_dir(input_path).expect("Failed to read directory") {

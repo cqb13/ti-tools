@@ -140,7 +140,7 @@ ex:
 #[macro_export]
 macro_rules! prints {
     ($($arg:tt)*) => {{
-        use crate::styles::{Color, TextStyle};
+        use $crate::styles::{Color, TextStyle};
 
         let mut result = String::new();
         let styled_string = format!($($arg)*);

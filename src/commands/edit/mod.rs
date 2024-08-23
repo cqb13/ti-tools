@@ -10,15 +10,13 @@ use crate::calculator::program::Program;
 use crate::calculator::DisplayMode;
 use std::path::{Path, PathBuf};
 
-fn load_program(input_path: &PathBuf) -> Program {
-    let program = Program::load_from_8xp(input_path.to_path_buf(), DisplayMode::Accessible);
+fn load_program(input_path: &Path) -> Program {
+    let program = Program::load_from_8xp(input_path.to_path_buf(), DisplayMode::Accessible); 
 
-    let program = match program {
+    match program {
         Ok(program) => program,
         Err(err) => err.print().exit(),
-    };
-
-    program
+    }
 }
 
 fn save_edits(

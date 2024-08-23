@@ -82,7 +82,7 @@ pub fn search_command(token: String, token_type_string: String) {
         }
     };
 
-    println!("");
+    println!();
     for syntax_variation in token_definition {
         println!("syntax: {}", syntax_variation.syntax);
         println!("{}\n", syntax_variation.description);
@@ -98,8 +98,7 @@ fn fix_byte_format(byte: &str) -> String {
         // $00$00
         let mut byte_split: Vec<&str> = byte_without_lang.split("").collect();
         byte_split.remove(4);
-        let clean_byte = byte_split.join("").replace("$", "0x");
         // 0x0000
-        clean_byte
+        byte_split.join("").replace("$", "0x")
     }
 }

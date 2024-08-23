@@ -5,7 +5,7 @@ use crate::calculator::file::from_txt::create_from_txt;
 use crate::calculator::{DisplayMode, EncodeMode};
 use serde::{Deserialize, Serialize};
 use std::io::Write;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 #[derive(Serialize, Deserialize)]
 pub struct Program {
@@ -143,7 +143,7 @@ impl Program {
             if input == "y" || input == "Y" {
                 println!("Deleting existing file");
 
-                match std::fs::remove_file(&path) {
+                match std::fs::remove_file(path) {
                     Ok(_) => {
                         println!("Deleted existing file");
                     }
@@ -158,7 +158,7 @@ impl Program {
             }
         }
 
-        let file_type = match get_file_type(&path) {
+        let file_type = match get_file_type(path) {
             Ok(file_type) => file_type,
             Err(err) => return Err(err),
         };
@@ -172,7 +172,7 @@ impl Program {
                 output_bytes.extend(self.body.bytes.to_vec());
                 output_bytes.extend(self.checksum.bytes.to_vec());
 
-                write_to_file(&path, output_bytes)?
+                write_to_file(path, output_bytes)?
             }
             ProgramFileType::TXT => {
                 let output_string = format!(
@@ -185,7 +185,7 @@ impl Program {
                     self.model.model.to_string(),
                     &self.body.translation
                 );
-                write_to_file(&path, output_string)?
+                write_to_file(path, output_string)?
             }
             ProgramFileType::JSON => {
                 let output_string = match serde_json::to_string_pretty(&self) {
@@ -195,7 +195,7 @@ impl Program {
                     }
                 };
 
-                write_to_file(&path, output_string)?
+                write_to_file(path, output_string)?
             }
         }
 
@@ -403,24 +403,15 @@ pub enum ProgramFileType {
 
 impl ProgramFileType {
     pub fn is_8xp(&self) -> bool {
-        match self {
-            ProgramFileType::TXT => false,
-            _ => true,
-        }
+        !matches!(self, ProgramFileType::TXT)
     }
 
     pub fn is_txt(&self) -> bool {
-        match self {
-            ProgramFileType::TXT => true,
-            _ => false,
-        }
+        matches!(self, ProgramFileType::TXT)
     }
 
     pub fn is_json(&self) -> bool {
-        match self {
-            ProgramFileType::JSON => true,
-            _ => false,
-        }
+        matches!(self, ProgramFileType::JSON)
     }
 
     pub fn to_string(&self) -> String {
@@ -434,7 +425,7 @@ impl ProgramFileType {
     }
 }
 
-pub fn get_file_type(path: &PathBuf) -> Result<ProgramFileType, TiToolsError> {
+pub fn get_file_type(path: &Path) -> Result<ProgramFileType, TiToolsError> {
     match path.extension() {
         Some(ext) => match ext.to_str() {
             Some("8xp") => Ok(ProgramFileType::XP),

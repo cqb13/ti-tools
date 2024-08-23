@@ -3030,7 +3030,7 @@
   "0x6201": [
     {
       "syntax": "RegEQ",
-      "description": ""
+      "description": "Pastes the contents of the regression equation when selected — it's invalid as a token."
     }
   ],
   "0x6202": [

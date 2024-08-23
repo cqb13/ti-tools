@@ -185,7 +185,7 @@ fn main() {
             let content = command.has("content");
             let preview = command.has("preview");
             let mass = command.has("mass");
-
+            
             convert_command(
                 input_path_string,
                 output_path_string,
@@ -199,7 +199,7 @@ fn main() {
         "search" => {
             let token = command.get_option("token").throw_if_none();
             let token_type = command.get_arg("type").throw_if_none();
-
+    
             search_command(token, token_type)
         }
         "rename" => {
