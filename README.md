@@ -57,6 +57,10 @@ Pre-built binaries are available for Windows, macOS, and Linux on the [releases 
         -p            --preview                                Display the decoded output
         -m            --mass                                   Changes input required from file to directory for mass file decoding
 
+    search - Retrieves a description for a token
+        token         <TOKEN>                       (required) The token to search for
+        -t            --type         <TYPE>                    The type of token to search for [accessible, pretty, byte] | Default: accessible
+
     rename - Renames the program name in a 8xp/82p/83p file
         input         <INPUT>                       (required) The input path to an 8xp/82p/83p file
         -n            --name         <NAME>                    The new program name (8 or less alphabetic characters)
