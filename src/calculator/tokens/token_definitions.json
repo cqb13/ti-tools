@@ -3036,697 +3036,697 @@
   "0x6202": [
     {
       "syntax": "n",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6203": [
     {
       "syntax": "x\u0304",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6204": [
     {
       "syntax": "\u03a3x",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6205": [
     {
       "syntax": "\u03a3x\u00b2",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6206": [
     {
       "syntax": "[Sx]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6207": [
     {
       "syntax": "\u03c3x",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6208": [
     {
       "syntax": "[minX]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6209": [
     {
       "syntax": "[maxX]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x620A": [
     {
       "syntax": "[minY]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x620B": [
     {
       "syntax": "[maxY]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x620C": [
     {
       "syntax": "\u0233",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x620D": [
     {
       "syntax": "\u03a3y",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x620E": [
     {
       "syntax": "\u03a3y\u00b2",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x620F": [
     {
       "syntax": "[Sy]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6210": [
     {
       "syntax": "\u03c3y",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6211": [
     {
       "syntax": "\u03a3xy",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6212": [
     {
       "syntax": "[r]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6213": [
     {
       "syntax": "[Med]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6214": [
     {
       "syntax": "Q\u2081",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6215": [
     {
       "syntax": "Q\u2083",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6216": [
     {
       "syntax": "[|a]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6217": [
     {
       "syntax": "[|b]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6218": [
     {
       "syntax": "[|c]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6219": [
     {
       "syntax": "[|d]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x621A": [
     {
       "syntax": "[|e]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x621B": [
     {
       "syntax": "x\u2081",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x621C": [
     {
       "syntax": "x\u2082",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x621D": [
     {
       "syntax": "x\u2083",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x621E": [
     {
       "syntax": "y\u2081",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x621F": [
     {
       "syntax": "y\u2082",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6220": [
     {
       "syntax": "y\u2083",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6221": [
     {
       "syntax": "\ud835\udc5b",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6222": [
     {
       "syntax": "[p]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6223": [
     {
       "syntax": "[z]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6224": [
     {
       "syntax": "[t]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6225": [
     {
       "syntax": "\u03c7\u00b2",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6226": [
     {
       "syntax": "[|F]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6227": [
     {
       "syntax": "[df]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6228": [
     {
       "syntax": "p\u0302",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6229": [
     {
       "syntax": "p\u0302\u2081",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x622A": [
     {
       "syntax": "p\u0302\u2082",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x622B": [
     {
       "syntax": "x\u0304\u2081",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x622C": [
     {
       "syntax": "Sx\u2081",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x622D": [
     {
       "syntax": "n\u2081",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x622E": [
     {
       "syntax": "x\u0304\u2082",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x622F": [
     {
       "syntax": "Sx\u2082",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6230": [
     {
       "syntax": "n\u2082",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6231": [
     {
       "syntax": "Sxp",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6232": [
     {
       "syntax": "lower",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6233": [
     {
       "syntax": "upper",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6234": [
     {
       "syntax": "[s]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6235": [
     {
       "syntax": "r\u00b2",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6236": [
     {
       "syntax": "R\u00b2",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6237": [
     {
       "syntax": "[factordf]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6238": [
     {
       "syntax": "[factorSS]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6239": [
     {
       "syntax": "[factorMS]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x623A": [
     {
       "syntax": "[errordf]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x623B": [
     {
       "syntax": "[errorSS]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x623C": [
     {
       "syntax": "[errorMS]",
-      "description": ""
+      "description": "Used for statistics."
     }
   ],
   "0x6300": [
     {
       "syntax": "ZXscl",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6301": [
     {
       "syntax": "ZYscl",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6302": [
     {
       "syntax": "Xscl",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6303": [
     {
       "syntax": "Yscl",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6304": [
     {
       "syntax": "u(\ud835\udc5bMin)",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6305": [
     {
       "syntax": "v(\ud835\udc5bMin)",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6306": [
     {
       "syntax": "U\ud835\udc5b-\u2081",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6307": [
     {
       "syntax": "V\ud835\udc5b-\u2081",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6308": [
     {
       "syntax": "Zu(\ud835\udc5bMin)",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6309": [
     {
       "syntax": "Zv(\ud835\udc5bMin)",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x630A": [
     {
       "syntax": "Xmin",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x630B": [
     {
       "syntax": "Xmax",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x630C": [
     {
       "syntax": "Ymin",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x630D": [
     {
       "syntax": "Ymax",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x630E": [
     {
       "syntax": "Tmin",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x630F": [
     {
       "syntax": "Tmax",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6310": [
     {
       "syntax": "\u03b8Min",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6311": [
     {
       "syntax": "\u03b8Max",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6312": [
     {
       "syntax": "ZXmin",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6313": [
     {
       "syntax": "ZXmax",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6314": [
     {
       "syntax": "ZYmin",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6315": [
     {
       "syntax": "ZYmax",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6316": [
     {
       "syntax": "Z\u03b8min",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6317": [
     {
       "syntax": "Z\u03b8max",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6318": [
     {
       "syntax": "ZTmin",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6319": [
     {
       "syntax": "ZTmax",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x631A": [
     {
       "syntax": "TblStart",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x631B": [
     {
       "syntax": "PlotStart",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x631C": [
     {
       "syntax": "ZPlotStart",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x631D": [
     {
       "syntax": "\ud835\udc5bMax",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x631E": [
     {
       "syntax": "Z\ud835\udc5bMax",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x631F": [
     {
       "syntax": "\ud835\udc5bMin",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6320": [
     {
       "syntax": "Z\ud835\udc5bMin",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6321": [
     {
       "syntax": "\u2206Tbl",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6322": [
     {
       "syntax": "Tstep",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6323": [
     {
       "syntax": "\u03b8step",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6324": [
     {
       "syntax": "ZTstep",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6325": [
     {
       "syntax": "Z\u03b8step",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6326": [
     {
       "syntax": "\u2206X",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6327": [
     {
       "syntax": "\u2206Y",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6328": [
     {
       "syntax": "XFact",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6329": [
     {
       "syntax": "YFact",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x632A": [
     {
       "syntax": "TblInput",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x632B": [
     {
       "syntax": "\ud835\udde1",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x632C": [
     {
       "syntax": "I%",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x632D": [
     {
       "syntax": "PV",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x632E": [
     {
       "syntax": "PMT",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x632F": [
     {
       "syntax": "FV",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6330": [
     {
       "syntax": "|P/Y",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6331": [
     {
       "syntax": "|C/Y",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6332": [
     {
       "syntax": "w(\ud835\udc5bMin)",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6333": [
     {
       "syntax": "Zw(\ud835\udc5bMin)",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6334": [
     {
       "syntax": "PlotStep",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6335": [
     {
       "syntax": "ZPlotStep",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6336": [
     {
       "syntax": "Xres",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6337": [
     {
       "syntax": "ZXres",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6338": [
     {
       "syntax": "TraceStep",
-      "description": ""
+      "description": "Used for window and finance."
     }
   ],
   "0x6A": [
@@ -3775,12 +3775,6 @@
     {
       "syntax": "-",
       "description": "Subtraction sign."
-    }
-  ],
-  "0x7E": [
-    {
-      "syntax": "Graph Format",
-      "description": ""
     }
   ],
   "0x7F": [
@@ -3877,12 +3871,6 @@
     {
       "syntax": "Str0",
       "description": "Used to store and manipulate strings."
-    }
-  ],
-  "0xAA": [
-    {
-      "syntax": "VARSTRING",
-      "description": ""
     }
   ],
   "0xAC": [
@@ -4800,7 +4788,7 @@
   "0xEF3D": [
     {
       "syntax": "FRAC-APPROX",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF41": [
@@ -4956,7 +4944,7 @@
   "0xEF66": [
     {
       "syntax": "QuickPlot&Fit-EQ",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF68": [
@@ -4968,7 +4956,7 @@
   "0xEF69": [
     {
       "syntax": "[CompiledAsm84C]",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF73": [
@@ -4986,85 +4974,85 @@
   "0xEF7B": [
     {
       "syntax": "[CompiledAsmCE]",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF81": [
     {
       "syntax": "Quartiles Setting\u2026",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF82": [
     {
       "syntax": "u(\ud835\udc5b-2)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF83": [
     {
       "syntax": "v(\ud835\udc5b-2)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF84": [
     {
       "syntax": "w(\ud835\udc5b-2)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF85": [
     {
       "syntax": "u(\ud835\udc5b-1)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF86": [
     {
       "syntax": "v(\ud835\udc5b-1)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF87": [
     {
       "syntax": "w(\ud835\udc5b-1)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF88": [
     {
       "syntax": "u(\ud835\udc5b)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF89": [
     {
       "syntax": "v(\ud835\udc5b)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF8A": [
     {
       "syntax": "w(\ud835\udc5b)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF8B": [
     {
       "syntax": "u(\ud835\udc5b+1)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF8C": [
     {
       "syntax": "v(\ud835\udc5b+1)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF8D": [
     {
       "syntax": "w(\ud835\udc5b+1)",
-      "description": ""
+      "description": "TI-84+ token."
     }
   ],
   "0xEF9E": [
