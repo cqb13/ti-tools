@@ -192,9 +192,10 @@ pub fn convert_command(
                             }
 
                             prints!(
-                            "[color:bright-green]Successfully saved[color:reset] [color:bright-cyan]{}[color:reset] to [color:bright-cyan]{}.{}",
+                            "[color:bright-green]Successfully saved[color:reset] [color:bright-cyan]{}[color:reset] to [color:bright-cyan]{}/{}.{}",
                             program.metadata.name,
                             output_path_string.as_ref().unwrap(),
+                            program.metadata.name,
                             output_path.extension().unwrap().to_str().unwrap()
                         );
                         }
