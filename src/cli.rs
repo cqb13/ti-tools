@@ -200,32 +200,31 @@ impl Command {
 
     /// Get the value of an option in its location
     pub fn get_option(&self, option_name: &str) -> Value {
-        self.options
-            .iter()
-            .enumerate()
-            .find(|(_, option)| option.name == option_name)
-            .and_then(|(index, option)| {
-                let args: Vec<String> = env::args().collect();
-                if args.len() <= 2 + (index) {
-                    return Some(Value::Missing(format!(
-                        "{} could not be found in its location ({})",
-                        option_name,
-                        index + 1
-                    )));
-                }
+        let args: Vec<String> = env::args().collect();
 
-                let value = args[1 + (index + 1)].to_string();
+        for (index, option) in self.options.iter().enumerate() {
+            if args.len() <= 2 + (index) {
+                return Value::Missing(format!(
+                    "{} could not be found in its location ({})",
+                    option_name,
+                    index + 1
+                ));
+            }
 
-                if value == "--" && option.required {
-                    return Some(Value::Missing(format!(
-                        "{} is a required value and must be specified",
-                        option_name
-                    )));
-                }
+            let value = args[1 + (index + 1)].to_string();
 
-                return Some(Value::Present(value));
-            })
-            .unwrap()
+            if value == "--" && option.required {
+                return Value::Missing(format!(
+                    "{} is a required value and must be specified",
+                    option_name
+                ));
+            }
+        }
+
+        return Value::Missing(format!(
+            "{} is a required value and must be specified",
+            option_name
+        ));
     }
 
     /// Get the value of an argument
