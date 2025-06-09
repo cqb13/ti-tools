@@ -201,9 +201,12 @@ impl Command {
     /// Get the value of an option in its location
     pub fn get_option(&self, option_name: &str) -> Value {
         let args: Vec<String> = env::args().collect();
-
         for (index, option) in self.options.iter().enumerate() {
-            if args.len() <= 2 + (index) {
+            if option.name != option_name {
+                continue;
+            }
+
+            if args.len() <= 2 + index {
                 return Value::Missing(format!(
                     "{} could not be found in its location ({})",
                     option_name,
@@ -219,6 +222,8 @@ impl Command {
                     option_name
                 ));
             }
+
+            return Value::Present(value);
         }
 
         return Value::Missing(format!(
